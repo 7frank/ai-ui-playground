@@ -12,6 +12,10 @@ Writing a good guide requires thinking about what your users are trying to do.
 
 - platform that allows you to easily create docker containers of LLMs for small bucks
 
+[LMStudio](https://lmstudio.ai/)
+
+- locally, run LLMs
+
 ## Draw the UI with AI
 
 ### Uizard
@@ -46,7 +50,7 @@ Writing a good guide requires thinking about what your users are trying to do.
 
 - https://youtu.be/jkrNMKz9pWU?feature=shared
 
-[Lesson 0 - Setup Stuff ](https://course.fast.ai/Lessons/lesson0.html)
+[Lesson 0 - Setup Stuff ](https://www.youtube.com/watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward)
 
 [Full Course](https://course.fast.ai/Lessons/lesson1.html)
 
@@ -91,3 +95,12 @@ some links to run your stuff on
 [Hugging own model langchain](https://youtu.be/_j7JEDWuqLE?feature=shared)
 
 [A Deep Dive Into Guidance’s Source Code - Understanding how to guide Large Language Models](https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20)
+
+[huggingface](https://huggingface.co/)
+
+- open source hub / community (models, datasets, spaces, etc.)
+
+- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+- https://huggingface.co/spaces/ngoctuanai/chatgptfree
+
+https://github.com/filipecalegario/awesome-generative-ai
