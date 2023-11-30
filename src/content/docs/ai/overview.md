@@ -50,6 +50,8 @@ Writing a good guide requires thinking about what your users are trying to do.
 
 [Full Course](https://course.fast.ai/Lessons/lesson1.html)
 
+[Lesson2 UI](../Lesson2)
+
 #### tools to learn with
 
 some links to run your stuff on
