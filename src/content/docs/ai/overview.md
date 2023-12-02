@@ -103,4 +103,9 @@ some links to run your stuff on
 - https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 - https://huggingface.co/spaces/ngoctuanai/chatgptfree
 
-https://github.com/filipecalegario/awesome-generative-ai
+- https://github.com/filipecalegario/awesome-generative-ai
+
+- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+
+- [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
+  - from lesson 1 (minute 51)
