@@ -81,6 +81,13 @@ some links to run your stuff on
 
 - https://www.fast.ai/posts/2023-05-03-mojo-launch.html
 
+## dev tools
+
+- nbdev
+  - jupiter notebooks for development not only playing around
+- nbdime
+  - git diff for notebooks
+
 ## misc & unsorted
 
 > LCM-Lora: Neues KI-Modell sorgt im Internet für großes Aufsehen
@@ -108,4 +115,5 @@ some links to run your stuff on
 - https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 
 - [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
+
   - from lesson 1 (minute 51)
