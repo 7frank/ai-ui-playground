@@ -85,6 +85,8 @@ some links to run your stuff on
 
 - nbdev
   - jupiter notebooks for development not only playing around
+  - [nbdev tutorial -- zero to published project in 90 minutes](https://www.youtube.com/watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward)
+  - test/dev/release/docs as notebooks
 - nbdime
   - git diff for notebooks
 
@@ -117,3 +119,5 @@ some links to run your stuff on
 - [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
 
   - from lesson 1 (minute 51)
+
+- [/keras-vs-tensorflow-vs-pytorch-article](https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article)
