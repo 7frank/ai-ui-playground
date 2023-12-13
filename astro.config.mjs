@@ -17,6 +17,7 @@ export default defineConfig({
           items: [
             // Each item here is one entry in the navigation menu.
             { label: "start here for now", link: "/ai/overview/" },
+            { label: "Lesson2 Code", link: "/ai/lesson2/" },
           ],
         },
         {

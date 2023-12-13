@@ -13,5 +13,8 @@
     "@astrojs/starlight": "^0.14.0",
     "astro": "^3.2.3",
     "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "@gradio/client": "^0.8.2"
   }
 }
