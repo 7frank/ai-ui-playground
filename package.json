@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "tsx testRunner.js"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.14.0",
@@ -15,6 +16,8 @@
     "sharp": "^0.32.5"
   },
   "devDependencies": {
-    "@gradio/client": "^0.8.2"
+    "@gradio/client": "^0.8.2",
+    "glob": "^10.3.10",
+    "mock-fs": "^5.2.0"
   }
 }

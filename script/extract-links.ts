@@ -4,8 +4,8 @@ import * as path from "path";
 // Function to parse a file and return the graph data for double bracket notations
 function parseFile(
   filePath: string,
-  graph: { [key: string]: string[] }
-): { [key: string]: string[] } {
+  graph: { [key: string]: { id: string; url: string; filename: string }[] }
+): { [key: string]: { id: string; url: string; filename: string }[] } {
   const content = fs.readFileSync(filePath, "utf-8");
   const matches = content.match(/\[\[(.*?)\]\]/g);
 
@@ -17,7 +17,11 @@ function parseFile(
       if (!graph[fileId]) {
         graph[fileId] = [];
       }
-      graph[fileId].push(linkedId);
+      graph[fileId].push({
+        id: linkedId,
+        url: linkedId, // Assuming the linked ID can be used as a URL or a part of it
+        filename: filePath,
+      });
     });
   }
 
@@ -27,8 +31,8 @@ function parseFile(
 // Function to parse a file and return the graph data for Markdown-style links
 function parseFile2(
   filePath: string,
-  graph: { [key: string]: string[] }
-): { [key: string]: string[] } {
+  graph: { [key: string]: { id: string; url: string; filename: string }[] }
+): { [key: string]: { id: string; url: string; filename: string }[] } {
   const content = fs.readFileSync(filePath, "utf-8");
   const markdownLinkRegex = /\[([^\]]+)\]\(([^\)]+)\)/g;
 
@@ -37,7 +41,6 @@ function parseFile2(
     const label = match[1];
     const href = match[2];
 
-    // Assuming the label is the linked ID in this case
     const fileId = label;
     const linkedId = path.basename(href, path.extname(href));
 
@@ -45,22 +48,30 @@ function parseFile2(
       graph[fileId] = [];
     }
 
-    graph[fileId].push(linkedId);
+    graph[fileId].push({
+      id: linkedId,
+      url: href,
+      filename: filePath,
+    });
   }
 
   return graph;
 }
 
 // Function to traverse files recursively and call the parseFile and parseFile2 functions
-function traverseFolder(folderPath: string): { [key: string]: string[] } {
-  const graph: { [key: string]: string[] } = {};
+export function traverseFolder(folderPath: string): {
+  [key: string]: { id: string; url: string; filename: string }[];
+} {
+  const graph: {
+    [key: string]: { id: string; url: string; filename: string }[];
+  } = {};
 
   function traverse(
     filePath: string,
     parseFunction: (
       filePath: string,
-      graph: { [key: string]: string[] }
-    ) => { [key: string]: string[] }
+      graph: { [key: string]: { id: string; url: string; filename: string }[] }
+    ) => { [key: string]: { id: string; url: string; filename: string }[] }
   ) {
     const files = fs.readdirSync(filePath);
 
