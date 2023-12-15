@@ -90,6 +90,10 @@ some links to run your stuff on
 - nbdime
   - git diff for notebooks
 
+## jupiter notebook
+
+- [kernels for different languages](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
+
 ## misc & unsorted
 
 > LCM-Lora: Neues KI-Modell sorgt im Internet für großes Aufsehen
