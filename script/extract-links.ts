@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-// Function to parse a file and return the graph data
+// Function to parse a file and return the graph data for double bracket notations
 function parseFile(
   filePath: string,
   graph: { [key: string]: string[] }
@@ -24,33 +24,68 @@ function parseFile(
   return graph;
 }
 
-// Function to traverse files recursively and call the parseFile function
+// Function to parse a file and return the graph data for Markdown-style links
+function parseFile2(
+  filePath: string,
+  graph: { [key: string]: string[] }
+): { [key: string]: string[] } {
+  const content = fs.readFileSync(filePath, "utf-8");
+  const markdownLinkRegex = /\[([^\]]+)\]\(([^\)]+)\)/g;
+
+  let match;
+  while ((match = markdownLinkRegex.exec(content)) !== null) {
+    const label = match[1];
+    const href = match[2];
+
+    // Assuming the label is the linked ID in this case
+    const fileId = label;
+    const linkedId = path.basename(href, path.extname(href));
+
+    if (!graph[fileId]) {
+      graph[fileId] = [];
+    }
+
+    graph[fileId].push(linkedId);
+  }
+
+  return graph;
+}
+
+// Function to traverse files recursively and call the parseFile and parseFile2 functions
 function traverseFolder(folderPath: string): { [key: string]: string[] } {
   const graph: { [key: string]: string[] } = {};
 
-  function traverse(filePath: string) {
+  function traverse(
+    filePath: string,
+    parseFunction: (
+      filePath: string,
+      graph: { [key: string]: string[] }
+    ) => { [key: string]: string[] }
+  ) {
     const files = fs.readdirSync(filePath);
 
     files.forEach((file) => {
       const fullPath = path.join(filePath, file);
 
       if (fs.statSync(fullPath).isDirectory()) {
-        traverse(fullPath);
+        traverse(fullPath, parseFunction);
       } else if (
         path.extname(fullPath) === ".md" ||
         path.extname(fullPath) === ".mdx"
       ) {
-        console.log("parsing", fullPath);
-        parseFile(fullPath, graph);
+        parseFunction(fullPath, graph);
       }
     });
   }
 
-  traverse(folderPath);
+  // Call both parse functions for each file
+  traverse(folderPath, parseFile);
+  traverse(folderPath, parseFile2);
+
   return graph;
 }
 
 // Example usage
-const folderPath = "./src/";
+const folderPath = "./src";
 const parsedGraph = traverseFolder(folderPath);
 console.log(parsedGraph);
