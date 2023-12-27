@@ -3,8 +3,9 @@ title: AI Overview
 description: A guide in my new Starlight docs site.
 ---
 
-Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
-Writing a good guide requires thinking about what your users are trying to do.
+This section contains more general information for ai related topics
+
+- https://github.com/ml-tooling/best-of-ml-python
 
 ## Where to deploy my LLM
 
@@ -40,6 +41,10 @@ Writing a good guide requires thinking about what your users are trying to do.
 ## 3D
 
 - [article about luma ai](https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/)
+
+## model converting tools
+
+- [MMdnn](https://pypi.org/project/mmdnn/)
 
 ## fast.ai
 

@@ -10,6 +10,8 @@ This page contains some information for working with medical datasets.
 - In particular working with The Cancer Imaging Archive (TCIA).
 - training models
 
+- https://github.com/ml-tooling/best-of-ml-python#medical-data
+
 ## TCIA
 
 TCIA Search
@@ -40,6 +42,11 @@ AI Models
 
 - https://monai.io/model-zoo.html
 - https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_MONAI_Model_Zoo.ipynb
+
+## libraries for 3d imaging
+
+- https://monai.io
+- [fastMONAI](https://github.com/MMIV-ML/fastMONAI) fastai wrapper for monai
 
 ## other Datasets
 
