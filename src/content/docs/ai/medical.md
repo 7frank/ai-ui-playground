@@ -1,3 +1,8 @@
+---
+title: AI Medical Overview
+description: some links and resources related to ai in the medical field
+---
+
 # Medical side - topics
 
 This page contains some information for working with medical datasets.
@@ -19,11 +24,17 @@ Download content of `*.tcia` files
 
 - https://www.kaggle.com/s7frank/tcia-linux-data-retriever-app/edit
 
+render DICOM
+
+- https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_RTStruct_SEG_Visualization_with_itkWidgets.ipynb
+
 TCIA utils
 
 - https://wiki.cancerimagingarchive.net/display/Public/TCIA+Programmatic+Interface+REST+API+Guides
 
-TCIA Notebooks -https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb
+TCIA Notebooks
+
+- https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb
 
 AI Models
 
@@ -37,3 +48,7 @@ AI Models
 ## fiddling on kaggle
 
 https://www.kaggle.com/code/s7frank/fiddling-with-bone-tumor
+
+## other code
+
+- https://docs.fast.ai/tutorial.medical_imaging.html
