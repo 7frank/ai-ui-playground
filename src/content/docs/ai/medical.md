@@ -50,6 +50,7 @@ AI Models
 
 ## other Datasets
 
+- https://medmnist.com/
 - https://www.kaggle.com/datasets/syxlicheng/bone-tumor-predicted
 
 ## fiddling on kaggle
