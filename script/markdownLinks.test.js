@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { describe, it } from "node:test";
+import { describe, it, beforeEach, afterEach } from "node:test";
 import * as mock from "mock-fs";
 import { traverseFolder } from "./extract-links";
 

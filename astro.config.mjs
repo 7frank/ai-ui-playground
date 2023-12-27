@@ -18,6 +18,10 @@ export default defineConfig({
             // Each item here is one entry in the navigation menu.
             { label: "start here for now", link: "/ai/overview/" },
             { label: "Lesson2 Code", link: "/ai/lesson2/" },
+            {
+              label: "for ai topics in the medical field",
+              link: "/ai/medical/",
+            },
           ],
         },
         {

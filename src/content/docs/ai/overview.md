@@ -94,6 +94,18 @@ some links to run your stuff on
 
 - [kernels for different languages](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
 
+## chatgpt
+
+### gpt4 capabilities
+
+- codeinterpreter
+
+  - https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist
+
+- image generation
+
+- websearch
+
 ## misc & unsorted
 
 > LCM-Lora: Neues KI-Modell sorgt im Internet für großes Aufsehen
