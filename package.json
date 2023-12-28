@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "tsx testRunner.js"
+    "test": "tsx testRunner.js",
+    "graph": "tsx script/extract-links.ts > graph.json5"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.14.0",
