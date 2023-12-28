@@ -1,0 +1,210 @@
+{
+  "Attention Is All You Need": [
+    {
+      "id": "1706",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "filename": "src/content/docs/ai/ann.md"
+    }
+  ],
+  "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training": [
+    {
+      "id": "watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
+      "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
+      "filename": "src/content/docs/ai/ann.md"
+    }
+  ],
+  "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.": [
+    {
+      "id": "watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
+      "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
+      "filename": "src/content/docs/ai/ann.md"
+    }
+  ],
+  "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained": [
+    {
+      "id": "watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
+      "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
+      "filename": "src/content/docs/ai/ann.md"
+    }
+  ],
+  "Types of artificial neural networks": [
+    {
+      "id": "Types_of_artificial_neural_networks",
+      "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
+      "filename": "src/content/docs/ai/ann.md"
+    }
+  ],
+  "fastMONAI": [
+    {
+      "id": "fastMONAI",
+      "url": "https://github.com/MMIV-ML/fastMONAI",
+      "filename": "src/content/docs/ai/medical.md"
+    }
+  ],
+  "Runpod": [
+    {
+      "id": "TP2yID7Ubr4?feature=shared",
+      "url": "https://youtu.be/TP2yID7Ubr4?feature=shared",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "LMStudio": [
+    {
+      "id": "lmstudio",
+      "url": "https://lmstudio.ai/",
+      "filename": "src/content/docs/ai/overview.md"
+    },
+    {
+      "id": "lmstudio",
+      "url": "https://lmstudio.ai/",
+      "filename": "src/content/docs/ai/tools.md"
+    }
+  ],
+  "article about luma ai": [
+    {
+      "id": "luma-ai-genie-3d-modelle-16124375",
+      "url": "https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "MMdnn": [
+    {
+      "id": "mmdnn",
+      "url": "https://pypi.org/project/mmdnn/",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Lesson 0 - Setup Stuff ": [
+    {
+      "id": "watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward",
+      "url": "https://www.youtube.com/watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Full Course": [
+    {
+      "id": "lesson1",
+      "url": "https://course.fast.ai/Lessons/lesson1.html",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Lesson2 UI": [
+    {
+      "id": "Lesson2",
+      "url": "../Lesson2",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "paperspace notebooks": [
+    {
+      "id": "notebooks",
+      "url": "https://www.paperspace.com/notebooks",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "nbdev tutorial -- zero to published project in 90 minutes": [
+    {
+      "id": "watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward",
+      "url": "https://www.youtube.com/watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "kernels for different languages": [
+    {
+      "id": "Jupyter-kernels",
+      "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Sparse priming representation": [
+    {
+      "id": "piRMk2KIx2o?feature=shared",
+      "url": "https://youtu.be/piRMk2KIx2o?feature=shared",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Autogpt & memgpt & runpod": [
+    {
+      "id": "bMWXXPoDnDs?feature=shared",
+      "url": "https://youtu.be/bMWXXPoDnDs?feature=shared",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "Hugging own model langchain": [
+    {
+      "id": "_j7JEDWuqLE?feature=shared",
+      "url": "https://youtu.be/_j7JEDWuqLE?feature=shared",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "A Deep Dive Into Guidance’s Source Code - Understanding how to guide Large Language Models": [
+    {
+      "id": "a-deep-dive-into-guidances-source-code-16681a76fb20",
+      "url": "https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "huggingface": [
+    {
+      "id": "huggingface",
+      "url": "https://huggingface.co/",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "results for all timm models with pretrained weights": [
+    {
+      "id": "results",
+      "url": "https://github.com/huggingface/pytorch-image-models/tree/main/results",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "/keras-vs-tensorflow-vs-pytorch-article": [
+    {
+      "id": "keras-vs-tensorflow-vs-pytorch-article",
+      "url": "https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article",
+      "filename": "src/content/docs/ai/overview.md"
+    }
+  ],
+  "18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification": [
+    {
+      "id": "medmnist",
+      "url": "https://medmnist.com/",
+      "filename": "src/content/docs/ai/tools.md"
+    }
+  ],
+  "The Cancer Imaging Archive (TCIA)": [
+    {
+      "id": "cancer_imaging_archive",
+      "url": "https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm",
+      "filename": "src/content/docs/ai/tools.md"
+    }
+  ],
+  "about how-to guides": [
+    {
+      "id": "how-to-guides",
+      "url": "https://diataxis.fr/how-to-guides/",
+      "filename": "src/content/docs/guides/example.md"
+    }
+  ],
+  "overview / unsorted links related to AI topics": [
+    {
+      "id": "overview",
+      "url": "src/content/ai/overview.md",
+      "filename": "src/content/docs/index.mdx"
+    }
+  ],
+  "the Starlight Docs": [
+    {
+      "id": "starlight.astro",
+      "url": "https://starlight.astro.build/",
+      "filename": "src/content/docs/index.mdx"
+    }
+  ],
+  "about reference": [
+    {
+      "id": "reference",
+      "url": "https://diataxis.fr/reference/",
+      "filename": "src/content/docs/reference/example.md"
+    }
+  ]
+}

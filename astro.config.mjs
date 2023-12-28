@@ -1,11 +1,13 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://7frank.github.io",
   base: "/ai-ui-playground",
   integrations: [
+    svelte(),
     starlight({
       title: "My Docs",
       social: {
