@@ -1,26 +1,30 @@
 import * as fs from "fs";
 import * as path from "path";
 
-// Function to parse a file and return the graph data for double bracket notations
-function parseFile(
+type FooType = {
+  label: string;
+  url: string;
+};
+
+// Function to parse a file and return the graph data for double bracket notations like: [[foo]] where foo is a markdown(x) file somewhere in the repo e.g. ../bar/foo.md
+function parseDoubleBracketNotation(
   filePath: string,
-  graph: { [key: string]: { id: string; url: string; filename: string }[] }
-): { [key: string]: { id: string; url: string; filename: string }[] } {
+  graph: { [key: string]: FooType[] }
+): { [key: string]: FooType[] } {
   const content = fs.readFileSync(filePath, "utf-8");
   const matches = content.match(/\[\[(.*?)\]\]/g);
 
   if (matches) {
-    const fileId = path.basename(filePath, path.extname(filePath));
+    // const fileId = path.basename(filePath, path.extname(filePath));
 
     matches.forEach((match) => {
       const linkedId = match.slice(2, -2);
-      if (!graph[fileId]) {
-        graph[fileId] = [];
+      if (!graph[filePath]) {
+        graph[filePath] = [];
       }
-      graph[fileId].push({
-        id: linkedId,
-        url: linkedId, // Assuming the linked ID can be used as a URL or a part of it
-        filename: filePath,
+      graph[filePath].push({
+        label: linkedId, // TODO extract additional info via frontmatter
+        url: "TODO", // TODO find file in repository
       });
     });
   }
@@ -28,11 +32,11 @@ function parseFile(
   return graph;
 }
 
-// Function to parse a file and return the graph data for Markdown-style links
-function parseFile2(
+// Function to parse a file and return the graph data for Markdown-style links e.g. [label](relative-or-absolute-url)
+function parseMarkdownStyle(
   filePath: string,
-  graph: { [key: string]: { id: string; url: string; filename: string }[] }
-): { [key: string]: { id: string; url: string; filename: string }[] } {
+  graph: { [key: string]: FooType[] }
+): { [key: string]: FooType[] } {
   const content = fs.readFileSync(filePath, "utf-8");
   const markdownLinkRegex = /\[([^\]]+)\]\(([^\)]+)\)/g;
 
@@ -44,34 +48,33 @@ function parseFile2(
     const fileId = label;
     const linkedId = path.basename(href, path.extname(href));
 
-    if (!graph[fileId]) {
-      graph[fileId] = [];
+    if (!graph[filePath]) {
+      graph[filePath] = [];
     }
 
-    graph[fileId].push({
-      id: linkedId,
+    graph[filePath].push({
+      label,
       url: href,
-      filename: filePath,
     });
   }
 
   return graph;
 }
 
-// Function to traverse files recursively and call the parseFile and parseFile2 functions
+// Function to traverse files recursively and call the parse functions
 export function traverseFolder(folderPath: string): {
-  [key: string]: { id: string; url: string; filename: string }[];
+  [key: string]: FooType[];
 } {
   const graph: {
-    [key: string]: { id: string; url: string; filename: string }[];
+    [key: string]: FooType[];
   } = {};
 
   function traverse(
     filePath: string,
     parseFunction: (
       filePath: string,
-      graph: { [key: string]: { id: string; url: string; filename: string }[] }
-    ) => { [key: string]: { id: string; url: string; filename: string }[] }
+      graph: { [key: string]: FooType[] }
+    ) => { [key: string]: FooType[] }
   ) {
     const files = fs.readdirSync(filePath);
 
@@ -90,8 +93,8 @@ export function traverseFolder(folderPath: string): {
   }
 
   // Call both parse functions for each file
-  traverse(folderPath, parseFile);
-  traverse(folderPath, parseFile2);
+  traverse(folderPath, parseDoubleBracketNotation);
+  traverse(folderPath, parseMarkdownStyle);
 
   return graph;
 }

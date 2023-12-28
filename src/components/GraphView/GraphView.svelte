@@ -1,13 +1,15 @@
-<script>
+<script lang="js">
     import { onMount } from 'svelte';
     import cytoscape from 'cytoscape';
     import JSON5 from 'json5';
     import graphData from '../../../graph.json';
-  
+
     onMount(() => {
+       const targetEl= document.getElementById('cy')
+
       const cy = cytoscape({
-        container: document.getElementById('cy'),
-        elements: transformDataToCytoscapeFormat(JSON5.parse(graphData)),
+        container: targetEl,
+        elements: transformDataToCytoscapeFormat(graphData),
         style: [
           // Define your styles here
           {
@@ -28,7 +30,7 @@
           }
         ],
         layout: {
-          name: 'grid', // You can change this to any layout you prefer
+          name: 'cose', // You can change this to any layout you prefer
         }
       });
     });
@@ -36,26 +38,28 @@
     function transformDataToCytoscapeFormat(data) {
       let cyElements = [];
   
-      if (data.nodes && Array.isArray(data.nodes)) {
-        data.nodes.forEach(node => {
-          cyElements.push({
-            data: {
-              id: node.id,
-              label: node.label,
-              // include other node properties here if needed
-            }
-          });
+      // Process each source node
+      for (const [sourceId, targets] of Object.entries(data)) {
+        // Add the source node
+        cyElements.push({
+          data: { id: sourceId }
         });
-      }
+  console.log(targets);
+        // Add target nodes and edges
+        targets.forEach(({label, url}) => {
+          // Add the target node if it's not already in the array
+          if (!cyElements.some(el => el.data.id === url)) {
+            cyElements.push({
+              data: { id: url, label: label }
+            });
+          }
   
-      if (data.links && Array.isArray(data.links)) {
-        data.links.forEach(link => {
+          // Add the edge
           cyElements.push({
             data: {
-              id: `e-${link.source}-${link.target}`,
-              source: link.source,
-              target: link.target,
-              // include other link properties here if needed
+              id: `e-${sourceId}-${url}`,
+              source: sourceId,
+              target: url
             }
           });
         });
@@ -72,6 +76,6 @@
       background-color: lightgrey;
     }
   </style>
-  
+  GraphView:
   <div id="cy"></div>
   
