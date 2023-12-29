@@ -1,12 +1,20 @@
-<script lang="js">
+<script lang="ts">
     import { onMount } from 'svelte';
     import cytoscape from 'cytoscape';
     import JSON5 from 'json5';
     import graphData from '../../../graph.json';
 
-    onMount(() => {
-       const targetEl= document.getElementById('cy')
+    let targetEl:HTMLDivElement
 
+    type FooType = {
+      label: string;
+      url: string;
+    };
+    type Graph={ [key: string]: FooType[] }
+
+    onMount(() => {
+   
+    console.log(targetEl)
       const cy = cytoscape({
         container: targetEl,
         elements: transformDataToCytoscapeFormat(graphData),
@@ -35,7 +43,7 @@
       });
     });
   
-    function transformDataToCytoscapeFormat(data) {
+    function transformDataToCytoscapeFormat(data:Graph) {
       let cyElements = [];
   
       // Process each source node
@@ -70,11 +78,12 @@
   </script>
   
   <style>
-    #cy {
+    .cy {
       width: 100%;
+      min-height: 500px;
       background-color: lightgrey;
     }
   </style>
 
-  <div id="cy"></div>
+  <div class="cy" bind:this={targetEl}></div>
   

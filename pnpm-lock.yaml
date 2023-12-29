@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/svelte':
     specifier: ^5.0.3
     version: 5.0.3(astro@3.6.4)(svelte@4.2.8)(typescript@5.3.3)(vite@5.0.10)
+  '@types/cytoscape':
+    specifier: ^3.19.16
+    version: 3.19.16
   astro:
     specifier: ^3.2.3
     version: 3.6.4(typescript@5.3.3)
@@ -1169,6 +1172,10 @@ packages:
     resolution: {integrity: sha512-mSM/iKUk5fDDrEV/e83qY+Cr3I1+Q3qqTuEn++HAWYjEa1+NxZr6CNrcJGf2ZTnq4HoFGC3zaTPZTobCzCFukA==}
     dependencies:
       '@babel/types': 7.23.6
+    dev: false
+
+  /@types/cytoscape@3.19.16:
+    resolution: {integrity: sha512-A3zkjaZ6cOGyqEvrVuC1YUgiRSJhDZOj8Qhd1ALH2/+YxH2za1BOmR4RWQsKYHsc+aMP/IWoqg1COuUbZ39t/g==}
     dev: false
 
   /@types/debug@4.1.12:
