@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "tsx testRunner.js",
-    "graph": "tsx script/extract-links.ts > graph.json5"
+    "graph": "tsx script/extract-links.ts > graph.json"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.14.0",
