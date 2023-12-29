@@ -10,6 +10,10 @@ export default defineConfig({
     svelte(),
     starlight({
       title: "7frank.dev",
+      customCss: [
+        // Relative Pfad zur eigenen CSS Datei
+        "./src/styles/custom.css",
+      ],
       social: {
         github: "https://github.com/withastro/starlight",
       },

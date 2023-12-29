@@ -123,7 +123,7 @@
   <style>
     .cy {
       width: 100%;
-      min-height: 500px;
+      min-height: 1500px;
       background-color: lightgrey;
     }
   </style>
