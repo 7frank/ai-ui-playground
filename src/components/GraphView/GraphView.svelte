@@ -36,7 +36,7 @@
             style: {
               'shape': 'rectangle', // Set the shape of the node to rectangle
               'border-radius': '3px', 
-              'background-color': '#666',
+              'background-color': (ele)=> ele.data('id').startsWith("src/")?'#336':'#666',
               'opacity': 0.5,
         
               'label': (ele)  => getDisplayText(ele),
@@ -75,6 +75,13 @@
         const data=node.data()
         console.log({data,onClick})
         onClick?.(data)
+
+        // src/content/docs/ai/ann.md 
+        // /ai-ui-playground/ai/ann/
+        const url=data.id.startsWith("src/")?data.id.replace("src/content/docs","/ai-ui-playground").replace(".md","").replace(".mdx",""):data.id
+
+        window.open(url, '_blank')
+
         });
 
     });
