@@ -51,6 +51,7 @@
               'opacity': 0.8,
         
               'label': (ele)  => getDisplayText(ele),
+              'text-wrap': 'wrap',
               'text-valign': 'center', // Vertical alignment
               'text-halign': 'center', // Horizontal alignment
               'text-margin-x': 10, // Horizontal padding-like effect
@@ -60,7 +61,7 @@
               'font-size': "12px", // Set your font size here
               'width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
               'text-max-width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
-              'height': (ele)=>estimateTextHeight(getDisplayText(ele), 12) + 'px',
+              'height': (ele)=>estimateTextHeight(getDisplayText(ele), 15) + 'px',
                 
             }
           },

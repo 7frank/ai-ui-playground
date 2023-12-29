@@ -48,20 +48,21 @@ function parseMarkdownStyle(
 
   let match;
   while ((match = markdownLinkRegex.exec(content)) !== null) {
-    //const label = match[1];
+    let label = match[1];
     const href = match[2];
 
     if (!graph[filePath]) {
       graph[filePath] = [];
     }
 
-    const fm = frontMatter(fs.readFileSync(filePath, "utf-8"));
+    if (href.startsWith("src/")) {
+      const fm = frontMatter(fs.readFileSync(href, "utf-8"));
 
-    const { title, description } = fm.attributes as any;
-    const body = fm.body; // TODO do somethign with the body, maybe on tooltip
+      const { title, description } = fm.attributes as any;
+      const body = fm.body; // TODO do something with the body, maybe on tooltip
 
-    const label = `Title: ${title}\n Description: ${description}`;
-
+      label = `Title: ${title}\n Description: ${description}`;
+    }
     graph[filePath].push({
       label,
       url: href,
