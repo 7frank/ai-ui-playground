@@ -8,12 +8,11 @@
     type FooType = {
       label: string;
       url: string;
+      type: "double-bracket" | "markdown" | "plain";
     };
     type Graph={ [key: string]: FooType[] }
 
     export let graph:Graph={}
-    // TODO astro click handler will not be available in client side svelte component https://docs.astro.build/en/core-concepts/framework-components/#passing-props-to-framework-components 
-    export let onClick:(el:FooType)=> void = null
 
     function estimateTextSize(text:string, fontSize:number) {
     // Rough estimation of text size
@@ -22,6 +21,13 @@
 
     function getDisplayText(ele){
      return ele.data('label')??ele.data('id')
+    }
+
+  
+    const colorMap:Record<FooType['type'],string>={
+      'double-bracket': '666',
+      markdown: '900',
+      plain: '090'
     }
 
     onMount(() => {
@@ -36,7 +42,7 @@
             style: {
               'shape': 'rectangle', // Set the shape of the node to rectangle
               'border-radius': '3px', 
-              'background-color': (ele)=> ele.data('id').startsWith("src/")?'#336':'#666',
+              'background-color': (ele)=> ele.data('id').startsWith("src/")?'#009':colorMap[ ele.data('type')],
               'opacity': 0.5,
         
               'label': (ele)  => getDisplayText(ele),
@@ -73,8 +79,7 @@
         cy.on('tap', 'node', function(event) {
         var node = event.target;
         const data=node.data()
-        console.log({data,onClick})
-        onClick?.(data)
+     
 
         // src/content/docs/ai/ann.md 
         // /ai-ui-playground/ai/ann/
@@ -97,11 +102,11 @@
         });
 
         // Add target nodes and edges
-        targets.forEach(({label, url}) => {
+        targets.forEach(({label, url,type}) => {
           // Add the target node if it's not already in the array
           if (!cyElements.some(el => el.data.id === url)) {
             cyElements.push({
-              data: { id: url, label: label }
+              data: { id: url, label: label,type:type }
             });
           }
   

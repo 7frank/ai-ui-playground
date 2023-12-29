@@ -47,9 +47,6 @@ function parseMarkdownStyle(
     const label = match[1];
     const href = match[2];
 
-    const fileId = label;
-    const linkedId = path.basename(href, path.extname(href));
-
     if (!graph[filePath]) {
       graph[filePath] = [];
     }
@@ -85,15 +82,11 @@ function parseNormalLinks(
     while ((match = urlRegex.exec(line)) !== null) {
       const href = match[1];
 
-      // The fileId and linkedId can be derived or formatted as per your requirements
-      const fileId = path.basename(filePath);
-      const linkedId = path.basename(href, path.extname(href));
-
-      if (!graph[fileId]) {
-        graph[fileId] = [];
+      if (!graph[filePath]) {
+        graph[filePath] = [];
       }
 
-      graph[fileId].push({
+      graph[filePath].push({
         label: href, // or any other label format you prefer
         url: href,
         type: "plain",
