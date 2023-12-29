@@ -35,17 +35,20 @@
             selector: 'node',
             style: {
               'shape': 'rectangle', // Set the shape of the node to rectangle
-                'border-radius': '3px', 
+              'border-radius': '3px', 
               'background-color': '#666',
+              'opacity': 0.5,
         
               'label': (ele)  => getDisplayText(ele),
               'text-valign': 'center', // Vertical alignment
-                'text-halign': 'center', // Horizontal alignment
-               
+              'text-halign': 'center', // Horizontal alignment
+              'text-margin-x': 10, // Horizontal padding-like effect
+              'text-margin-y': 5, // Vertical padding-like effect
+                
 
-              'font-size': 12, // Set your font size here
-                'width': (ele)  => estimateTextSize(getDisplayText(ele), 12) + 'px',
-                'height': ()=>'20px'
+              'font-size': "12px", // Set your font size here
+              'width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
+              'height': ()=>'40px'
                 
             }
           },
@@ -61,6 +64,9 @@
         ],
         layout: {
           name: 'cose', // You can change this to any layout you prefer
+          nodeRepulsion: function( node ){ return 16500; }, // Increases repulsion between nodes
+          idealEdgeLength: function( edge ){ return 100; }, // Adjusts the ideal length of the edges
+   
         }
       });
 
