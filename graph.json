@@ -1,7 +1,7 @@
 {
   "src/content/docs/ai/In Medicine/medical.md": [
     {
-      "label": "fastMONAI",
+      "label": "Title: Medical Topics - Overview\n Description: some links and resources related to ai in the medical field",
       "url": "https://github.com/MMIV-ML/fastMONAI",
       "type": "markdown"
     },
@@ -78,70 +78,70 @@
   ],
   "src/content/docs/ai/LLM/prompts.md": [
     {
-      "label": "OpenAI veröffentlicht Prompt-Guide",
+      "label": "Title: Prompt-Engineering\n Description: undefined",
       "url": "https://the-decoder.de/openai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance/#amp_tf=Von%20%251%24s&aoh=17027561217506&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fthe-decoder.de%2Fopenai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance%2F",
       "type": "markdown"
     }
   ],
   "src/content/docs/ai/LLM/transformers.md": [
     {
-      "label": "Attention Is All You Need",
+      "label": "Title: Transformers\n Description: undefined",
       "url": "https://arxiv.org/abs/1706.03762",
       "type": "markdown"
     },
     {
-      "label": "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training",
+      "label": "Title: Transformers\n Description: undefined",
       "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
       "type": "markdown"
     },
     {
-      "label": "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.",
+      "label": "Title: Transformers\n Description: undefined",
       "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
       "type": "markdown"
     },
     {
-      "label": "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained",
+      "label": "Title: Transformers\n Description: undefined",
       "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
       "type": "markdown"
     }
   ],
   "src/content/docs/ai/Practical Deep Learning - FastAi Notes/1 Overview.md": [
     {
-      "label": "Practical Deep Learning for Coders part 1",
+      "label": "Title: Overview\n Description: undefined",
       "url": "https://course.fast.ai/",
       "type": "markdown"
     }
   ],
   "src/content/docs/ai/ann.md": [
     {
-      "label": "CNN Overview",
+      "label": "Title: Artificial neural networks (ANN)\n Description: Overview of different neuronal networks",
       "url": "/ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/",
       "type": "markdown"
     },
     {
-      "label": "LLM Overview",
+      "label": "Title: Artificial neural networks (ANN)\n Description: Overview of different neuronal networks",
       "url": "/ai-ui-playground/ai/llm/overview/",
       "type": "markdown"
     },
     {
-      "label": "LLM Overview",
+      "label": "Title: Artificial neural networks (ANN)\n Description: Overview of different neuronal networks",
       "url": "/ai-ui-playground/ai/llm/transformers/",
       "type": "markdown"
     },
     {
-      "label": "Types of artificial neural networks",
+      "label": "Title: Artificial neural networks (ANN)\n Description: Overview of different neuronal networks",
       "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
       "type": "markdown"
     }
   ],
   "src/content/docs/ai/learning goals.md": [
     {
-      "label": "fundamentals-of-data-engineering",
+      "label": "Title: Learning goals for Q1/2023\n Description: undefined",
       "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
       "type": "markdown"
     },
     {
-      "label": "airflow / dbt",
+      "label": "Title: Learning goals for Q1/2023\n Description: undefined",
       "url": "https://www.getdbt.com/blog/dbt-airflow",
       "type": "markdown"
     },
@@ -163,87 +163,87 @@
   ],
   "src/content/docs/ai/overview.md": [
     {
-      "label": "Runpod",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://youtu.be/TP2yID7Ubr4?feature=shared",
       "type": "markdown"
     },
     {
-      "label": "LMStudio",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://lmstudio.ai/",
       "type": "markdown"
     },
     {
-      "label": "article about luma ai",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/",
       "type": "markdown"
     },
     {
-      "label": "MMdnn",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://pypi.org/project/mmdnn/",
       "type": "markdown"
     },
     {
-      "label": "Lesson 0 - Setup Stuff ",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://www.youtube.com/watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward",
       "type": "markdown"
     },
     {
-      "label": "Full Course",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://course.fast.ai/Lessons/lesson1.html",
       "type": "markdown"
     },
     {
-      "label": "Lesson2 UI",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "../Lesson2",
       "type": "markdown"
     },
     {
-      "label": "paperspace notebooks",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://www.paperspace.com/notebooks",
       "type": "markdown"
     },
     {
-      "label": "nbdev tutorial -- zero to published project in 90 minutes",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://www.youtube.com/watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward",
       "type": "markdown"
     },
     {
-      "label": "kernels for different languages",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
       "type": "markdown"
     },
     {
-      "label": "Sparse priming representation",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://youtu.be/piRMk2KIx2o?feature=shared",
       "type": "markdown"
     },
     {
-      "label": "Autogpt & memgpt & runpod",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://youtu.be/bMWXXPoDnDs?feature=shared",
       "type": "markdown"
     },
     {
-      "label": "Hugging own model langchain",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://youtu.be/_j7JEDWuqLE?feature=shared",
       "type": "markdown"
     },
     {
-      "label": "A Deep Dive Into Guidance’s Source Code - Understanding how to guide Large Language Models",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20",
       "type": "markdown"
     },
     {
-      "label": "huggingface",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://huggingface.co/",
       "type": "markdown"
     },
     {
-      "label": "results for all timm models with pretrained weights",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://github.com/huggingface/pytorch-image-models/tree/main/results",
       "type": "markdown"
     },
     {
-      "label": "/keras-vs-tensorflow-vs-pytorch-article",
+      "label": "Title: AI Overview\n Description: A guide in my new Starlight docs site.",
       "url": "https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article",
       "type": "markdown"
     },
@@ -310,7 +310,7 @@
   ],
   "src/content/docs/ai/resources.md": [
     {
-      "label": "The End of Finetuning — with Jeremy Howard of Fast.ai",
+      "label": "Title: Resources\n Description: undefined",
       "url": "https://youtu.be/5Sze3kHAZqE?feature=shared",
       "type": "markdown"
     },
@@ -367,41 +367,41 @@
   ],
   "src/content/docs/ai/tools.md": [
     {
-      "label": "LMStudio",
+      "label": "Title: Tools & building blocks\n Description: Tools for developers and data engineers",
       "url": "https://lmstudio.ai/",
       "type": "markdown"
     },
     {
-      "label": "18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification",
+      "label": "Title: Tools & building blocks\n Description: Tools for developers and data engineers",
       "url": "https://medmnist.com/",
       "type": "markdown"
     },
     {
-      "label": "The Cancer Imaging Archive (TCIA)",
+      "label": "Title: Tools & building blocks\n Description: Tools for developers and data engineers",
       "url": "https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm",
       "type": "markdown"
     }
   ],
   "src/content/docs/guides/example.md": [
     {
-      "label": "about how-to guides",
+      "label": "Title: Example Guide\n Description: A guide in my new Starlight docs site.",
       "url": "https://diataxis.fr/how-to-guides/",
       "type": "markdown"
     }
   ],
   "src/content/docs/index.mdx": [
     {
-      "label": "click me",
+      "label": "Title: Welcome to this playground\n Description: This page might contain some information related to LLMs as well as some interactive demos at best.",
       "url": "/ai-ui-playground/ai/overview/",
       "type": "markdown"
     },
     {
-      "label": "course.fast.ai",
+      "label": "Title: Welcome to this playground\n Description: This page might contain some information related to LLMs as well as some interactive demos at best.",
       "url": "https://course.fast.ai/",
       "type": "markdown"
     },
     {
-      "label": "the Starlight Docs",
+      "label": "Title: Welcome to this playground\n Description: This page might contain some information related to LLMs as well as some interactive demos at best.",
       "url": "https://starlight.astro.build/",
       "type": "markdown"
     },
@@ -413,7 +413,7 @@
   ],
   "src/content/docs/reference/example.md": [
     {
-      "label": "about reference",
+      "label": "Title: Example Reference\n Description: A reference page in my new Starlight docs site.",
       "url": "https://diataxis.fr/reference/",
       "type": "markdown"
     }

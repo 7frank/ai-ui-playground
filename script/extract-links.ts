@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import frontMatter from "front-matter";
 
 type FooType = {
   label: string;
@@ -23,8 +24,11 @@ function parseDoubleBracketNotation(
       if (!graph[filePath]) {
         graph[filePath] = [];
       }
+
+      const fm = frontMatter(fs.readFileSync(filePath, "utf-8"));
+
       graph[filePath].push({
-        label: linkedId, // TODO extract additional info via frontmatter
+        label: linkedId, // TODO extract additional info via frontmatter After finding the file in the fs
         url: "TODO", // TODO find file in repository
         type: "double-bracket",
       });
@@ -44,12 +48,19 @@ function parseMarkdownStyle(
 
   let match;
   while ((match = markdownLinkRegex.exec(content)) !== null) {
-    const label = match[1];
+    //const label = match[1];
     const href = match[2];
 
     if (!graph[filePath]) {
       graph[filePath] = [];
     }
+
+    const fm = frontMatter(fs.readFileSync(filePath, "utf-8"));
+
+    const { title, description } = fm.attributes as any;
+    const body = fm.body; // TODO do somethign with the body, maybe on tooltip
+
+    const label = `Title: ${title}\n Description: ${description}`;
 
     graph[filePath].push({
       label,

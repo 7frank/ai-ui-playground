@@ -16,7 +16,12 @@
 
     function estimateTextSize(text:string, fontSize:number) {
     // Rough estimation of text size
-    return text.length * fontSize;
+    return text.split("\n").map(s=>s.length).reduce((a, b) => Math.max(a, b)) * fontSize;
+    }
+
+    function estimateTextHeight(text:string, fontSize:number) {
+    // Rough estimation of text size
+    return text.split("\n").length * fontSize;
     }
 
     function getDisplayText(ele){
@@ -25,9 +30,9 @@
 
   
     const colorMap:Record<FooType['type'],string>={
-      'double-bracket': '666',
-      markdown: '900',
-      plain: '090'
+      'double-bracket': '#666',
+      markdown: '#900',
+      plain: '#090'
     }
 
     onMount(() => {
@@ -43,7 +48,7 @@
               'shape': 'rectangle', // Set the shape of the node to rectangle
               'border-radius': '3px', 
               'background-color': (ele)=> ele.data('id').startsWith("src/")?'#009':colorMap[ ele.data('type')],
-              'opacity': 0.5,
+              'opacity': 0.8,
         
               'label': (ele)  => getDisplayText(ele),
               'text-valign': 'center', // Vertical alignment
@@ -54,7 +59,8 @@
 
               'font-size': "12px", // Set your font size here
               'width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
-              'height': ()=>'40px'
+              'text-max-width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
+              'height': (ele)=>estimateTextHeight(getDisplayText(ele), 12) + 'px',
                 
             }
           },
@@ -66,6 +72,22 @@
               'target-arrow-color': '#ccc',
               'target-arrow-shape': 'triangle'
             }
+          },
+           // Styles for highlighted nodes and edges
+          {
+              selector: 'node.highlighted',
+              style: {
+                  'border-width':"5px",
+                  'border-color': '#fff', // Example: red background for highlighted nodes
+                  // ... other styles for highlighted nodes
+              }
+          },
+          {
+              selector: 'edge.highlighted',
+              style: {
+                  'line-color': '#f00', // Example: red line for highlighted edges
+                  // ... other styles for highlighted edges
+              }
           }
         ],
         layout: {
@@ -76,7 +98,7 @@
         }
       });
 
-        cy.on('tap', 'node', function(event) {
+        cy.on('dblclick', 'node', function(event) {
         var node = event.target;
         const data=node.data()
      
@@ -87,6 +109,28 @@
 
         window.open(url, '_blank')
 
+        });
+
+        // Add click event listener to nodes
+        cy.on('tap', 'node', function(event) {
+            var node = event.target;
+
+            // Reset previously highlighted elements, if any
+            cy.elements().removeClass('highlighted');
+
+            // Highlight the selected node
+            node.addClass('highlighted');
+
+            // Highlight adjacent nodes and edges
+            node.connectedEdges().addClass('highlighted');
+            node.neighborhood('node').addClass('highlighted');
+        });
+
+        // Reset styles when clicking elsewhere
+        cy.on('tap', function(event) {
+            if (event.target === cy) {
+                cy.elements().removeClass('highlighted');
+            }
         });
 
     });
