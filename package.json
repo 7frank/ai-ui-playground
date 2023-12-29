@@ -24,5 +24,6 @@
     "@gradio/client": "^0.8.2",
     "glob": "^10.3.10",
     "mock-fs": "^5.2.0"
-  }
+  },
+  "packageManager": "pnpm@8.13.1"
 }
