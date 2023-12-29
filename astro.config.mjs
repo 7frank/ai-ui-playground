@@ -16,21 +16,9 @@ export default defineConfig({
       sidebar: [
         {
           label: "AI Overview",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "start here for now", link: "/ai/overview/" },
-            { label: "ann related information", link: "/ai/ann/" },
-            {
-              label: "tools for data science & data engineering",
-              link: "/ai/tools/",
-            },
-            { label: "gpt2 details", link: "/ai/gpt2/" },
-            { label: "FastAi Course Lesson2 Notes", link: "/ai/lesson2/" },
-            {
-              label: "for ai topics in the medical field",
-              link: "/ai/medical/",
-            },
-          ],
+          autogenerate: {
+            directory: "ai",
+          },
         },
         {
           label: "Guides",

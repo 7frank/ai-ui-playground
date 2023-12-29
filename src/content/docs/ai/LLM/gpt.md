@@ -1,6 +1,7 @@
 ---
-title: GPT2
-description: overview of an LLM shown  with GPT2
+title: Generative Pretrained Transformer (GPT)
+
+description: Overview of an LLM shown  with GPT2
 ---
 
 GPT-2, developed by OpenAI, is a transformer-based model with a specific architecture. While I can't provide the exact number of parameters for each layer without directly inspecting the model's configuration, I can give you a general breakdown based on its typical architecture. The total number of parameters in a GPT-2 model depends on its specific variant (like GPT-2 Small, Medium, Large, or XL).

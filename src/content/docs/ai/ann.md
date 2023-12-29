@@ -1,6 +1,6 @@
 ---
-title: ANN
-description: overview of different neuronal networks
+title: Artificial neural networks (ANN)
+description: Overview of different neuronal networks
 ---
 
 # (a?)nn

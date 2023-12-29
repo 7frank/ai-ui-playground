@@ -44,7 +44,7 @@
         cyElements.push({
           data: { id: sourceId }
         });
-  console.log(targets);
+
         // Add target nodes and edges
         targets.forEach(({label, url}) => {
           // Add the target node if it's not already in the array
@@ -71,11 +71,10 @@
   
   <style>
     #cy {
-      width: 800px;
-      height: 600px;
+      width: 100%;
       background-color: lightgrey;
     }
   </style>
-  GraphView:
+
   <div id="cy"></div>
   

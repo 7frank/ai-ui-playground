@@ -1,9 +1,7 @@
 ---
-title: AI Medical Overview
+title: Medical Topics - Overview
 description: some links and resources related to ai in the medical field
 ---
-
-# Medical side - topics
 
 This page contains some information for working with medical datasets.
 
