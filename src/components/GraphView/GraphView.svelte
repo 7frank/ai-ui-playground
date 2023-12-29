@@ -2,7 +2,6 @@
     import { onMount } from 'svelte';
     import cytoscape from 'cytoscape';
     import JSON5 from 'json5';
-    import graphData from '../../../graph.json';
 
     let targetEl:HTMLDivElement
 
@@ -12,19 +11,42 @@
     };
     type Graph={ [key: string]: FooType[] }
 
+    export let graph:Graph={}
+    // TODO astro click handler will not be available in client side svelte component https://docs.astro.build/en/core-concepts/framework-components/#passing-props-to-framework-components 
+    export let onClick:(el:FooType)=> void = null
+
+    function estimateTextSize(text:string, fontSize:number) {
+    // Rough estimation of text size
+    return text.length * fontSize;
+    }
+
+    function getDisplayText(ele){
+     return ele.data('label')??ele.data('id')
+    }
+
     onMount(() => {
    
-    console.log(targetEl)
       const cy = cytoscape({
         container: targetEl,
-        elements: transformDataToCytoscapeFormat(graphData),
+        elements: transformDataToCytoscapeFormat(graph),
         style: [
           // Define your styles here
           {
             selector: 'node',
             style: {
+              'shape': 'rectangle', // Set the shape of the node to rectangle
+                'border-radius': '3px', 
               'background-color': '#666',
-              'label': 'data(label)'
+        
+              'label': (ele)  => getDisplayText(ele),
+              'text-valign': 'center', // Vertical alignment
+                'text-halign': 'center', // Horizontal alignment
+               
+
+              'font-size': 12, // Set your font size here
+                'width': (ele)  => estimateTextSize(getDisplayText(ele), 12) + 'px',
+                'height': ()=>'20px'
+                
             }
           },
           {
@@ -41,6 +63,14 @@
           name: 'cose', // You can change this to any layout you prefer
         }
       });
+
+        cy.on('tap', 'node', function(event) {
+        var node = event.target;
+        const data=node.data()
+        console.log({data,onClick})
+        onClick?.(data)
+        });
+
     });
   
     function transformDataToCytoscapeFormat(data:Graph) {
