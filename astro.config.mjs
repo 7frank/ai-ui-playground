@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [
     svelte(),
     starlight({
-      title: "My Docs",
+      title: "7frank.dev",
       social: {
         github: "https://github.com/withastro/starlight",
       },
@@ -26,10 +26,12 @@ export default defineConfig({
             // Each item here is one entry in the navigation menu.
             { label: "Example Guide", link: "/guides/example/" },
           ],
+          collapsed: true,
         },
         {
           label: "Reference",
           autogenerate: { directory: "reference" },
+          collapsed: true,
         },
       ],
     }),

@@ -3,19 +3,24 @@ title: Welcome to this playground
 description: This page might contain some information related to LLMs as well as some interactive demos at best.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: a messy overview related to software topics & AI
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: AI Overview
+    - text: AI Topics
       link: /ai-ui-playground/ai/overview/
-    - text: Example Guide
-      link: /ai-ui-playground/guides/example/
       icon: right-arrow
       variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: LLMs
+      link: /ai-ui-playground/ai/llm/gpt
+    - text: CNNs
+      link: /ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/
+    # - text: Example Guide
+    #   link: /ai-ui-playground/guides/example/
+
+    # - text: Read the Starlight docs
+    #   link: https://starlight.astro.build
+    #   icon: external
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
@@ -23,9 +28,16 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
 ## Next steps
 
 <CardGrid stagger>
-  <Card title="overview" icon="pencil">
-    [overview / unsorted links related to AI topics](src/content/ai/overview.md)
+  <Card title="AI related Topics" icon="pencil">
+    [click me](/ai-ui-playground/ai/overview/)
   </Card>
+
+<Card title="take the course on fast.ai" icon="open-book">
+  Follow the link to [course.fast.ai](https://course.fast.ai/) and get a decent
+  understanding of the basics ion AI training, modeling & more
+</Card>
+
+<div style="display:none">
   <Card title="Update content" icon="pencil">
     Edit `../content/docs/index.mdx` to see this page change.
   </Card>
@@ -38,4 +50,6 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
   <Card title="Read the docs" icon="open-book">
     Learn more in [the Starlight Docs](https://starlight.astro.build/).
   </Card>
+</div>
+
 </CardGrid>
