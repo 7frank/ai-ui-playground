@@ -14,15 +14,6 @@
 
     export let graph:Graph={}
 
-    function estimateTextSize(text:string, fontSize:number) {
-    // Rough estimation of text size
-    return text.split("\n").map(s=>s.length).reduce((a, b) => Math.max(a, b)) * fontSize;
-    }
-
-    function estimateTextHeight(text:string, fontSize:number) {
-    // Rough estimation of text size
-    return text.split("\n").length * fontSize;
-    }
 
     function getDisplayText(ele){
      return ele.data('label')??ele.data('id')
@@ -34,6 +25,14 @@
       markdown: '#933',
       plain: '#393'
     }
+
+    const mLayout={
+          name: 'cose', // You can change this to any layout you prefer
+          nodeDimensionsIncludeLabels: true,
+          //nodeRepulsion: function( node ){ return 16500; }, // Increases repulsion between nodes
+          //idealEdgeLength: function( edge ){ return 100; }, // Adjusts the ideal length of the edges
+   
+        }
 
     onMount(() => {
    
@@ -84,13 +83,7 @@
               }
           }
         ],
-        layout: {
-          name: 'cose', // You can change this to any layout you prefer
-          nodeDimensionsIncludeLabels: true,
-          //nodeRepulsion: function( node ){ return 16500; }, // Increases repulsion between nodes
-          //idealEdgeLength: function( edge ){ return 100; }, // Adjusts the ideal length of the edges
-   
-        }
+        layout: mLayout
       });
 
         cy.on('dblclick', 'node', function(event) {
@@ -127,6 +120,16 @@
                 cy.elements().removeClass('highlighted');
             }
         });
+
+        // TODO rerun force graph on partial nodes when dragged
+        // cy.on('dragend', 'node', function(event) {
+
+        //   var node = event.target; // the node that was dragged
+        //   var neighborhood = node.closedNeighborhood(); // the node and its neighbors
+        //   var layout = cy.layout({...mLayout, elements: neighborhood.elements()});
+        //   layout.run();
+        // });
+
 
     });
   
