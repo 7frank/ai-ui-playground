@@ -51,6 +51,14 @@ somewhat ok quality was achieved with: a "mozilla-deepspeech" docker container
 docker run --rm -v "$(pwd):/audio" -ti gencore/audio-transcribe-mozilla-deepspeech output.mp3
 ```
 
+### edit & confirm text
+
+The following is somewhat working but not fully
+
+- `apt install moreutils`
+
+- now you have vipe available: `echo "How is the weather in Munich today?" |  vipe | cat`
+
 ### prompt prefix & text
 
 text e.g. `create a function to check the weather in src/utils.ts`
