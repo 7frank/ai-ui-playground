@@ -31,8 +31,8 @@
   
     const colorMap:Record<FooType['type'],string>={
       'double-bracket': '#666',
-      markdown: '#900',
-      plain: '#090'
+      markdown: '#933',
+      plain: '#393'
     }
 
     onMount(() => {
@@ -45,24 +45,17 @@
           {
             selector: 'node',
             style: {
-              'shape': 'rectangle', // Set the shape of the node to rectangle
-              'border-radius': '3px', 
+              'shape': 'round-rectangle',
               'background-color': (ele)=> ele.data('id').startsWith("src/")?'#009':colorMap[ ele.data('type')],
               'opacity': 0.8,
-        
               'label': (ele)  => getDisplayText(ele),
               'text-wrap': 'wrap',
               'text-valign': 'center', // Vertical alignment
-              'text-halign': 'center', // Horizontal alignment
-              'text-margin-x': 10, // Horizontal padding-like effect
-              'text-margin-y': 5, // Vertical padding-like effect
-                
-
-              'font-size': "12px", // Set your font size here
-              'width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
-              'text-max-width': (ele)  => estimateTextSize(getDisplayText(ele), 8) + 'px',
-              'height': (ele)=>estimateTextHeight(getDisplayText(ele), 15) + 'px',
-                
+              'text-halign': 'center', // Horizontal alignment           
+              padding:"12px", 
+              width: 'label',
+              height: 'label',
+              'font-size': "12px", // Set your font size here   
             }
           },
           {
@@ -93,8 +86,9 @@
         ],
         layout: {
           name: 'cose', // You can change this to any layout you prefer
-          nodeRepulsion: function( node ){ return 16500; }, // Increases repulsion between nodes
-          idealEdgeLength: function( edge ){ return 100; }, // Adjusts the ideal length of the edges
+          nodeDimensionsIncludeLabels: true,
+          //nodeRepulsion: function( node ){ return 16500; }, // Increases repulsion between nodes
+          //idealEdgeLength: function( edge ){ return 100; }, // Adjusts the ideal length of the edges
    
         }
       });
