@@ -76,6 +76,12 @@
               }
           },
           {
+              selector: 'node.faded',
+              style: {
+                 opacity:0.3
+              }
+          },
+          {
               selector: 'edge.highlighted',
               style: {
                   'line-color': '#f00', // Example: red line for highlighted edges
@@ -105,6 +111,9 @@
 
             // Reset previously highlighted elements, if any
             cy.elements().removeClass('highlighted');
+            
+            // fade all not relevant nodes
+            cy.elements().addClass('faded');
 
             // Highlight the selected node
             node.addClass('highlighted');
@@ -112,12 +121,21 @@
             // Highlight adjacent nodes and edges
             node.connectedEdges().addClass('highlighted');
             node.neighborhood('node').addClass('highlighted');
+
+            // un-fade all relevant nodes
+            node.neighborhood('node').removeClass('faded');
+            node.removeClass('faded');
+            
+            cy.resize();
+            cy.fit(node.neighborhood('node'),50)
+
         });
 
         // Reset styles when clicking elsewhere
         cy.on('tap', function(event) {
             if (event.target === cy) {
                 cy.elements().removeClass('highlighted');
+                cy.elements().removeClass('faded');
             }
         });
 
