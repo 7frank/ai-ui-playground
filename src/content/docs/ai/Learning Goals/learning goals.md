@@ -51,6 +51,8 @@ The goal:
 
 ## market analysis
 
+We did a brief search with the bot https://chat.openai.com/c/1370e49f-2e52-4ebd-9eef-fd33b0948b25
+
 The goal:
 
 - What problems do customers in the industry have to solve
