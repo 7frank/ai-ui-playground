@@ -7,15 +7,23 @@ Find a work flow that allows to use ai tools for developing software
 ## potential Tools
 
 - https://github.com/BuilderIO/ai-shell
-- https://github.com/ferrislucas/promptr
 - https://github.com/TheR1D/shell_gpt
 - https://github.com/peterdemin/openai-cli
 - https://github.com/transitive-bullshit/chatgpt-api
 
+potentially more interactive with files on
+
+- [promptr](https://github.com/ferrislucas/promptr)
+- [open-interpreter](https://github.com/KillianLucas/open-interpreter) (⚠ huge dependencies 20gb+)
+
 ### drawbacks
 
 - so far these tools require you to have a paid openai subscription
-- potentially you could run something like LMStudio and customize the API endpoints
+- potentially you could run something like
+  - [LMStudio](https://lmstudio.ai/) (same interface like chatgpt with local server )
+  - https://localai.io / https://github.com/mudler/LocalAI (drop in replacement for chatgpt)
+
+and customize the API endpoints
 
 ## attempt 1
 
@@ -72,3 +80,40 @@ text e.g. `create a function to check the weather in src/utils.ts`
 ```
 
 ### send prompt to actual tool
+
+#### install LMStudio
+
+Linux install after download:
+
+`chmod a+x LM+Studio-0.2.8-beta-v1.AppImage`
+`./LM+Studio-0.2.8-beta-v1.AppImage`
+
+> Failed due to no Nvindia or AMD GPU
+
+#### use https://localai.io/
+
+following this guide https://semaphoreci.com/blog/localai
+
+We download some models like the ones here [Huggingface - Mistral-7B-Instruct-v0.2-GGUF](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/tree/main)
+
+> Before the next step make sure that you have fee disk space.
+> The docker image for local.ai alone is ~ 52GB 🤪.
+> Each model can easily be 3-4GB.
+
+- run `baobab` to find directories with large files that you can delete
+- run `docker images -f "dangling=true" -q` to clean up your dangling images you probably forgot about
+
+Start the local-ai docker container:
+
+`docker run -p 8080:8080 -v $PWD/models:/models -ti --rm quay.io/go-skynet/local-ai:latest --models-path /models --context-size 700 --threads 4`
+
+debugging:
+
+`docker run -it --entrypoint /bin/bash -p 8080:8080 -v $PWD/models:/models --rm quay.io/go-skynet/local-ai:latest`
+
+#### attempt A
+
+`npm install -g @ifnotnowwhen/promptr`
+
+OPENAI_BASE_URL="http://localhost..."
+promptr -p "Cleanup the code in src/index.js"
