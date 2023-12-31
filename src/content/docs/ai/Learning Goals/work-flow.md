@@ -111,6 +111,13 @@ debugging:
 
 `docker run -it --entrypoint /bin/bash -p 8080:8080 -v $PWD/models:/models --rm quay.io/go-skynet/local-ai:latest`
 
+- `export ADDRESS=0.0.0.0:1337`
+- `sed -i 's/EXPOSE 8080/EXPOSE 1337/' Dockerfile`
+- `export MODELS_PATH=/models`
+- `./entrypoint.sh`
+
+`docker run -p 8080:8080 -v $PWD/models:/models -ti --rm quay.io/go-skynet/local-ai:latest --models-path /models --context-size 700 --threads 4`
+
 #### attempt A
 
 `npm install -g @ifnotnowwhen/promptr`
