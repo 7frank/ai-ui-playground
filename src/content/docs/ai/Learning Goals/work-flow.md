@@ -143,3 +143,8 @@ export OPENAI_BASE_URL="http://localhost:8080/v1"
 
 - Result for LocalAI& promptr with the two models: 
   too slow, no real result
+
+- using an api key seems to do better and bev reasonable fast
+
+`export OPENAI_API_KEY=$(pass ai/oa-cli-tools-api-key) && promptr  -v -p "Cleanup the code in src/index.js"`
+
