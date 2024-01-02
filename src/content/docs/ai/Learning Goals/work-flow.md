@@ -105,22 +105,30 @@ We download some models like the ones here [Huggingface - Mistral-7B-Instruct-v0
 
 Start the local-ai docker container:
 
-`docker run -p 8080:8080 -v $PWD/models:/models -ti --rm quay.io/go-skynet/local-ai:latest --models-path /models --context-size 700 --threads 4`
+- `docker run -p 8080:8080 -v $PWD/models:/models -ti --rm quay.io/go-skynet/local-ai:latest --models-path /models --context-size 700 --threads 4`
 
-debugging:
+download:
 
-`docker run -it --entrypoint /bin/bash -p 8080:8080 -v $PWD/models:/models --rm quay.io/go-skynet/local-ai:latest`
+- `https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/tree/main`
+- also tested with `mistral-7b-instruct-v0.2.Q5_K_S` but that is much slower `llama-2-13b-chat.Q2_K`
 
-- `export ADDRESS=0.0.0.0:1337`
-- `sed -i 's/EXPOSE 8080/EXPOSE 1337/' Dockerfile`
-- `export MODELS_PATH=/models`
-- `./entrypoint.sh`
 
-`docker run -p 8080:8080 -v $PWD/models:/models -ti --rm quay.io/go-skynet/local-ai:latest --models-path /models --context-size 700 --threads 4`
+
+run:
+```
+curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d '{
+     "model": "llama-2-13b-chat.Q2_K.gguf",
+     "prompt": "2+2",
+     "temperature": 0.7
+   }'
+```
+
+
+
 
 #### attempt A
 
 `npm install -g @ifnotnowwhen/promptr`
 
-OPENAI_BASE_URL="http://localhost..."
+export OPENAI_BASE_URL="http://localhost:8080/v1"
 promptr -p "Cleanup the code in src/index.js"
