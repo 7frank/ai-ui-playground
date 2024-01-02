@@ -130,5 +130,16 @@ curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d
 
 `npm install -g @ifnotnowwhen/promptr`
 
+- goto the installed node_modules folder and override the BASE_PATH with where localAI is running e.g.
+- `node_modules/openai/dist/base.js`
+  - `exports.BASE_PATH = "http://localhost:8080/v1".replace(/\/+$/, "");`
+
 export OPENAI_BASE_URL="http://localhost:8080/v1"
-promptr -p "Cleanup the code in src/index.js"
+`promptr  -v -d -m llama-2-13b-chat.Q2_K.gguf -p "Cleanup the code in src/index.js"`
+`promptr  -v -m llama-2-13b-chat.Q2_K.gguf -p "Cleanup the code in src/index.js"`
+
+- "llama-2-13b-chat.Q2_K.gguf"
+
+
+- Result for LocalAI& promptr with the two models: 
+  too slow, no real result
