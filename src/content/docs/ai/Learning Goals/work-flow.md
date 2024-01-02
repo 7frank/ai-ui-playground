@@ -172,3 +172,6 @@ install interpreter
 #### attempt C (draw-a-ui)
 
 https://github.com/SawyerHood/draw-a-ui
+https://github.com/tldraw/make-real-starter
+
+[see results](/ai-ui-playground/ai/learning-goals/gui-generator/)

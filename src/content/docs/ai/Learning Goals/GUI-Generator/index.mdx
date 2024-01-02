@@ -1,0 +1,25 @@
+---
+title: make-it-real example outputs
+---
+
+
+import img1 from "./input.png"
+import out1 from "./output1.png"
+import out2 from "./output2.png"
+import { Picture } from 'astro:assets';
+
+This is the input we drew. This was sent to the ai model and converted to html:
+
+<Picture src={img1} formats={['avif', 'webp']} alt="Input image originally svg" />
+
+Depending on the Notes that we provided the output changed noticably
+<Picture src={out1} formats={['avif', 'webp']} alt="The first output" />
+
+
+
+For example in this image we added that hthere explicitly should be a background image
+<Picture src={out2} formats={['avif', 'webp']} alt="The first output" />
+
+
+- https://makereal.tldraw.com/
+- https://github.com/tldraw/make-real-starter
