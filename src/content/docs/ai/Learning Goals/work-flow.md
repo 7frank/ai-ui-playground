@@ -175,3 +175,13 @@ https://github.com/SawyerHood/draw-a-ui
 https://github.com/tldraw/make-real-starter
 
 [see results](/ai-ui-playground/ai/learning-goals/gui-generator/)
+
+
+
+Pros:
+
+- lot of potential, if given a second button e.g. "make svelte, make react" and some customizable preset for those buttons
+
+Cons:
+
+- probably in its current state to fiddly to simply be able to copy and paste code
