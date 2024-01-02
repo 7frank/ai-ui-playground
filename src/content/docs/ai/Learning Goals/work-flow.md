@@ -156,4 +156,8 @@ https://github.com/KillianLucas/open-interpreter
 
 create separate env for fiddling
 
-https://github.com/pyenv/pyenv#getting-pyenv
+- https://github.com/pyenv/pyenv#getting-pyenv
+- [instructions for mint](https://forums.linuxmint.com/viewtopic.php?t=362499)
+- `pyenv install 3.10.4`
+- `pyenv global 3.10.4`
+-  `export OPENAI_API_KEY=$(pass ai/oa-cli-tools-api-key)`
