@@ -126,7 +126,7 @@ curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d
 
 
 
-#### attempt A
+#### attempt A (promptr)
 
 `npm install -g @ifnotnowwhen/promptr`
 
@@ -148,3 +148,12 @@ export OPENAI_BASE_URL="http://localhost:8080/v1"
 
 `export OPENAI_API_KEY=$(pass ai/oa-cli-tools-api-key) && promptr  -v -p "Cleanup the code in src/index.js"`
 
+
+#### attempt B (open-interpreter)
+
+https://github.com/KillianLucas/open-interpreter
+
+
+create separate env for fiddling
+
+https://github.com/pyenv/pyenv#getting-pyenv
