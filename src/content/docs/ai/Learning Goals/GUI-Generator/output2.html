@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background-image: url('https://source.unsplash.com/1600x900/?8bit');
+    background-size: cover;
+  }
+  .glass-effect {
+    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .form-input,
+  .form-textarea,
+  .form-button {
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+</style>
+</head>
+<body class="text-white p-6">
+<div class="max-w-2xl mx-auto p-6 glass-effect rounded-lg shadow-xl">
+  <h1 class="text-2xl mb-4">Feedback</h1>
+  <p class="mb-8">Fill out the form values below an</p>
+  <form id="feedback-form" class="flex flex-col">
+    <label for="name" class="mb-2">Name</label>
+    <input type="text" id="name" class="form-input" placeholder="Enter your name">
+
+    <label for="email" class="mb-2">EMail</label>
+    <input type="email" id="email" class="form-input" placeholder="Enter your email">
+
+    <label for="message" class="mb-2">Your Message</label>
+    <textarea id="message" class="form-textarea" rows="4" placeholder="Enter your message"></textarea>
+
+    <div class="flex justify-between mt-6">
+      <button type="button" class="form-button" onclick="document.getElementById('feedback-form').reset();">Cancel</button>
+      <button type="submit" class="form-button">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="mt-8 flex justify-center">
+  <img src="https://source.unsplash.com/300x200/?cat,8bit" alt="Image of a cat or dog" class="rounded-lg shadow-xl">
+</div>
+
+<script>
+  document.getElementById('feedback-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Here you would normally handle the form submission, e.g., via AJAX.
+    alert('Feedback submitted!');
+  });
+</script>
+</body>
+</html>

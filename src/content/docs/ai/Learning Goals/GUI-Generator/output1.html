@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+  }
+  .glass-effect {
+    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .pixelated {
+    image-rendering: pixelated;
+  }
+</style>
+</head>
+<body class="bg-black text-white">
+<div class="min-h-screen flex items-center justify-center">
+  <div class="p-8 glass-effect rounded-lg max-w-md w-full space-y-4">
+    <div class="text-center">
+      <h2 class="text-lg">Feedback</h2>
+      <p class="text-sm">Fill out the form values below an</p>
+    </div>
+    <form class="space-y-6">
+      <div>
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" name="name" id="name" class="w-full p-2 rounded bg-gray-800 text-white" placeholder="Name">
+      </div>
+      <div>
+        <label for="email" class="sr-only">EMail</label>
+        <input type="email" name="email" id="email" class="w-full p-2 rounded bg-gray-800 text-white" placeholder="EMail">
+      </div>
+      <div>
+        <label for="message" class="sr-only">Your Message</label>
+        <textarea name="message" id="message" rows="4" class="w-full p-2 rounded bg-gray-800 text-white" placeholder="Your Message"></textarea>
+      </div>
+      <div class="flex justify-between items-center">
+        <button type="button" class="px-4 py-2 rounded bg-gray-800 text-white">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  // Add any JavaScript you need here
+</script>
+</body>
+</html>

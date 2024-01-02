@@ -151,9 +151,6 @@ export OPENAI_BASE_URL="http://localhost:8080/v1"
 
 #### attempt B (open-interpreter)
 
-
-
-
 create separate env for fiddling
 
 - https://github.com/pyenv/pyenv#getting-pyenv
@@ -169,6 +166,9 @@ install interpreter
 - check your usage frequently https://platform.openai.com/usage see [openai pricing](https://openai.com/pricing) 
   - the `--model` flag seems to have limited impact https://github.com/KillianLucas/open-interpreter#change-your-language-model (the default model  GPT-4-0613 used was working adequately)
 - longer chains of communication get costly quite easily
+
+untested [voice interface colab example](https://colab.research.google.com/drive/1NojYGHDgxH6Y1G1oxThEBBb2AtyODBIK)
+
 #### attempt C (draw-a-ui)
 
 https://github.com/SawyerHood/draw-a-ui
