@@ -151,7 +151,7 @@ export OPENAI_BASE_URL="http://localhost:8080/v1"
 
 #### attempt B (open-interpreter)
 
-https://github.com/KillianLucas/open-interpreter
+
 
 
 create separate env for fiddling
@@ -161,3 +161,9 @@ create separate env for fiddling
 - `pyenv install 3.10.4`
 - `pyenv global 3.10.4`
 -  `export OPENAI_API_KEY=$(pass ai/oa-cli-tools-api-key)`
+
+install interpreter
+- https://github.com/KillianLucas/open-interpreter
+- `interpreter -y  --model gpt-4-1106-preview 2>&1 | tee logs/interpreter.txt`
+- or resume a session `interpreter --conversations -y --model gpt-4-1106-preview 2>&1 | tee logs/interpreter.txt`
+- check your usage frequently https://platform.openai.com/usage see [openai pricing](https://openai.com/pricing) 
