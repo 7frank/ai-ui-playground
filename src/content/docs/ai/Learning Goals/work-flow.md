@@ -164,6 +164,11 @@ create separate env for fiddling
 
 install interpreter
 - https://github.com/KillianLucas/open-interpreter
-- `interpreter -y  --model gpt-4-1106-preview 2>&1 | tee logs/interpreter.txt`
-- or resume a session `interpreter --conversations -y --model gpt-4-1106-preview 2>&1 | tee logs/interpreter.txt`
+- `interpreter -y  2>&1 | tee logs/interpreter.txt`
+- or resume a session `interpreter --conversations -y 2>&1 | tee logs/interpreter.txt`
 - check your usage frequently https://platform.openai.com/usage see [openai pricing](https://openai.com/pricing) 
+  - the `--model` flag seems to have limited impact https://github.com/KillianLucas/open-interpreter#change-your-language-model (the default model  GPT-4-0613 used was working adequately)
+- longer chains of communication get costly quite easily
+#### attempt C (draw-a-ui)
+
+https://github.com/SawyerHood/draw-a-ui
