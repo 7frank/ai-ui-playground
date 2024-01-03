@@ -19,11 +19,11 @@ ActorFontSize 17
 ActorFontName Aapex
 }
 
-footer
+header
 <font color=red size=16>Note:</font>
 <font  size=14>Use case: As a Frontend-Developer I want to draw my Form or Component and get code generated for me.</font>
 <font  size=14>Envisions how this could look like, what steps would be involved.</font>
-endfooter
+endheader
 
 start
 
