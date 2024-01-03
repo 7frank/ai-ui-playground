@@ -2,10 +2,15 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import svelte from "@astrojs/svelte";
 
+import plantuml from './plugins/rollup-plugin-plantuml';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://7frank.github.io",
   base: "/ai-ui-playground",
+  vite:{
+     plugins:[plantuml()]
+  },
   integrations: [
     svelte(),
     starlight({

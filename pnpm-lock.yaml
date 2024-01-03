@@ -26,6 +26,9 @@ dependencies:
   json5:
     specifier: ^2.2.3
     version: 2.2.3
+  node-plantuml:
+    specifier: ^0.9.0
+    version: 0.9.0
   sharp:
     specifier: ^0.32.5
     version: 0.32.6
@@ -1688,6 +1691,10 @@ packages:
 
   /comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
+    dev: false
+
+  /commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: false
 
   /common-ancestor-path@1.0.1:
@@ -3441,6 +3448,32 @@ packages:
     hasBin: true
     dev: true
 
+  /node-nailgun-client@0.1.2:
+    resolution: {integrity: sha512-OC611lR0fsDUSptwnhBf8d3sj4DZ5fiRKfS2QaGPe0kR3Dt9YoZr1MY7utK0scFPTbXuQdSBBbeoKYVbME1q5g==}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+    dev: false
+
+  /node-nailgun-server@0.1.4:
+    resolution: {integrity: sha512-e0Hbh6XPb/7GqATJ45BePaUEO5AwR7InRW/pGeMKHH1cqPMBFCeqdBNfvi+bkVLnsbYOOQE+pAek9nmNoD8sYw==}
+    hasBin: true
+    dependencies:
+      commander: 2.20.3
+    dev: false
+
+  /node-plantuml@0.9.0:
+    resolution: {integrity: sha512-bUnntTGjbpYu1pvXZI/GS6ctcXf3AOMqJxBMO8vFzTT5RwH8Cj/J5Ca6Dy+PEfMiMDdSBCFKSGnvYyBvYnucXg==}
+    engines: {node: '>= 6.x'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      commander: 2.20.3
+      node-nailgun-client: 0.1.2
+      node-nailgun-server: 0.1.4
+      plantuml-encoder: 1.4.0
+    dev: false
+
   /node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
     dev: false
@@ -3661,6 +3694,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+    dev: false
+
+  /plantuml-encoder@1.4.0:
+    resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
     dev: false
 
   /postcss-nested@6.0.1(postcss@8.4.32):
