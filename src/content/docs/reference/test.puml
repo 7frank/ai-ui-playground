@@ -1,4 +1,32 @@
 @startuml
+
+skinparam handwritten true
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor DodgerBlue
+ParticipantBackgroundColor DeepSkyBlue
+
+ParticipantFontColor #333
+
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+
+footer
+<font color=red size=16>Note:</font>
+<font  size=14>Use case: Login</font>
+<font  size=14>"naive" representation of the client credentials flow </font>
+endfooter
+
+
+
 Alice -> Bob: Authentication Request
 Bob --> Alice: Authentication Response
 
