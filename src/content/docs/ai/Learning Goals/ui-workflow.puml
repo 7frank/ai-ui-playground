@@ -1,0 +1,64 @@
+@startuml
+
+skinparam handwritten true
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor DodgerBlue
+ParticipantBackgroundColor DeepSkyBlue
+
+ParticipantFontColor #333
+
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+
+footer
+<font color=red size=16>Note:</font>
+<font  size=14>Use case: As a Frontend-Developer I want to draw my Form or Component and get code generated for me.</font>
+<font  size=14>Envisions how this could look like, what steps would be involved.</font>
+endfooter
+
+start
+
+repeat
+
+
+
+:Draw GUI | Copy & Paste from Figma
+ (e.g. use make-real);
+
+:Add Notes e.g.
+ - "The background image should be of a cat"
+ - "the form should look loike bootstrap | mui";
+:Select region to export;
+: Enhance Prompt e.g.
+ - "You are a 10x Frontend-Developer / UX Prototyper";
+
+if (Prototyping?) then (yes)
+  :Enhance Prompt: 
+  - "Create HTML";
+  :Receive Prompt and render HTML;
+else (no)
+  :Enhance Prompt: 
+   - "Create Svelte"
+   - "Create React"
+   - "Create Phoenix-Live-View";
+endif
+
+:Copy & Paste Code;
+:Fix Styling Issues;
+
+
+repeat while (Do we need more Components?) is (yes)
+->no;
+
+stop
+
+@enduml

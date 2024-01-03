@@ -21,8 +21,8 @@ ActorFontName Aapex
 
 footer
 <font color=red size=16>Note:</font>
-<font  size=14>Use case: Develop software woth AI</font>
-<font  size=14>How a potential future work flow could look like</font>
+<font  size=14>Use case: As a Software-Developer I want to specify my use cases and let AI generate functional code.</font>
+<font  size=14>(This could allow to create or update components with less knowledge of the technical details)</font>
 endfooter
 
 start
