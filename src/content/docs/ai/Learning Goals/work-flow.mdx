@@ -1,8 +1,15 @@
 ---
 title: Fiddling with CLI tools
+
+
 ---
 
+import testSrc from './work-flow.puml';
+
 Find a work flow that allows to use ai tools for developing software
+
+<img alt="UML example" src={testSrc} />
+
 
 ## potential Tools
 
@@ -134,7 +141,7 @@ curl http://localhost:8080/v1/completions -H "Content-Type: application/json" -d
 - `node_modules/openai/dist/base.js`
   - `exports.BASE_PATH = "http://localhost:8080/v1".replace(/\/+$/, "");`
 
-export OPENAI_BASE_URL="http://localhost:8080/v1"
+`export OPENAI_BASE_URL="http://localhost:8080/v1"`
 `promptr  -v -d -m llama-2-13b-chat.Q2_K.gguf -p "Cleanup the code in src/index.js"`
 `promptr  -v -m llama-2-13b-chat.Q2_K.gguf -p "Cleanup the code in src/index.js"`
 

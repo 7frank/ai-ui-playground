@@ -1,0 +1,61 @@
+@startuml
+
+skinparam handwritten true
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor DodgerBlue
+ParticipantBackgroundColor DeepSkyBlue
+
+ParticipantFontColor #333
+
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+
+footer
+<font color=red size=16>Note:</font>
+<font  size=14>Use case: Develop software woth AI</font>
+<font  size=14>How a potential future work flow could look like</font>
+endfooter
+
+start
+
+repeat
+
+partition while-not-satisfied-with-result {
+
+:Talk into Microphone;
+:Edit & improve Text;
+: Enhance Prompt e.g.
+ - "You are a 10 Developer"
+ - "Create Tests"
+ - "Write Doc-Blocks";
+}
+
+:Send Prompt to LLM 
+ (e.g. LocalAI | ChatGpt);
+
+partition Handle-Result {
+
+:Receive Prompt and run Code
+ e,g. open-interpreter;
+:Create & Update File;
+:Run Tests;
+:Commit Changes;
+:Handle compilation Errors;
+}
+
+
+repeat while (Are we done?) is (no)
+->yes;
+
+stop
+
+@enduml
