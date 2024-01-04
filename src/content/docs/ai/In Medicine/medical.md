@@ -45,6 +45,8 @@ AI Models
 
 - https://monai.io
 - [fastMONAI](https://github.com/MMIV-ML/fastMONAI) fastai wrapper for monai
+    - contains multiple examples as notebookks on colab e.g. [10a_tutorial_classification](https://colab.research.google.com/github/MMIV-ML/fastMONAI/blob/master/nbs/10a_tutorial_classification.ipynb)
+
 
 ## other Datasets
 
