@@ -24,7 +24,7 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "AI Overview",
+          label: "Artificial Intelligence (AI)",
           autogenerate: {
             directory: "ai",
           },
