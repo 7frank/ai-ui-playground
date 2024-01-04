@@ -1,0 +1,39 @@
+@startuml
+
+skinparam handwritten true
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor DodgerBlue
+ParticipantBackgroundColor DeepSkyBlue
+
+ParticipantFontColor #333
+
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+
+header
+
+<font  size=14>This diagram will contain a graph of different states of developers </font>
+<font  size=14>and how to get to the next step via distinct learning goals</font>
+endheader
+
+start
+
+if (JuniorDeveloper?) then (yes)
+  :Learn Python;
+else (no)
+  :Learn LLMs via FastAI;
+endif
+
+
+stop
+
+@enduml
