@@ -1,167 +1,5 @@
 {
-  "src/content/docs/ai/In Medicine/medical.md": [
-    {
-      "label": "fastMONAI",
-      "url": "https://github.com/MMIV-ML/fastMONAI",
-      "type": "markdown"
-    },
-    {
-      "label": "https://github.com/ml-tooling/best-of-ml-python#medical-data",
-      "url": "https://github.com/ml-tooling/best-of-ml-python#medical-data",
-      "type": "plain"
-    },
-    {
-      "label": "https://nbia.cancerimagingarchive.net/nbia-search/",
-      "url": "https://nbia.cancerimagingarchive.net/nbia-search/",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
-      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.kaggle.com/s7frank/tcia-linux-data-retriever-app/edit",
-      "url": "https://www.kaggle.com/s7frank/tcia-linux-data-retriever-app/edit",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_RTStruct_SEG_Visualization_with_itkWidgets.ipynb",
-      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_RTStruct_SEG_Visualization_with_itkWidgets.ipynb",
-      "type": "plain"
-    },
-    {
-      "label": "https://wiki.cancerimagingarchive.net/display/Public/TCIA+Programmatic+Interface+REST+API+Guides",
-      "url": "https://wiki.cancerimagingarchive.net/display/Public/TCIA+Programmatic+Interface+REST+API+Guides",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
-      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
-      "type": "plain"
-    },
-    {
-      "label": "https://monai.io/model-zoo.html",
-      "url": "https://monai.io/model-zoo.html",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_MONAI_Model_Zoo.ipynb",
-      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_MONAI_Model_Zoo.ipynb",
-      "type": "plain"
-    },
-    {
-      "label": "https://monai.io",
-      "url": "https://monai.io",
-      "type": "plain"
-    },
-    {
-      "label": "https://medmnist.com/",
-      "url": "https://medmnist.com/",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.kaggle.com/datasets/syxlicheng/bone-tumor-predicted",
-      "url": "https://www.kaggle.com/datasets/syxlicheng/bone-tumor-predicted",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.kaggle.com/code/s7frank/fiddling-with-bone-tumor",
-      "url": "https://www.kaggle.com/code/s7frank/fiddling-with-bone-tumor",
-      "type": "plain"
-    },
-    {
-      "label": "https://docs.fast.ai/tutorial.medical_imaging.html",
-      "url": "https://docs.fast.ai/tutorial.medical_imaging.html",
-      "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/LLM/prompts.md": [
-    {
-      "label": "OpenAI veröffentlicht Prompt-Guide",
-      "url": "https://the-decoder.de/openai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance/#amp_tf=Von%20%251%24s&aoh=17027561217506&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fthe-decoder.de%2Fopenai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance%2F",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/LLM/transformers.md": [
-    {
-      "label": "Attention Is All You Need",
-      "url": "https://arxiv.org/abs/1706.03762",
-      "type": "markdown"
-    },
-    {
-      "label": "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training",
-      "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
-      "type": "markdown"
-    },
-    {
-      "label": "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.",
-      "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
-      "type": "markdown"
-    },
-    {
-      "label": "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained",
-      "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/Practical Deep Learning - FastAi Notes/1 Overview.md": [
-    {
-      "label": "Practical Deep Learning for Coders part 1",
-      "url": "https://course.fast.ai/",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/ann.md": [
-    {
-      "label": "CNN Overview",
-      "url": "/ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/",
-      "type": "markdown"
-    },
-    {
-      "label": "LLM Overview",
-      "url": "/ai-ui-playground/ai/llm/overview/",
-      "type": "markdown"
-    },
-    {
-      "label": "LLM Overview",
-      "url": "/ai-ui-playground/ai/llm/transformers/",
-      "type": "markdown"
-    },
-    {
-      "label": "Types of artificial neural networks",
-      "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/learning goals.md": [
-    {
-      "label": "fundamentals-of-data-engineering",
-      "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
-      "type": "markdown"
-    },
-    {
-      "label": "airflow / dbt",
-      "url": "https://www.getdbt.com/blog/dbt-airflow",
-      "type": "markdown"
-    },
-    {
-      "label": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
-      "url": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
-      "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
-      "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
-      "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/overview.md": [
+  "src/content/docs/ai/1 Overview.md": [
     {
       "label": "Runpod",
       "url": "https://youtu.be/TP2yID7Ubr4?feature=shared",
@@ -308,6 +146,315 @@
       "type": "plain"
     }
   ],
+  "src/content/docs/ai/3 Ann.md": [
+    {
+      "label": "CNN Overview",
+      "url": "/ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/",
+      "type": "markdown"
+    },
+    {
+      "label": "LLM Overview",
+      "url": "/ai-ui-playground/ai/llm/overview/",
+      "type": "markdown"
+    },
+    {
+      "label": "LLM Overview",
+      "url": "/ai-ui-playground/ai/llm/transformers/",
+      "type": "markdown"
+    },
+    {
+      "label": "Types of artificial neural networks",
+      "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/In Medicine/medical.md": [
+    {
+      "label": "fastMONAI",
+      "url": "https://github.com/MMIV-ML/fastMONAI",
+      "type": "markdown"
+    },
+    {
+      "label": "10a_tutorial_classification",
+      "url": "https://colab.research.google.com/github/MMIV-ML/fastMONAI/blob/master/nbs/10a_tutorial_classification.ipynb",
+      "type": "markdown"
+    },
+    {
+      "label": "https://github.com/ml-tooling/best-of-ml-python#medical-data",
+      "url": "https://github.com/ml-tooling/best-of-ml-python#medical-data",
+      "type": "plain"
+    },
+    {
+      "label": "https://nbia.cancerimagingarchive.net/nbia-search/",
+      "url": "https://nbia.cancerimagingarchive.net/nbia-search/",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
+      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kaggle.com/s7frank/tcia-linux-data-retriever-app/edit",
+      "url": "https://www.kaggle.com/s7frank/tcia-linux-data-retriever-app/edit",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_RTStruct_SEG_Visualization_with_itkWidgets.ipynb",
+      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_RTStruct_SEG_Visualization_with_itkWidgets.ipynb",
+      "type": "plain"
+    },
+    {
+      "label": "https://wiki.cancerimagingarchive.net/display/Public/TCIA+Programmatic+Interface+REST+API+Guides",
+      "url": "https://wiki.cancerimagingarchive.net/display/Public/TCIA+Programmatic+Interface+REST+API+Guides",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
+      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_Linux_Data_Retriever_App.ipynb",
+      "type": "plain"
+    },
+    {
+      "label": "https://monai.io/model-zoo.html",
+      "url": "https://monai.io/model-zoo.html",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_MONAI_Model_Zoo.ipynb",
+      "url": "https://github.com/kirbyju/TCIA_Notebooks/blob/main/TCIA_MONAI_Model_Zoo.ipynb",
+      "type": "plain"
+    },
+    {
+      "label": "https://monai.io",
+      "url": "https://monai.io",
+      "type": "plain"
+    },
+    {
+      "label": "https://medmnist.com/",
+      "url": "https://medmnist.com/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kaggle.com/datasets/syxlicheng/bone-tumor-predicted",
+      "url": "https://www.kaggle.com/datasets/syxlicheng/bone-tumor-predicted",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kaggle.com/code/s7frank/fiddling-with-bone-tumor",
+      "url": "https://www.kaggle.com/code/s7frank/fiddling-with-bone-tumor",
+      "type": "plain"
+    },
+    {
+      "label": "https://docs.fast.ai/tutorial.medical_imaging.html",
+      "url": "https://docs.fast.ai/tutorial.medical_imaging.html",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/LLM/prompts.md": [
+    {
+      "label": "OpenAI veröffentlicht Prompt-Guide",
+      "url": "https://the-decoder.de/openai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance/#amp_tf=Von%20%251%24s&aoh=17027561217506&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fthe-decoder.de%2Fopenai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance%2F",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/LLM/transformers.md": [
+    {
+      "label": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "type": "markdown"
+    },
+    {
+      "label": "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training",
+      "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
+      "type": "markdown"
+    },
+    {
+      "label": "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.",
+      "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
+      "type": "markdown"
+    },
+    {
+      "label": "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained",
+      "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/Learning Goals/Workflows/work-flow.mdx": [
+    {
+      "label": "promptr",
+      "url": "https://github.com/ferrislucas/promptr",
+      "type": "markdown"
+    },
+    {
+      "label": "open-interpreter",
+      "url": "https://github.com/KillianLucas/open-interpreter",
+      "type": "markdown"
+    },
+    {
+      "label": "LMStudio",
+      "url": "https://lmstudio.ai/",
+      "type": "markdown"
+    },
+    {
+      "label": "whisper",
+      "url": "https://huggingface.co/openai/whisper-large",
+      "type": "markdown"
+    },
+    {
+      "label": "Huggingface - Mistral-7B-Instruct-v0.2-GGUF",
+      "url": "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF/tree/main",
+      "type": "markdown"
+    },
+    {
+      "label": "instructions for mint",
+      "url": "https://forums.linuxmint.com/viewtopic.php?t=362499",
+      "type": "markdown"
+    },
+    {
+      "label": "openai pricing",
+      "url": "https://openai.com/pricing",
+      "type": "markdown"
+    },
+    {
+      "label": "voice interface colab example",
+      "url": "https://colab.research.google.com/drive/1NojYGHDgxH6Y1G1oxThEBBb2AtyODBIK",
+      "type": "markdown"
+    },
+    {
+      "label": "see results",
+      "url": "/ai-ui-playground/ai/learning-goals/gui-generator/",
+      "type": "markdown"
+    },
+    {
+      "label": "https://github.com/BuilderIO/ai-shell",
+      "url": "https://github.com/BuilderIO/ai-shell",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/TheR1D/shell_gpt",
+      "url": "https://github.com/TheR1D/shell_gpt",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/peterdemin/openai-cli",
+      "url": "https://github.com/peterdemin/openai-cli",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/transitive-bullshit/chatgpt-api",
+      "url": "https://github.com/transitive-bullshit/chatgpt-api",
+      "type": "plain"
+    },
+    {
+      "label": "https://localai.io",
+      "url": "https://localai.io",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/mudler/LocalAI",
+      "url": "https://github.com/mudler/LocalAI",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/innovatorved/whisper-openai-gradio-implementation",
+      "url": "https://github.com/innovatorved/whisper-openai-gradio-implementation",
+      "type": "plain"
+    },
+    {
+      "label": "https://localai.io/",
+      "url": "https://localai.io/",
+      "type": "plain"
+    },
+    {
+      "label": "https://semaphoreci.com/blog/localai",
+      "url": "https://semaphoreci.com/blog/localai",
+      "type": "plain"
+    },
+    {
+      "label": "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/tree/main`",
+      "url": "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/tree/main`",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:8080/v1/completions",
+      "url": "http://localhost:8080/v1/completions",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:8080/v1\".replace(/\\/+$/,",
+      "url": "http://localhost:8080/v1\".replace(/\\/+$/,",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:8080/v1\"`",
+      "url": "http://localhost:8080/v1\"`",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/pyenv/pyenv#getting-pyenv",
+      "url": "https://github.com/pyenv/pyenv#getting-pyenv",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/KillianLucas/open-interpreter",
+      "url": "https://github.com/KillianLucas/open-interpreter",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/KillianLucas/open-interpreter#change-your-language-model",
+      "url": "https://github.com/KillianLucas/open-interpreter#change-your-language-model",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/SawyerHood/draw-a-ui",
+      "url": "https://github.com/SawyerHood/draw-a-ui",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/tldraw/make-real-starter",
+      "url": "https://github.com/tldraw/make-real-starter",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Learning Goals/learning goals.md": [
+    {
+      "label": "fundamentals-of-data-engineering",
+      "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
+      "type": "markdown"
+    },
+    {
+      "label": "airflow / dbt",
+      "url": "https://www.getdbt.com/blog/dbt-airflow",
+      "type": "markdown"
+    },
+    {
+      "label": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
+      "url": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
+      "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
+      "type": "plain"
+    },
+    {
+      "label": "https://chat.openai.com/c/1370e49f-2e52-4ebd-9eef-fd33b0948b25",
+      "url": "https://chat.openai.com/c/1370e49f-2e52-4ebd-9eef-fd33b0948b25",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+      "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Practical Deep Learning - FastAi Notes/1 Overview.md": [
+    {
+      "label": "Practical Deep Learning for Coders part 1",
+      "url": "https://course.fast.ai/",
+      "type": "markdown"
+    }
+  ],
   "src/content/docs/ai/resources.md": [
     {
       "label": "The End of Finetuning — with Jeremy Howard of Fast.ai",
@@ -384,7 +531,7 @@
   ],
   "src/content/docs/guides/example.md": [
     {
-      "label": "about how-to guides",
+      "label": "how-to guides",
       "url": "https://diataxis.fr/how-to-guides/",
       "type": "markdown"
     }
@@ -446,6 +593,65 @@
     {
       "label": "https://github.com/Hannibal046/Awesome-LLM",
       "url": "https://github.com/Hannibal046/Awesome-LLM",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Learning Goals/GUI-Generator/index.mdx": [
+    {
+      "label": "https://makereal.tldraw.com/",
+      "url": "https://makereal.tldraw.com/",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/tldraw/make-real-starter",
+      "url": "https://github.com/tldraw/make-real-starter",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Learning Goals/Workflows/work-flow-example.md": [
+    {
+      "label": "http://localhost:${port}`);",
+      "url": "http://localhost:${port}`);",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:'",
+      "url": "http://localhost:'",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:'",
+      "url": "http://localhost:'",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:\\\"",
+      "url": "http://localhost:\\\"",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:\"",
+      "url": "http://localhost:\"",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:\"",
+      "url": "http://localhost:\"",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:3000/'",
+      "url": "http://localhost:3000/'",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:\"",
+      "url": "http://localhost:\"",
+      "type": "plain"
+    },
+    {
+      "label": "http://localhost:3000/'",
+      "url": "http://localhost:3000/'",
       "type": "plain"
     }
   ],
