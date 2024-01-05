@@ -1,24 +1,20 @@
 ---
 title: Artificial neural networks (ANN)
-description: Overview of different neuronal networks
 ---
 
-## Convolutional Neural Networks (CNNs):
+Artificial neural networks (ANNs) are a cornerstone of machine learning, inspired by the biological neural networks in animal brains. They are computing systems designed to simulate the way humans learn and process information. ANNs consist of interconnected nodes, mimicking biological neurons, which process and transmit information.
 
-[CNN Overview](/ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/)
+The fundamental unit of an ANN is the neuron, or node, which receives input, processes it, and generates output. The connections between neurons, known as weights, are adjusted during training to improve the network's performance.
 
-- embedding
-  - turn a "something" into a number that is associated with a list of numbers that represent its properties (automatically trained in our case)
-  - initially random
-  - change through training
+ANNs learn through a process called training, where they adjust their weights based on the input data they receive and the desired output. This learning process often involves a method called backpropagation, where the network adjusts its weights to minimize the difference between its output and the true output.
 
-## Large Language Models (LLMs) like GPT-3, GPT-4:
+There are various types of ANNs, each suited to different tasks. For example, [Convolutional Neural Networks (CNNs)](/ai-ui-playground/ai/computer-vision/cnns/)  are used for image processing, while Recurrent Neural Networks (RNNs) are effective for sequence data like text or time series.
 
-[LLM Overview](/ai-ui-playground/ai/llm/overview/)
+The application of ANNs is vast, covering areas like image and speech recognition, natural language processing, and even complex decision-making tasks. Their ability to learn from large amounts of data and identify patterns makes them a powerful tool in the field of artificial intelligence.
 
-### transformers
+Below are some of the NN that are not fruther discussed in our context:
 
-[LLM Overview](/ai-ui-playground/ai/llm/transformers/)
+You will find more info of them and and may more at - [Types of artificial neural networks](https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks)
 
 ## Recurrent Neural Networks (RNNs):
 
@@ -50,20 +46,10 @@ description: Overview of different neuronal networks
     Use Case: Beyond their use in language models, transformers are also adapted for various tasks like image recognition (Vision Transformers, ViT) and multimodal tasks (combining text and images).
     Key Features: Relies on self-attention mechanisms to process sequences of data, whether it's text, image patches, or other forms of structured data.
 
-## other
+## Other
 
 - Group method of data handling (GMDH)
 - Probabilistic(PNN)
 - time delay neural network (TDNN)
 - deep stacking network (DSN)
 
-and may more - [Types of artificial neural networks](https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks)
-
-## thesaurus
-
-- parameters
-- epoch
-  - backpropagation & updating embeddings
-- backpropagation
-- feed forward
-- bias term
