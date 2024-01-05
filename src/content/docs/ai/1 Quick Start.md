@@ -11,6 +11,26 @@ This section contains more general information for ai related topics
 
 [List of Platforms for fiddling](./Platforms.md)
 
+
+- [LMStudio](https://lmstudio.ai/)
+- kaggle, colab,
+- conda,mamba
+
+##  Where do I get pre-trained models to work with?
+
+- [huggingface](https://huggingface.co/models) various purpose models
+- [MONAI - model zoo](https://docs.monai.io/en/stable/index.html#model-zoo) medical imaging models
+
+## I need datasets for training
+
+- https://huggingface.co/docs/datasets/index
+- https://huggingface.co/datasets
+- [18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification](https://medmnist.com/)
+  - hundred thousand of medical datasets
+- [The Cancer Imaging Archive (TCIA)](https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm)
+
+
+
 ## I have models that I want to test locally. How to deploy them quickly?
 
 [Runpod](https://youtu.be/TP2yID7Ubr4?feature=shared)
