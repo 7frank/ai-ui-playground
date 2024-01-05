@@ -27,11 +27,40 @@ endheader
 
 start
 
-if (JuniorDeveloper?) then (yes)
-  :Learn Python;
-else (no)
-  :Learn LLMs via FastAI;
-endif
+: we need to "know of state-of-the-art DS & DE tools";
+: so that we can "develop a learning path for Dev to transition to DS";
+
+switch (What role are you currently in?)
+case ( Junior Developer )
+  :Learn  the Basics 
+    (e.g. Python);
+case ( Senior Developer ) 
+  :Start with a course 
+    (e.g. FastAI);
+  :Get an understanding of different models / architectures in general;
+  : Learn about Nomenclature, Important concepts;
+case ( DevOps )
+  : Learn Market specific models / architectures;  
+case ( DS )
+  : Learn Market specific models / architectures;
+case ( DE )
+  : Learn Market specific processes / building blocks;
+endswitch
+
+switch ()
+case ( Vision Learning )
+  : Learn about CNNs;
+  : Learn about CLIP;
+case ( Natural Language ) 
+  : Learn About LLms in general;
+  : Learn about PromptEngineering;
+endswitch
+
+
+
+
+
+
 
 
 stop
