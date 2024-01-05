@@ -35,7 +35,7 @@ title: Thesaurus
 5. **Bias Term:** An additional parameter in neural networks used to adjust the output along with the weighted sum of the inputs, providing more flexibility to the model.
    - **Offset:** A parameter in neural networks that allows the activation function to be shifted.
    - **Intercept:** The value that represents the starting point of an activation function in a neuron.
-   - **Bias Unit:** An extra input to neurons in artificial neural networks that is always set to 1.
+   - **Bias Unit:** An extra input to neurons in Artificial Neural Networks that is always set to 1.
    - **Activation Threshold:** The level above which a neuron is activated and sends a signal to the next layer.
 
 6. **Embedding:** A representation of categorical data as vectors in a high-dimensional space, allowing neural networks to process non-numeric data effectively.

@@ -1,5 +1,10 @@
 {
-  "src/content/docs/ai/1 Overview.md": [
+  "src/content/docs/ai/1 Quick Start.md": [
+    {
+      "label": "List of Platforms for fiddling",
+      "url": "./Platforms.md",
+      "type": "markdown"
+    },
     {
       "label": "Runpod",
       "url": "https://youtu.be/TP2yID7Ubr4?feature=shared",
@@ -11,13 +16,8 @@
       "type": "markdown"
     },
     {
-      "label": "article about luma ai",
-      "url": "https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/",
-      "type": "markdown"
-    },
-    {
-      "label": "MMdnn",
-      "url": "https://pypi.org/project/mmdnn/",
+      "label": "Local.AI",
+      "url": "https://localai.io/",
       "type": "markdown"
     },
     {
@@ -32,12 +32,17 @@
     },
     {
       "label": "Lesson2 UI",
-      "url": "../Lesson2",
+      "url": "./Practical%20Deep%20Learning%20-%20FastAi%20Notes/2%20Lesson2.mdx",
       "type": "markdown"
     },
     {
-      "label": "paperspace notebooks",
-      "url": "https://www.paperspace.com/notebooks",
+      "label": "List of Platforms for fiddling",
+      "url": "./Platforms.md",
+      "type": "markdown"
+    },
+    {
+      "label": "MMdnn",
+      "url": "https://pypi.org/project/mmdnn/",
       "type": "markdown"
     },
     {
@@ -50,6 +55,60 @@
       "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
       "type": "markdown"
     },
+    {
+      "label": "article about luma ai",
+      "url": "https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/",
+      "type": "markdown"
+    },
+    {
+      "label": "https://github.com/ml-tooling/best-of-ml-python",
+      "url": "https://github.com/ml-tooling/best-of-ml-python",
+      "type": "plain"
+    },
+    {
+      "label": "https://youtu.be/jkrNMKz9pWU?feature=shared",
+      "url": "https://youtu.be/jkrNMKz9pWU?feature=shared",
+      "type": "plain"
+    },
+    {
+      "label": "https://amytabb.com/ts/2020-09-19/",
+      "url": "https://amytabb.com/ts/2020-09-19/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.modular.com/max/mojo",
+      "url": "https://www.modular.com/max/mojo",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.fast.ai/posts/2023-05-03-mojo-launch.html",
+      "url": "https://www.fast.ai/posts/2023-05-03-mojo-launch.html",
+      "type": "plain"
+    },
+    {
+      "label": "https://uizard.io/ai-design/",
+      "url": "https://uizard.io/ai-design/",
+      "type": "plain"
+    },
+    {
+      "label": "https://library.relume.io/ai-site-builder",
+      "url": "https://library.relume.io/ai-site-builder",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/2 Ann.md": [
+    {
+      "label": "Convolutional Neural Networks (CNNs)",
+      "url": "/ai-ui-playground/ai/computer-vision/cnns/",
+      "type": "markdown"
+    },
+    {
+      "label": "Types of Artificial Neural Networks",
+      "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/Backlog.md": [
     {
       "label": "Sparse priming representation",
       "url": "https://youtu.be/piRMk2KIx2o?feature=shared",
@@ -86,36 +145,6 @@
       "type": "markdown"
     },
     {
-      "label": "https://github.com/ml-tooling/best-of-ml-python",
-      "url": "https://github.com/ml-tooling/best-of-ml-python",
-      "type": "plain"
-    },
-    {
-      "label": "https://uizard.io/ai-design/",
-      "url": "https://uizard.io/ai-design/",
-      "type": "plain"
-    },
-    {
-      "label": "https://library.relume.io/ai-site-builder",
-      "url": "https://library.relume.io/ai-site-builder",
-      "type": "plain"
-    },
-    {
-      "label": "https://youtu.be/jkrNMKz9pWU?feature=shared",
-      "url": "https://youtu.be/jkrNMKz9pWU?feature=shared",
-      "type": "plain"
-    },
-    {
-      "label": "https://amytabb.com/ts/2020-09-19/",
-      "url": "https://amytabb.com/ts/2020-09-19/",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.fast.ai/posts/2023-05-03-mojo-launch.html",
-      "url": "https://www.fast.ai/posts/2023-05-03-mojo-launch.html",
-      "type": "plain"
-    },
-    {
       "label": "https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist",
       "url": "https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist",
       "type": "plain"
@@ -146,26 +175,26 @@
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/3 Ann.md": [
+  "src/content/docs/ai/Computer Vision/Resnet Vs CLIP.md": [
     {
-      "label": "CNN Overview",
-      "url": "/ai-ui-playground/ai/convolutional-neural-networks-cnn/overview/",
+      "label": "ResNet50",
+      "url": "https://www.researchgate.net/figure/ResNet-50-architecture_fig2_348871739",
       "type": "markdown"
     },
     {
-      "label": "LLM Overview",
-      "url": "/ai-ui-playground/ai/llm/overview/",
-      "type": "markdown"
+      "label": "https://www.researchgate.net/publication/373573593/figure/fig2/AS:11431281185293391@1693578653909/ViT-B-32-model-structure.ppm\"",
+      "url": "https://www.researchgate.net/publication/373573593/figure/fig2/AS:11431281185293391@1693578653909/ViT-B-32-model-structure.ppm\"",
+      "type": "plain"
     },
     {
-      "label": "LLM Overview",
-      "url": "/ai-ui-playground/ai/llm/transformers/",
-      "type": "markdown"
+      "label": "https://www.researchgate.net/publication/348871739/figure/fig2/AS:1020894147268608@1620411540259/ResNet-50-architecture.png\"",
+      "url": "https://www.researchgate.net/publication/348871739/figure/fig2/AS:1020894147268608@1620411540259/ResNet-50-architecture.png\"",
+      "type": "plain"
     },
     {
-      "label": "Types of artificial neural networks",
-      "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
-      "type": "markdown"
+      "label": "https://www.researchgate.net/figure/ViT-B-32-model-structure_fig2_373573593)",
+      "url": "https://www.researchgate.net/figure/ViT-B-32-model-structure_fig2_373573593)",
+      "type": "plain"
     }
   ],
   "src/content/docs/ai/In Medicine/medical.md": [
@@ -248,35 +277,6 @@
       "label": "https://docs.fast.ai/tutorial.medical_imaging.html",
       "url": "https://docs.fast.ai/tutorial.medical_imaging.html",
       "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/LLM/prompts.md": [
-    {
-      "label": "OpenAI veröffentlicht Prompt-Guide",
-      "url": "https://the-decoder.de/openai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance/#amp_tf=Von%20%251%24s&aoh=17027561217506&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fthe-decoder.de%2Fopenai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance%2F",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/LLM/transformers.md": [
-    {
-      "label": "Attention Is All You Need",
-      "url": "https://arxiv.org/abs/1706.03762",
-      "type": "markdown"
-    },
-    {
-      "label": "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training",
-      "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
-      "type": "markdown"
-    },
-    {
-      "label": "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.",
-      "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
-      "type": "markdown"
-    },
-    {
-      "label": "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained",
-      "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
-      "type": "markdown"
     }
   ],
   "src/content/docs/ai/Learning Goals/Workflows/work-flow.mdx": [
@@ -414,9 +414,19 @@
       "label": "https://github.com/tldraw/make-real-starter",
       "url": "https://github.com/tldraw/make-real-starter",
       "type": "plain"
+    },
+    {
+      "label": "https://library.relume.io/ai-site-builder",
+      "url": "https://library.relume.io/ai-site-builder",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.microsoft.com/en-us/research/project/autogen/",
+      "url": "https://www.microsoft.com/en-us/research/project/autogen/",
+      "type": "plain"
     }
   ],
-  "src/content/docs/ai/Learning Goals/learning goals.md": [
+  "src/content/docs/ai/Learning Goals/learning goals.mdx": [
     {
       "label": "fundamentals-of-data-engineering",
       "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
@@ -430,6 +440,11 @@
     {
       "label": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
       "url": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
+      "type": "plain"
+    },
+    {
+      "label": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
+      "url": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
       "type": "plain"
     },
     {
@@ -448,6 +463,52 @@
       "type": "plain"
     }
   ],
+  "src/content/docs/ai/Natural Language Processing/prompts.md": [
+    {
+      "label": "OpenAI veröffentlicht Prompt-Guide",
+      "url": "https://the-decoder.de/openai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance/#amp_tf=Von%20%251%24s&aoh=17027561217506&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fthe-decoder.de%2Fopenai-veroeffentlicht-prompt-guide-fuer-bessere-chatgpt-und-llm-performance%2F",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/Natural Language Processing/transformers.md": [
+    {
+      "label": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "type": "markdown"
+    },
+    {
+      "label": "Attention is all you need (Transformer) - Model explanation (including math), Inference and Training",
+      "url": "https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil",
+      "type": "markdown"
+    },
+    {
+      "label": "Coding a Transformer from scratch on PyTorch, with full explanation, training and inference.",
+      "url": "https://www.youtube.com/watch?v=ISNdQcPhsts&ab_channel=UmarJamil",
+      "type": "markdown"
+    },
+    {
+      "label": "Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained",
+      "url": "https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/Platforms.md": [
+    {
+      "label": "Huggingface.co",
+      "url": "https://huggingface.co",
+      "type": "markdown"
+    },
+    {
+      "label": "kaggle",
+      "url": "https://www.kaggle.com/",
+      "type": "markdown"
+    },
+    {
+      "label": "paperspace notebooks",
+      "url": "https://www.paperspace.com/notebooks",
+      "type": "markdown"
+    }
+  ],
   "src/content/docs/ai/Practical Deep Learning - FastAi Notes/1 Overview.md": [
     {
       "label": "Practical Deep Learning for Coders part 1",
@@ -455,7 +516,7 @@
       "type": "markdown"
     }
   ],
-  "src/content/docs/ai/resources.md": [
+  "src/content/docs/ai/Resources.md": [
     {
       "label": "The End of Finetuning — with Jeremy Howard of Fast.ai",
       "url": "https://youtu.be/5Sze3kHAZqE?feature=shared",
@@ -512,6 +573,18 @@
       "type": "plain"
     }
   ],
+  "src/content/docs/ai/Thesaurus.md": [
+    {
+      "label": "50 AI terms every beginner should know",
+      "url": "https://www.telusinternational.com/insights/ai-data/article/50-beginner-ai-terms-you-should-know",
+      "type": "markdown"
+    },
+    {
+      "label": "82 Artificial Intelligence terms you need to know today. (Updated) ",
+      "url": "https://www.linkedin.com/pulse/25-artificial-intelligence-terms-you-need-know-today-jair-ribeiro/",
+      "type": "markdown"
+    }
+  ],
   "src/content/docs/ai/tools.md": [
     {
       "label": "LMStudio",
@@ -538,8 +611,8 @@
   ],
   "src/content/docs/index.mdx": [
     {
-      "label": "click me",
-      "url": "/ai-ui-playground/ai/1-overview/",
+      "label": "Artificial Neuronal Networks",
+      "url": "/ai-ui-playground/ai/2-ann/",
       "type": "markdown"
     },
     {
@@ -565,34 +638,10 @@
       "type": "markdown"
     }
   ],
-  "src/content/docs/ai/Convolutional Neural Networks (CNN)/overview.md": [
+  "src/content/docs/ai/Computer Vision/CNNs.md": [
     {
       "label": "https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/",
       "url": "https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/",
-      "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/LLM/gpt.md": [
-    {
-      "label": "https://en.wikipedia.org/wiki/GPT-3",
-      "url": "https://en.wikipedia.org/wiki/GPT-3",
-      "type": "plain"
-    },
-    {
-      "label": "https://the-decoder.com/gpt-4-has-a-trillion-parameters/",
-      "url": "https://the-decoder.com/gpt-4-has-a-trillion-parameters/",
-      "type": "plain"
-    },
-    {
-      "label": "https://replicate.com/blog/all-the-llamas",
-      "url": "https://replicate.com/blog/all-the-llamas",
-      "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/LLM/overview.md": [
-    {
-      "label": "https://github.com/Hannibal046/Awesome-LLM",
-      "url": "https://github.com/Hannibal046/Awesome-LLM",
       "type": "plain"
     }
   ],
@@ -655,17 +704,34 @@
       "type": "plain"
     }
   ],
+  "src/content/docs/ai/Natural Language Processing/GPT.md": [
+    {
+      "label": "https://en.wikipedia.org/wiki/GPT-3",
+      "url": "https://en.wikipedia.org/wiki/GPT-3",
+      "type": "plain"
+    },
+    {
+      "label": "https://the-decoder.com/gpt-4-has-a-trillion-parameters/",
+      "url": "https://the-decoder.com/gpt-4-has-a-trillion-parameters/",
+      "type": "plain"
+    },
+    {
+      "label": "https://replicate.com/blog/all-the-llamas",
+      "url": "https://replicate.com/blog/all-the-llamas",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Natural Language Processing/LLM.md": [
+    {
+      "label": "https://github.com/Hannibal046/Awesome-LLM",
+      "url": "https://github.com/Hannibal046/Awesome-LLM",
+      "type": "plain"
+    }
+  ],
   "src/content/docs/ai/Practical Deep Learning - FastAi Notes/2 Lesson2.mdx": [
     {
       "label": "https://course.fast.ai/Lessons/lesson2.html",
       "url": "https://course.fast.ai/Lessons/lesson2.html",
-      "type": "plain"
-    }
-  ],
-  "src/content/docs/ai/platforms.md": [
-    {
-      "label": "https://huggingface.co",
-      "url": "https://huggingface.co",
       "type": "plain"
     }
   ]

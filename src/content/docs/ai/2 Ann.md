@@ -1,8 +1,8 @@
 ---
-title: Artificial neural networks (ANN)
+title: Artificial Neural Networks (ANN)
 ---
 
-Artificial neural networks (ANNs) are a cornerstone of machine learning, inspired by the biological neural networks in animal brains. They are computing systems designed to simulate the way humans learn and process information. ANNs consist of interconnected nodes, mimicking biological neurons, which process and transmit information.
+Artificial Neural Networks (ANNs) are a cornerstone of machine learning, inspired by the biological neural networks in animal brains. They are computing systems designed to simulate the way humans learn and process information. ANNs consist of interconnected nodes, mimicking biological neurons, which process and transmit information.
 
 The fundamental unit of an ANN is the neuron, or node, which receives input, processes it, and generates output. The connections between neurons, known as weights, are adjusted during training to improve the network's performance.
 
@@ -14,7 +14,7 @@ The application of ANNs is vast, covering areas like image and speech recognitio
 
 Below are some of the NN that are not fruther discussed in our context:
 
-You will find more info of them and and may more at - [Types of artificial neural networks](https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks)
+You will find more info of them and and may more at - [Types of Artificial Neural Networks](https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks)
 
 ## Recurrent Neural Networks (RNNs):
 

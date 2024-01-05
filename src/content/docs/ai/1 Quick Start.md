@@ -9,7 +9,7 @@ This section contains more general information for ai related topics
 
 ## I want to run my Jupiter Notebooks / Python examples without the complicated things.
 
-[](./Platforms.md)
+[List of Platforms for fiddling](./Platforms.md)
 
 ## I have models that I want to test locally. How to deploy them quickly?
 
@@ -27,7 +27,62 @@ This section contains more general information for ai related topics
 - locally, run LLMs with "ChatGPT" - like interface
 
 
-## Draw the UI with AI
+## I want to get into the field of AI really quickly. How can i get my foot in the door?
+
+### Take the **fast.ai** Course
+
+> A Hackers' Guide to Language Models - YouTube
+> In this deeply informative video, Jeremy Howard, co-founder of fast.ai and creator of the ULMFiT approach on which all modern language models (LMs) are based...
+
+- https://youtu.be/jkrNMKz9pWU?feature=shared
+
+- [Lesson 0 - Setup Stuff ](https://www.youtube.com/watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward)
+
+- [Full Course](https://course.fast.ai/Lessons/lesson1.html)
+
+- ([Lesson2 UI](./Practical%20Deep%20Learning%20-%20FastAi%20Notes/2%20Lesson2.mdx))
+
+#### What Tools should I lean with?
+
+[List of Platforms for fiddling](./Platforms.md)
+
+> Using FastAI Docker images with the FastAI course materials on your local disk.
+> A tutorial on how to get up and running quickly with FastAI locally using their new Docker images.
+
+- https://amytabb.com/ts/2020-09-19/
+
+
+## My AI Models aren't compatible. Is there a model converting tool?
+
+- [MMdnn](https://pypi.org/project/mmdnn/)
+
+
+## I want Python but in fast. What is Mojo?
+
+> fast.ai - Mojo may be the biggest programming language advance in decades
+> Mojo is a new programming language, based on Python, which fixes Python’s performance and deployment problems.
+
+- https://www.modular.com/max/mojo
+- https://www.fast.ai/posts/2023-05-03-mojo-launch.html
+
+## My Notebooks are nice but I can't use them in Production. What is nbdev?
+
+- nbdev
+  - jupiter notebooks for development not only playing around
+  - [nbdev tutorial -- zero to published project in 90 minutes](https://www.youtube.com/watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward)
+  - test/dev/release/docs as notebooks
+- nbdime
+  - git diff for notebooks
+
+## Can I use different languages in Notebooks?
+
+- [kernels for different languages](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
+
+---
+# Experimental:  "I Feel Lucky!"
+---
+
+## I want to draw the UI with AI
 
 ### Uizard
 
@@ -48,107 +103,7 @@ This section contains more general information for ai related topics
 - https://library.relume.io/ai-site-builder
 - has figma and webflow export
 
-## 3D
+
+## I want to test out 3D capabilities
 
 - [article about luma ai](https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/)
-
-## model converting tools
-
-- [MMdnn](https://pypi.org/project/mmdnn/)
-
-## fast.ai
-
-### Course
-
-> A Hackers' Guide to Language Models - YouTube
-> In this deeply informative video, Jeremy Howard, co-founder of fast.ai and creator of the ULMFiT approach on which all modern language models (LMs) are based...
-
-- https://youtu.be/jkrNMKz9pWU?feature=shared
-
-[Lesson 0 - Setup Stuff ](https://www.youtube.com/watch?v=gGxe2mN3kAg&ab_channel=JeremyHoward)
-
-[Full Course](https://course.fast.ai/Lessons/lesson1.html)
-
-[Lesson2 UI](../Lesson2)
-
-#### tools to learn with
-
-some links to run your stuff on
-
-- kaggle
-- [paperspace notebooks](https://www.paperspace.com/notebooks)
-
-> Using FastAI Docker images with the FastAI course materials on your local disk.
-> A tutorial on how to get up and running quickly with FastAI locally using their new Docker images.
-
-- https://amytabb.com/ts/2020-09-19/
-
-#### personal take away from course
-
-- Tensorflow is dead
-
-  - instead use Pytorch und zb fastai welches darauf aufbaut
-
-## Mojo (python but in fast)
-
-> fast.ai - Mojo may be the biggest programming language advance in decades
-> Mojo is a new programming language, based on Python, which fixes Python’s performance and deployment problems.
-
-- https://www.fast.ai/posts/2023-05-03-mojo-launch.html
-
-## dev tools
-
-- nbdev
-  - jupiter notebooks for development not only playing around
-  - [nbdev tutorial -- zero to published project in 90 minutes](https://www.youtube.com/watch?v=l7zS8Ld4_iA&ab_channel=JeremyHoward)
-  - test/dev/release/docs as notebooks
-- nbdime
-  - git diff for notebooks
-
-## jupiter notebook
-
-- [kernels for different languages](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
-
-## chatgpt
-
-### gpt4 capabilities
-
-- codeinterpreter
-
-  - https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist
-
-- image generation
-
-- websearch
-
-## misc & unsorted
-
-> LCM-Lora: Neues KI-Modell sorgt im Internet für großes Aufsehen
-> Aus einer simplen Skizze lassen sich mithilfe neuer KI-Tools komplexe Kunstwerke anfertigen und beliebig verändern – in Echtzeit
-
-- https://www.derstandard.de/story/3000000196318/lcm-lora-neues-ki-modell-sorgt-im-internet-fuer-grosses-aufsehen
-
-[Sparse priming representation](https://youtu.be/piRMk2KIx2o?feature=shared)
-
-[Autogpt & memgpt & runpod](https://youtu.be/bMWXXPoDnDs?feature=shared)
-
-[Hugging own model langchain](https://youtu.be/_j7JEDWuqLE?feature=shared)
-
-[A Deep Dive Into Guidance’s Source Code - Understanding how to guide Large Language Models](https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20)
-
-[huggingface](https://huggingface.co/)
-
-- open source hub / community (models, datasets, spaces, etc.)
-
-- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
-- https://huggingface.co/spaces/ngoctuanai/chatgptfree
-
-- https://github.com/filipecalegario/awesome-generative-ai
-
-- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
-
-- [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
-
-  - from lesson 1 (minute 51)
-
-- [/keras-vs-tensorflow-vs-pytorch-article](https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article)
