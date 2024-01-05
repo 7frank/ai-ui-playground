@@ -40,7 +40,19 @@ case ( Senior Developer )
   :Get an understanding of different models / architectures in general;
   : Learn about Nomenclature, Important concepts;
 case ( DevOps )
-  : Learn Market specific models / architectures;  
+  : Fundamentals
+    - Data modelling
+    - Data warehouse;  
+  : Big Data
+    (e.g.Hadoop, Spark);
+  : Extract, Transform, Load (ETL) and Data Pipelines
+    (e.g.Airflow, talend, dbt);
+  : Programming
+    (e.g.Pandas, PySpark); 
+  : Platforms
+    (e.g. AWS (Redshift, S3), Google Cloud (BigQuery), Azure (Data Lake) );
+  : Data Analytics Basics
+    (e.g. Tableau, Power BI, Looker);
 case ( DS )
   : Learn Market specific models / architectures;
 case ( DE )
