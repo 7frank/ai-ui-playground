@@ -1,21 +1,31 @@
 ---
-title: Overview
-description: A guide in my new Starlight docs site.
+title: Quick Start
+description: For PPL that don't have time
 ---
 
 This section contains more general information for ai related topics
 
 - https://github.com/ml-tooling/best-of-ml-python
 
-## Where to deploy my LLM
+## I want to run my Jupiter Notebooks / Python examples without the complicated things.
+
+[](./Platforms.md)
+
+## I have models that I want to test locally. How to deploy them quickly?
 
 [Runpod](https://youtu.be/TP2yID7Ubr4?feature=shared)
 
-- platform that allows you to easily create docker containers of LLMs for small bucks
+- Platform that allows you to easily create docker containers of LLMs for small bucks
 
 [LMStudio](https://lmstudio.ai/)
 
-- locally, run LLMs
+- locally, run LLMs with "ChatGPT" - like interface
+- requires Nvidia or AMD GPU
+
+[Local.AI](https://localai.io/)
+
+- locally, run LLMs with "ChatGPT" - like interface
+
 
 ## Draw the UI with AI
 

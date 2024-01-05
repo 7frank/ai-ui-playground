@@ -5,6 +5,6 @@ title: Platforms
 ## open source platforms
 
 - https://huggingface.co
-- colab
+- Google Colab
 - kaggle
 - paperspace
