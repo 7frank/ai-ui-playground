@@ -6,7 +6,9 @@ title: Data Science
 ## developing
 
   - python/conda/mamba and maybe other DSLs
-  - frameworks (pytorch, fastai, etc)
+  - frameworks 
+    - core: pytorch,numpy, pandas, matplotlib 
+    - fastai, etc
   - visualize data (matplotlib,sympy, plotly and others)
   - Jupiter Notebooks
   - nb_Dev
