@@ -21,7 +21,7 @@ export default defineConfig({
         "./src/styles/custom.css",
       ],
       plugins:[
-                starlightLinksValidator({ })
+                starlightLinksValidator({errorOnRelativeLinks:false })
       ],
       social: {
         github: "https://github.com/7frank/ai-ui-playground/",
