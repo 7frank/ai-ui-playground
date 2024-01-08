@@ -1,0 +1,68 @@
+@startuml
+@startuml
+class DataEngineer {
+  - Infrastructure and Architecture Design
+  - Data Collection and Storage
+  - Optimization and Maintenance
+  --
+  + SQL, NoSQL
+  + Python, Java, Scala
+  + Hadoop, Spark, Kafka
+  + Cloud Services (AWS, Azure, GCP)
+}
+
+class DataScientist {
+  - Advanced Data Analysis and Modeling
+  - Predictive Modeling
+  - Data Mining
+  --
+  + Python, R
+  + Machine Learning Algorithms
+  + Big Data Technologies
+  + Statistical Analysis Tools
+}
+
+class DataAnalyst {
+  - Data Processing and Reporting
+  - Data Exploration
+  - Business Insights and Visualization
+  --
+  + SQL
+  + Excel
+  + Basic Python or R
+  + Data Visualization (Tableau, PowerBI)
+}
+
+class BusinessAnalyst {
+  - Requirement Analysis
+  - Business Process Improvement
+  - Stakeholder Engagement
+  - Solution Design and Analysis
+  - Change Management and Implementation
+  --
+  + SQL
+  + Microsoft Office Suite
+  + Basic Understanding of Data Tools
+  + Project Management Software
+}
+
+class BusinessConsultant {
+  - Identifying Business Problems
+  - Strategy Development
+  - Client Interaction and Advisory
+  - Multi-disciplinary Approach
+  --
+  + Market Analysis Tools
+  + Business Strategy Frameworks
+  + Communication Tools
+  + Financial Modelling Software
+}
+
+
+
+DataEngineer --> DataScientist : provides data infrastructure
+DataScientist --> DataAnalyst : drives analysis needs
+DataAnalyst --> BusinessAnalyst : supplies data insights
+BusinessAnalyst --> BusinessConsultant : informs strategic decisions
+
+@enduml
