@@ -60,12 +60,12 @@ class BusinessConsultant {
 
 
 
-class ProjectLead {
-  - Overall Project Management
-  - Resource Coordination
-  - Stakeholder Communication
-  + Project Management Tools, Leadership Skills
-}
+' class ProjectLead {
+'   - Overall Project Management
+'   - Resource Coordination
+'   - Stakeholder Communication
+'   + Project Management Tools, Leadership Skills
+' }
 
 class SoftwareArchitect {
   - High-Level Software Design
@@ -111,18 +111,18 @@ DataAnalyst --> BusinessAnalyst : supplies data insights
 BusinessAnalyst --> BusinessConsultant : informs strategic decisions
 
 Developer --> DataEngineer : "implements data-related solutions"
-ProjectLead --> SoftwareArchitect : "manages project scope"
-ProjectLead --> Developer : "coordinates development work"
-ProjectLead --> DataEngineer : "aligns data infrastructure with project goals"
-ProjectLead --> DataScientist : "integrates data science into project"
-ProjectLead --> DataAnalyst : "utilizes data analysis for project insights"
-ProjectLead --> BusinessAnalyst : "aligns business requirements with project"
-ProjectLead --> BusinessConsultant : "ensures project meets business needs"
+' ProjectLead --> SoftwareArchitect : "manages project scope"
+' ProjectLead --> Developer : "coordinates development work"
+' ProjectLead --> DataEngineer : "aligns data infrastructure with project goals"
+' ProjectLead --> DataScientist : "integrates data science into project"
+' ProjectLead --> DataAnalyst : "utilizes data analysis for project insights"
+' ProjectLead --> BusinessAnalyst : "aligns business requirements with project"
+' ProjectLead --> BusinessConsultant : "ensures project meets business needs"
 
 
 SoftwareArchitect --> DataEngineer : "aligns data infrastructure\nwith system architecture"
 SoftwareArchitect --> Developer : "provides design guidance\nand technical standards"
-SoftwareArchitect --> ProjectLead : "advises on technical feasibility\nand architectural decisions"
+' SoftwareArchitect --> ProjectLead : "advises on technical feasibility\nand architectural decisions"
 SoftwareArchitect ..> DataScientist : "ensures compatibility\nof data science solutions"
 SoftwareArchitect ..> DataAnalyst : "incorporates data analysis needs\ninto system design"
 SoftwareArchitect ..> BusinessAnalyst : "aligns software architecture\nwith business requirements"
@@ -134,13 +134,13 @@ DataArchitect ..> DataAnalyst : "enables effective data querying\nand reporting"
 DataArchitect ..> BusinessAnalyst : "provides data framework\nfor business analysis"
 DataArchitect ..> BusinessConsultant : "supports data-driven\nbusiness strategies"
 DataArchitect ..> SoftwareArchitect : "collaborates on integrating\ndata into software architecture"
-DataArchitect --> ProjectLead : "aligns data architecture\nwith project objectives"
+' DataArchitect --> ProjectLead : "aligns data architecture\nwith project objectives"
 
 DevOps --> Developer : "facilitates code integration\nand deployment"
 DevOps --> SoftwareArchitect : "collaborates on system architecture\nand tech stack decisions"
 DevOps --> DataEngineer : "supports data infrastructure\nautomation and deployment"
 DevOps --> DataArchitect : "ensures infrastructure supports\ndata architecture"
-DevOps --> ProjectLead : "implements automation in\nproject delivery"
+' DevOps --> ProjectLead : "implements automation in\nproject delivery"
 
 
 
