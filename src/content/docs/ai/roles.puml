@@ -74,10 +74,33 @@ class SoftwareArchitect {
   + Design Patterns, Architectural Frameworks, Tech Knowledge
 }
 
+class DataArchitect {
+  - Data Architecture Design and Implementation
+  - Database Design and Data Modeling
+  - Data Governance and Quality Standards
+  --
+  + SQL, NoSQL
+  + Data Modeling Tools
+  + Cloud Data Services
+  + Data Security and Compliance Knowledge
+}
+
 class Developer {
   - Software Development
   - Implementing Solutions
   + Programming Languages, Development Tools, Coding Best Practices
+}
+
+class DevOps {
+  - CI/CD Pipeline Implementation
+  - Server and Infrastructure Management
+  - Automation of Development Processes
+  - System Monitoring and Reliability
+  --
+  + Docker, Kubernetes
+  + Cloud Platforms (AWS, Azure, GCP)
+  + Automation Tools (Ansible, Terraform)
+  + Scripting (Python, Bash)
 }
 
 
@@ -104,6 +127,20 @@ SoftwareArchitect ..> DataScientist : "ensures compatibility\nof data science so
 SoftwareArchitect ..> DataAnalyst : "incorporates data analysis needs\ninto system design"
 SoftwareArchitect ..> BusinessAnalyst : "aligns software architecture\nwith business requirements"
 SoftwareArchitect ..> BusinessConsultant : "consults on technology\nimpacting business strategy"
+
+DataArchitect --> DataEngineer : "defines architecture\nfor implementation"
+DataArchitect ..> DataScientist : "supports data model\nfor analytics"
+DataArchitect ..> DataAnalyst : "enables effective data querying\nand reporting"
+DataArchitect ..> BusinessAnalyst : "provides data framework\nfor business analysis"
+DataArchitect ..> BusinessConsultant : "supports data-driven\nbusiness strategies"
+DataArchitect ..> SoftwareArchitect : "collaborates on integrating\ndata into software architecture"
+DataArchitect --> ProjectLead : "aligns data architecture\nwith project objectives"
+
+DevOps --> Developer : "facilitates code integration\nand deployment"
+DevOps --> SoftwareArchitect : "collaborates on system architecture\nand tech stack decisions"
+DevOps --> DataEngineer : "supports data infrastructure\nautomation and deployment"
+DevOps --> DataArchitect : "ensures infrastructure supports\ndata architecture"
+DevOps --> ProjectLead : "implements automation in\nproject delivery"
 
 
 
