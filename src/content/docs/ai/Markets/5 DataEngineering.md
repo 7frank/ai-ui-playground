@@ -18,3 +18,15 @@ The goal:
 - aws redshift / google bigquery
 - DBT
 - bigquery
+
+
+## additional ETL Tooling
+
+- Talend Studio
+-  Pentaho
+- Informatica
+
+BigData:
+- Scala
+- MapReduce
+- Hadoop

@@ -60,9 +60,51 @@ class BusinessConsultant {
 
 
 
+class ProjectLead {
+  - Overall Project Management
+  - Resource Coordination
+  - Stakeholder Communication
+  + Project Management Tools, Leadership Skills
+}
+
+class SoftwareArchitect {
+  - High-Level Software Design
+  - Technology Selection and Evaluation
+  - Guiding Development Practices
+  + Design Patterns, Architectural Frameworks, Tech Knowledge
+}
+
+class Developer {
+  - Software Development
+  - Implementing Solutions
+  + Programming Languages, Development Tools, Coding Best Practices
+}
+
+
+
 DataEngineer --> DataScientist : provides data infrastructure
 DataScientist --> DataAnalyst : drives analysis needs
 DataAnalyst --> BusinessAnalyst : supplies data insights
 BusinessAnalyst --> BusinessConsultant : informs strategic decisions
+
+Developer --> DataEngineer : "implements data-related solutions"
+ProjectLead --> SoftwareArchitect : "manages project scope"
+ProjectLead --> Developer : "coordinates development work"
+ProjectLead --> DataEngineer : "aligns data infrastructure with project goals"
+ProjectLead --> DataScientist : "integrates data science into project"
+ProjectLead --> DataAnalyst : "utilizes data analysis for project insights"
+ProjectLead --> BusinessAnalyst : "aligns business requirements with project"
+ProjectLead --> BusinessConsultant : "ensures project meets business needs"
+
+
+SoftwareArchitect --> DataEngineer : "aligns data infrastructure\nwith system architecture"
+SoftwareArchitect --> Developer : "provides design guidance\nand technical standards"
+SoftwareArchitect --> ProjectLead : "advises on technical feasibility\nand architectural decisions"
+SoftwareArchitect ..> DataScientist : "ensures compatibility\nof data science solutions"
+SoftwareArchitect ..> DataAnalyst : "incorporates data analysis needs\ninto system design"
+SoftwareArchitect ..> BusinessAnalyst : "aligns software architecture\nwith business requirements"
+SoftwareArchitect ..> BusinessConsultant : "consults on technology\nimpacting business strategy"
+
+
 
 @enduml
