@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import svelte from "@astrojs/svelte";
+import starlightLinksValidator from 'starlight-links-validator'
 
 import plantuml from './plugins/rollup-plugin-plantuml';
 
@@ -18,6 +19,9 @@ export default defineConfig({
       customCss: [
         // Relative Pfad zur eigenen CSS Datei
         "./src/styles/custom.css",
+      ],
+      plugins:[
+                starlightLinksValidator({ })
       ],
       social: {
         github: "https://github.com/7frank/ai-ui-playground/",
@@ -43,6 +47,7 @@ export default defineConfig({
           collapsed: true,
         },
       ],
+      lastUpdated:true
     }),
   ],
 });
