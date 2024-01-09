@@ -3,7 +3,13 @@ title: Roles
 ---
 import rolesDiagram from './roles.puml'
 import MatrixRenderer from '../../../components/MatrixRenderer.astro';
+import CsvRenderer from '../../../components/CsvRenderer.svelte';
 import matrixData from '../../../data/roles-transitions.json'; 
+
+
+import rolesSeniorityMatrix from '../../../data/Roles_Seniority_Matrix.csv.txt';
+
+ 
 
 
 IMPORTANT: much more relevant than the role name will be the actual skill set, as the former is subject of debate.
@@ -18,6 +24,11 @@ Therefore take the roles and their responsiblilites down below more like a appro
 ## Transition
 
 <MatrixRenderer matrixData={matrixData} />
+
+## Requirements
+
+<CsvRenderer client:only src={rolesSeniorityMatrix} />
+
 
 ## DataScientist
 
