@@ -2,11 +2,11 @@
 title: Roles
 ---
 import rolesDiagram from './roles.puml'
-import MatrixRenderer from '../../../../components/MatrixRenderer.astro';
 import CsvRenderer from '../../../../components/CsvRenderer.svelte';
-import matrixData from '../../../../data/roles-transitions.json'; 
 
+import Table from '../../../../components/Table.svelte';
 
+import rolesTransitionMatrix from './Roles_Transition.csv.txt';
 import rolesSeniorityMatrix from './Roles_Seniority_Matrix.csv.txt';
 
  
@@ -28,14 +28,14 @@ Therefore take the roles and their responsiblilites down below more like a appro
 
 The table below contains skills and tools required when transitioning from one to the other role.
 
-<MatrixRenderer matrixData={matrixData} />
 
+<Table client:only src={rolesTransitionMatrix} />
 
 ## Requirements
 
 Thinking about the roles and  progression from a junior-to senior-perspective:
 
-<CsvRenderer client:only src={rolesSeniorityMatrix} />
+<Table client:only src={rolesSeniorityMatrix} />
 
 
 ### Junior Level (All Roles)
