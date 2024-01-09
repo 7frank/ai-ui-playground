@@ -6,7 +6,26 @@
     export let src; // 'src' is now an export variable, making it a prop
 
     $: data = [];
+    $: filteredData = [];
     $: columns = [];
+    $: filterValue=null
+
+
+    // Filter the data based on the filter value
+    $: if (filterValue){
+      filteredData=data.map(row => {
+        let hasCell=false
+        Object.keys(row).forEach(function(key) {
+          if (row[key].toLowerCase().indexOf(filterValue.toLowerCase())>-1)
+          hasCell=true
+
+      });
+      if (hasCell) return row
+  
+      }).filter(i=> !!i)
+     } else filteredData=data
+
+
 
     const loadData = async () => {
       if (!src) return; // Do not load if src is not defined
@@ -29,10 +48,12 @@
 
   </script>
   
+  <div>
+    <input style="float: right;margin:0.5em;padding:0.5em;border-radius:3px;"  placeholder="filter table" bind:value={filterValue} />
+  </div>
 
   {#if data.length > 0}
-    <Grid data={data} columns={columns} sort={true} pagination=true f />
-
+    <Grid data={filteredData} columns={columns} sort={true} pagination=true />
   {:else}
     <p>Loading... {src}</p>
   {/if}
