@@ -1,8 +1,8 @@
 ---
 title: High Demand Skills
 ---
-import CsvRenderer from '../../../components/CsvRenderer.svelte';
-import Table from '../../../components/Table.svelte';
+
+import Table from '../../../../components/Table.svelte';
 import rolesSeniorityMatrix from './HighInDemand_Skills_Overview.csv.txt';
 
 Based of on "high-in-demand skills 2023"
@@ -14,4 +14,4 @@ we aggregated this list to get a basic understanding of this multifaceted proble
 
 <Table client:only src={rolesSeniorityMatrix} />
 
-<CsvRenderer client:only src={rolesSeniorityMatrix} />
+

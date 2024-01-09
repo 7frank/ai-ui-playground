@@ -15,10 +15,8 @@
       Papa.parse(text, {
         header: true,
         complete: (results) => {
-          console.log(results.data)
           data = results.data;
-          columns= Object.keys(data[0]).map(i=> ({id:i,name:i}))
-          console.log(columns)
+          columns= data?.[0]?Object.keys(data[0]).map(i=> ({id:i,name:i})):[]
         }
       });
     };
@@ -29,11 +27,6 @@
   // Reactive statement to reload data when 'src' changes
   $: src, loadData();
 
-
-    // const data = [
-    //   { name: "John", email: "john@example.com" },
-    //   { name: "Mark", email: "mark@gmail.com" },
-    // ]
   </script>
   
 
