@@ -1,0 +1,19 @@
+Skill,Difficulty,Field,Level,Relevance for Transition to AI
+Machine Learning,Hard,Data Science,Senior,Core
+Deep Learning,Hard,Data Science,Senior,Core
+Natural Language Processing,Hard,Data Science,Senior,Core
+Computer Vision,Hard,Data Science,Senior,Core
+Reinforcement Learning,Hard,Data Science,Senior,Core
+Cloud Computing,Moderate,Data Engineering,Professional,Supportive
+Big Data Technologies,Moderate,Data Engineering,Professional,Supportive
+Python Programming,Moderate,Data Science/Data Engineering,Junior/Professional,Fundamental
+R Programming,Moderate,Data Science/Data Engineering,Junior/Professional,Fundamental
+SQL Databases,Easy,Data Engineering,Junior,Fundamental
+NoSQL Databases,Moderate,Data Engineering,Professional,Supportive
+ETL Processes,Moderate,Data Engineering,Professional,Supportive
+Data Visualization,Easy,Data Analysis,Junior,Supportive
+Data Cleaning,Easy,Data Science/Data Engineering,Junior/Professional,Fundamental
+Statistical Analysis,Moderate,Data Analysis,Junior,Supportive
+DevOps Practices,Moderate,DevOps,Professional/Senior,Supportive
+Automation Tools,Easy,DevOps,Junior/Professional,Supportive
+AI Ethics,Moderate,Data Science,Professional/Senior,Core

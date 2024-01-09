@@ -1,0 +1,14 @@
+---
+title: High Demand Skills
+---
+import CsvRenderer from '../../../components/CsvRenderer.svelte';
+import rolesSeniorityMatrix from './HighInDemand_Skills_Overview.csv.txt';
+
+Based of on high-in-demand skills 2023
+- https://www.linkedin.com/pulse/21-most-demand-ai-skills-programmers-20232024-muhammad-yasir-khan/
+- https://www.analyticsvidhya.com/blog/2023/08/ai-skills/#h-top-25-ai-skills-nbsp
+
+We aggregated this list to 
+
+<CsvRenderer client:only src={rolesSeniorityMatrix} />
+
