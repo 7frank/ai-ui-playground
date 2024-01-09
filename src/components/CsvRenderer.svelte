@@ -5,7 +5,7 @@
   export let src; // 'src' is now an export variable, making it a prop
 
   let data = [];
-console.log(src,data)
+
   const loadData = async () => {
     if (!src) return; // Do not load if src is not defined
     const response = await fetch(src);

@@ -10,24 +10,85 @@ import matrixData from '../../../data/roles-transitions.json';
 import rolesSeniorityMatrix from '../../../data/Roles_Seniority_Matrix.csv.txt';
 
  
+This document tries to summarize Roles & Responsibilities.
 
 
-IMPORTANT: much more relevant than the role name will be the actual skill set, as the former is subject of debate.
+## Relations
+
+IMPORTANT: Much more relevant than the role name will be **the actual skill set**, as the former is subject of debate.
 
 Therefore take the roles and their responsiblilites down below more like a approximation.
 
-## Relations
 
 <img alt="" src={rolesDiagram} />
 
 
 ## Transition
 
+
+The table below contains skills and tools required when transitioning from one to the other role.
+
 <MatrixRenderer matrixData={matrixData} />
+
 
 ## Requirements
 
+Thinking about the roles and  progression from a junior-to senior-perspective:
+
 <CsvRenderer client:only src={rolesSeniorityMatrix} />
+
+
+### Junior Level (All Roles)
+
+    - Basic Programming: Proficiency in languages relevant to the role (Python/R for Data Scientists and Analysts, SQL and Python for Data Engineers).
+    - Data Handling: Basic understanding of data collection, cleaning, and preprocessing.
+    - Analytical Skills: Fundamental statistical analysis and problem-solving skills.
+    - Learning and Support: Eagerness to learn from seniors and support team projects.
+
+### Mid-Level (Professional)
+
+    - Advanced Programming: Strong skills in Python/R for Data Scientists and Analysts, SQL and Python for Data Engineers.
+    - Data Analysis and Visualization: Proficiency in data visualization tools (Tableau, Power BI) and advanced data analysis techniques.
+    - Specialized Knowledge: For Data Scientists, deeper understanding of machine learning algorithms. For Data Engineers, experience with ETL tools and data warehousing. For Data Analysts, enhanced skills in statistical methods and tools.
+    - Collaboration and Communication: Effective communication skills, ability to work with cross-functional teams.
+
+### Senior Level
+
+    - Expertise in Programming and Tools: Advanced knowledge in programming languages and specialized tools relevant to each role.
+    - Strategic and Complex Analysis: Ability to lead strategic projects and perform complex analyses. Senior Data Engineers focus on data architecture and pipeline optimization.
+    - Leadership and Mentorship: Strong leadership skills, capable of managing projects and teams, mentoring junior staff.
+    - Cross-Functional Collaboration: Proficiency in collaborating with various departments, influencing strategic decisions.
+
+### Summary
+
+Across all levels, the progression involves moving from basic technical skills and support roles to advanced technical expertise, strategic planning, and leadership responsibilities. Each role requires continuous learning and adaptation to evolving technologies and methodologies in the field of data science and engineering.
+
+
+## Technical Skills only
+
+Focusing solely on the technical skills for Junior, Mid-level (Professional), and Senior roles in Data Scientist, Data Engineer, and Data Analyst positions, the summary would look like this:
+
+### Junior Level (All Roles)
+
+    - Basic Programming: Knowledge in relevant programming languages (Python/R for Data Scientists and Analysts; SQL and Python for Data Engineers).
+    - Data Handling: Basic skills in data collection, cleaning, and preprocessing.
+    - Analytical Skills: Fundamental understanding of statistical analysis and problem-solving abilities.
+    - Tools and Technologies: Familiarity with basic tools relevant to each role (e.g., Excel for Analysts, basic database technologies for Engineers).
+
+### Mid-Level (Professional)
+
+    - Advanced Programming: Enhanced proficiency in Python/R for Data Scientists and Analysts, and stronger SQL and Python skills for Data Engineers.
+    - Data Analysis and Visualization: Proficiency in data visualization tools (e.g., Tableau, Power BI) and more advanced data analysis techniques.
+    - Specialized Knowledge: For Data Scientists, a deeper understanding of a wider range of machine learning algorithms. For Data Engineers, experience with ETL tools and data warehousing solutions. For Data Analysts, enhanced statistical methods and tools.
+    - Data Management: Skills in managing larger datasets and more complex data systems.
+
+### Senior Level
+
+    - Expertise in Programming and Tools: Advanced and specialized knowledge in programming languages and tools relevant to each specific role.
+    - Complex Data Analysis and Modeling: Ability to perform complex data analysis and develop sophisticated models. This includes deep learning and AI for Data Scientists, data architecture design for Data Engineers, and advanced data modeling for Data Analysts.
+    - Big Data Technologies: Proficiency in big data technologies and cloud platforms (especially for Data Engineers and Data Scientists).
+    - Automation and Optimization: Skills in automating data processes and optimizing data pipelines and workflows.
+
 
 
 ## DataScientist
