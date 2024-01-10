@@ -109,3 +109,75 @@ If you want to learn more terms reated to AI, knock yourself out:
 - [82 Artificial Intelligence terms you need to know today. (Updated) ](https://www.linkedin.com/pulse/25-artificial-intelligence-terms-you-need-know-today-jair-ribeiro/)
 
 
+### still more
+
+https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/
+
+
+- Agents: Software robots that can independently perceive and act within their environment to achieve goals.
+- AGI (Artificial General Intelligence): A hypothetical AI capable of understanding and learning any intellectual task a human can.
+- Alignment: Ensuring AI goals and values are compatible with human values.
+- Attention: Mechanisms in neural networks that selectively focus on important parts of the input data.
+- Autoencoders: Neural networks that learn compressed representations of data and then reconstruct the original data from those representations.
+- Back Propagation: An algorithm that lets neural networks learn by adjusting their internal connections based on performance.
+- Bias: Assumptions baked into AI models, often unintentionally, leading to unfair or discriminatory outcomes.
+- BigGAN: A powerful type of GAN known for generating incredibly realistic and high-resolution images.
+- Capsule Networks: Networks using capsules instead of neurons to capture spatial relationships and parts of objects.
+- Chain of Thought: A proposed way for AI models to explain their reasoning process.
+- Chatbot: Computer programs designed to simulate conversation with humans.
+- ChatGPT: OpenAI’s large language model known for generating human-quality text and engaging in open-ended conversations.
+- CLIP (Contrastive Language–Image Pretraining): An AI model that connects text and images.
+- CNN (Convolutional Neural Network): Models specialized in processing data arranged in grids, like images.
+- Conditional GAN (cGAN): A GAN that generates data based on specific additional information.
+- CycleGAN: A model that translates images from one style to another without needing paired examples.
+- Data Augmentation: Artificially increasing the amount and diversity of training data.
+- DeepSpeed: A system for training large language models on distributed systems.
+- Diffusion Models: A technique for generating data by gradually adding and then reversing noise.
+- Double Descent: A phenomenon where increasing complexity of an AI model can initially hurt performance before improving it.
+- Emergence/Emergent Behavior: Complex behavior arising from the interaction of simple rules in an AI system.
+- Expert Systems: AI applications built with deep knowledge of a specific domain.
+- Few-Shot Learning: Training models on a very small amount of data.
+- Fine-tuning: Adapting a pre-trained AI model to a specific task.
+- Forward Propagation: The process in neural networks where input data flows through the network layers.
+- Foundation Model: A large and adaptable AI model serving as a base for developing various specialized applications.
+- GAN (General Adversarial Network): AI where two models compete, one generating data and the other distinguishing it from real data.
+- Generative AI: Machine learning models capable of autonomously creating new content.
+- GPT (Generative Pretrained Transformer): A large language model developed by OpenAI.
+- GPU (Graphics Processing Unit): Specialized microprocessors designed for parallel processing in AI.
+- Gradient Descent: An optimization algorithm used to improve the performance of machine learning models.
+- Hallucination: When AI models generate unrealistic or nonsensical content.
+- Hidden Layer: Layers in neural networks that are not directly connected to the input or output.
+- Hyperparameter Tuning: Adjusting settings in a machine learning model to achieve optimal performance.
+- Instruction Tuning: Fine-tuning a pre-trained machine learning model with specific instructions or guidelines.
+- Large Language Model (LLM): A machine learning model trained on a massive dataset of text and code.
+- Latent Space: A low-dimensional representation of data learned by a machine learning model.
+- Latent diffusion: A generative modeling technique using a diffusion process to add noise to a latent representation of data.
+- LLamaIndex: An indexing method specifically designed for large language models.
+- Langchain: A framework for chaining together different language models.
+- LLMOps: Practices and tools involved in developing, deploying, and managing large language models.
+- LoRA: A technique for adapting large language models to specific tasks with minimal fine-tuning.
+- Mixture of Experts: A machine learning method that combines predictions of multiple, specialized submodels.
+- Multimodal AI: Machine learning models that can process and generate data from different modalities.
+- NeRF (Neural Radiance Fields): A novel method for creating 3D scenes from 2D images.
+- Objective Function: A function maximized or minimized during the training of a machine learning model.
+- One-Shot Learning: A machine learning approach that enables a model to learn from only one example per class.
+- PEFT (Prompt Engineering Fine-Tuning): Enhancing large language models through tailored prompt engineering and fine-tuning.
+- Pre-training: The initial learning phase of AI models.
+- Prompt: The question or instruction that initiates an AI model’s task.
+- ProGAN (Progressive Growing of GANs): A step-by-step approach to refine output in Generative Adversarial Networks.
+- QLoRA: A refinement of LoRA using quantization to reduce the size and memory footprint of the adapter module.
+- Regularization: Techniques to prevent models from overfitting.
+- Reinforcement Learning (RL): An iterative learning paradigm where an agent interacts with an environment to maximize a reward signal.
+- RLHF (RL from Human Feedback): Incorporating human expertise in RL through rewards, penalties, or demonstrations.
+- Self-Supervised Learning (SSL): Generating its own labels from inherent patterns and structures.
+- Sequence-to-Sequence Models (Seq2Seq): Models that transform a sequence of elements into another sequence.
+- StyleGAN: A family of GANs specialized in generating highly realistic and customizable human faces.
+- Singularity: A hypothetical point where AI surpasses human control and understanding.
+- Text-to-Speech (TTS): Converting written text into spoken voice output.
+- TPU (Tensor Processing Unit): A microprocessor designed for AI workloads.
+- Transfer Learning: Leveraging knowledge from a pre-trained model to solve new problems.
+- Transformer: A neural network architecture for processing sequential data.
+- Variational Autoencoders (VAEs): A generative model using neural networks to encode and reconstruct data.
+- Vector Databases: Databases designed to store and efficiently query high-dimensional vectors.
+- XAI (Explainable AI): Making AI models more interpretable and understandable.
+- Zero-shot Learning: A model's capability to handle tasks it has never been explicitly trained on.
