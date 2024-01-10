@@ -107,3 +107,5 @@ If you want to learn more terms reated to AI, knock yourself out:
 - [50 AI terms every beginner should know](https://www.telusinternational.com/insights/ai-data/article/50-beginner-ai-terms-you-should-know)
 
 - [82 Artificial Intelligence terms you need to know today. (Updated) ](https://www.linkedin.com/pulse/25-artificial-intelligence-terms-you-need-know-today-jair-ribeiro/)
+
+

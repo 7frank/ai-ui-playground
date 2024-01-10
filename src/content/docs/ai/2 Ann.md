@@ -16,6 +16,26 @@ Below are some of the NN that are not fruther discussed in our context:
 
 You will find more info of them and and may more at - [Types of Artificial Neural Networks](https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks)
 
+## Fields of NN
+
+### Natural Language Processing (NLP)
+  This involves understanding, interpreting, and generating human language by machines. It's used in chatbots, translation services, and sentiment analysis.
+
+[here](./Natural%20Language%20Processing/Introduction.md)
+
+### Computer Vision
+ AI in this field interprets and understands visual information from the world, used in image recognition, autonomous vehicles, and facial recognition systems.
+
+[here](./Computer%20Vision/Introduction.md)
+
+### Collaborative Filtering
+Used in recommendation systems to filter items (like movies, books, products) based on past interactions of users. It's widely used in platforms like Netflix, Amazon, and Spotify.
+
+
+### Robotics
+ AI in robotics enables machines to perform complex tasks, often in environments unsuitable for humans. This includes manufacturing robots, drones, and autonomous vehicles.
+
+
 ## Recurrent Neural Networks (RNNs):
 
     Use Case: Suited for sequential data such as time series, speech, and text. They are used in tasks like speech recognition, language modeling, and machine translation.
