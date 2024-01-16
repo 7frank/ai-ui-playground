@@ -20,7 +20,7 @@ title: Frameworks
 - Gluon: Created by AWS and Microsoft, Gluon provides a clear, concise API for building machine learning models and is integrated with the MXNet library.
 
 - fast.ai
-- NeoGrad
+- [NeoGrad](https://github.com/pranftw/neograd)
 
 ## Comparing NeoGrad and fast.ai:
 
@@ -35,3 +35,9 @@ title: Frameworks
 - Educational Focus: NeoGrad emphasizes educational aspects, making it ideal for learners who want to understand the mechanics of neural networks. Fast.ai, while also educational, leans more towards practical application and rapid development.
 
 Overall, NeoGrad is more suited for educational purposes, especially for those seeking to grasp fundamental concepts in a simpler setting, whereas fast.ai is a more robust tool for practical deep learning applications.
+
+
+## Keras vs. tensorflow vs. pytorch
+
+- [/keras-vs-tensorflow-vs-pytorch-article](https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article)
+

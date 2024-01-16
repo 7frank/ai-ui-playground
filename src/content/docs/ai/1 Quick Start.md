@@ -28,7 +28,7 @@ This section contains more general information for ai related topics
 - [18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification](https://medmnist.com/)
   - hundred thousand of medical datasets
 - [The Cancer Imaging Archive (TCIA)](https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm)
-
+- [Links to various other datasets](https://paperswithcode.com/datasets)
 
 
 ## I have models that I want to test locally. How to deploy them quickly?
@@ -83,6 +83,7 @@ This section contains more general information for ai related topics
 > Mojo is a new programming language, based on Python, which fixes Python’s performance and deployment problems.
 
 - https://www.modular.com/max/mojo
+- [mojo - jupiter notebooks for beginners] (https://docs.modular.com/mojo/notebooks/)
 - https://www.fast.ai/posts/2023-05-03-mojo-launch.html
 
 ## My Notebooks are nice but I can't use them in Production. What is nbdev?
