@@ -2,8 +2,11 @@
     import { onMount } from 'svelte';
     import cytoscape from 'cytoscape';
     import JSON5 from 'json5';
+    import {performSearch,debounce} from './utils';
 
     let targetEl:HTMLDivElement
+    let searchTerm = "";
+
 
     type FooType = {
       label: string;
@@ -34,9 +37,11 @@
    
         }
 
+    let cy :cytoscape.Core
+
     onMount(() => {
    
-      const cy = cytoscape({
+        cy = cytoscape({
         container: targetEl,
         elements: transformDataToCytoscapeFormat(graph),
         wheelSensitivity: 0.2,
@@ -229,6 +234,14 @@
   
       return cyElements;
     }
+
+
+    function handleSearchChange(event) {
+    searchTerm = event.target.value;
+    const found=performSearch(cy,searchTerm,(n)=> getDisplayText(n));
+    console.log(found)
+    }
+
   </script>
   
   <style>
@@ -239,5 +252,6 @@
     }
   </style>
 
+  <input type="text" placeholder="Search nodes..." on:change={debounce(handleSearchChange,300)}>
   <div class="cy" bind:this={targetEl}></div>
   
