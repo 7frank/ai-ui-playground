@@ -257,8 +257,16 @@
       min-height: 800px;
       background-color: lightgrey;
     }
+
+    .abs-input{
+      position:absolute;
+      z-index: 1;
+      top:1em;
+      left:1em;
+    }
   </style>
 
-  <input type="text" placeholder="Search nodes..." on:change={debounce(handleSearchChange,300)}>
+<div style="position:relative">
+  <input class="abs-input" type="text" placeholder="Search nodes..." on:change={debounce(handleSearchChange,300)}>
   <div class="cy" bind:this={targetEl}></div>
-  
+</div>  
