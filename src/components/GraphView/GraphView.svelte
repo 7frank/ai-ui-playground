@@ -39,6 +39,7 @@
       const cy = cytoscape({
         container: targetEl,
         elements: transformDataToCytoscapeFormat(graph),
+        wheelSensitivity: 0.2,
         style: [
           // Define your styles here
           {
@@ -125,9 +126,17 @@
             // un-fade all relevant nodes
             node.neighborhood('node').removeClass('faded');
             node.removeClass('faded');
-            
+            node.closedNeighborhood
             cy.resize();
-            cy.fit(node.neighborhood('node'),50)
+            cy.animate({
+                fit: {
+                    eles: node.neighborhood('node'),
+                    padding: 50
+                },
+                duration: 1000, // duration in milliseconds
+                easing: 'linear' // easing style, you can choose others like 'linear', 'ease-in', 'ease-out', etc.
+            });
+
 
         });
 
@@ -188,7 +197,7 @@
   <style>
     .cy {
       width: 100%;
-      min-height: 1500px;
+      min-height: 800px;
       background-color: lightgrey;
     }
   </style>

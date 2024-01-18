@@ -6,6 +6,36 @@
       "type": "markdown"
     },
     {
+      "label": "LMStudio",
+      "url": "https://lmstudio.ai/",
+      "type": "markdown"
+    },
+    {
+      "label": "huggingface",
+      "url": "https://huggingface.co/models",
+      "type": "markdown"
+    },
+    {
+      "label": "MONAI - model zoo",
+      "url": "https://docs.monai.io/en/stable/index.html#model-zoo",
+      "type": "markdown"
+    },
+    {
+      "label": "18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification",
+      "url": "https://medmnist.com/",
+      "type": "markdown"
+    },
+    {
+      "label": "The Cancer Imaging Archive (TCIA)",
+      "url": "https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm",
+      "type": "markdown"
+    },
+    {
+      "label": "Links to various other datasets",
+      "url": "https://paperswithcode.com/datasets",
+      "type": "markdown"
+    },
+    {
       "label": "Runpod",
       "url": "https://youtu.be/TP2yID7Ubr4?feature=shared",
       "type": "markdown"
@@ -66,6 +96,16 @@
       "type": "plain"
     },
     {
+      "label": "https://huggingface.co/docs/datasets/index",
+      "url": "https://huggingface.co/docs/datasets/index",
+      "type": "plain"
+    },
+    {
+      "label": "https://huggingface.co/datasets",
+      "url": "https://huggingface.co/datasets",
+      "type": "plain"
+    },
+    {
       "label": "https://youtu.be/jkrNMKz9pWU?feature=shared",
       "url": "https://youtu.be/jkrNMKz9pWU?feature=shared",
       "type": "plain"
@@ -78,6 +118,11 @@
     {
       "label": "https://www.modular.com/max/mojo",
       "url": "https://www.modular.com/max/mojo",
+      "type": "plain"
+    },
+    {
+      "label": "https://docs.modular.com/mojo/notebooks/)",
+      "url": "https://docs.modular.com/mojo/notebooks/)",
       "type": "plain"
     },
     {
@@ -106,6 +151,82 @@
       "label": "Types of Artificial Neural Networks",
       "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
       "type": "markdown"
+    },
+    {
+      "label": "here",
+      "url": "./Natural%20Language%20Processing/Introduction.md",
+      "type": "markdown"
+    },
+    {
+      "label": "here",
+      "url": "./Computer%20Vision/Introduction.md",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/4 Platforms.md": [
+    {
+      "label": "Huggingface.co",
+      "url": "https://huggingface.co",
+      "type": "markdown"
+    },
+    {
+      "label": "kaggle",
+      "url": "https://www.kaggle.com/",
+      "type": "markdown"
+    },
+    {
+      "label": "paperspace notebooks",
+      "url": "https://www.paperspace.com/notebooks",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/5 Security.md": [
+    {
+      "label": "37C3 - NEW IMPORTANT INSTRUCTIONS",
+      "url": "https://www.youtube.com/watch?v=k_aZW_vLN24",
+      "type": "markdown"
+    },
+    {
+      "label": "37C3 - Hacking Neural Networks (deu)",
+      "url": "https://www.youtube.com/watch?v=mMZ-pbfjhLI",
+      "type": "markdown"
+    },
+    {
+      "label": "OWASP Top 10 for Large Language Model Applications",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "type": "markdown"
+    },
+    {
+      "label": "OWASP Cheat Sheet Series |Index Top 10",
+      "url": "https://cheatsheetseries.owasp.org/IndexTopTen.html",
+      "type": "markdown"
+    },
+    {
+      "label": "Input Validation",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html",
+      "type": "markdown"
+    },
+    {
+      "label": "OWASP API Security Top 10",
+      "url": "https://owasp.org/API-Security/editions/2023/en/0x11-t10/",
+      "type": "markdown"
+    }
+  ],
+  "src/content/docs/ai/6 Thesaurus.md": [
+    {
+      "label": "50 AI terms every beginner should know",
+      "url": "https://www.telusinternational.com/insights/ai-data/article/50-beginner-ai-terms-you-should-know",
+      "type": "markdown"
+    },
+    {
+      "label": "82 Artificial Intelligence terms you need to know today. (Updated) ",
+      "url": "https://www.linkedin.com/pulse/25-artificial-intelligence-terms-you-need-know-today-jair-ribeiro/",
+      "type": "markdown"
+    },
+    {
+      "label": "https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/",
+      "url": "https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/",
+      "type": "plain"
     }
   ],
   "src/content/docs/ai/Backlog.md": [
@@ -140,13 +261,63 @@
       "type": "markdown"
     },
     {
-      "label": "/keras-vs-tensorflow-vs-pytorch-article",
-      "url": "https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article",
-      "type": "markdown"
+      "label": "https://paperswithcode.com/methods",
+      "url": "https://paperswithcode.com/methods",
+      "type": "plain"
+    },
+    {
+      "label": "https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai",
+      "url": "https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code",
+      "url": "https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code",
+      "type": "plain"
+    },
+    {
+      "label": "https://huggingface.co/stabilityai/sdxl-turbo",
+      "url": "https://huggingface.co/stabilityai/sdxl-turbo",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/ml-tooling/best-of-ml-python#others",
+      "url": "https://github.com/ml-tooling/best-of-ml-python#others",
+      "type": "plain"
+    },
+    {
+      "label": "https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd",
+      "url": "https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd",
+      "type": "plain"
+    },
+    {
+      "label": "https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/",
+      "url": "https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/",
+      "type": "plain"
+    },
+    {
+      "label": "https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/",
+      "url": "https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/",
+      "url": "https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/",
+      "type": "plain"
     },
     {
       "label": "https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist",
       "url": "https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/coqui-ai/STT",
+      "url": "https://github.com/coqui-ai/STT",
+      "type": "plain"
+    },
+    {
+      "label": "https://huggingface.co/coqui/XTTS-v2",
+      "url": "https://huggingface.co/coqui/XTTS-v2",
       "type": "plain"
     },
     {
@@ -165,13 +336,53 @@
       "type": "plain"
     },
     {
-      "label": "https://github.com/filipecalegario/awesome-generative-ai",
-      "url": "https://github.com/filipecalegario/awesome-generative-ai",
+      "label": "https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard",
+      "url": "https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard",
       "type": "plain"
     },
     {
-      "label": "https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard",
-      "url": "https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard",
+      "label": "https://browse.arxiv.org/html/2401.00908v1",
+      "url": "https://browse.arxiv.org/html/2401.00908v1",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.marktechpost.com/2024/01/05/jpmorgan-ai-research-introduces-docllm-a-lightweight-extension-to-traditional-large-language-models-tailored-for-generative-reasoning-over-documents-with-rich-layouts/?amp",
+      "url": "https://www.marktechpost.com/2024/01/05/jpmorgan-ai-research-introduces-docllm-a-lightweight-extension-to-traditional-large-language-models-tailored-for-generative-reasoning-over-documents-with-rich-layouts/?amp",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.marktechpost.com/2024/01/05/this-ai-paper-from-ucla-introduces-spin-self-play-fine-tuning-a-machine-learning-method-to-convert-a-weak-llm-to-a-strong-llm-by-unleashing-the-full-power-of-human-annotated-data/",
+      "url": "https://www.marktechpost.com/2024/01/05/this-ai-paper-from-ucla-introduces-spin-self-play-fine-tuning-a-machine-learning-method-to-convert-a-weak-llm-to-a-strong-llm-by-unleashing-the-full-power-of-human-annotated-data/",
+      "type": "plain"
+    },
+    {
+      "label": "https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6",
+      "url": "https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6",
+      "type": "plain"
+    },
+    {
+      "label": "https://pubmed.ncbi.nlm.nih.gov/36334360/",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36334360/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers",
+      "url": "https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers",
+      "type": "plain"
+    },
+    {
+      "label": "https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/",
+      "url": "https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/",
+      "type": "plain"
+    },
+    {
+      "label": "https://stability.ai/research/adversarial-diffusion-distillation",
+      "url": "https://stability.ai/research/adversarial-diffusion-distillation",
+      "type": "plain"
+    },
+    {
+      "label": "https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist",
+      "url": "https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist",
       "type": "plain"
     }
   ],
@@ -195,6 +406,18 @@
       "label": "https://www.researchgate.net/figure/ViT-B-32-model-structure_fig2_373573593)",
       "url": "https://www.researchgate.net/figure/ViT-B-32-model-structure_fig2_373573593)",
       "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Frameworks.md": [
+    {
+      "label": "NeoGrad",
+      "url": "https://github.com/pranftw/neograd",
+      "type": "markdown"
+    },
+    {
+      "label": "/keras-vs-tensorflow-vs-pytorch-article",
+      "url": "https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article",
+      "type": "markdown"
     }
   ],
   "src/content/docs/ai/In Medicine/medical.md": [
@@ -279,7 +502,51 @@
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/Learning Goals/Workflows/work-flow.mdx": [
+  "src/content/docs/ai/Infrastructure/Introduction.mdx": [
+    {
+      "label": "Runpods",
+      "url": "https://www.runpod.io",
+      "type": "markdown"
+    },
+    {
+      "label": "https://github.com/Portkey-AI/gateway",
+      "url": "https://github.com/Portkey-AI/gateway",
+      "type": "plain"
+    },
+    {
+      "label": "https://portkey.ai/features/ai-gateway",
+      "url": "https://portkey.ai/features/ai-gateway",
+      "type": "plain"
+    },
+    {
+      "label": "https://opendatahub.io/",
+      "url": "https://opendatahub.io/",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Markets/5 DataEngineering.md": [
+    {
+      "label": "fundamentals-of-data-engineering",
+      "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
+      "type": "markdown"
+    },
+    {
+      "label": "airflow / dbt",
+      "url": "https://www.getdbt.com/blog/dbt-airflow",
+      "type": "markdown"
+    },
+    {
+      "label": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
+      "url": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
+      "type": "plain"
+    },
+    {
+      "label": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
+      "url": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/My Learning Goals/Workflows/work-flow.mdx": [
     {
       "label": "promptr",
       "url": "https://github.com/ferrislucas/promptr",
@@ -322,7 +589,7 @@
     },
     {
       "label": "see results",
-      "url": "/ai-ui-playground/ai/learning-goals/gui-generator/",
+      "url": "../GUI-Generator/index.mdx",
       "type": "markdown"
     },
     {
@@ -426,43 +693,6 @@
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/Learning Goals/learning goals.mdx": [
-    {
-      "label": "fundamentals-of-data-engineering",
-      "url": "https://saracus.com/synvert-saracus-blog/10-dinge-die-ich-beim-lesen-von-fundamentals-of-data-engineering-gelernt-habe/#",
-      "type": "markdown"
-    },
-    {
-      "label": "airflow / dbt",
-      "url": "https://www.getdbt.com/blog/dbt-airflow",
-      "type": "markdown"
-    },
-    {
-      "label": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
-      "url": "https://chat.openai.com/share/14184316-4969-475c-a790-3e890648098c",
-      "type": "plain"
-    },
-    {
-      "label": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
-      "url": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
-      "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
-      "type": "plain"
-    },
-    {
-      "label": "https://chat.openai.com/c/1370e49f-2e52-4ebd-9eef-fd33b0948b25",
-      "url": "https://chat.openai.com/c/1370e49f-2e52-4ebd-9eef-fd33b0948b25",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
-      "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
-      "type": "plain"
-    }
-  ],
   "src/content/docs/ai/Natural Language Processing/prompts.md": [
     {
       "label": "OpenAI veröffentlicht Prompt-Guide",
@@ -492,23 +722,6 @@
       "type": "markdown"
     }
   ],
-  "src/content/docs/ai/Platforms.md": [
-    {
-      "label": "Huggingface.co",
-      "url": "https://huggingface.co",
-      "type": "markdown"
-    },
-    {
-      "label": "kaggle",
-      "url": "https://www.kaggle.com/",
-      "type": "markdown"
-    },
-    {
-      "label": "paperspace notebooks",
-      "url": "https://www.paperspace.com/notebooks",
-      "type": "markdown"
-    }
-  ],
   "src/content/docs/ai/Practical Deep Learning - FastAi Notes/1 Overview.md": [
     {
       "label": "Practical Deep Learning for Coders part 1",
@@ -518,88 +731,41 @@
   ],
   "src/content/docs/ai/Resources.md": [
     {
+      "label": "Fast.AI Beginner Course",
+      "url": "https://course.fast.ai/",
+      "type": "markdown"
+    },
+    {
+      "label": "Website with lots of information of the field",
+      "url": "https://paperswithcode.com/sota",
+      "type": "markdown"
+    },
+    {
       "label": "The End of Finetuning — with Jeremy Howard of Fast.ai",
       "url": "https://youtu.be/5Sze3kHAZqE?feature=shared",
       "type": "markdown"
     },
     {
-      "label": "https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6",
-      "url": "https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6",
-      "type": "plain"
-    },
-    {
-      "label": "https://pubmed.ncbi.nlm.nih.gov/36334360/",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/36334360/",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers",
-      "url": "https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers",
-      "type": "plain"
-    },
-    {
-      "label": "https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/",
-      "url": "https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/",
-      "type": "plain"
-    },
-    {
-      "label": "https://stability.ai/research/adversarial-diffusion-distillation",
-      "url": "https://stability.ai/research/adversarial-diffusion-distillation",
-      "type": "plain"
-    },
-    {
-      "label": "https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code",
-      "url": "https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code",
-      "type": "plain"
-    },
-    {
-      "label": "https://huggingface.co/stabilityai/sdxl-turbo",
-      "url": "https://huggingface.co/stabilityai/sdxl-turbo",
-      "type": "plain"
-    },
-    {
-      "label": "https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist",
-      "url": "https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist",
-      "type": "plain"
-    },
-    {
-      "label": "https://github.com/ml-tooling/best-of-ml-python#others",
-      "url": "https://github.com/ml-tooling/best-of-ml-python#others",
-      "type": "plain"
-    },
-    {
-      "label": "https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd",
-      "url": "https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd",
+      "label": "https://github.com/filipecalegario/awesome-generative-ai",
+      "url": "https://github.com/filipecalegario/awesome-generative-ai",
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/Thesaurus.md": [
+  "src/content/docs/ai/Skills/Roadmap.md": [
     {
-      "label": "50 AI terms every beginner should know",
-      "url": "https://www.telusinternational.com/insights/ai-data/article/50-beginner-ai-terms-you-should-know",
+      "label": "Roles",
+      "url": "./Roles.mdx",
       "type": "markdown"
     },
     {
-      "label": "82 Artificial Intelligence terms you need to know today. (Updated) ",
-      "url": "https://www.linkedin.com/pulse/25-artificial-intelligence-terms-you-need-know-today-jair-ribeiro/",
-      "type": "markdown"
-    }
-  ],
-  "src/content/docs/ai/tools.md": [
-    {
-      "label": "LMStudio",
-      "url": "https://lmstudio.ai/",
+      "label": "From Backend Engineer to ML Engineer",
+      "url": "https://medium.com/israeli-tech-radar/from-backend-engineer-to-ml-engineer-roadmap-436cb3bf3c7",
       "type": "markdown"
     },
     {
-      "label": "18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification",
-      "url": "https://medmnist.com/",
-      "type": "markdown"
-    },
-    {
-      "label": "The Cancer Imaging Archive (TCIA)",
-      "url": "https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm",
-      "type": "markdown"
+      "label": "https://t3n.de/news/unternehmen-machine-learning-sinnvoll-implementieren-1601678/",
+      "url": "https://t3n.de/news/unternehmen-machine-learning-sinnvoll-implementieren-1601678/",
+      "type": "plain"
     }
   ],
   "src/content/docs/guides/example.md": [
@@ -645,7 +811,19 @@
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/Learning Goals/GUI-Generator/index.mdx": [
+  "src/content/docs/ai/Markets/4  DataScience.md": [
+    {
+      "label": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
+      "url": "https://github.com/jupyter/jupyter/wiki/Jupyter-kernels",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+      "url": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/My Learning Goals/GUI-Generator/index.mdx": [
     {
       "label": "https://makereal.tldraw.com/",
       "url": "https://makereal.tldraw.com/",
@@ -657,7 +835,7 @@
       "type": "plain"
     }
   ],
-  "src/content/docs/ai/Learning Goals/Workflows/work-flow-example.md": [
+  "src/content/docs/ai/My Learning Goals/Workflows/work-flow-example.md": [
     {
       "label": "http://localhost:${port}`);",
       "url": "http://localhost:${port}`);",
@@ -732,6 +910,37 @@
     {
       "label": "https://course.fast.ai/Lessons/lesson2.html",
       "url": "https://course.fast.ai/Lessons/lesson2.html",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Projects.md": [
+    {
+      "label": "https://www.heise.de/ratgeber/Raspberry-Pi-Projekt-KI-Sprachassistent-mit-eigenem-sprechenden-Avatar-bauen-9591453.html",
+      "url": "https://www.heise.de/ratgeber/Raspberry-Pi-Projekt-KI-Sprachassistent-mit-eigenem-sprechenden-Avatar-bauen-9591453.html",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Skills/HighDemandSkills.mdx": [
+    {
+      "label": "https://www.linkedin.com/pulse/21-most-demand-ai-skills-programmers-20232024-muhammad-yasir-khan/",
+      "url": "https://www.linkedin.com/pulse/21-most-demand-ai-skills-programmers-20232024-muhammad-yasir-khan/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.analyticsvidhya.com/blog/2023/08/ai-skills/#h-top-25-ai-skills-nbsp",
+      "url": "https://www.analyticsvidhya.com/blog/2023/08/ai-skills/#h-top-25-ai-skills-nbsp",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/eGPU.md": [
+    {
+      "label": "https://geizhals.de/?cat=hwegpu",
+      "url": "https://geizhals.de/?cat=hwegpu",
+      "type": "plain"
+    },
+    {
+      "label": "https://geizhals.de/sonnet-breakaway-box-750ex-gpu-750wex-tb3-a2448731.html?hloc=at&hloc=de",
+      "url": "https://geizhals.de/sonnet-breakaway-box-750ex-gpu-750wex-tb3-a2448731.html?hloc=at&hloc=de",
       "type": "plain"
     }
   ]
