@@ -15,16 +15,16 @@ Contains links of things that might be important.
 - https://github.com/ml-tooling/best-of-ml-python#others
 - https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd
 - www.golem.de/news/ki-die-programmierhelfer-der-zukunft-2312-180559-3.amp.html?amp_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17038187664658&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-die-programmierhelfer-der-zukunft-2312-180559-3.html
-
-
-
-
-- https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055283407412&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F14%2Fmistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning%2F
 - https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/
-- https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/15/cmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055650562122&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F15%2Fcmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models%2F
 - https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/
+
+
+- www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055283407412&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F14%2Fmistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning%2F
+
+- www.marktechpost.com/2024/01/15/cmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055650562122&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F15%2Fcmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models%2F
+
 - https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/
-- https://www.heise.de/forum/heise-online/Kommentare/Webentwicklung-Neuronale-Netze-mit-JavaScript-im-Browser-trainieren/forum-533102/comment/
+
 
 
 
@@ -87,7 +87,7 @@ List of links that might be worth a read (somewhat of a pile of shame)
 
 - https://www.marktechpost.com/2024/01/05/jpmorgan-ai-research-introduces-docllm-a-lightweight-extension-to-traditional-large-language-models-tailored-for-generative-reasoning-over-documents-with-rich-layouts/?amp
 - https://www.marktechpost.com/2024/01/05/this-ai-paper-from-ucla-introduces-spin-self-play-fine-tuning-a-machine-learning-method-to-convert-a-weak-llm-to-a-strong-llm-by-unleashing-the-full-power-of-human-annotated-data/
-- https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/06/bytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17050613883224&csi=1&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F06%2Fbytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery%2F%3Famp%3D%23amp_tf%3DVon%2520%25251%2524s%26aoh%3D17050613883224%26csi%3D1%26referrer%3Dhttps%253A%252F%252Fwww.google.com
+- www.marktechpost.com/2024/01/06/bytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17050613883224&csi=1&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F06%2Fbytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery%2F%3Famp%3D%23amp_tf%3DVon%2520%25251%2524s%26aoh%3D17050613883224%26csi%3D1%26referrer%3Dhttps%253A%252F%252Fwww.google.com
 
 - www.marktechpost.com/2023/12/21/meet-g-llava-the-game-changer-in-geometric-problem-solving-and-surpasses-gpt-4-v-with-the-innovative-geo170k-dataset/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17035807539437&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2023%2F12%2F21%2Fmeet-g-llava-the-game-changer-in-geometric-problem-solving-and-surpasses-gpt-4-v-with-the-innovative-geo170k-dataset%2F
 - https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6
