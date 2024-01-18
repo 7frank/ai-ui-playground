@@ -27,7 +27,7 @@ export default function rollupPluginPlantuml(options = {}) {
 
             // Code for when you want to inline the svg base64 encoded
             const svgContent=await streamToPromise(uml.out)  
-            const encoded=`data:image/svg+xml;base64,${btoa(svgContent)}`
+            const encoded=`data:image/svg+xml;base64,${svgContent.toString('base64')}`
             return `export default "${encoded}"`;
         }
     };

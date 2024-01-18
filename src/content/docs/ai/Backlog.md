@@ -17,6 +17,19 @@ Contains links of things that might be important.
 - www.golem.de/news/ki-die-programmierhelfer-der-zukunft-2312-180559-3.amp.html?amp_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17038187664658&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-die-programmierhelfer-der-zukunft-2312-180559-3.html
 
 
+
+
+- https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055283407412&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F14%2Fmistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning%2F
+- https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/
+- https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/15/cmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055650562122&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F15%2Fcmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models%2F
+- https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/
+- https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/
+- https://www.heise.de/forum/heise-online/Kommentare/Webentwicklung-Neuronale-Netze-mit-JavaScript-im-Browser-trainieren/forum-533102/comment/
+
+
+
+
+
 ## chatgpt
 
 ### gpt4 capabilities
