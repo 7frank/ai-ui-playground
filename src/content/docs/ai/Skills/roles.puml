@@ -1,5 +1,4 @@
 @startuml
-@startuml
 class DataEngineer {
   - Infrastructure and Architecture Design
   - Data Collection and Storage

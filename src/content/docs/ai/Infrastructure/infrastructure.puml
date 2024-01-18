@@ -1,0 +1,75 @@
+@startuml
+class DataStorage {
+    Data Storage & Management
+    Example: Amazon S3, HDFS
+}
+class Compute {
+    Compute Resources (CPU/GPU)
+    Example: NVIDIA GPUs, Intel CPUs
+}
+class Networking {
+    Networking
+}
+class Security {
+    Security
+    Example: OAuth, TLS Encryption
+}
+class Scalability {
+    Scalability Solutions
+}
+class Monitoring {
+    Monitoring & Management Tools
+    Example: Prometheus, Grafana
+}
+class DevelopmentTools {
+    SDKs & APIs
+    Example: TensorFlow SDK, RESTful APIs
+}
+class Collaboration {
+    Collaboration & Version Control
+    Example: Git, SVN
+}
+class MLFrameworks {
+    Machine Learning Frameworks
+    Example: TensorFlow, PyTorch
+}
+class GraphDatabases {
+    Graph Databases (e.g., Neo4j)
+    Example: Neo4j, ArangoDB
+}
+class BigDataTools {
+    Big Data Tools (Hadoop, Spark)
+}
+class Streaming {
+    Streaming Platforms (Kafka)
+}
+class CloudServices {
+    Cloud Services (SageMaker, Open Data Hub)
+}
+
+DataStorage -[hidden]-> Compute
+Compute -[hidden]-> Networking
+Networking -[hidden]-> Security
+Security -[hidden]-> Scalability
+Scalability -[hidden]-> Monitoring
+Monitoring -[hidden]-> DevelopmentTools
+DevelopmentTools -[hidden]-> Collaboration
+Collaboration -[hidden]-> MLFrameworks
+MLFrameworks -[hidden]-> GraphDatabases
+GraphDatabases -[hidden]-> BigDataTools
+BigDataTools -[hidden]-> Streaming
+Streaming -[hidden]-> CloudServices
+
+DataStorage <-- Compute : Uses
+Compute <-- Networking : Relies On
+Networking <-- Security : Protected By
+Security <-- Scalability : Ensures
+Scalability <-- Monitoring : Supported By
+Monitoring <-- DevelopmentTools : Monitored By
+DevelopmentTools <-- Collaboration : Utilizes
+Collaboration <-- MLFrameworks : Supported By
+MLFrameworks <-- GraphDatabases : Integrates With
+GraphDatabases <-- BigDataTools : Connects To
+BigDataTools <-- Streaming : Feeds Into
+Streaming <-- CloudServices : Utilizes
+@enduml

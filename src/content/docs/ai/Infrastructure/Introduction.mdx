@@ -1,0 +1,78 @@
+---
+title: Introduction
+---
+import infrastructureDiagram from './infrastructure.puml'
+
+
+<img alt="" src={infrastructureDiagram} />
+
+
+
+## Infrastructure components
+
+### Gateways
+
+#### Portkey's AI Gateway:
+
+- https://github.com/Portkey-AI/gateway
+- https://portkey.ai/features/ai-gateway
+
+
+This project acts as an interface between applications and various hosted LLMs. It offers a unified API that can route requests to over 100 LLMs, including OpenAI, Anthropic, Mistral, LLama2, Anyscale, Google Gemini, and others. Key features include:
+Blazing-fast performance with a small footprint (~45kb installed).
+Load balancing across multiple models, providers, and keys.
+Fallback mechanisms for resilience.
+Automatic retries with exponential fallbacks.
+Support for plugin middleware.
+Compatibility with several SDKs across different programming languages like Node.js, Python, Go, Java, and Ruby.
+
+    You can install it easily if you're familiar with Node.js, and it's designed to be quick to try out or deploy. The gateway is open-sourced, encouraging community involvement and innovation.
+
+### Compute Resources
+
+Besides the obvious, running models on AWS, Azure or GCP there are several options:
+
+#### LocalAI:
+ This is a free, open-source alternative to OpenAI, tailored for self-hosting and local-first approaches. It's designed to run on consumer-grade hardware without requiring a GPU. LocalAI supports various models compatible with ggml, gguf, GPTQ, onnx, TensorFlow, and others. Some of the models it can run include llama, llama2, rwkv, whisper, vicuna, koala, cerebras, falcon, dolly, starcoder, and more. LocalAI is a drop-in replacement for OpenAI, emphasizing a community-driven development approach.
+
+ #### Runpods 
+
+ [Runpods](https://www.runpod.io) is proves to host models in the cloud as well as running them on GPU resources easily
+
+### Databases & Storage
+
+#### Neo4j
+
+Graph databases, like Neo4j, are increasingly important in the AI infrastructure landscape. They offer a way to store and query data in the form of graphs, making them especially suitable for complex data relationships and network analysis. This is particularly useful in AI applications like recommendation systems, fraud detection, and social network analysis. Graph databases provide efficient data relationship exploration and can handle interconnected data more effectively than traditional relational databases. This capability makes them a valuable component in AI and machine learning projects where relational data modeling is crucial.
+
+
+#### Hadoop
+ A framework that allows for distributed storage and processing of large data sets across clusters of computers. It's fundamental for data-intensive tasks, like data mining, machine learning, and predictive modeling.
+
+
+### Clustering
+
+Apache Kafka and Apache Spark can be interconnected and are often used together in big data architectures. Kafka serves as a powerful distributed streaming platform, ideal for handling real-time data feeds. Spark, with its ability to process large datasets quickly, can consume streams of data from Kafka. This integration allows for real-time analytics and data processing, making it a powerful combination for scenarios where immediate data processing and insights are required, such as in real-time monitoring systems, streaming analytics, and event-driven applications. The synergy between Kafka's streaming capabilities and Spark's data processing power enhances the efficiency of handling large-scale, real-time data workflows.
+
+#### Spark
+
+ An open-source, distributed computing system that provides a fast and general-purpose cluster-computing framework. Spark is often used for machine learning algorithms due to its ability to handle large datasets efficiently.
+
+#### Kafka
+
+ A distributed streaming platform that's used to build real-time data pipelines and streaming applications. It's valuable for AI in scenarios that involve real-time analytics, like monitoring and processing live data streams.
+
+### Integrated Solutions
+
+#### Open Data Hub
+
+https://opendatahub.io/
+
+This is an open-source project that provides a flexible, Kubernetes-based platform for developing and deploying AI/ML workloads on OpenShift (Red Hat's Kubernetes distribution). It integrates a variety of open-source tools and is focused on the management of the data and AI lifecycle in a more modular, customizable way.
+
+
+
+#### Amazon SageMaker
+
+It's a fully managed service provided by AWS that simplifies the process of building, training, and deploying machine learning models. SageMaker is deeply integrated with the AWS ecosystem, offering a broad range of tools and functionalities for machine learning tasks, and is designed for scalable, cloud-based solutions.
+
