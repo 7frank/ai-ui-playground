@@ -148,7 +148,7 @@
            
             // Highlight adjacent edges
             node.connectedEdges().addClass('highlighted');
-            
+
             highlightNodes(els)
 
             cy.resize();
@@ -156,6 +156,26 @@
             fitIntoView(els)
 
         });
+
+        cy.on('tap', 'edge', function(event) {
+          const edge = event.target;
+
+            // Retrieve the source and target nodes of the edge
+            const sourceNode = edge.source();
+            const targetNode = edge.target();
+            const els = cy.collection().add(sourceNode).add(targetNode);
+
+            resetStyle()
+
+            edge.addClass('highlighted');
+
+            highlightNodes(els)
+            cy.resize();
+            fitIntoView(els)
+
+        });
+
+
 
         // Reset styles when clicking elsewhere
         cy.on('tap', function(event) {
