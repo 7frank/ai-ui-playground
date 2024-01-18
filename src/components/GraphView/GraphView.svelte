@@ -116,21 +116,19 @@
             // fade all not relevant nodes
             cy.elements().addClass('faded');
 
-            // Highlight the selected node
-            node.addClass('highlighted');
 
+            const els=node.neighborhood('node').add(node)
+           
             // Highlight adjacent nodes and edges
             node.connectedEdges().addClass('highlighted');
-            node.neighborhood('node').addClass('highlighted');
+            els.addClass('highlighted');
 
             // un-fade all relevant nodes
-            node.neighborhood('node').removeClass('faded');
-            node.removeClass('faded');
-            node.closedNeighborhood
+            els.removeClass('faded');   
             cy.resize();
             cy.animate({
                 fit: {
-                    eles: node.neighborhood('node'),
+                    eles: els,
                     padding: 50
                 },
                 duration: 1000, // duration in milliseconds
