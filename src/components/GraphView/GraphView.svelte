@@ -106,35 +106,54 @@
 
         });
 
-        // Add click event listener to nodes
-        cy.on('tap', 'node', function(event) {
-            var node = event.target;
 
+        function resetStyle(){
             // Reset previously highlighted elements, if any
             cy.elements().removeClass('highlighted');
             
             // fade all not relevant nodes
             cy.elements().addClass('faded');
 
+        }
 
-            const els=node.neighborhood('node').add(node)
-           
-            // Highlight adjacent nodes and edges
-            node.connectedEdges().addClass('highlighted');
-            els.addClass('highlighted');
+        function highlightNodes(nodes)
+        {
+          // Highlight nodes 
+          nodes.addClass('highlighted');
 
-            // un-fade all relevant nodes
-            els.removeClass('faded');   
-            cy.resize();
-            cy.animate({
+          // un-fade all relevant nodes
+          nodes.removeClass('faded');  
+        }
+
+        function fitIntoView(nodes)
+        {
+          cy.animate({
                 fit: {
-                    eles: els,
+                    eles: nodes,
                     padding: 50
                 },
                 duration: 1000, // duration in milliseconds
                 easing: 'linear' // easing style, you can choose others like 'linear', 'ease-in', 'ease-out', etc.
             });
+        }
 
+
+        // Add click event listener to nodes
+        cy.on('tap', 'node', function(event) {
+            var node = event.target;
+
+            resetStyle()
+
+            const els=node.neighborhood('node').add(node)
+           
+            // Highlight adjacent edges
+            node.connectedEdges().addClass('highlighted');
+            
+            highlightNodes(els)
+
+            cy.resize();
+
+            fitIntoView(els)
 
         });
 
