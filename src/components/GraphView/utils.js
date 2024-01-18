@@ -7,7 +7,8 @@ const performSearch = (cy,term,nodeToStr) => {
    
    return cy.nodes().filter(node => {
       const label = nodeToStr(node); // Adjust based on your data attribute
-      return !label.toLowerCase().includes(term.toLowerCase());
+      console.log(label,label.toLowerCase().includes(term.toLowerCase()))
+      return label.toLowerCase().includes(term.toLowerCase());
     })
   }
   

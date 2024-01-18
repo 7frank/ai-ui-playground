@@ -39,6 +39,37 @@
 
     let cy :cytoscape.Core
 
+    function resetStyle(){
+            // Reset previously highlighted elements, if any
+            cy.elements().removeClass('highlighted');
+            
+            // fade all not relevant nodes
+            cy.elements().addClass('faded');
+
+        }
+
+        function highlightNodes(nodes)
+        {
+          // Highlight nodes 
+          nodes.addClass('highlighted');
+
+          // un-fade all relevant nodes
+          nodes.removeClass('faded');  
+        }
+
+        function fitIntoView(nodes)
+        {
+          cy.animate({
+                fit: {
+                    eles: nodes,
+                    padding: 50
+                },
+                duration: 1000, // duration in milliseconds
+                easing: 'linear' // easing style, you can choose others like 'linear', 'ease-in', 'ease-out', etc.
+            });
+        }
+
+
     onMount(() => {
    
         cy = cytoscape({
@@ -112,35 +143,7 @@
         });
 
 
-        function resetStyle(){
-            // Reset previously highlighted elements, if any
-            cy.elements().removeClass('highlighted');
-            
-            // fade all not relevant nodes
-            cy.elements().addClass('faded');
-
-        }
-
-        function highlightNodes(nodes)
-        {
-          // Highlight nodes 
-          nodes.addClass('highlighted');
-
-          // un-fade all relevant nodes
-          nodes.removeClass('faded');  
-        }
-
-        function fitIntoView(nodes)
-        {
-          cy.animate({
-                fit: {
-                    eles: nodes,
-                    padding: 50
-                },
-                duration: 1000, // duration in milliseconds
-                easing: 'linear' // easing style, you can choose others like 'linear', 'ease-in', 'ease-out', etc.
-            });
-        }
+       
 
 
         // Add click event listener to nodes
@@ -239,7 +242,11 @@
     function handleSearchChange(event) {
     searchTerm = event.target.value;
     const found=performSearch(cy,searchTerm,(n)=> getDisplayText(n));
-    console.log(found)
+
+    resetStyle()
+    highlightNodes(found)
+    cy.resize();
+    fitIntoView(found)
     }
 
   </script>
