@@ -6,3 +6,9 @@ dependencies:
   - spacy
   - networkx
   - scipy
+  - conda-forge::neptune
+  # find out what installed these? 
+  # - ca-certificates
+  # - certifi
+  # - openssl
+  - conda-forge::wikipedia-api
