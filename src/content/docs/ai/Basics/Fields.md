@@ -62,11 +62,36 @@ Involves selecting the most significant features from the dataset. Techniques in
 > Deep Learning as a Common Ground: Deep learning serves as a foundation that significantly intersects with all the other fields. It provides the underlying techniques and architectures (like neural networks, CNNs, RNNs) that are crucial in advanced applications of computer vision, NLP, and many machine learning models.
 
 
-- Neural Networks Basics: Understanding the architecture of neural networks, including layers, activation functions, and backpropagation.
-- Optimization Algorithms: Familiarity with algorithms like Gradient Descent, Adam, etc.
-- Regularization Techniques: Techniques like dropout, L1/L2 regularization to prevent overfitting.
-- CNNs and RNNs: Deep dive into convolutional and recurrent neural networks for image and sequential data processing.
-- Frameworks: Proficiency in deep learning frameworks like TensorFlow, PyTorch, or Keras.
+### Neural Networks Basics:
+- **Architecture**: Neural networks consist of layers of interconnected nodes or neurons. Each layer receives input from previous layers (except the first layer, which takes in the raw data) and provides output to subsequent layers. The most common layers are input, hidden, and output layers.
+- **Activation Functions**: These are functions applied to the output of a neuron, introducing non-linear properties to the model. Common examples include ReLU (Rectified Linear Unit), Sigmoid, and Tanh.
+- **Backpropagation**: This is the process of adjusting the weights of the neural network based on the error rate (loss) obtained in the previous epoch (iteration). It involves calculating the gradient of the loss function with respect to each weight by the chain rule.
+
+### Optimization Algorithms:
+- **Gradient Descent**: This is a fundamental algorithm that minimizes the loss function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient.
+- **Adam (Adaptive Moment Estimation)**: A popular optimization algorithm, Adam combines the best properties of the AdaGrad and RMSProp algorithms to provide an optimization algorithm that can handle sparse gradients on noisy problems.
+
+### Regularization Techniques:
+- **Dropout**: A technique where randomly selected neurons are ignored during training, which means their contribution to the activation of downstream neurons is temporally removed on the forward pass and any weight updates are not applied on the backward pass.
+- **L1/L2 Regularization**: These add a penalty term to the loss function. L1 regularization (also known as Lasso regression) adds the absolute value of the weights, while L2 regularization (also known as Ridge regression) adds the squared value of the weights, to the loss function.
+
+### CNNs and RNNs:
+- **Convolutional Neural Networks (CNNs)**: Primarily used in image processing, these networks employ a mathematical operation called convolution. CNNs are characterized by their convolutional layers that apply a number of filters to the input.
+- **Recurrent Neural Networks (RNNs)**: Ideal for processing sequential data (like time series or natural language), RNNs have connections that form cycles in the network, allowing information to persist over time.
+
+### Frameworks:
+- **TensorFlow**: An open-source software library for dataflow and differentiable programming, widely used for machine learning applications such as neural networks.
+- **PyTorch**: Known for its simplicity and ease of use, especially for prototypes and experiments, PyTorch is an open-source machine learning library based on Torch.
+- **Keras**: An open-source software library that provides a Python interface for artificial neural networks. Keras acts as an interface for the TensorFlow library.
+
+## Data Science:
+
+- **Statistics and Probability**: Fundamental understanding of statistical measures, distributions, hypothesis testing, and Bayesian thinking.
+- Data Wrangling and Exploration: Skills in data cleaning, manipulation, and exploration using tools like Pandas, SQL, etc.
+- Data Visualization: Ability to visualize data for analysis using tools like Matplotlib, Seaborn, or Tableau.
+- Machine Learning: Basic understanding of ML algorithms like linear regression, decision trees, clustering, etc.
+- Big Data Technologies: Familiarity with big data platforms like Hadoop, Spark, and their ecosystems.
+
 
 
 
@@ -86,12 +111,4 @@ Involves selecting the most significant features from the dataset. Techniques in
 - Machine Translation and Speech Recognition: Techniques for converting speech to text and translating between languages.
 - Deep Learning for NLP: Applying recurrent neural networks (RNNs), Long Short-Term Memory networks (LSTMs), and Transformers in NLP tasks.
 
-
-## Data Science:
-
-- Statistics and Probability: Fundamental understanding of statistical measures, distributions, hypothesis testing, and Bayesian thinking.
-- Data Wrangling and Exploration: Skills in data cleaning, manipulation, and exploration using tools like Pandas, SQL, etc.
-- Data Visualization: Ability to visualize data for analysis using tools like Matplotlib, Seaborn, or Tableau.
-- Machine Learning: Basic understanding of ML algorithms like linear regression, decision trees, clustering, etc.
-- Big Data Technologies: Familiarity with big data platforms like Hadoop, Spark, and their ecosystems.
 
