@@ -3,6 +3,9 @@
 - fiddling with data
 
 # setup
+
+
+## scaping
  install pyenv
  install conda  https://linuxhint.com/install-and-use-miniconda-on-linux-mint/
  install mamba 
@@ -17,6 +20,13 @@
 
 download  language model which is not part of the repo
 `python -m spacy download en_core_web_sm`
+
+
+## setup neptune
+
+- edit `.env` set  NEPTUNE_API_TOKEN
+
+
 
 
 # TODO / Backlog 
