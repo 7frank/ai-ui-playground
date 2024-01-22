@@ -7,8 +7,6 @@ Contains links of things that might be important.
 
 ## HEAD
 
-
-- https://paperswithcode.com/methods
 - https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai
 - https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code
 - https://huggingface.co/stabilityai/sdxl-turbo
