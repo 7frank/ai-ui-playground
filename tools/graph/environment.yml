@@ -1,0 +1,8 @@
+name: mEnv
+channels:
+  - defaults
+dependencies:
+  - pandas
+  - spacy
+  - networkx
+  - scipy
