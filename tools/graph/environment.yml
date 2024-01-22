@@ -12,3 +12,4 @@ dependencies:
   # - certifi
   # - openssl
   - conda-forge::wikipedia-api
+  - ipykernel
