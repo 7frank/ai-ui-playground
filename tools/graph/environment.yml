@@ -13,3 +13,4 @@ dependencies:
   # - openssl
   - conda-forge::wikipedia-api
   - ipykernel
+  - conda-forge::matplotlib
