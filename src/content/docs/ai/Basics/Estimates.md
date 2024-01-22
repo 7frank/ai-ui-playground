@@ -1,5 +1,5 @@
 ---
-title: estimates
+title: Estimates for Learning
 ---
 
 To give you an idea of how much effort is needed to be able to work in one of the fields, below is a broad estimate:

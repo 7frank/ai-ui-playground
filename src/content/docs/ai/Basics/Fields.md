@@ -86,13 +86,31 @@ Involves selecting the most significant features from the dataset. Techniques in
 
 ## Data Science:
 
-- **Statistics and Probability**: Fundamental understanding of statistical measures, distributions, hypothesis testing, and Bayesian thinking.
-- Data Wrangling and Exploration: Skills in data cleaning, manipulation, and exploration using tools like Pandas, SQL, etc.
-- Data Visualization: Ability to visualize data for analysis using tools like Matplotlib, Seaborn, or Tableau.
-- Machine Learning: Basic understanding of ML algorithms like linear regression, decision trees, clustering, etc.
-- Big Data Technologies: Familiarity with big data platforms like Hadoop, Spark, and their ecosystems.
+### Statistics and Probability:
+- **Fundamental Understanding**: A solid grasp of statistical measures, distributions, hypothesis testing, and Bayesian thinking is essential. This includes:
+    - Understanding different types of data and how to summarize them using statistical measures like mean, median, mode, variance, etc.
+    - Knowledge of probability distributions (normal, binomial, Poisson, etc.) and how they are used to model real-world phenomena.
+    - Skills in hypothesis testing to make inferences or decisions based on data analysis.
+    - Familiarity with Bayesian methods for statistical analysis, which involve using probabilities for both hypotheses and data.
 
+### Data Wrangling and Exploration:
+- **Skills Required**: Proficiency in data cleaning, manipulation, and exploration is crucial. Key competencies include:
+    - Ability to clean and preprocess data to make it suitable for analysis (handling missing values, outliers, etc.).
+    - Expertise in manipulating datasets using tools like Pandas (for Python) or data.table (for R).
+    - Skills in using SQL for data querying and handling.
+    - Competence in exploratory data analysis to uncover initial patterns, characteristics, and points of interest in the data.
 
+### Data Visualization:
+- **Ability to Visualize Data**: Effective data visualization is key for analysis. This involves:
+    - Utilizing tools like Matplotlib and Seaborn (in Python) or ggplot2 (in R) for creating a wide range of static, interactive, and complex plots.
+    - Employing Tableau for more advanced business intelligence visualizations and dashboards.
+    - Understanding the principles of good visualization, including choice of appropriate chart types, color schemes, and annotations to make data insights clear and intuitive.
+
+### (Big Data Technologies):
+- **Familiarity with Big Data Platforms**: While core concept but not necessarily basic knowledge it becomes increasinngly impoortant:
+    - Understanding Hadoop and its ecosystem, including HDFS for storage and MapReduce for processing.
+    - Familiarity with Apache Spark, a powerful platform for big data processing and analytics.
+    - Knowledge of how these technologies are used for handling and analyzing large datasets, real-time data processing, and scalable machine learning.
 
 
 ## Computer Vision:
