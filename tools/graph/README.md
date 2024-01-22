@@ -19,4 +19,7 @@ download  language model which is not part of the repo
 `python -m spacy download en_core_web_sm`
 
 
-TODO check out https://python-poetry.org/docs/basic-usage/ for easier verion pinning compared to mamba (--from-version *not pinned* vs. no flag *pinned*)
+# TODO / Backlog 
+- check out https://python-poetry.org/docs/basic-usage/ for easier verion pinning compared to mamba (--from-version *not pinned* vs. no flag *pinned*)
+- pin versions with whatever tool
+- test out mojo kernel
