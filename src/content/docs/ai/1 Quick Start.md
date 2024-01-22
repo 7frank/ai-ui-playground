@@ -99,6 +99,42 @@ This section contains more general information for ai related topics
 
 - [kernels for different languages](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)
 
+
+## I need basics. Where to start?
+
+W3School has some interactive tutorials:
+
+- https://www.w3schools.com/datascience/
+
+- https://www.w3schools.com/python/python_ml_getting_started.asp
+
+
+The tensorflow and pytorch websites have their own tutorials:
+
+- https://pytorch.org/tutorials/
+- https://www.tensorflow.org/tutorials/images/classification
+
+fast.ai again has great video tutorials
+
+- https://course.fast.ai/
+
+Kaggle also has a series about ds and ml 
+
+- https://www.kaggle.com/learn
+
+
+In the field of computer vision OpenCV might be something you want to look up
+- https://learnopencv.com/3d-lidar-object-detection/
+
+## I need advanced sources
+
+
+You will find almost anything but should know what you are looking for. Like their name suggests, you will find a vast amount of papers accompanied with code, notebooks, etc. e.g. [cifar-10](https://paperswithcode.com/dataset/cifar-10)
+- https://paperswithcode.com
+
+fast.ai course has a 2nd video course, which goes deeper into the field.
+- https://course.fast.ai/Lessons/part2.html
+
 ---
 # Experimental:  "I Feel Lucky!"
 ---
