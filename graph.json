@@ -1,4 +1,26 @@
 {
+  "src/content/docs/ai/0 Introduction.mdx": [
+    {
+      "label": "Fields of AI",
+      "url": "./Fields.mdx",
+      "type": "markdown"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=artificial%20intelligence\"",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=artificial%20intelligence\"",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Outline%20of%20artificial%20intelligence\"",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Outline%20of%20artificial%20intelligence\"",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial",
+      "type": "plain"
+    }
+  ],
   "src/content/docs/ai/1 Quick Start.md": [
     {
       "label": "List of Platforms for fiddling",
@@ -86,6 +108,11 @@
       "type": "markdown"
     },
     {
+      "label": "cifar-10",
+      "url": "https://paperswithcode.com/dataset/cifar-10",
+      "type": "markdown"
+    },
+    {
       "label": "article about luma ai",
       "url": "https://3druck.com/programme/luma-ai-genie-3d-modelle-16124375/",
       "type": "markdown"
@@ -131,6 +158,51 @@
       "type": "plain"
     },
     {
+      "label": "https://www.w3schools.com/datascience/",
+      "url": "https://www.w3schools.com/datascience/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.w3schools.com/python/python_ml_getting_started.asp",
+      "url": "https://www.w3schools.com/python/python_ml_getting_started.asp",
+      "type": "plain"
+    },
+    {
+      "label": "https://pytorch.org/tutorials/",
+      "url": "https://pytorch.org/tutorials/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.tensorflow.org/tutorials/images/classification",
+      "url": "https://www.tensorflow.org/tutorials/images/classification",
+      "type": "plain"
+    },
+    {
+      "label": "https://course.fast.ai/",
+      "url": "https://course.fast.ai/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kaggle.com/learn",
+      "url": "https://www.kaggle.com/learn",
+      "type": "plain"
+    },
+    {
+      "label": "https://learnopencv.com/3d-lidar-object-detection/",
+      "url": "https://learnopencv.com/3d-lidar-object-detection/",
+      "type": "plain"
+    },
+    {
+      "label": "https://paperswithcode.com",
+      "url": "https://paperswithcode.com",
+      "type": "plain"
+    },
+    {
+      "label": "https://course.fast.ai/Lessons/part2.html",
+      "url": "https://course.fast.ai/Lessons/part2.html",
+      "type": "plain"
+    },
+    {
       "label": "https://uizard.io/ai-design/",
       "url": "https://uizard.io/ai-design/",
       "type": "plain"
@@ -150,6 +222,11 @@
     {
       "label": "Types of Artificial Neural Networks",
       "url": "https://en.wikipedia.org/wiki/Types_of_artificial_neural_networks",
+      "type": "markdown"
+    },
+    {
+      "label": "here",
+      "url": "./Basics/Fields.mdx",
       "type": "markdown"
     },
     {
@@ -224,6 +301,11 @@
       "type": "markdown"
     },
     {
+      "label": "here",
+      "url": "https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence",
+      "type": "markdown"
+    },
+    {
       "label": "https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/",
       "url": "https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/",
       "type": "plain"
@@ -261,8 +343,48 @@
       "type": "markdown"
     },
     {
-      "label": "https://paperswithcode.com/methods",
-      "url": "https://paperswithcode.com/methods",
+      "label": "https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m",
+      "url": "https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.infoq.com/articles/cloud-computing-post-serverless-trends/",
+      "url": "https://www.infoq.com/articles/cloud-computing-post-serverless-trends/",
+      "type": "plain"
+    },
+    {
+      "label": "https://towardsdatascience.com/a-weekend-ai-project-running-speech-recognition-and-a-llama-2-gpt-on-a-raspberry-pi-5298d6edf812",
+      "url": "https://towardsdatascience.com/a-weekend-ai-project-running-speech-recognition-and-a-llama-2-gpt-on-a-raspberry-pi-5298d6edf812",
+      "type": "plain"
+    },
+    {
+      "label": "https://www.kdnuggets.com/5-ways-of-converting-unstructured-data-into-structured-insights-with-llms",
+      "url": "https://www.kdnuggets.com/5-ways-of-converting-unstructured-data-into-structured-insights-with-llms",
+      "type": "plain"
+    },
+    {
+      "label": "https://dev.to/jderochervlk/rescript-rust-like-features-for-javascript-27ig",
+      "url": "https://dev.to/jderochervlk/rescript-rust-like-features-for-javascript-27ig",
+      "type": "plain"
+    },
+    {
+      "label": "https://bun.sh/blog/the-bun-shell",
+      "url": "https://bun.sh/blog/the-bun-shell",
+      "type": "plain"
+    },
+    {
+      "label": "https://stable-diffusion-art.com/comfyui/",
+      "url": "https://stable-diffusion-art.com/comfyui/",
+      "type": "plain"
+    },
+    {
+      "label": "https://github.com/joaomdmoura/crewAI?tab=readme-ov-file#how-crewai-compares",
+      "url": "https://github.com/joaomdmoura/crewAI?tab=readme-ov-file#how-crewai-compares",
+      "type": "plain"
+    },
+    {
+      "label": "https://the-decoder.de/trips-bringt-fotorealistische-3d-welten-in-echtzeit-einen-schritt-naeher/",
+      "url": "https://the-decoder.de/trips-bringt-fotorealistische-3d-welten-in-echtzeit-einen-schritt-naeher/",
       "type": "plain"
     },
     {
@@ -298,6 +420,16 @@
     {
       "label": "https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/",
       "url": "https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/",
+      "type": "plain"
+    },
+    {
+      "label": "https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/21/researchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17060042607563&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F21%2Fresearchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models%2F",
+      "url": "https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/21/researchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17060042607563&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F21%2Fresearchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models%2F",
+      "type": "plain"
+    },
+    {
+      "label": "https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/20/meet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17058126263634&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F20%2Fmeet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation%2F",
+      "url": "https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/20/meet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17058126263634&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F20%2Fmeet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation%2F",
       "type": "plain"
     },
     {
@@ -543,6 +675,11 @@
     {
       "label": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
       "url": "https://chat.openai.com/c/b21b699d-829d-4f9d-a174-bd1ffc47368b",
+      "type": "plain"
+    },
+    {
+      "label": "https://neptune.ai/blog/ml-platform-guide",
+      "url": "https://neptune.ai/blog/ml-platform-guide",
       "type": "plain"
     }
   ],
@@ -804,10 +941,44 @@
       "type": "markdown"
     }
   ],
+  "src/content/docs/ai/Basics/Fields.mdx": [
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Machine%20learning\"",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Machine%20learning\"",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Deep_learning\"",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Deep_learning\"",
+      "type": "plain"
+    }
+  ],
   "src/content/docs/ai/Computer Vision/CNNs.md": [
     {
       "label": "https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/",
       "url": "https://pyimagesearch.com/2021/05/14/convolutional-neural-networks-cnns-and-layer-types/",
+      "type": "plain"
+    }
+  ],
+  "src/content/docs/ai/Markets/2 Goals.mdx": [
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial%20intelligence",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial%20intelligence",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Data%20engineering",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Data%20engineering",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Data%20analysis",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Data%20analysis",
+      "type": "plain"
+    },
+    {
+      "label": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Dataa%20sciencea%20competitiona%20platform",
+      "url": "https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Dataa%20sciencea%20competitiona%20platform",
       "type": "plain"
     }
   ],
