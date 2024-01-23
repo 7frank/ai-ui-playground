@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import svelte from "@astrojs/svelte";
 import starlightLinksValidator from 'starlight-links-validator'
-
+import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
 import plantuml from './plugins/rollup-plugin-plantuml';
 
 // https://astro.build/config
@@ -12,6 +12,10 @@ export default defineConfig({
   vite:{
      plugins:[plantuml()]
   },
+  markdown: {
+    rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
+  },
+
   integrations: [
     svelte(),
     starlight({
