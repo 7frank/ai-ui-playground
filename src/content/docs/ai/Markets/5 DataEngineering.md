@@ -19,8 +19,6 @@ In depth article explaining how and why to setup a ML platform
  - https://neptune.ai/blog/ml-platform-guide
 
 
-
-
 ## pipelines (architecture?) Data Transformation Pipelines?
 
 - [airflow / dbt](https://www.getdbt.com/blog/dbt-airflow)

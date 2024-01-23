@@ -8,13 +8,6 @@ Contains links of things that might be important.
 ## HEAD
 
 - https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial%20intelligence
-- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=App%20store
-- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=List%20of%20mobile%20app%20distribution%20platforms
-- https://anvaka.github.io/vs/?query=mobile%20app%20distribution%20platforms
-
-- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Machine%20learning
-
----
 
 1. https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m
 2. https://www.infoq.com/articles/cloud-computing-post-serverless-trends/

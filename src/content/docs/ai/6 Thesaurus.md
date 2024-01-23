@@ -181,3 +181,7 @@ https://www.analyticsvidhya.com/blog/2024/01/generative-ai-terms/
 - Vector Databases: Databases designed to store and efficiently query high-dimensional vectors.
 - XAI (Explainable AI): Making AI models more interpretable and understandable.
 - Zero-shot Learning: A model's capability to handle tasks it has never been explicitly trained on.
+
+### Glossary of AI
+
+[here](https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence)
