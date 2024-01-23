@@ -11,7 +11,7 @@
     .toolbar {
       display: none;
       position: absolute;
-      top: 0;
+      right: 0;
       /* Add more styles for your toolbar */
     }
   
