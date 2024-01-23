@@ -7,6 +7,30 @@ Contains links of things that might be important.
 
 ## HEAD
 
+- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial%20intelligence
+- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=App%20store
+- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=List%20of%20mobile%20app%20distribution%20platforms
+- https://anvaka.github.io/vs/?query=mobile%20app%20distribution%20platforms
+
+- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Machine%20learning
+
+---
+
+1. https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m
+2. https://www.infoq.com/articles/cloud-computing-post-serverless-trends/
+3. https://towardsdatascience.com/a-weekend-ai-project-running-speech-recognition-and-a-llama-2-gpt-on-a-raspberry-pi-5298d6edf812
+
+5. https://www.kdnuggets.com/5-ways-of-converting-unstructured-data-into-structured-insights-with-llms
+6. https://dev.to/jderochervlk/rescript-rust-like-features-for-javascript-27ig
+7. https://bun.sh/blog/the-bun-shell
+8. https://stable-diffusion-art.com/comfyui/
+9. https://github.com/joaomdmoura/crewAI?tab=readme-ov-file#how-crewai-compares
+
+11. https://the-decoder.de/trips-bringt-fotorealistische-3d-welten-in-echtzeit-einen-schritt-naeher/
+
+
+---
+
 - https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai
 - https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code
 - https://huggingface.co/stabilityai/sdxl-turbo
@@ -15,6 +39,11 @@ Contains links of things that might be important.
 - www.golem.de/news/ki-die-programmierhelfer-der-zukunft-2312-180559-3.amp.html?amp_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17038187664658&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-die-programmierhelfer-der-zukunft-2312-180559-3.html
 - https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/
 - https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/
+
+---
+
+4. https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/21/researchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17060042607563&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F21%2Fresearchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models%2F
+10. https://www-marktechpost-com.cdn.ampproject.org/v/s/www.marktechpost.com/2024/01/20/meet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17058126263634&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F20%2Fmeet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation%2F
 
 
 - www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning/?amp=&_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17055283407412&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.marktechpost.com%2F2024%2F01%2F14%2Fmistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning%2F
