@@ -1,17 +1,18 @@
 <script>
     export let visible = false;
+    export let maxStyle = ''; 
     export let close;
   
     function handleClose() {
       if (typeof close === 'function') {
         close();
       }
+      visible=false;
     }
   </script>
-  {visible}
   {#if visible}
   <div class="modal-backdrop" on:click={handleClose}>
-    <div class="modal-content" on:click|stopPropagation>
+    <div class="modal-content" style={maxStyle} on:click|stopPropagation>
       <slot></slot>
     </div>
   </div>
@@ -29,6 +30,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 5;
     }
   
     .modal-content {
