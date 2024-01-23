@@ -6,11 +6,20 @@ Similar to Obsidian GraphView, this page shows all relations of documents.In its
 Future interations might help navigating complex topics.
 
 import GraphView from "../../../components/GraphView/GraphView.svelte";
+import NodesView from "../../../components/GraphView/NodesView.svelte";
 
 import graphData from "../../../../graph.json";
+import fooData from "../../../../foo.json";
 
 <GraphView
   graph={graphData}
+  onClick={(el) => console.log("clicked", el)}
+  client:load
+/>
+
+<hr/>
+<NodesView
+  graph={fooData}
   onClick={(el) => console.log("clicked", el)}
   client:load
 />

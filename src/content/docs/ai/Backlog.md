@@ -7,7 +7,8 @@ Contains links of things that might be important.
 
 ## HEAD
 
-- https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Artificial%20intelligence
+
+
 
 1. https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m
 2. https://www.infoq.com/articles/cloud-computing-post-serverless-trends/

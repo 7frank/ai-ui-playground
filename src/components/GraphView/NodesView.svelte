@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import cytoscape from 'cytoscape';
-  import { performSearch, debounce } from './utils';
+import { performSearch, debounce } from './utils';
 
   let targetEl: HTMLDivElement;
   let searchTerm = "";
@@ -9,6 +9,7 @@
   type NodeType = {
       id: string;
       label?: string;
+      group: number;
   };
 
   type LinkType = {
@@ -29,6 +30,14 @@
       return ele.data('label') ?? ele.data('id');
   }
 
+  const groupColorMap = {
+      1: '#009',
+      2: '#f00',
+      3: '#0f0',
+      4: '#00f',
+      // Add more colors for other groups as needed
+  };
+
   const mLayout = {
       name: 'cose',
       nodeDimensionsIncludeLabels: true,
@@ -46,7 +55,7 @@
                   selector: 'node',
                   style: {
                       'shape': 'round-rectangle',
-                      'background-color': '#009',
+                      'background-color': (ele) => groupColorMap[ele.data('group')],
                       'opacity': 0.8,
                       'label': (ele) => getDisplayText(ele),
                       'text-wrap': 'wrap',
@@ -61,10 +70,18 @@
               {
                   selector: 'edge',
                   style: {
-                      'width': (ele) => ele.data('strength') * 10,
+                    'width': (ele) => ele.data('strength') * 10,
                       'line-color': '#ccc',
                       'target-arrow-color': '#ccc',
-                      'target-arrow-shape': 'triangle'
+                      'target-arrow-shape': 'triangle',
+                      'label': 'data(relation)',
+                      'text-rotation': 'autorotate',
+                      'text-margin-x': '4px',
+                      'font-size': '10px',
+                      'text-background-opacity': 1,
+                      'text-background-color': '#fff',
+                      'text-background-padding': '3px',
+                      'edge-text-rotation': 'autorotate'
                   }
               },
               {
@@ -89,7 +106,7 @@
           ],
           layout: mLayout
       });
-
+      
       cy.on('dblclick', 'node', function(event) {
           var node = event.target;
           const data = node.data();
@@ -131,7 +148,7 @@
       let cyElements = [];
       data.nodes.forEach(node => {
           cyElements.push({
-              data: { id: node.id, label: node.label }
+              data: { id: node.id, label: node.id, group: node.group }
           });
       });
       data.links.forEach(link => {
@@ -140,6 +157,7 @@
                   id: `e-${link.source}-${link.target}`,
                   source: link.source,
                   target: link.target,
+                  relation: link.relation,
                   strength: link.strength
               }
           });
