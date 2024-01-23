@@ -1,8 +1,17 @@
 diff --git a/src/index.mjs b/src/index.mjs
-index e1d7d879542f1f589fc1e3e0318b95b6596e59b8..16b762a3007d5017e9d9cb35a0a1461942ac23f3 100644
+index e1d7d879542f1f589fc1e3e0318b95b6596e59b8..84756c2c6bddd9ba90d93924ea1683c93d1d7ee3 100644
 --- a/src/index.mjs
 +++ b/src/index.mjs
-@@ -27,7 +27,7 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+@@ -16,6 +16,8 @@ const debug = debugFn("astro-rehype-relative-markdown-links");
+ // This is very specific to Astro
+ const defaultContentPath = ["src", "content"].join(path.sep);
+ 
++const defaultBase=""
++
+ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+   return (tree, file) => {
+     visit(tree, "element", (node) => {
+@@ -27,7 +29,7 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
  
        const [url, queryStringAndFragment] =
          splitPathFromQueryAndFragment(nodeHref);
@@ -11,7 +20,7 @@ index e1d7d879542f1f589fc1e3e0318b95b6596e59b8..16b762a3007d5017e9d9cb35a0a14619
        if (!isValidRelativeLink(url)) {
          return;
        }
-@@ -36,7 +36,8 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+@@ -36,7 +38,8 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
        const currentFileParsed = path.parse(currentFile);
        const currentFileName = `${currentFileParsed.name}${currentFileParsed.ext}`;
        const currentFileDirectory = currentFile.replace(currentFileName, "");
@@ -21,12 +30,12 @@ index e1d7d879542f1f589fc1e3e0318b95b6596e59b8..16b762a3007d5017e9d9cb35a0a14619
        const relativeFileExists = fs.existsSync(relativeFile);
  
        if (!relativeFileExists) {
-@@ -79,6 +80,11 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+@@ -79,6 +82,11 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
          webPathFinal += queryStringAndFragment;
        }
  
 +     // add changes specific to our current environment
-+     webPathFinal =  webPathFinal.replace("/docs","/ai-ui-playground") 
++     webPathFinal =  webPathFinal.replace("/docs",  options.base || defaultBase) 
 +     webPathFinal= webPathFinal.toLowerCase()
 +     webPathFinal=webPathFinal.replace(/ /g, "-");
 +

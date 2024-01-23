@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   astro-rehype-relative-markdown-links@0.5.1:
-    hash: jrqzdb4y52cfw7ghfqajfnnr2y
+    hash: fs523lci4gd3uhrjowdxeh7jmm
     path: patches/astro-rehype-relative-markdown-links@0.5.1.patch
 
 dependencies:
@@ -24,7 +24,7 @@ dependencies:
     version: 3.6.4(typescript@5.3.3)
   astro-rehype-relative-markdown-links:
     specifier: ^0.5.1
-    version: 0.5.1(patch_hash=jrqzdb4y52cfw7ghfqajfnnr2y)(astro@3.6.4)
+    version: 0.5.1(patch_hash=fs523lci4gd3uhrjowdxeh7jmm)(astro@3.6.4)
   cytoscape:
     specifier: ^3.28.1
     version: 3.28.1
@@ -1390,7 +1390,7 @@ packages:
       remark-expressive-code: 0.29.4
     dev: false
 
-  /astro-rehype-relative-markdown-links@0.5.1(patch_hash=jrqzdb4y52cfw7ghfqajfnnr2y)(astro@3.6.4):
+  /astro-rehype-relative-markdown-links@0.5.1(patch_hash=fs523lci4gd3uhrjowdxeh7jmm)(astro@3.6.4):
     resolution: {integrity: sha512-CczSXlUWTbw5DeEbImqs/bV7kn3X9UhB7HTk/iyIPXXECXHUZmL7IGdpghq9Dx87K88rexejAThqKL5DhmJvag==}
     peerDependencies:
       astro: 2.x

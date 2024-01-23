@@ -5,15 +5,16 @@ import starlightLinksValidator from 'starlight-links-validator'
 import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
 import plantuml from './plugins/rollup-plugin-plantuml';
 
+const base="/ai-ui-playground"
 // https://astro.build/config
 export default defineConfig({
   site: "https://7frank.github.io",
-  base: "/ai-ui-playground",
+  base,
   vite:{
      plugins:[plantuml()]
   },
   markdown: {
-    rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
+    rehypePlugins: [()=>rehypeAstroRelativeMarkdownLinks({base})],
   },
 
   integrations: [
