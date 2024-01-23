@@ -18,6 +18,8 @@ You will find more info of them and and may more at - [Types of Artificial Neura
 
 ## Fields of NN
 
+[here](./Basics/Fields.mdx) you will find a more comprehensive overview of all fields.
+
 ### Natural Language Processing (NLP)
   This involves understanding, interpreting, and generating human language by machines. It's used in chatbots, translation services, and sentiment analysis.
 

@@ -8,7 +8,7 @@
 </script>
 
 <BigBox 
-    maxStyle={"width: 80%; height: 80%;"+maxStyle } 
+    maxStyle={"width: 95%; height: 95%;"+maxStyle } 
     {src}
 >
     {#if src}
