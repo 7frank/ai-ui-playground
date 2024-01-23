@@ -1,0 +1,35 @@
+diff --git a/src/index.mjs b/src/index.mjs
+index e1d7d879542f1f589fc1e3e0318b95b6596e59b8..16b762a3007d5017e9d9cb35a0a1461942ac23f3 100644
+--- a/src/index.mjs
++++ b/src/index.mjs
+@@ -27,7 +27,7 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+ 
+       const [url, queryStringAndFragment] =
+         splitPathFromQueryAndFragment(nodeHref);
+-
++     
+       if (!isValidRelativeLink(url)) {
+         return;
+       }
+@@ -36,7 +36,8 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+       const currentFileParsed = path.parse(currentFile);
+       const currentFileName = `${currentFileParsed.name}${currentFileParsed.ext}`;
+       const currentFileDirectory = currentFile.replace(currentFileName, "");
+-      const relativeFile = path.resolve(currentFileDirectory, url);
++      // we additionally unescape the path so that "%20" == " " will be handled too
++      const relativeFile = unescape(path.resolve(currentFileDirectory, url));
+       const relativeFileExists = fs.existsSync(relativeFile);
+ 
+       if (!relativeFileExists) {
+@@ -79,6 +80,11 @@ function rehypeAstroRelativeMarkdownLinks(options = {}) {
+         webPathFinal += queryStringAndFragment;
+       }
+ 
++     // add changes specific to our current environment
++     webPathFinal =  webPathFinal.replace("/docs","/ai-ui-playground") 
++     webPathFinal= webPathFinal.toLowerCase()
++     webPathFinal=webPathFinal.replace(/ /g, "-");
++
+       // Debugging
+       debug("--------------------------------");
+       debug("md/mdx AST Current File        : %s", currentFile);

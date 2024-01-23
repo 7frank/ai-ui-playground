@@ -35,5 +35,10 @@
     "glob": "^10.3.10",
     "mock-fs": "^5.2.0"
   },
-  "packageManager": "pnpm@8.13.1"
+  "packageManager": "pnpm@8.13.1",
+  "pnpm": {
+    "patchedDependencies": {
+      "astro-rehype-relative-markdown-links@0.5.1": "patches/astro-rehype-relative-markdown-links@0.5.1.patch"
+    }
+  }
 }
