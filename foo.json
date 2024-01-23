@@ -1,0 +1,275 @@
+{
+    "nodes": [
+        { "id": "Machine Learning", "group": 1 },
+        { "id": "Feature Engineering", "group": 2 },
+        { "id": "Predictive Modeling", "group": 1 },
+        { "id": "Sequence Modeling", "group": 3 },
+        { "id": "Pre-trained Models", "group": 3 },
+        { "id": "Underfitting", "group": 4 },
+        { "id": "Gradient Boosting", "group": 2 },
+        { "id": "Decision Trees", "group": 2 },
+        { "id": "Supervised Learning", "group": 1 },
+        { "id": "Ensemble Learning", "group": 2 },
+        { "id": "Regression", "group": 1 },
+        { "id": "Machine Translation", "group": 3 },
+        { "id": "Overfitting", "group": 4 },
+        { "id": "Sentiment Analysis", "group": 3 },
+        { "id": "Anomaly Detection", "group": 1 },
+        { "id": "Autoencoders", "group": 3 },
+        { "id": "Classification", "group": 1 },
+        { "id": "Unsupervised Learning", "group": 1 },
+        { "id": "Random Forests", "group": 2 },
+        { "id": "Image Generation", "group": 3 },
+        { "id": "Convolutional Neural Networks", "group": 3 },
+        { "id": "Feature Selection", "group": 2 },
+        { "id": "Time Series Forecasting", "group": 1 },
+        { "id": "Bias and Variance", "group": 4 },
+        { "id": "Deep Learning", "group": 3 },
+        { "id": "Neural Networks", "group": 3 },
+        { "id": "Support Vector Machines", "group": 2 },
+        { "id": "Recurrent Neural Networks", "group": 3 },
+        { "id": "Outlier Detection", "group": 1 },
+        { "id": "Natural Language Processing", "group": 3 },
+        { "id": "Feature Extraction", "group": 2 },
+        { "id": "Clustering", "group": 1 },
+        { "id": "Generative Adversarial Networks", "group": 3 },
+        { "id": "Transfer Learning", "group": 3 },
+        { "id": "Text Classification", "group": 3 },
+        { "id": "Image Recognition", "group": 3 },
+        { "id": "Policy Gradients", "group": 1 },
+        { "id": "Dimensionality Reduction", "group": 2 },
+        { "id": "Q-Learning", "group": 1 },
+        { "id": "Reinforcement Learning", "group": 1 },
+        { "id": "Data Compression", "group": 2 }
+    ],
+    "links": [
+        {
+            "source": "Machine Learning",
+            "target": "Supervised Learning",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Unsupervised Learning",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Supervised Learning",
+            "target": "Regression",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Supervised Learning",
+            "target": "Classification",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Unsupervised Learning",
+            "target": "Clustering",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Unsupervised Learning",
+            "target": "Dimensionality Reduction",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Reinforcement Learning",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Deep Learning",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Deep Learning",
+            "target": "Neural Networks",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Neural Networks",
+            "target": "Convolutional Neural Networks",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Convolutional Neural Networks",
+            "target": "Image Recognition",
+            "relation": "used in",
+            "strength": 0.25
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Natural Language Processing",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Natural Language Processing",
+            "target": "Text Classification",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Natural Language Processing",
+            "target": "Machine Translation",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Reinforcement Learning",
+            "target": "Q-Learning",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Reinforcement Learning",
+            "target": "Policy Gradients",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Feature Engineering",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Feature Engineering",
+            "target": "Feature Selection",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Feature Engineering",
+            "target": "Feature Extraction",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Supervised Learning",
+            "target": "Support Vector Machines",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Deep Learning",
+            "target": "Recurrent Neural Networks",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Recurrent Neural Networks",
+            "target": "Sequence Modeling",
+            "relation": "used in",
+            "strength": 0.25
+        },
+        {
+            "source": "Deep Learning",
+            "target": "Autoencoders",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Autoencoders",
+            "target": "Data Compression",
+            "relation": "used in",
+            "strength": 0.25
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Ensemble Learning",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Ensemble Learning",
+            "target": "Random Forests",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Ensemble Learning",
+            "target": "Gradient Boosting",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Supervised Learning",
+            "target": "Decision Trees",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Deep Learning",
+            "target": "Generative Adversarial Networks",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Generative Adversarial Networks",
+            "target": "Image Generation",
+            "relation": "used in",
+            "strength": 0.25
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Predictive Modeling",
+            "relation": "includes",
+            "strength": 0.5625
+        },
+        {
+            "source": "Predictive Modeling",
+            "target": "Time Series Forecasting",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Natural Language Processing",
+            "target": "Sentiment Analysis",
+            "relation": "type of",
+            "strength": 1.0
+        },
+        {
+            "source": "Deep Learning",
+            "target": "Transfer Learning",
+            "relation": "utilizes",
+            "strength": 0.4375
+        },
+        {
+            "source": "Transfer Learning",
+            "target": "Pre-trained Models",
+            "relation": "uses",
+            "strength": 0.0625
+        },
+        {
+            "source": "Machine Learning",
+            "target": "Bias and Variance",
+            "relation": "concepts in",
+            "strength": 0.0625
+        },
+        {
+            "source": "Bias and Variance",
+            "target": "Overfitting",
+            "relation": "related to",
+            "strength": 0.125
+        },
+        {
+            "source": "Bias and Variance",
+            "target": "Underfitting",
+            "relation": "related to",
+            "strength": 0.125
+        }
+    ]
+}
