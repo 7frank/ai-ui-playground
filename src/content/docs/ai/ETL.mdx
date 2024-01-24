@@ -1,0 +1,74 @@
+---
+title: Extract, Transform, Load (ETL)
+---
+import IFrameBox from '../../../components/BigBox/IFrameBox.svelte';
+
+<IFrameBox client:only 
+ src="https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Extract%2C%20transform%2C%20load"
+ maxStyle="" 
+ style=""
+/>
+
+
+
+
+## Overview
+
+- **Data Collection**: Gathering raw data from various sources such as databases, files, online sources, or sensors.
+  - *Tools*: SQL databases, Web scraping tools (like BeautifulSoup), APIs, IoT sensors
+
+- **Data Preprocessing / Data Cleaning**: Cleaning and preprocessing data to make it suitable for analysis. Handling missing values, removing noise, normalizing data, and transforming data into a usable format.
+  - *Tools*: Pandas (Python), NumPy (Python), R (dplyr, tidyr), Data cleaning platforms (like Trifacta, OpenRefine)
+
+- **Data Exploration / Data Analysis**: Exploring data to find patterns, trends, or relationships. Involves statistical analysis, data visualization, and exploratory data analysis (EDA).
+  - *Tools*: Jupyter Notebooks, RStudio, Python (matplotlib, seaborn), R (ggplot2), Tableau, Power BI
+
+- **Data Transformation / Feature Engineering**: Transforming data or engineering features to prepare for modeling. Creating new features, encoding, scaling, and other transformations.
+  - *Tools*: Python (scikit-learn, pandas), R, Feature engineering tools (like Featuretools)
+
+- **Modeling / Algorithm Development**: Developing predictive models or algorithms. Involves machine learning, statistical modeling, or deep learning.
+  - *Tools*: Python (scikit-learn, TensorFlow, PyTorch), R, MATLAB, DataRobot
+
+- **Evaluation**: Evaluating model performance using appropriate metrics. Involves cross-validation, accuracy, precision, recall, ROC curves, etc.
+  - *Tools*: Python (scikit-learn), R, MLflow, TensorBoard
+
+- **Deployment**: Deploying models or analysis results into production environments or for decision-making.
+  - *Tools*: Flask, Django (for Python), Shiny (for R), AWS, Azure ML, Google Cloud AI Platform
+
+- **Feedback / Iteration**: Iterative process of refining models, tweaking data preprocessing, or gathering more data.
+  - *Tools*: Version control systems (Git), Project management tools (JIRA, Asana), Continuous integration and deployment (CI/CD) tools
+
+
+## Pipelines
+
+- **Data Collection**: 
+  - *Why Pipelines Help*: They automate the gathering of data, ensuring consistent and efficient data flow from multiple sources into the analysis environment.
+  - *Pipeline Tools*: Apache NiFi, Talend, Apache Kafka
+
+- **Data Preprocessing / Data Cleaning**: 
+  - *Why Pipelines Help*: They standardize the cleaning and preprocessing tasks, ensuring data quality and consistency, which is crucial for reliable analysis.
+  - *Pipeline Tools*: Pandas (Python), Apache Spark, Talend, Informatica
+
+- **Data Exploration / Data Analysis**: 
+  - *Why Pipelines Help*: They streamline initial data analysis and profiling, saving time and providing a standardized approach to exploratory data analysis.
+  - *Pipeline Tools*: Apache Zeppelin, Jupyter Notebooks (with [Papermill](https://github.com/nteract/papermill) for automation)
+
+- **Data Transformation / Feature Engineering**: 
+  - *Why Pipelines Help*: They ensure that the same procedures for data transformation and feature engineering are applied consistently, which is essential for model accuracy and reproducibility.
+  - *Pipeline Tools*: scikit-learn Pipelines (Python), Apache Spark (MLlib), Featuretools
+
+- **Modeling / Algorithm Development**: 
+  - *Why Pipelines Help*: They encapsulate the entire process of model development, ensuring reproducibility, consistency, and ease of experimentation with different models and parameters.
+  - *Pipeline Tools*: TensorFlow Extended (TFX), MLflow, Kubeflow Pipelines
+
+- **Evaluation**: 
+  - *Why Pipelines Help*: They provide a systematic approach to evaluating models, ensuring that all models are assessed using the same criteria and metrics for a fair comparison.
+  - *Pipeline Tools*: MLflow, TensorFlow (TFX), scikit-learn (Python)
+
+- **Deployment**: 
+  - *Why Pipelines Help*: They automate the deployment process, enabling smooth transition of models to production and ensuring that models are retrained and updated as needed without manual intervention.
+  - *Pipeline Tools*: Apache Airflow, Kubeflow, Docker (for containerization), Jenkins (for CI/CD pipelines)
+
+- **Feedback / Iteration**: 
+  - *Why Pipelines Help*: They facilitate quick and efficient iterations based on feedback, allowing for continuous improvement of models and processes with minimal manual overhead.
+  - *Pipeline Tools*: Git (for version control), DVC (Data Version Control), Apache Airflow (for scheduling and rerunning workflows)
