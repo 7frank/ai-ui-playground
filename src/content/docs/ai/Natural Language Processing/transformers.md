@@ -24,6 +24,9 @@ title: Transformers
 
 - [Confused which Transformer Architecture to use? BERT, GPT-3, T5, Chat GPT? Encoder Decoder Explained](https://www.youtube.com/watch?v=wuj8Hao1TT4&ab_channel=DatafuseAnalytics)
 
+- [Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY&ab_channel=AndrejKarpathy)
+  [Colab Code for this Video](https://colab.research.google.com/drive/1JMLa53HDuA-i7ZBmqV7ZnA3c_fvtXnx-)
+
 ### Vanilla Transformers:
 
     Original architecture designed primarily for translation tasks.

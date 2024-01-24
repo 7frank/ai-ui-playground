@@ -6,3 +6,7 @@ title: LLM - Overview
 
   Use Case: Specialized in processing and generating human language. They are used in applications such as text completion, content generation, conversational AI, and more.
   Key Features: Utilize transformer architecture, which allows them to handle long-range dependencies and context in text effectively.
+
+
+
+For more information read about the current core mechanism of LLMs [Transformers](./transformers.md) or of one of the few big open source models [Mixtral](./Mixtral.md)

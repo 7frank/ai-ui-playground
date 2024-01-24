@@ -176,3 +176,40 @@ Considerations
     - restrict resources for learning a specific skill (e.g. time to learn the skill)
     - prevent model from spitting out to broad / general information
 
+# Experiement
+
+We have developed a bot that can be accessed at [this link](https://chat.openai.com/g/g-m6ViPdOTv-pathfinder). Here's how to use it:
+
+1. Open your browser and navigate to the skillfinder. Then, press `F12` to open the developer console.
+2. Look up the ID of the person you want to compare. This ID will be in the URL on their profile page, typically in a UUID format.
+3. Copy the following JavaScript code and modify the `host` and `id` variables accordingly.
+
+```javascript
+host ="skills.<your-company>.com" 
+id="<uuid-d107-4273-87dc-here>" // the id of the user
+body={
+  "query": "query($id: String!) { user(id: $id) { jobTitle summary userSkills { skill { label } isFavorite } } }",
+  "variables": {
+    id 
+  }
+}
+
+await fetch(`https://${host}/graphql`, {
+    "credentials": "include",
+    "headers": {
+        "content-type": "application/json",
+    },
+    body:JSON.stringify(body),
+    "method": "POST",
+    "mode": "cors"
+})
+.then(r => r.json())
+.then(r=> r.data.user)
+.then(({userSkills,...rest})=>({skills:userSkills.map(({skill})=> skill.label),...rest}) )
+.then(r=> JSON.stringify(r))
+```
+4. Visit the bot's page and ask a query similar to: "I want to transition into the 'junior data science role' for projects in the field of 'interplanetary space travel'. Here is my current skillset:"
+5. Paste the JSON output of your skillset, which you obtained from the console, into the input field of the bot.
+6. When you're done, you can ask something like: "Create an action plan for the next 6 weeks."
+
+*Feedback is welcome.*
