@@ -1,0 +1,27 @@
+---
+title: Kubeflow
+---
+
+- https://wikitech.wikimedia.org/wiki/Analytics/Cluster/Workflow_management_tools_study
+- https://www.kubeflow.org/docs/started/architecture/
+
+## Working with Kubeflow in a Kubernetes Environment
+
+Kubeflow is an open-source project designed to facilitate the development of machine learning (ML) workflows in Kubernetes (K8s) environments. It provides a comprehensive ecosystem for managing ML projects, from data preparation to model training and deployment. Below are key aspects of working with Kubeflow in such an environment, including its integration with RedHat OpenShift and NVIDIA operators.
+
+### Kubeflow on Kubernetes (K8s)
+
+- **Kubeflow Deployment**: Kubeflow can be deployed on standard Kubernetes clusters, making it a versatile choice for different cloud and on-premises environments. It leverages Kubernetes' capabilities to handle containerized applications, ensuring scalable and efficient ML workflow management.
+
+### Integration with RedHat OpenShift
+
+- **Kubeflow RedHat Clone**: While Kubeflow is not a direct clone of any RedHat product, it is compatible with and can be deployed on RedHat's OpenShift, an enterprise Kubernetes platform. OpenShift provides additional security, productivity, and scalability features compared to standard Kubernetes.
+- **Using OpenShift Instead of Standard K8s**: When deploying Kubeflow on OpenShift instead of a standard Kubernetes cluster, users benefit from OpenShift's enhanced security features, streamlined operational processes, and robust application ecosystem.
+
+### NVIDIA Operator for Kubernetes
+
+- **NVIDIA Operator**: For workloads that require intensive computation, such as training complex ML models, Kubeflow can utilize the NVIDIA GPU Operator for Kubernetes. This operator simplifies the deployment and management of GPU-accelerated applications in Kubernetes environments.
+
+### Katib for ML Workloads in Kubernetes
+
+- **Katib**: Katib is a Kubernetes-native project for automated machine learning (AutoML), particularly for hyperparameter tuning and neural architecture search. It's integrated within the Kubeflow ecosystem, allowing users to easily set up and manage AutoML experiments in their Kubernetes clusters.

@@ -1,0 +1,95 @@
+---
+title: ML - Workbench
+---
+
+
+### ML Workbench / Workflow Management Tools
+
+#### Kubeflow
+- **URL**: [kubeflow.org](https://kubeflow.org)
+- **Description**: Kubeflow is an open-source project dedicated to making deployments of machine learning workflows on Kubernetes simple, portable, and scalable. It provides a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures.
+- **Key Features**:
+  - Kubernetes-native ML platform
+  - Scalable and portable
+  - Supports diverse ML frameworks
+
+- [Detailed Information of Kubeflow](./Kubeflow.mdx)  
+
+#### Databricks
+
+https://blinpete.github.io/wiki-graph/?lang=en&wordle=&query=Databricks
+
+- **Description**: Databricks is an analytics platform powered by Apache Spark. It integrates with Spark to provide enhanced data analytics and machine learning capabilities. Databricks simplifies the management of Spark clusters and provides an interactive workspace for exploration and visualization.
+- **Key Features**:
+  - Unified analytics platform
+  - Collaboration features for data scientists and engineers
+  - Built-in workspace for developing and deploying Spark code
+
+#### MLflow
+- **URL**: [mlflow.org](https://mlflow.org)
+- **Description**: MLflow is an open-source platform for managing the end-to-end machine learning lifecycle. It includes tools for tracking experiments, packaging code into reproducible runs, and sharing and deploying models.
+- **Key Features**:
+  - Experiment tracking
+  - Model packaging and deployment
+  - Collaboration tools
+
+#### Argo Workflows
+- **URL**: [argoproj.github.io/argo-workflows](https://argoproj.github.io/argo-workflows)
+- **Description**: Argo Workflows is an open-source container-native workflow engine for orchestrating parallel jobs on Kubernetes. It is designed for fast and efficient execution of complex workflows and pipelines.
+- **Key Features**:
+  - Container-native workflow execution
+  - Supports complex, parallel workflows
+  - Highly scalable and efficient
+- provides a model registry storing results of a ML workflow
+
+
+# Comparison of Kubeflow, MLflow, Databricks, and Argo
+
+## Kubeflow
+
+- **Description**: A machine learning toolkit for Kubernetes. It allows for building and deploying scalable ML workflows using Docker containers.
+- **Key Features**:
+  - Kubeflow Pipelines for orchestrating multi-step ML workflows.
+  - KFServing for serverless inferencing.
+  - Training operators for ML model training.
+  - Notebook management for Jupyter notebooks.
+- **Use Cases**: Ideal for teams needing to train ML models on Kubernetes, offering a comprehensive MLOps platform.
+- **Source**: [Qwak](https://www.qwak.com), [Valohai](https://www.valohai.com)
+
+## MLflow
+
+- **Description**: An open-source platform for managing the end-to-end ML lifecycle.
+- **Key Features**:
+  - MLflow Tracking for experiment logging.
+  - MLflow Projects for packaging code.
+  - MLflow Models for model packaging and deployment.
+  - Model Registry for managing ML models.
+- **Use Cases**: Suitable for data scientists and ML engineers focusing on experiment tracking and model lifecycle management.
+- **Source**: [Pynomial](https://www.pynomial.com), [Run AI](https://www.run.ai)
+
+## Databricks
+
+- **Description**: A cloud-based data engineering tool primarily for data transformation, processing, and exploration.
+- **Key Features**:
+  - Managed notebook environment.
+  - Data lake integration.
+  - SQL analytics, BI, data science, and ML capabilities.
+- **Use Cases**: Best for teams requiring a single platform for analytics, AI, and data science, with a focus on data layer and exploration.
+- **Source**: [Qwak](https://www.qwak.com)
+
+## Argo
+
+- **Description**: An open-source container-native workflow engine for orchestrating parallel jobs on Kubernetes.
+- **Key Features**:
+  - Manages ML pipelines, ETL, CI/CD, and data processing.
+  - Supports Directed Acyclic Graphs (DAGs) for task orchestration.
+  - Includes Argo CD for GitOps and Argo Rollouts for progressive delivery.
+- **Use Cases**: Effective for organizations well-versed in Kubernetes, needing to orchestrate a variety of workflows.
+- **Source**: [Pynomial](https://www.pynomial.com), [Pipekit](https://www.pipekit.io)
+
+## Summary
+
+- **Kubeflow** is a comprehensive MLOps platform built on Kubernetes, ideal for managing complete ML workflows.
+- **MLflow** focuses more on the ML lifecycle, particularly experiment tracking and model management.
+- **Databricks** is a unified platform for data engineering, AI, data science, and ML, integrating data management with analytics.
+- **Argo** is versatile in orchestrating workflows, suitable for a range of tasks including ML pipelines, but not limited to ML.
