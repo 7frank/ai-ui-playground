@@ -2,10 +2,17 @@
 title: Transformers
 ---
 
+## Attention
+
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
 - [Attention is all you need (Transformer) - Model explanation (including math), Inference and Training](https://www.youtube.com/watch?v=bCz4OMemCcA&ab_channel=UmarJamil)
 
+- [Colab Notebook with explanations](https://colab.research.google.com/github/jaygala24/pytorch-implementations/blob/master/Attention%20Is%20All%20You%20Need.ipynb)
+
+- [Visualize Attention in NLP Models](https://github.com/jessevig/bertviz)
+
+## TODO
   - rnn
 
     - slow

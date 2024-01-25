@@ -20,3 +20,5 @@ Some sources comparing LLM
 - [Open source LLM leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)
 
 - [Comparing: Parameter Size vs. Traioning Size](https://medium.com/@greg.broadhead/a-brief-guide-to-llm-numbers-parameter-count-vs-training-size-894a81c9258)
+
+- [Should You Use Open Source Large Language Models?](https://github.com/neueda/awesome-neo4j)
