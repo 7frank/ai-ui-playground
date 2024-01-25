@@ -7,132 +7,89 @@ Contains links of things that might be important.
 
 ## HEAD
 
-- ebook for basics & math of nn http://neuralnetworksanddeeplearning.com/
+~
 
-- read and compare with basics https://www.youtube.com/watch?v=Oz7r89YDMis&ab_channel=BorisMeinardus
+## Sorted by category
 
-### graph Datasets databases
+### AI Basics and Neural Networks
+- [Ebook for Basics & Math of Neural Networks](http://neuralnetworksanddeeplearning.com/)
+- [Compare Basics of Neural Networks (YouTube Video)](https://www.youtube.com/watch?v=Oz7r89YDMis&ab_channel=BorisMeinardus)
 
-https://github.com/neueda/awesome-neo4j
-https://github.com/totogo/awesome-knowledge-graph
-https://github.com/jbmusso/awesome-graph
+### Graph Datasets and Databases
+- [Awesome Neo4j Resources (GitHub)](https://github.com/neueda/awesome-neo4j)
+- [Awesome Knowledge Graph Resources (GitHub)](https://github.com/totogo/awesome-knowledge-graph)
+- [Awesome Graph Resources (GitHub)](https://github.com/jbmusso/awesome-graph)
+- [Graph Datasets](https://graphdatasets.com/)
+- [Open Graph Benchmark - Stanford](https://ogb.stanford.edu/)
 
-https://graphdatasets.com/
-https://ogb.stanford.edu/
+### AI and Technology Trends
+- [Top 5 Open Source LLM Evaluation Frameworks in 2024](https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m)
+- [Cloud Computing Post-Serverless Trends](https://www.infoq.com/articles/cloud-computing-post-serverless-trends/)
+- [AI Project on Raspberry Pi](https://towardsdatascience.com/a-weekend-ai-project-running-speech-recognition-and-a-llama-2-gpt-on-a-raspberry-pi-5298d6edf812)
+- [Converting Unstructured Data into Structured Insights with LLMs](https://www.kdnuggets.com/5-ways-of-converting-unstructured-data-into-structured-insights-with-llms)
+- [ComfyUI with Stable Diffusion](https://stable-diffusion-art.com/comfyui/)
+- [crewAI Project on GitHub](https://github.com/joaomdmoura/crewAI?tab=readme-ov-file#how-crewai-compares)
+- [Fotorealistische 3D-Welten in Echtzeit (German)](https://the-decoder.de/trips-bringt-fotorealistische-3d-welten-in-echtzeit-einen-schritt-naeher/)
 
-## ~2
+### AI and Machine Learning Research
+- [Self-Cannibalizing AI](https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai)
+- [LLM Detect AI-Generated Text Competition (Kaggle)](https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code)
+- [SDXL Turbo by Stability AI (Hugging Face)](https://huggingface.co/stabilityai/sdxl-turbo)
+- [Best of ML Python (GitHub)](https://github.com/ml-tooling/best-of-ml-python#others)
+- [Programming Helpers for the Future (German)](https://www.golem.de/news/ki-die-programmierhelfer-der-zukunft-2312-180559-3.amp.html)
+- [Alpha3D 3D Modell AI (German)](https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/)
+- [KI Tutor for Learning Python (German)](https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/)
+- [DocLLM: A layout-aware generative language model for multimodal document understanding](https://browse.arxiv.org/html/2401.00908v1)
 
-1. https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m
-2. https://www.infoq.com/articles/cloud-computing-post-serverless-trends/
-3. https://towardsdatascience.com/a-weekend-ai-project-running-speech-recognition-and-a-llama-2-gpt-on-a-raspberry-pi-5298d6edf812
-
-5. https://www.kdnuggets.com/5-ways-of-converting-unstructured-data-into-structured-insights-with-llms
-6. https://dev.to/jderochervlk/rescript-rust-like-features-for-javascript-27ig
-7. https://bun.sh/blog/the-bun-shell
-8. https://stable-diffusion-art.com/comfyui/
-9. https://github.com/joaomdmoura/crewAI?tab=readme-ov-file#how-crewai-compares
-
-11. https://the-decoder.de/trips-bringt-fotorealistische-3d-welten-in-echtzeit-einen-schritt-naeher/
-
-
----
-
-- https://media.ccc.de/v/37c3-12125-self-cannibalizing_ai
-- https://www.kaggle.com/competitions/llm-detect-ai-generated-text/code
-- https://huggingface.co/stabilityai/sdxl-turbo
-- https://github.com/ml-tooling/best-of-ml-python#others
-- https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd
-- www.golem.de/news/ki-die-programmierhelfer-der-zukunft-2312-180559-3.amp.html?amp_gsa=1&_js_v=a9&usqp=mq331AQGsAEggAID#amp_tf=Von%20%251%24s&aoh=17038187664658&csi=0&referrer=https%3A%2F%2Fwww.google.com&share=https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-die-programmierhelfer-der-zukunft-2312-180559-3.html
-- https://3druck.com/programme/alpha3d-3d-modell-ai-45127438/
-- https://t3n.de/news/ki-tutor-python-programmieren-lernen-1601863/
-
----
-
-
-- https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/
-
-
-- https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-wunder-ueber-wunder-2312-180481-3.html
-- https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist
-
-
-
-
-## chatgpt
-
-### gpt4 capabilities
-
-- codeinterpreter
-
-  - https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist
-
-- image generation
-
-- websearch
-
-## models
-
-Audio:
-
-- https://github.com/coqui-ai/STT
-- https://huggingface.co/coqui/XTTS-v2
-
-## misc & unsorted
-
-> LCM-Lora: Neues KI-Modell sorgt im Internet für großes Aufsehen
-> Aus einer simplen Skizze lassen sich mithilfe neuer KI-Tools komplexe Kunstwerke anfertigen und beliebig verändern – in Echtzeit
-
-- https://www.derstandard.de/story/3000000196318/lcm-lora-neues-ki-modell-sorgt-im-internet-fuer-grosses-aufsehen
-
-[Sparse priming representation](https://youtu.be/piRMk2KIx2o?feature=shared)
-
-[Autogpt & memgpt & runpod](https://youtu.be/bMWXXPoDnDs?feature=shared)
-
-[Hugging own model langchain](https://youtu.be/_j7JEDWuqLE?feature=shared)
-
-[A Deep Dive Into Guidance’s Source Code - Understanding how to guide Large Language Models](https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20)
-
-[huggingface](https://huggingface.co/)
-
-- open source hub / community (models, datasets, spaces, etc.)
-
-- https://huggingface.co/spaces/ngoctuanai/chatgptfree
+### AI and Machine Learning Research (Continued)
+- [Proxy Tuning: An Efficient Alternative to Finetuning LLMs](https://www.marktechpost.com/2024/01/21/researchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models)
+- [Open Source Python RAG Framework for SQL Generation](https://www.marktechpost.com/2024/01/20/meet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation)
+- [Mistral-AI: SMOE Language Model Transforming ML](https://www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning)
+- [TOFU: ML Benchmark for Data Unlearning in LLMs](https://www.marktechpost.com/2024/01/15/cmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models)
+- [DocLLM for Generative Reasoning over Documents](https://www.marktechpost.com/2024/01/05/jpmorgan-ai-research-introduces-docllm-a-lightweight-extension-to-traditional-large-language-models-tailored-for-generative-reasoning-over-documents-with-rich-layouts/)
+- [SPIN: Converting a Weak LLM to a Strong LLM](https://www.marktechpost.com/2024/01/05/this-ai-paper-from-ucla-introduces-spin-self-play-fine-tuning-a-machine-learning-method-to-convert-a-weak-llm-to-a-strong-llm-by-unleashing-the-full-power-of-human-annotated-data/)
+- [Diffusion Model with Perceptual Loss by ByteDance](https://www.marktechpost.com/2024/01/06/bytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery)
+- [G-LLAVA: Geometric Problem-Solving with Geo170k Dataset](https://www.marktechpost.com/2023/12/21/meet-g-llava-the-game-changer-in-geometric-problem-solving-and-surpasses-gpt-4-v-with-the-innovative-geo170k-dataset)
+- [Understanding LoRA for Finetuning Large Models](https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6)
+- [Ptychopinn: Unsupervised Physics-Informed Deep Learning](https://www.marktechpost.com/2023/12/25/this-paper-introduces-ptychopinn-an-unsupervised-physics-informed-deep-learning-method-for-rapid-high-resolution-scanning-coherent-diffraction-reconstruction)
+- [EMU2: Multimodal Model for Task Solving](https://www.marktechpost.com/2023/12/24/this-ai-paper-from-china-introduces-emu2-a-37-billion-parameter-multimodal-model-redefining-task-solving-and-adaptive-reasoning)
+- [DMD: Diffusion Model for Metric Depth Estimation](https://www.marktechpost.com/2023/12/24/google-researchers-unveil-dmd-a-groundbreaking-diffusion-model-for-enhanced-zero-shot-metric-depth-estimation)
+- [Revolutionizing Precision Medicine](https://pubmed.ncbi.nlm.nih.gov/36334360/)
+- [RadioMix: Quantitative Imaging Biomarkers](https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers)
+- [PowerInfer: Speeding Up ML Model Inference](https://www.marktechpost.com/2023/12/23/meet-powerinfer-a-fast-large-language-model-llm-on-a-single-consumer-grade-gpu-that-speeds-up-machine-learning-model-inference-by-11-times)
+- [Advanced Algorithm for Energy-Efficient Neural Networks](https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/)
+- [Adversarial Diffusion Distillation](https://stability.ai/research/adversarial-diffusion-distillation)
+- [Autonomous Replication and Adaptation in LLMs](https://www.marktechpost.com/2023/12/22/this-ai-report-delves-into-autonomous-replication-and-adaptation-ara-unpacking-the-future-capabilities-of-language-model-agents)
+- [Developing Mini GPTs via Contextual Pruning](https://www.marktechpost.com/2023/12/22/mit-researchers-introduce-a-novel-machine-learning-approach-in-developing-mini-gpts-via-contextual-pruning)
+- [ForgetFilter: Filtering Unsafe Data](https://www.marktechpost.com/2023/12/24/this-ai-paper-introduces-the-forgetfilter-a-machine-learning-algorithm-that-filters-unsafe-data-based-on-how-strong-the-models-forgetting-signal-is-for-that-data)
+- [Minichain: Python Library for Coding with LLMs](https://www.marktechpost.com/2023/12/25/meet-minichain-a-tiny-python-library-for-coding-with-large-language-models)
+- [Efficient Predictive Control with Sparsified DNNs](https://www.marktechpost.com/2023/12/26/this-paper-explores-efficient-predictive-control-with-sparsified-deep-neural-networks)
+- [CogAgent: Visual Language Model for GUI Interaction](https://www.marktechpost.com/2023/12/26/researchers-from-tsinghua-university-and-zhipu-ai-introduce-cogagent-a-revolutionary-visual-language-model-for-enhanced-gui-interaction)
+- [PostgresML: Integrating ML Models in PostgreSQL](https://www.marktechpost.com/2023/12/27/meet-postgresml-an-open-source-python-library-that-integrates-with-postgresql-and-has-the-ability-to-train-and-deploy-machine-learning-ml-models-directly-within-the-database-using-sql-queries)
 
 
-- [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
+### Miscellaneous AI Topics
+- [Roboter Kocht und Reinigt (German)](https://www.cryptopolitan.com/de/roboter-der-jeden-android-kocht-und-reinigt/)
+- [KI Wunder (German)](https%3A%2F%2Fwww.golem.de%2Fnews%2Fki-wunder-ueber-wunder-2312-180481-3.html)
+- [Do LLMs Based on a Diffusion Model Exist? (AI Stack Exchange)](https://ai.stackexchange.com/questions/43225/do-llms-based-on-a-diffusion-model-as-opposed-to-an-autoregressive-model-exist)
+- [programmierhelfer-der-zukunft](www.golem.de%2Fnews%2Fki-die-programmierhelfer-der-zukunft-2312-180559-3.html)
 
-  - from lesson 1 (minute 51)
-- https://browse.arxiv.org/html/2401.00908v1
+### Additional AI Resources
+- [AI Cybersecurity (Gist)](https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd)
+- [OpenAI's Code Interpreter (AI Business)](https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist)
+- [Coqui AI STT (GitHub)](https://github.com/coqui-ai/STT)
+- [Coqui XTTS v2 (Hugging Face)](https://huggingface.co/coqui/XTTS-v2)
+- [LCM-Lora AI Model (Der Standard)](https://www.derstandard.de/story/3000000196318/lcm-lora-neues-ki-modell-sorgt-im-internet-fuer-grosses-aufsehen)
+- [Sparse Priming Representation (YouTube)](https://youtu.be/piRMk2KIx2o?feature=shared)
+- [Autogpt & Memgpt & Runpod (YouTube)](https://youtu.be/bMWXXPoDnDs?feature=shared)
+- [Hugging Own Model Langchain (YouTube)](https://youtu.be/_j7JEDWuqLE?feature=shared)
+- [A Deep Dive Into Guidance's Source Code (Better Programming)](https://betterprogramming.pub/a-deep-dive-into-guidances-source-code-16681a76fb20)
+- [Hugging Face Open Source Hub](https://huggingface.co/)
+- [ChatGPT Free on Hugging Face Spaces](https://huggingface.co/spaces/ngoctuanai/chatgptfree)
+- [Results for All Timm Models with Pretrained Weights (GitHub)](https://github.com/huggingface/pytorch-image-models/tree/main/results)
 
+### General Topics
 
+- [Rescript: Rust-Like Features for JavaScript](https://dev.to/jderochervlk/rescript-rust-like-features-for-javascript-27ig)
+- [The Bun Shell](https://bun.sh/blog/the-bun-shell)
 
-## potentially useful articles mostly from marktechpost
-
-List of links that might be worth a read (somewhat of a pile of shame)
-
-
-- www.marktechpost.com/2024/01/21/researchers-from-the-university-of-washington-and-allen-institute-for-ai-present-proxy-tuning-an-efficient-alternative-to-finetuning-large-language-models
-- www.marktechpost.com/2024/01/20/meet-vanna-an-open-source-python-rag-retrieval-augmented-generation-framework-for-sql-generation
-- www.marktechpost.com/2024/01/14/mistral-ai-introduces-mixtral-8x7b-a-sparse-mixture-of-experts-smoe-language-model-transforming-machine-learning
-- www.marktechpost.com/2024/01/15/cmu-ai-researchers-unveil-tofu-a-groundbreaking-machine-learning-benchmark-for-data-unlearning-in-large-language-models
-- https://www.marktechpost.com/2024/01/05/jpmorgan-ai-research-introduces-docllm-a-lightweight-extension-to-traditional-large-language-models-tailored-for-generative-reasoning-over-documents-with-rich-layouts/
-- https://www.marktechpost.com/2024/01/05/this-ai-paper-from-ucla-introduces-spin-self-play-fine-tuning-a-machine-learning-method-to-convert-a-weak-llm-to-a-strong-llm-by-unleashing-the-full-power-of-human-annotated-data/
-- www.marktechpost.com/2024/01/06/bytedance-introduces-the-diffusion-model-with-perceptual-loss-a-breakthrough-in-realistic-ai-generated-imagery
-- www.marktechpost.com/2023/12/21/meet-g-llava-the-game-changer-in-geometric-problem-solving-and-surpasses-gpt-4-v-with-the-innovative-geo170k-dataset
-- https://towardsdatascience.com/understanding-lora-low-rank-adaptation-for-finetuning-large-models-936bce1a07c6
-- www.marktechpost.com/2023/12/25/this-paper-introduces-ptychopinn-an-unsupervised-physics-informed-deep-learning-method-for-rapid-high-resolution-scanning-coherent-diffraction-reconstruction
-- www.marktechpost.com/2023/12/24/this-ai-paper-from-china-introduces-emu2-a-37-billion-parameter-multimodal-model-redefining-task-solving-and-adaptive-reasoning
-- www.marktechpost.com/2023/12/24/google-researchers-unveil-dmd-a-groundbreaking-diffusion-model-for-enhanced-zero-shot-metric-depth-estimation
-- https://pubmed.ncbi.nlm.nih.gov/36334360/
-- https://www.ict.eu/en/projects/radiomix-revolutionizing-precision-medicine-quantitative-imaging-biomarkers
-- www.marktechpost.com/2023/12/23/meet-powerinfer-a-fast-large-language-model-llm-on-a-single-consumer-grade-gpu-that-speeds-up-machine-learning-model-inference-by-11-times
-- https://scitechdaily.com/revolutionizing-deep-learning-advanced-algorithm-for-energy-efficient-neural-networks/
-- https://stability.ai/research/adversarial-diffusion-distillation
-- www.marktechpost.com/2023/12/22/this-ai-report-delves-into-autonomous-replication-and-adaptation-ara-unpacking-the-future-capabilities-of-language-model-agents
-- www.marktechpost.com/2023/12/22/mit-researchers-introduce-a-novel-machine-learning-approach-in-developing-mini-gpts-via-contextual-pruning
-- www.marktechpost.com/2023/12/24/this-ai-paper-introduces-the-forgetfilter-a-machine-learning-algorithm-that-filters-unsafe-data-based-on-how-strong-the-models-forgetting-signal-is-for-that-data
-- www.marktechpost.com/2023/12/25/meet-minichain-a-tiny-python-library-for-coding-with-large-language-models
-
-- www.marktechpost.com/2023/12/26/this-paper-explores-efficient-predictive-control-with-sparsified-deep-neural-networks
-- www.marktechpost.com/2023/12/26/researchers-from-tsinghua-university-and-zhipu-ai-introduce-cogagent-a-revolutionary-visual-language-model-for-enhanced-gui-interaction
-- www.marktechpost.com/2023/12/27/meet-postgresml-an-open-source-python-library-that-integrates-with-postgresql-and-has-the-ability-to-train-and-deploy-machine-learning-ml-models-directly-within-the-database-using-sql-queries
