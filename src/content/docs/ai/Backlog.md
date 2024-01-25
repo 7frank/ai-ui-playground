@@ -7,8 +7,20 @@ Contains links of things that might be important.
 
 ## HEAD
 
+- ebook for basics & math of nn http://neuralnetworksanddeeplearning.com/
 
+- read and compare with basics https://www.youtube.com/watch?v=Oz7r89YDMis&ab_channel=BorisMeinardus
 
+### graph Datasets databases
+
+https://github.com/neueda/awesome-neo4j
+https://github.com/totogo/awesome-knowledge-graph
+https://github.com/jbmusso/awesome-graph
+
+https://graphdatasets.com/
+https://ogb.stanford.edu/
+
+## ~2
 
 1. https://dev.to/guybuildingai/-top-5-open-source-llm-evaluation-frameworks-in-2024-98m
 2. https://www.infoq.com/articles/cloud-computing-post-serverless-trends/
@@ -89,11 +101,8 @@ Audio:
 
 - open source hub / community (models, datasets, spaces, etc.)
 
-- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 - https://huggingface.co/spaces/ngoctuanai/chatgptfree
 
-
-- https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
 
 - [results for all timm models with pretrained weights](https://github.com/huggingface/pytorch-image-models/tree/main/results)
 
