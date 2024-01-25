@@ -23,13 +23,7 @@ This section contains more general information for ai related topics
 
 ## I need datasets for training
 
-- https://huggingface.co/docs/datasets/index
-- https://huggingface.co/datasets
-- [18 MNIST-like Datasets for 2D and 3D Biomedical Image Classification](https://medmnist.com/)
-  - hundred thousand of medical datasets
-- [The Cancer Imaging Archive (TCIA)](https://imaging.cancer.gov/informatics/cancer_imaging_archive.htm)
-- [Links to various other datasets](https://paperswithcode.com/datasets)
-
+[here](./Datasets.md)
 
 ## I have models that I want to test locally. How to deploy them quickly?
 

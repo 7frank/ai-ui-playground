@@ -7,7 +7,8 @@ Contains links of things that might be important.
 
 ## HEAD
 
-~
+[all awesome lists there are](https://project-awesome.org/)
+[the same but with stars](https://awesomerank.github.io/)
 
 ## Sorted by category
 
