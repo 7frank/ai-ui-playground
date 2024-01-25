@@ -10,3 +10,13 @@ title: LLM - Overview
 
 
 For more information read about the current core mechanism of LLMs [Transformers](./transformers.md) or of one of the few big open source models [Mixtral](./Mixtral.md)
+
+
+Some sources comparing LLM
+
+
+- [Comparision of GTP, Bard and so on](https://deepchecks.com/llm-models-comparison/)
+
+- [Open source LLM leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard)
+
+- [Comparing: Parameter Size vs. Traioning Size](https://medium.com/@greg.broadhead/a-brief-guide-to-llm-numbers-parameter-count-vs-training-size-894a81c9258)

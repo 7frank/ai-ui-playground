@@ -2,10 +2,11 @@
 title: Graph Database Tools in AI
 ---
 
-
-This section covers tools and libraries that help visualize and interact with graph databases, especially in the context of AI.
+In this section we focus on Neo4j for considering the [popularity of Neo4j as well as its performance](https://www.g2.com/categories/graph-databases#grid) 
 
 ## Visualization Tools for Neo4j Graph Database
+
+This section covers tools and libraries that help visualize and interact with graph databases, especially in the context of AI.
 
 - **Neo4j Bloom**: Ideal for data analysts, Neo4j Bloom allows interactive exploration of Neo4j graphs. It features a text-based search, intuitive graph navigation, and capabilities for visual editing and custom styling of large graph databases. Learn more at [Neo4j Bloom](https://neo4j.com/developer-blog/15-tools-for-visualizing-your-neo4j-graph-database/).
 
