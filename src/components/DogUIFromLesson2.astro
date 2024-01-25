@@ -5,6 +5,6 @@
 <div id="results"></div>
 <script>
   import {read} from "./DogUIFromLesson2"
-  const photo = document.querySelector("#photo")
+  const photo = document.querySelector("#photo") as HTMLInputElement
   photo.addEventListener('input', () => read(photo.files[0]));
 </script>
