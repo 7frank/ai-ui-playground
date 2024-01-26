@@ -3,12 +3,33 @@ title: Backlog
 ---
 
 
+
+- **Focus Goal**: Learn from existsing data:
+    - self hosted LLMs
+    - data authority and security
+- When to instead of building models is it better to make data analysis with tools.
+      - visualisation
+      - aggregation
+- When is it time to train a LLM? or different Model
+- What quality must the data have?
+- How will generativbe AI change our work / work flow
+
+
 Contains links of things that might be important.
 
 ## HEAD
 
 [all awesome lists there are](https://project-awesome.org/)
 [the same but with stars](https://awesomerank.github.io/)
+
+
+### ~2
+[find out what this was for: "pydantic is all you need"](https://www.youtube.com/watch?v=yj-wSRJwrrc&ab_channel=AIEngineer)
+https://vercel.com/templates/next.js/pinecone-vercel-ai
+https://www.pinecone.io/
+
+https://raw.githubusercontent.com/spdustin/ChatGPT-AutoExpert/main/_system-prompts/all_tools.md
+
 
 ## Sorted by category
 
