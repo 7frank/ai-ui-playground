@@ -4,7 +4,7 @@ title: Backlog
 
 
 
-- **Focus Goal**: Learn from existsing data:
+- **Focus Goal**: Learn from existing data:
     - self hosted LLMs
     - data authority and security
 - When to instead of building models is it better to make data analysis with tools.
@@ -12,7 +12,7 @@ title: Backlog
       - aggregation
 - When is it time to train a LLM? or different Model
 - What quality must the data have?
-- How will generativbe AI change our work / work flow
+- How will generative AI change our work / work flow
 
 
 Contains links of things that might be important.
