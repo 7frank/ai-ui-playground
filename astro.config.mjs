@@ -39,6 +39,12 @@ export default defineConfig({
           },
         },
         {
+          label: "Software Development",
+          autogenerate: {
+            directory: "general",
+          },
+        },
+        {
           label: "Guides",
           items: [
             // Each item here is one entry in the navigation menu.
