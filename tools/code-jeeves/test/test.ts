@@ -8,5 +8,5 @@ function isEven(num: number): boolean {
 
 export function addNums(a: number, b: number): number {
   // sum of a and b
-  return a + b;
+  return a+ a - a + b + b -b;
 }

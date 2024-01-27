@@ -25,7 +25,10 @@ const commentOutDeadCode = `If some code is not used or exported then comment ou
 const optimizeCode =
   "Optimize the following source code and functions. Comment code that is not used out.";
 
-const prompts = [documentCodePrompt, commentOutDeadCode, optimizeCode];
+const prompts = [
+    documentCodePrompt, 
+    // commentOutDeadCode, 
+    optimizeCode];
 
 const systemPrompt = `${role} ${prompts.join("\n")}  ${onlyCode}`;
 
