@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 export async function askOpenAI(systemPrompt: string, userQuestion: string) {
   console.log("System:", systemPrompt);
-   console.log("User:",userQuestion.substring(0,50)+"...")
+  console.log("User:", userQuestion.substring(0, 50) + "...");
 
   try {
     const response = await openai.chat.completions.create({
@@ -20,11 +20,12 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
       model: "gpt-3.5-turbo",
       max_tokens: 50,
     });
-    console.log(response);
-  const reason=response.choices[0].finish_reason
-    const asIntended=reason!="stop"
 
-  if (!asIntended) throw new Error("LLM did not finish properly. Reason:"+reason)
+    const reason = response.choices[0].finish_reason;
+    const asIntended = reason != "stop";
+
+    if (!asIntended)
+      throw new Error("LLM did not finish properly. Reason:" + reason);
 
     const tokenUsed = response.usage?.total_tokens;
     console.log(`Bot: ${tokenUsed} Token used`);

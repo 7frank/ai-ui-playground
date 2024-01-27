@@ -6,6 +6,8 @@ import {
   optional,
   option,
   string,
+  boolean,
+  flag
 } from "cmd-ts";
 import { $ } from "bun";
 import inquirer from "inquirer";
@@ -18,10 +20,8 @@ const onlyCode = "Return only the generated code and no explanations.";
 
 const documentCodePrompt =
   "Document the following source code and functions. Don't document obvious things.";
-const commentOutDeadCode =
-  " Comment out code that is not used. prefix the comment with: '// Deprecated since: '" +
-  new Date().toLocaleString().split(",")[0];
-
+const today = new Date().toLocaleString().split(",")[0];
+const commentOutDeadCode = `If some code is not used or exported then comment out this code. Prefix the comment with: '// Deprecated since: ${today}'`;
 const optimizeCode =
   "Optimize the following source code and functions. Comment code that is not used out.";
 
@@ -29,7 +29,13 @@ const prompts = [documentCodePrompt, commentOutDeadCode, optimizeCode];
 
 const systemPrompt = `${role} ${prompts.join("\n")}  ${onlyCode}`;
 
-async function handler({ pattern }: { pattern?: string }) {
+async function handler({
+  pattern,
+  isDry = false,
+}: {
+  pattern?: string;
+  isDry: boolean;
+}) {
   if (pattern == undefined) pattern = "*";
 
   const found =
@@ -47,13 +53,15 @@ async function handler({ pattern }: { pattern?: string }) {
 
   const commitMessage = `"jeeves: updating documentation for ${selectedFile}"`;
 
-  console.log(chalk.green("GIT:", `git commit -m ${commitMessage} --dry-run`));
+  const dryRun = isDry ? "--dry-run" : "";
+
+  console.log(chalk.green("GIT:", `git commit -m ${commitMessage} ${dryRun}`));
 
   await $`git --no-pager diff ${selectedFile}`;
 
   if (await confirmQuestion("Do you want to commit changes?")) {
     const commitSuccess =
-      await $`git commit -m ${commitMessage} --dry-run`.text();
+      await $`git commit -m ${commitMessage} ${dryRun}`.text();
 
     console.log(
       chalk.green(
@@ -99,6 +107,12 @@ const documentation = command({
       short: "p",
       description: "use '*' for any ",
     }),
+    dryRun: flag({
+        type: boolean,
+        long: "dryRun",
+        
+        description: "git commit changes or use --dryRun",
+      }),
   },
   handler: handler,
 });
