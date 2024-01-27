@@ -1,0 +1,13 @@
+```jsx
+import {
+  command,
+  binary,
+  run,
+  subcommands,
+  optional,
+  option,
+  string,
+} from "cmd-ts";
+import { $ } from "bun";
+import inquirer from "inquirer";
+

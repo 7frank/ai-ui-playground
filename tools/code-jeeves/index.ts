@@ -13,9 +13,15 @@ import { askOpenAI } from "./src/askOpenAI";
 
 import chalk from "chalk";
 
+const role="You are a 10x developer."
+const onlyCode="Return only the generated code and no explanations."
+const systemPrompt =
+`${onlyCode} Document the following source code and functions. Don't document obvious things.  ${onlyCode}`;
+
+
 async function handler({ pattern }: { pattern?: string }) {
   if (pattern == undefined) pattern = "*";
-
+  
   const found =
     await $`find . -type d -name node_modules -prune -o -type f -name "${pattern}" | pv -p`.text();
   const files = found.split("\n");
@@ -25,8 +31,6 @@ async function handler({ pattern }: { pattern?: string }) {
 
   const code = await $`cat ${selectedFile}`.text();
 
-  const systemPrompt =
-    "You are a 10x developer. Document the following source code and functions. Return only the code and no explanations.";
   const answer = await askOpenAI(systemPrompt, code);
 
   await $`echo ${answer} > ${selectedFile}.txt`;

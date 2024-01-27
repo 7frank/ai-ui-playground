@@ -11,6 +11,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
   console.log("System:", systemPrompt);
   // console.log("User:",userQuestion)
 
+
   try {
     const response = await openai.chat.completions.create({
       messages: [
@@ -18,8 +19,11 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
         { role: "user", content: userQuestion },
       ],
       model: "gpt-3.5-turbo",
-      max_tokens: 300,
+      max_tokens: 50,
     });
+console.log(response)
+    const tokenUsed=response.usage?.total_tokens
+    console.log(`Bot: ${tokenUsed} Token used`)
 
     return response.choices[0].message.content;
   } catch (error) {
