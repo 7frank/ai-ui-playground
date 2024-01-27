@@ -28,8 +28,9 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
       { role: "assistant", content: systemPrompt },
       { role: "user", content: userQuestion },
     ],
-    model: "gpt-3.5-turbo",
-    //max_tokens: 1000,
+    model: "gpt-3.5-turbo", // "gpt-4-turbo-preview",
+    max_tokens: 1000,
+    //temperature:0.8
   });
 
   const reason = response.choices[0].finish_reason;
