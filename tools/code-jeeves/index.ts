@@ -13,15 +13,25 @@ import { askOpenAI } from "./src/askOpenAI";
 
 import chalk from "chalk";
 
-const role="You are a 10x developer."
-const onlyCode="Return only the generated code and no explanations."
-const systemPrompt =
-`${onlyCode} Document the following source code and functions. Don't document obvious things.  ${onlyCode}`;
+const role = "You are a 10x developer.";
+const onlyCode = "Return only the generated code and no explanations.";
 
+const documentCodePrompt =
+  "Document the following source code and functions. Don't document obvious things.";
+const commentOutDeadCode =
+  " Comment out code that is not used. prefix the comment with: '// Deprecated since: '" +
+  new Date().toLocaleString().split(",")[0];
+
+const optimizeCode =
+  "Optimize the following source code and functions. Comment code that is not used out.";
+
+const prompts = [documentCodePrompt, commentOutDeadCode, optimizeCode];
+
+const systemPrompt = `${role} ${prompts.join("\n")}  ${onlyCode}`;
 
 async function handler({ pattern }: { pattern?: string }) {
   if (pattern == undefined) pattern = "*";
-  
+
   const found =
     await $`find . -type d -name node_modules -prune -o -type f -name "${pattern}" | pv -p`.text();
   const files = found.split("\n");
