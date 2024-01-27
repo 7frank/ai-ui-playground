@@ -32,7 +32,7 @@ export const ReadStreamType: Type<string, Stream> = {
       const statusGroup = Math.floor(response.status / 100);
       if (statusGroup !== 2) {
         throw new Error(
-          `Got status ${response.statusText} ${response.status} reading URL`
+          `Got status ${response.statusText} ${response.status} reading URL`,
         );
       }
       return response.body;

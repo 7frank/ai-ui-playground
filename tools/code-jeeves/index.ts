@@ -9,6 +9,7 @@ import {
 } from "cmd-ts";
 import { $ } from "bun";
 import inquirer from "inquirer";
+import { askOpenAI } from "./src/askOpenAI";
 
 
 async function handler({ pattern }: { pattern?: string }) {
@@ -23,7 +24,15 @@ async function handler({ pattern }: { pattern?: string }) {
       ? files[0]
       : (await fileSelectQuestion(files)).fileName;
 
-console.log({selectedFile})
+
+    const code = await $`cat ${selectedFile}`.text();
+    
+ 
+  const systemPrompt="you are a 10 x developer. Document the following code. Return only the code and no explanations."
+    const answer=   await askOpenAI(systemPrompt,code)
+
+
+   await $`echo ${answer} > ${selectedFile}.txt`;
 
 }
 
