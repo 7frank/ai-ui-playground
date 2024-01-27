@@ -7,7 +7,7 @@ import {
   option,
   string,
   boolean,
-  flag
+  flag,
 } from "cmd-ts";
 import { $ } from "bun";
 import inquirer from "inquirer";
@@ -55,7 +55,7 @@ async function handler({
 
   const dryRun = isDry ? "--dry-run" : "";
 
-  console.log(chalk.green("GIT:", `git commit -m ${commitMessage} ${dryRun}`));
+  console.log(chalk.green("git:"), `git commit -m ${commitMessage} ${dryRun}`);
 
   await $`git --no-pager diff ${selectedFile}`;
 
@@ -64,12 +64,10 @@ async function handler({
       await $`git commit -m ${commitMessage} ${dryRun}`.text();
 
     console.log(
-      chalk.green(
-        commitSuccess
-          .split("\n")
-          .map((it) => "GIT:" + it)
-          .join("\n"),
-      ),
+      commitSuccess
+        .split("\n")
+        .map((it) => chalk.green("git:") + it)
+        .join("\n"),
     );
   }
 }
@@ -108,11 +106,11 @@ const documentation = command({
       description: "use '*' for any ",
     }),
     dryRun: flag({
-        type: boolean,
-        long: "dryRun",
-        
-        description: "git commit changes or use --dryRun",
-      }),
+      type: boolean,
+      long: "dryRun",
+
+      description: "git commit changes or use --dryRun",
+    }),
   },
   handler: handler,
 });
