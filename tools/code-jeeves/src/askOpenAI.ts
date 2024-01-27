@@ -18,7 +18,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
         { role: "user", content: userQuestion },
       ],
       model: "gpt-3.5-turbo",
-      max_tokens: 100,
+      max_tokens: 300,
     });
 
     return response.choices[0].message.content;

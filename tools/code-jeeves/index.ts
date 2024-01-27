@@ -5,35 +5,51 @@ import {
   subcommands,
   optional,
   option,
-  string
+  string,
 } from "cmd-ts";
 import { $ } from "bun";
 import inquirer from "inquirer";
 import { askOpenAI } from "./src/askOpenAI";
 
+import chalk from "chalk";
 
 async function handler({ pattern }: { pattern?: string }) {
-  if (pattern == undefined ) pattern = "*";
+  if (pattern == undefined) pattern = "*";
 
-
-  const found = await $`find . -type d -name node_modules -prune -o -type f -name "${pattern}" | pv -p`.text();
-  const files=found.split("\n")
+  const found =
+    await $`find . -type d -name node_modules -prune -o -type f -name "${pattern}" | pv -p`.text();
+  const files = found.split("\n");
 
   const selectedFile =
-    files.length == 1
-      ? files[0]
-      : (await fileSelectQuestion(files)).fileName;
+    files.length == 1 ? files[0] : (await fileSelectQuestion(files)).fileName;
 
+  const code = await $`cat ${selectedFile}`.text();
 
-    const code = await $`cat ${selectedFile}`.text();
-    
- 
-  const systemPrompt="you are a 10 x developer. Document the following code. Return only the code and no explanations."
-    const answer=   await askOpenAI(systemPrompt,code)
+  const systemPrompt =
+    "You are a 10x developer. Document the following source code and functions. Return only the code and no explanations.";
+  const answer = await askOpenAI(systemPrompt, code);
 
+  await $`echo ${answer} > ${selectedFile}.txt`;
 
-   await $`echo ${answer} > ${selectedFile}.txt`;
+  const commitMessage = `"jeeves: updating documentation for ${selectedFile}"`;
 
+  console.log(chalk.green("GIT:", `git commit -m ${commitMessage} --dry-run`));
+
+  await $`git --no-pager diff ${selectedFile}`;
+
+  if (await confirmQuestion("Do you want to commit changes?")) {
+    const commitSuccess =
+      await $`git commit -m ${commitMessage} --dry-run`.text();
+
+    console.log(
+      chalk.green(
+        commitSuccess
+          .split("\n")
+          .map((it) => "GIT:" + it)
+          .join("\n"),
+      ),
+    );
+  }
 }
 
 async function fileSelectQuestion(fileNames: string[]) {
@@ -47,19 +63,31 @@ async function fileSelectQuestion(fileNames: string[]) {
   ]);
 }
 
+async function confirmQuestion(msg: string) {
+  return (
+    await inquirer.prompt([
+      {
+        type: "confirm",
+        name: "selection",
+        message: msg,
+        default: true,
+      },
+    ])
+  ).selection;
+}
 
 const documentation = command({
-    name: "documentation",
-    args: {
-      pattern: option({
-        type: optional(string),
-        long: "pattern",
-        short: "p",
-        description: "use '*' for any ",
-      }),
-    },
-    handler: handler,
-  });
+  name: "documentation",
+  args: {
+    pattern: option({
+      type: optional(string),
+      long: "pattern",
+      short: "p",
+      description: "use '*' for any ",
+    }),
+  },
+  handler: handler,
+});
 
 const refactor = subcommands({
   name: "refactor",
@@ -77,39 +105,25 @@ const cli = subcommands({
 
 run(binary(cli), process.argv);
 
-
-
-// import {
-//     command,
-//     positional,
-//     binary,
-//     run,
-//     option,
-//     flag,
-//     string,
-//     boolean,
-//     optional,
-//   } from "cmd-ts";
-  
+// ####################################
 //   import { readStreamToString, ReadStreamType } from "./types/ReadStreamType";
-  
 //   /**
 //    *
 //    * @param args This is our handler that takes the script argument & evaluates the input with that.
 //    */
 //   async function handler(args) {
 //     if (args.verbose) console.info("args", args);
-  
+
 //     const t = await readStreamToString(args.path);
-  
+
 //     var func = new Function("return (" + args.script + ")").bind(t);
-  
+
 //     const res = func(t);
-  
+
 //     if (typeof res == "object") console.log(JSON.stringify(res, null, "  "));
 //     else console.log(res);
 //   }
-  
+
 //   const cli = command({
 //     name: "cli",
 //     args: {
@@ -129,32 +143,16 @@ run(binary(cli), process.argv);
 //     },
 //     handler,
 //   });
-  
+
 //   run(binary(cli), process.argv);
-  
+
 // #################################################
 
 // import chalk from "chalk";
 
 // import { log } from "./src/log";
-
-// import {
-//   command,
-//   binary,
-//   run,
-//   positional,
-//   option,
-//   optional,
-//   string,
-// } from "cmd-ts";
-// import {
-//   cookieGeneratorSchema,
-//   type CookieGenerator,
-//   type FileDescriptorSubject,
-// } from "./src/types";
 // import { JSONType } from "./src/input/types/JsonType";
 // import { TarGzType } from "./src/input/types/TarGzType";
-
 
 // interface CLI {
 //   config: JSON;
@@ -200,7 +198,7 @@ run(binary(cli), process.argv);
 //   }
 
 //   if (pattern) {
-   
+
 //     process.exit(0);
 //   }
 
@@ -217,4 +215,3 @@ run(binary(cli), process.argv);
 // });
 
 // run(binary(cli), process.argv);
-
