@@ -6,18 +6,7 @@ import { fileSelectQuestion, confirmQuestion } from "./questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { z } from "zod";
-
-const subtaskSchema = z.object({
-  description: z.string(),
-});
-
-const taskSchema = z.object({
-  description: z.string(),
-  subtask: z.array(subtaskSchema).optional(),
-});
-
-const taskFileSchema = z.array(taskSchema);
+import { taskFileSchema, taskSchema, subtaskSchema } from "./taskFileSchema";
 
 export async function generateProgramList({ name }: { name: string }) {
   name = path.normalize(name) + "/";
@@ -29,7 +18,22 @@ export async function generateProgramList({ name }: { name: string }) {
 
   const tasks = await $`cat ${tasksDefinitionFilePath}`.json();
 
-  taskFileSchema.parse(tasks);
+  const parsed = taskFileSchema.parse(tasks);
+
+  for await (const task of parsed) {
+    const role = "You are a 10x developer.";
+
+    const onlyCode = "Return only the markdown code and no explanations.";
+
+    const prompts = [""];
+
+    const systemPrompt = `
+        ${role}
+        You have an existing function to connect to openai, ("async function askOpenAI(systemPrompt:string ,question:string):Promise<string>") that returns a string containing the source code for the question asked. 
+            ${prompts.join("\n")}  ${onlyCode}`;
+
+    const res = await askOpenAI(systemPrompt, task.description);
+  }
 }
 
 export async function createProjectAndTasks({ name }: { name: string }) {
