@@ -20,19 +20,20 @@ export async function generateProgramList({ name }: { name: string }) {
 
   const parsed = taskFileSchema.parse(tasks);
 
-  for await (const task of parsed) {
+  const functionName = 1;
+  for await (const { description } of parsed) {
     const role = "You are a 10x developer.";
 
     const onlyCode = "Return only the markdown code and no explanations.";
 
-    const prompts = [""];
+    const prompts = ["create a function", "use typescript"];
 
     const systemPrompt = `
-        ${role}
-        You have an existing function to connect to openai, ("async function askOpenAI(systemPrompt:string ,question:string):Promise<string>") that returns a string containing the source code for the question asked. 
-            ${prompts.join("\n")}  ${onlyCode}`;
+        ${role} ${prompts.join("\n")}  ${onlyCode}`;
 
-    const res = await askOpenAI(systemPrompt, task.description);
+    const res = await askOpenAI(systemPrompt, description);
+
+    await $`echo ${res} > ${name}/src/${functionName}.ts`;
   }
 }
 
