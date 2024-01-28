@@ -9,94 +9,9 @@ import {
   boolean,
   flag,
 } from "cmd-ts";
-import { $ } from "bun";
-import inquirer from "inquirer";
-import { askOpenAI } from "./src/askOpenAI";
 
-import chalk from "chalk";
-
-const role = "You are a 10x developer.";
-const onlyCode = "Return only the updated code and no explanations.";
-
-const documentCodePrompt =
-  "Document the following source code and functions. Make sure that every function has a proper comment block."; //
-const today = new Date().toLocaleString().split(",")[0];
-const commentOutDeadCode = `If some code is not used or exported then comment out this code. Prefix the comment with: '// Deprecated since: ${today}'`;
-const optimizeCode =
-  "Optimize the following source code and functions. Comment code that is not used out.";
-
-const prompts = [documentCodePrompt, commentOutDeadCode, optimizeCode];
-
-const systemPrompt = `${role} ${prompts.join("\n")}  ${onlyCode}`;
-
-async function handler({
-  pattern,
-  isDry = false,
-}: {
-  pattern?: string;
-  isDry: boolean;
-}) {
-  if (pattern == undefined) pattern = "*";
-
-  const found =
-    await $`find . -type d -name node_modules -prune -o -type f -name "${pattern}" | pv -p`.text();
-  const files = found.split("\n");
-
-  const selectedFile =
-    files.length == 1 ? files[0] : (await fileSelectQuestion(files)).fileName;
-
-  const code = await $`cat ${selectedFile}`.text();
-
-  const answer = await askOpenAI(systemPrompt, code);
-
-  await $`echo ${answer} > ${selectedFile}`; // .txt
-
-  const commitMessage = `"jeeves: updating documentation for ${selectedFile}"`;
-
-  const dryRun = isDry ? "--dry-run" : "";
-
-  await $`git add ${selectedFile}`;
-
-  console.log(chalk.green("git:"), `git commit -m ${commitMessage} ${dryRun}`);
-
-  await $`git --no-pager diff ${selectedFile}`;
-
-  if (await confirmQuestion("Do you want to commit changes?")) {
-    const commitSuccess =
-      await $`git commit -m ${commitMessage} ${dryRun}`.text();
-
-    console.log(
-      commitSuccess
-        .split("\n")
-        .map((it) => chalk.green("git:") + it)
-        .join("\n"),
-    );
-  }
-}
-
-async function fileSelectQuestion(fileNames: string[]) {
-  return await inquirer.prompt([
-    {
-      type: "list",
-      name: "fileName",
-      message: "Select a file",
-      choices: fileNames,
-    },
-  ]);
-}
-
-async function confirmQuestion(msg: string) {
-  return (
-    await inquirer.prompt([
-      {
-        type: "confirm",
-        name: "selection",
-        message: msg,
-        default: true,
-      },
-    ])
-  ).selection;
-}
+import { handleDocumentation } from "./handleDocumentation";
+import { generateProgramList } from "./generateProgramList";
 
 const documentation = command({
   name: "documentation",
@@ -114,7 +29,7 @@ const documentation = command({
       description: "git commit changes or use --dryRun",
     }),
   },
-  handler: handler,
+  handler: handleDocumentation,
 });
 
 const refactor = subcommands({
@@ -124,10 +39,40 @@ const refactor = subcommands({
   },
 });
 
+
+
+const program = command({
+    name: "program",
+    args: {
+      name: option({
+        type: optional(string),
+        long: "pattern",
+        short: "p",
+        description: "use '*' for any ",
+      }),
+      dryRun: flag({
+        type: boolean,
+        long: "dryRun",
+  
+        description: "git commit changes or use --dryRun",
+      }),
+    },
+    handler: generateProgramList,
+  });
+
+const generate = subcommands({
+    name: "generate",
+    cmds: {
+        program,
+    },
+  });
+
+
 const cli = subcommands({
   name: "cli",
   cmds: {
     refactor,
+    generate
   },
 });
 
