@@ -1,96 +1,17 @@
 [
   {
-    "description": "1. Import the necessary libraries and modules for program execution."
+    "description": "1. Create a function to take user input and generate tests using the cmd-ts tool."
   },
   {
-    "description": "2. Implement a function to create tests.",
-    "subtask": [
-      {
-        "description": "Define the function to take in a list of test parameters and return the generated tests."
-      },
-      {
-        "description": "Inside the function, utilize libraries or modules specific to test generation to create the desired tests."
-      }
-    ]
+    "description": "2. Create a function to leverage the OpenAI API to generate functions for the tests."
   },
   {
-    "description": "3. Implement a function to create functions with OpenAI.",
-    "subtask": [
-      {
-        "description": "Connect to the OpenAI service using the provided async function \"askOpenAI(systemPrompt, question) \"."
-      },
-      {
-        "description": "Pass the desired system prompt and question to the \"askOpenAI\" function."
-      },
-      {
-        "description": "Retrieve the generated source code from the response."
-      }
-    ]
+    "description": "3. Implement a function to execute the generated functions and tests using the bun shell tool."
   },
   {
-    "description": "4. Implement a function to execute functions and tests.",
-    "subtask": [
-      {
-        "description": "Define a function that takes in the generated code and executes it."
-      },
-      {
-        "description": "Utilize the appropriate method or mechanism based on the programming language in use to execute the code."
-      }
-    ]
+    "description": "4. Develop an AST function that can traverse code and extract specific functions using a library like inquirer."
   },
   {
-    "description": "5. Implement a function to create AST functions.",
-    "subtask": [
-      {
-        "description": "Define a function that takes in code as input and uses a library or module related to Abstract Syntax Trees (AST)."
-      },
-      {
-        "description": "Utilize the AST library or module to traverse the code and extract the desired functions or perform other operations."
-      }
-    ]
-  },
-  {
-    "description": "6. Implement a function to take arguments, such as file paths.",
-    "subtask": [
-      {
-        "description": "Define a function that takes in arguments, such as file paths, and uses them to perform certain actions within the program."
-      },
-      {
-        "description": "Utilize the file path-related libraries or modules to access or manipulate files as needed based on the specified requirements."
-      }
-    ]
-  },
-  {
-    "description": "7. Implement the main function or program logic.",
-    "subtask": [
-      {
-        "description": "Depending on the desired flow and interactions, define the main function or program logic to orchestrate the different steps."
-      },
-      {
-        "description": "Call the respective functions with the necessary parameters and handle their outputs as required."
-      }
-    ]
-  },
-  {
-    "description": "8. Test the program.",
-    "subtask": [
-      {
-        "description": "Use sample inputs and expected outputs to test the functionality of the program."
-      },
-      {
-        "description": "Verify that the tests, functions, code extraction, and file manipulation are all working as intended."
-      }
-    ]
-  },
-  {
-    "description": "9. Document the program and provide necessary documentation for future use or maintenance purposes.",
-    "subtask": [
-      {
-        "description": "Write detailed explanations and documentation for each step in the program, including function usage, input requirements, and expected outputs."
-      },
-      {
-        "description": "Include guidelines, examples, or other relevant information that may be helpful to users or developers."
-      }
-    ]
+    "description": "5. Implement a function to take arguments, such as file paths, using the zod library and use them to create a new function."
   }
 ]
