@@ -11,6 +11,9 @@ import { taskFileSchema, taskSchema, subtaskSchema } from "./taskFileSchema";
 export async function generateProgramList({ name }: { name: string }) {
   name = path.normalize(name) + "/";
 
+  await $`mkdir -p ${name}src`;
+
+
   const tasksDefinitionFilePath = name + "tasks.txt";
 
   if (!fs.existsSync(tasksDefinitionFilePath))
@@ -25,9 +28,9 @@ export async function generateProgramList({ name }: { name: string }) {
     functionName++;
     const role = "You are a 10x developer.";
 
-    const onlyCode = "Return only the markdown code and no explanations.";
+    const onlyCode = "Return only the source code and no explanations.";
 
-    const prompts = ["create a function", "use typescript"];
+    const prompts = ["create a function,the full implementation, dont abreviate", "use typescript"];
 
     const systemPrompt = `
         ${role} ${prompts.join("\n")}  ${onlyCode}`;
@@ -96,7 +99,10 @@ export async function createProjectAndTasks({ name }: { name: string }) {
   //    - Include guidelines, examples, or other relevant information that may be helpful to users or developers.
   // `;
 
-  const result = convertListToTasks(response1);
+  console.log(res)
+
+
+  const result = convertListToTasks(res!);
 
   // Convert the result to JSON
   const jsonOutput = JSON.stringify(result, null, 2);
@@ -104,7 +110,7 @@ export async function createProjectAndTasks({ name }: { name: string }) {
   // Print the JSON
 
   await $`mkdir -p ${name}`;
-  await $`mkdir -p ${name}src`;
+
 
   const tasksFilePath = path.normalize(name + "tasks.txt");
   await $`echo ${jsonOutput} > ${file(tasksFilePath)}`;
