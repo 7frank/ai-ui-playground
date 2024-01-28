@@ -39,40 +39,38 @@ const refactor = subcommands({
   },
 });
 
-
-
 const program = command({
-    name: "program",
-    args: {
-      name: option({
-        type: string,
-        long: "name",
-        short: "n",
-        description: "the name of the program that is going to be generated. also the folder name",
-      }),
-      dryRun: flag({
-        type: boolean,
-        long: "dryRun",
-  
-        description: "git commit changes or use --dryRun",
-      }),
-    },
-    handler: generateProgramList,
-  });
+  name: "program",
+  args: {
+    name: option({
+      type: string,
+      long: "name",
+      short: "n",
+      description:
+        "the name of the program that is going to be generated. also the folder name",
+    }),
+    dryRun: flag({
+      type: boolean,
+      long: "dryRun",
+
+      description: "git commit changes or use --dryRun",
+    }),
+  },
+  handler: generateProgramList,
+});
 
 const generate = subcommands({
-    name: "generate",
-    cmds: {
-        program,
-    },
-  });
-
+  name: "generate",
+  cmds: {
+    program,
+  },
+});
 
 const cli = subcommands({
   name: "cli",
   cmds: {
     refactor,
-    generate
+    generate,
   },
 });
 
