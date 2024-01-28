@@ -24,16 +24,16 @@ bun index.ts refactor documentation -p=*.ts --dryRun
 
 This project was created using `bun init` in bun v1.0.23. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
-
 # Troubleshooting
 
 - GPT3.5-turbo seems to sometimes remove docuemtnation entirely for prompts that explicitly require it to add doc blocs.
-    - but at least seems to be quite inexpensive
+  - but at least seems to be quite inexpensive
 - gpt4-turbo seems to ahve different problems
-    
 
-# todo 
+# todo
 
+whole work flow explained:
+https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
 - add debug information to the commit for comparing for example models and results
 - check for max token quota

@@ -19,6 +19,33 @@ Contains links of things that might be important.
 
 ## HEAD
 
+### ~0
+
+[Mittwoch 02:45] Frank Reimann
+https://networkrepository.com/
+Network Data Repository | The First Interactive Network Data Repository
+The first interactive network dataset repository with interactive graph visualization and analytics
+[Mittwoch 02:48] Frank Reimann
+https://github.com/GRAND-Lab/graph_datasets
+GitHub - GRAND-Lab/graph_datasets: A Repository of Benchmark Graph Datasets for Graph Classification (31 Graph Datasets In Total).
+A Repository of Benchmark Graph Datasets for Graph Classification (31 Graph Datasets In Total). - GitHub - GRAND-Lab/graph_datasets: A Repository of Benchmark Graph Datasets for Graph Classificatio...
+[04:02] Frank Reimann
+https://github.com/gencay/vscode-chatgpt
+GitHub - gencay/vscode-chatgpt: An unofficial Visual Studio Code - OpenAI ChatGPT integration
+An unofficial Visual Studio Code - OpenAI ChatGPT integration - GitHub - gencay/vscode-chatgpt: An unofficial Visual Studio Code - OpenAI ChatGPT integration
+[04:07] Frank Reimann
+Add test generation for Jeeves cli. Automate: create test. Refactor. Run test, commit,  pass test run command to cli for agnostic use
+[04:27] Frank Reimann
+Try out whisper in cli
+
+[15:53] Frank Reimann
+https://preactjs.com/blog/introducing-signals/
+Introducing Signals – Preact
+Signals are a way of expressing state that ensure apps stay fast regardless of how complex they get. Signals are based on reactive principles and provide excellent developer ergonomics, with a unique 
+[15:54] Frank Reimann
+Why Signals Are Better Than React Hooks, bei YouTube
+### ~1
+
 [all awesome lists there are](https://project-awesome.org/)
 [the same but with stars](https://awesomerank.github.io/)
 

@@ -20,8 +20,9 @@ export async function generateProgramList({ name }: { name: string }) {
 
   const parsed = taskFileSchema.parse(tasks);
 
-  const functionName = 1;
+  let functionName = 0;
   for await (const { description } of parsed) {
+    functionName++;
     const role = "You are a 10x developer.";
 
     const onlyCode = "Return only the markdown code and no explanations.";
@@ -33,7 +34,9 @@ export async function generateProgramList({ name }: { name: string }) {
 
     const res = await askOpenAI(systemPrompt, description);
 
-    await $`echo ${res} > ${name}/src/${functionName}.ts`;
+    const targetFileName = name + "src/" + functionName + ".ts";
+    console.log(targetFileName);
+    await $`echo ${res} > ${file(targetFileName)}`;
   }
 }
 
@@ -42,12 +45,14 @@ export async function createProjectAndTasks({ name }: { name: string }) {
 
   const onlyCode = "Return only the markdown code and no explanations.";
 
-  const prompts = [""];
+  const oaiPrompt = ` You have an existing function to connect to openai, ("async function askOpenAI(systemPrompt:string ,question:string):Promise<string>") that returns a string containing the source code for the question asked. `;
 
+  const prompts = [
+    "",
+    //oaiPrompt
+  ];
   const systemPrompt = `
-      ${role}
-      You have an existing function to connect to openai, ("async function askOpenAI(systemPrompt:string ,question:string):Promise<string>") that returns a string containing the source code for the question asked. 
-          ${prompts.join("\n")}  ${onlyCode}`;
+      ${role} ${prompts.join("\n")}  ${onlyCode}`;
 
   const theQuestion = `Write a list of steps for a program that can do the following:
           - it can create tests.
@@ -57,38 +62,39 @@ export async function createProjectAndTasks({ name }: { name: string }) {
           - it can take arguments, for example, to file paths that it uses to create a new function.
           
           Specify the steps to create a program. 
+          Each step should be implementable as a programm function.
           Use the following tools if you ahve to choose: cmd-ts,bun shell, inquirer, zod
           `;
 
-  // const res=await askOpenAI(systemPrompt,theQuestion )
+  const res = await askOpenAI(systemPrompt, theQuestion);
 
-  const response1 = `1. Import the necessary libraries and modules for program execution.
-2. Implement a function to create tests.
-   - Define the function to take in a list of test parameters and return the generated tests.
-   - Inside the function, utilize libraries or modules specific to test generation to create the desired tests.
-3. Implement a function to create functions with OpenAI.
-   - Connect to the OpenAI service using the provided async function "askOpenAI(systemPrompt, question) ".
-   - Pass the desired system prompt and question to the "askOpenAI" function.
-   - Retrieve the generated source code from the response.
-4. Implement a function to execute functions and tests.
-   - Define a function that takes in the generated code and executes it.
-   - Utilize the appropriate method or mechanism based on the programming language in use to execute the code.
-5. Implement a function to create AST functions.
-   - Define a function that takes in code as input and uses a library or module related to Abstract Syntax Trees (AST).
-   - Utilize the AST library or module to traverse the code and extract the desired functions or perform other operations.
-6. Implement a function to take arguments, such as file paths.
-   - Define a function that takes in arguments, such as file paths, and uses them to perform certain actions within the program.
-   - Utilize the file path-related libraries or modules to access or manipulate files as needed based on the specified requirements.
-7. Implement the main function or program logic.
-   - Depending on the desired flow and interactions, define the main function or program logic to orchestrate the different steps.
-   - Call the respective functions with the necessary parameters and handle their outputs as required.
-8. Test the program.
-   - Use sample inputs and expected outputs to test the functionality of the program.
-   - Verify that the tests, functions, code extraction, and file manipulation are all working as intended.
-9. Document the program and provide necessary documentation for future use or maintenance purposes.
-   - Write detailed explanations and documentation for each step in the program, including function usage, input requirements, and expected outputs.
-   - Include guidelines, examples, or other relevant information that may be helpful to users or developers.
-`;
+  //   const response1 = `1. Import the necessary libraries and modules for program execution.
+  // 2. Implement a function to create tests.
+  //    - Define the function to take in a list of test parameters and return the generated tests.
+  //    - Inside the function, utilize libraries or modules specific to test generation to create the desired tests.
+  // 3. Implement a function to create functions with OpenAI.
+  //    - Connect to the OpenAI service using the provided async function "askOpenAI(systemPrompt, question) ".
+  //    - Pass the desired system prompt and question to the "askOpenAI" function.
+  //    - Retrieve the generated source code from the response.
+  // 4. Implement a function to execute functions and tests.
+  //    - Define a function that takes in the generated code and executes it.
+  //    - Utilize the appropriate method or mechanism based on the programming language in use to execute the code.
+  // 5. Implement a function to create AST functions.
+  //    - Define a function that takes in code as input and uses a library or module related to Abstract Syntax Trees (AST).
+  //    - Utilize the AST library or module to traverse the code and extract the desired functions or perform other operations.
+  // 6. Implement a function to take arguments, such as file paths.
+  //    - Define a function that takes in arguments, such as file paths, and uses them to perform certain actions within the program.
+  //    - Utilize the file path-related libraries or modules to access or manipulate files as needed based on the specified requirements.
+  // 7. Implement the main function or program logic.
+  //    - Depending on the desired flow and interactions, define the main function or program logic to orchestrate the different steps.
+  //    - Call the respective functions with the necessary parameters and handle their outputs as required.
+  // 8. Test the program.
+  //    - Use sample inputs and expected outputs to test the functionality of the program.
+  //    - Verify that the tests, functions, code extraction, and file manipulation are all working as intended.
+  // 9. Document the program and provide necessary documentation for future use or maintenance purposes.
+  //    - Write detailed explanations and documentation for each step in the program, including function usage, input requirements, and expected outputs.
+  //    - Include guidelines, examples, or other relevant information that may be helpful to users or developers.
+  // `;
 
   const result = convertListToTasks(response1);
 
@@ -98,6 +104,8 @@ export async function createProjectAndTasks({ name }: { name: string }) {
   // Print the JSON
 
   await $`mkdir -p ${name}`;
+  await $`mkdir -p ${name}src`;
+
   const tasksFilePath = path.normalize(name + "tasks.txt");
   await $`echo ${jsonOutput} > ${file(tasksFilePath)}`;
 }
