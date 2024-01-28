@@ -1,13 +1,11 @@
 ```typescript
-import fs from "fs"; // Deprecated since: 1/27/2024
-
 /**
  * Determine if a given number is even.
  * 
  * @param num The number to check.
  * @returns {boolean} True if the number is even, false otherwise.
  */
-function isEven(num: number): boolean {
+export function isEven(num: number): boolean {
   return num % 2 === 0;
 }
 
