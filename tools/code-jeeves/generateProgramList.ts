@@ -1,5 +1,5 @@
 import { $, file } from "bun";
-import { askOpenAI } from "./src/askOpenAI";
+import { askOpenAI, askOpenApiStructured } from "./src/askOpenAI";
 import chalk from "chalk";
 
 import { fileSelectQuestion, confirmQuestion } from "./questions";
@@ -7,12 +7,12 @@ import path from "node:path";
 import fs from "node:fs";
 
 import { taskFileSchema, taskSchema, subtaskSchema } from "./taskFileSchema";
+import { z } from "zod";
 
 export async function generateProgramList({ name }: { name: string }) {
   name = path.normalize(name) + "/";
 
   await $`mkdir -p ${name}src`;
-
 
   const tasksDefinitionFilePath = name + "tasks.txt";
 
@@ -30,7 +30,10 @@ export async function generateProgramList({ name }: { name: string }) {
 
     const onlyCode = "Return only the source code and no explanations.";
 
-    const prompts = ["create a function,the full implementation, dont abreviate", "use typescript"];
+    const prompts = [
+      "create a function,the full implementation, dont abreviate",
+      "use typescript",
+    ];
 
     const systemPrompt = `
         ${role} ${prompts.join("\n")}  ${onlyCode}`;
@@ -54,6 +57,7 @@ export async function createProjectAndTasks({ name }: { name: string }) {
     "",
     //oaiPrompt
   ];
+
   const systemPrompt = `
       ${role} ${prompts.join("\n")}  ${onlyCode}`;
 
@@ -67,9 +71,26 @@ export async function createProjectAndTasks({ name }: { name: string }) {
           Specify the steps to create a program. 
           Each step should be implementable as a programm function.
           Use the following tools if you ahve to choose: cmd-ts,bun shell, inquirer, zod
+
           `;
 
-  const res = await askOpenAI(systemPrompt, theQuestion);
+  //'Generate a step by step plan on how to run a hackathon',
+
+  const schema = z.object({
+    plan: z.array(
+      z.object({
+        reason: z.string().describe("Name the reasoning for this step"),
+        id: z.string().describe("Unique step id"),
+        task: z.string().describe("What is the task to be done for this step?"),
+      }),
+    ),
+  });
+
+  const res = await askOpenApiStructured("",
+    "Generate a step by step plan on how to run a hackathon",
+    schema,
+  );
+  // const res = await askOpenAI(systemPrompt, theQuestion);
 
   //   const response1 = `1. Import the necessary libraries and modules for program execution.
   // 2. Implement a function to create tests.
@@ -99,18 +120,13 @@ export async function createProjectAndTasks({ name }: { name: string }) {
   //    - Include guidelines, examples, or other relevant information that may be helpful to users or developers.
   // `;
 
-  console.log(res)
-
-
-  const result = convertListToTasks(res!);
+//   const result = convertListToTasks(res!);
 
   // Convert the result to JSON
-  const jsonOutput = JSON.stringify(result, null, 2);
+  const jsonOutput = JSON.stringify(res, null, 2);
 
-  // Print the JSON
 
   await $`mkdir -p ${name}`;
-
 
   const tasksFilePath = path.normalize(name + "tasks.txt");
   await $`echo ${jsonOutput} > ${file(tasksFilePath)}`;

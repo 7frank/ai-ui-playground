@@ -20,6 +20,8 @@ bun index.ts refactor documentation -p=*.ts
 
 bun index.ts refactor documentation -p=*.ts --dryRun
 
+bun index.ts generate program -n .out/test1
+
 ```
 
 This project was created using `bun init` in bun v1.0.23. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

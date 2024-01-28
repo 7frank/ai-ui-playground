@@ -18,10 +18,12 @@
     "fs-extra": "^11.2.0",
     "gunzip-maybe": "^1.4.2",
     "inquirer": "^9.2.12",
+    "llm-api": "^1.2.0",
     "openai": "^4.26.0",
     "prettier": "^3.2.4",
     "rxjs": "^7.8.1",
     "tar-stream": "^3.1.7",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zod-gpt": "^0.12.1"
   }
 }

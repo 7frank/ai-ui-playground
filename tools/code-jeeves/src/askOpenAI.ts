@@ -2,6 +2,10 @@ require("dotenv").config();
 import OpenAI from "openai";
 import chalk from "chalk";
 
+import { OpenAIChatApi } from "llm-api";
+import { completion } from "zod-gpt";
+import * as z from "zod";
+
 if (!process.env["OPENAI_API_KEY"]) throw new Error("missing OPENAI_API_KEY");
 
 const openai = new OpenAI({
@@ -43,4 +47,30 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
   console.log(chalk.green("info:"), `${tokenUsed} Token used`);
 
   return response.choices[0].message.content;
+}
+
+const openai2 = new OpenAIChatApi(
+  { apiKey: process.env["OPENAI_API_KEY"] },
+  { model: "gpt-3.5-turbo" }
+  //{ model: 'gpt-4-0613' },
+);
+
+export async function askOpenApiStructured<T extends z.ZodType>(
+  systemPrompt: string,
+  userQuestion: string,
+  schema: T,
+) {
+  const response = await completion(openai2, userQuestion,{schema});
+
+  // TODO find out how does this api handles cut of messages?
+  // const reason = response....
+  // const asIntended = reason == "stop";
+
+  // if (!asIntended)
+  //   throw new Error("LLM did not finish properly. Reason:" + reason);
+
+  const tokenUsed = response.usage?.totalTokens;
+  console.log(chalk.green("info:"), `${tokenUsed} Token used`);
+
+  return response.data;
 }
