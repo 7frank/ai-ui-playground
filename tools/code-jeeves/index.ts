@@ -45,10 +45,10 @@ const program = command({
     name: "program",
     args: {
       name: option({
-        type: optional(string),
-        long: "pattern",
-        short: "p",
-        description: "use '*' for any ",
+        type: string,
+        long: "name",
+        short: "n",
+        description: "the name of the program that is going to be generated. also the folder name",
       }),
       dryRun: flag({
         type: boolean,

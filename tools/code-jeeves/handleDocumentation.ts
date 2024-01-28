@@ -1,4 +1,4 @@
-import { $ } from "bun";
+import { $,file } from "bun";
 import { askOpenAI } from "./src/askOpenAI";
 import chalk from "chalk";
 import { systemPrompt } from "./prompts";
@@ -21,7 +21,7 @@ export async function handleDocumentation({
 
     const answer = await askOpenAI(systemPrompt, code);
 
-    await $`echo ${answer} > ${selectedFile}`; // .txt
+    await $`echo ${answer} > ${file(selectedFile)}`; // .txt
 
     const commitMessage = `"jeeves: updating documentation for ${selectedFile}"`;
 
