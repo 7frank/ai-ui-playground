@@ -19,5 +19,7 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
+
+    "types": ["@types/jest"]
   },
 }
