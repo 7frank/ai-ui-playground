@@ -48,9 +48,16 @@ export async function executePlan({
     await executeSingleTask(foundTask, name);
   } else if (resume) {
     const logLocation = name + "log.txt";
-    const logJson = await $`tail -n 1 ${logLocation}`.json();
+    const logText = await $`tail -n 1 ${logLocation}`.text();
 
-    const resumeIndex = logJson.index ? parseInt(logJson.index) + 1 : 1;
+    let logLine;
+    try {
+      logLine = JSON.parse(logText);
+    } catch (e) {
+      logLine = { index: 0 };
+    }
+
+    const resumeIndex = logLine.index ? parseInt(logLine.index) + 1 : 1;
 
     console.log("resuming tasks with:", resumeIndex);
 

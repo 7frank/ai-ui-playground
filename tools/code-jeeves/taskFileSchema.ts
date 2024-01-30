@@ -32,7 +32,13 @@ const packages = z.array(
 );
 const typeDeclaration = z
   .string()
-  .describe("What does the type declaration of the of function look like?");
+  .min(
+    1,
+    "You must specify a type declaration, which mirrors your function implementation. If you do not have a function implementation use the value \"string'",
+  )
+  .describe(
+    "What does the type declaration of the of function look like? This is a required parameter",
+  );
 const sourceCode = z
   .string()
   .describe("Generate the full source code without abbreviating");

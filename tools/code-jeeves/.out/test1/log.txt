@@ -1,4 +1,0 @@
-{"functionName":"defineTheFormat"}
-{"functionName":"identifyThePurposeAndGoalsOfTheHackathon","index":"1"}
-{"functionName":"prepareLogistics","index":7}
-{"functionName":"planTheAgenda","index":9}

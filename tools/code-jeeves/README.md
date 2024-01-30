@@ -33,19 +33,19 @@ bun index.ts plan execute -n .out/test1 -r
 
 This project was created using `bun init` in bun v1.0.23. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
-# Troubleshooting
-
-- GPT3.5-turbo seems to sometimes remove docuemtation entirely for prompts that explicitly require it to add doc blocs.
-  - but at least seems to be quite inexpensive
-- gpt4-turbo seems to ahve different problems
-
 # todo
 
 whole work flow explained:
 https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
-- add debug information to the commit for comparing for example models and results
 - check for max token quota
+- implement TDD flow
+  - generate plan
+  - run plan incrementally
+  - from type declaration generate test
+  - from task generate implementation
+  - let developer extend test or fix implementation of bot cannot fix the task themself
+- add debug information to the auto commit messages for comparing for example models and results
 
 ```javascript
 import axios from 'axios';

@@ -1,6 +1,0 @@
-{
-  "language": "typescript",
-  "packages": [],
-  "typeDeclaration": "",
-  "sourceCode": "// Hackathon Schedule and Agenda\n\n// Day 1\n\n// Morning Session (09:00 AM - 12:00 PM)\n- Introduction and Welcome Speech\n- Team Formation\n\n// Workshop 1 (01:00 PM - 03:00 PM)\n- Topic: Introduction to TypeScript\n- Speaker: John Doe\n\n// Afternoon Session (03:00 PM - 06:00 PM)\n- Brainstorming and Ideation\n\n// Day 2\n\n// Morning Session (09:00 AM - 12:00 PM)\n- Workshop 2: Building RESTful APIs with Node.js\n- Speaker: Jane Smith\n\n// Workshop 3 (01:00 PM - 03:00 PM)\n- Topic: Frontend Development with React\n- Speaker: Mark Johnson\n\n// Afternoon Session (03:00 PM - 06:00 PM)\n- Code Development\n\n// Day 3\n\n// Morning Session (09:00 AM - 12:00 PM)\n- Workshop 4: Test-Driven Development\n- Speaker: Sarah Davis\n\n// Workshop 5 (01:00 PM - 03:00 PM)\n- Topic: DevOps and Continuous Integration\n\n// Afternoon Session (03:00 PM - 06:00 PM)\n- Finalize Projects\n\n// Day 4\n\n// Morning Session (09:00 AM - 12:00 PM)\n- Project Presentations\n- Judging and Evaluation\n\n// Afternoon Session (03:00 PM - 06:00 PM)\n- Networking and Wrap-Up\n}"
-}
