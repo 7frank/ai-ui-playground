@@ -50,7 +50,7 @@ export async function executePlan({
     const logLocation = name + "log.txt";
     const logJson = await $`tail -n 1 ${logLocation}`.json();
 
-    const resumeIndex = logJson.index ? logJson.index + 1 : 1;
+    const resumeIndex = logJson.index ? parseInt(logJson.index) + 1 : 1;
 
     console.log("resuming tasks with:", resumeIndex);
 
@@ -62,24 +62,30 @@ export async function executePlan({
   }
 }
 
-function findTaskByIndex(parsed: PlanResponseSchema, index: string) {
-  let foundTask;
-  try {
-    const indexAsNum = parseInt(index) - 1;
+function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
+  const indexAsNum = typeof index == "number" ? index : parseInt(index) - 1;
 
-    foundTask = parsed.plan[indexAsNum];
+  if (!isNaN(indexAsNum)) {
+    const foundTask = parsed.plan[indexAsNum];
 
     if (!foundTask) {
       console.log("could not find task by index");
       process.exit();
     }
-  } catch (e) {
-    foundTask = parsed.plan.find((it) => camelCase(it.reason));
+    return foundTask;
+  }
 
-    if (!foundTask) {
-      console.log("could not find task by name");
-      process.exit();
-    }
+  const foundTask = parsed.plan.find((it) => camelCase(it.reason) == index);
+
+  if (!foundTask) {
+    console.log(
+      "could not find task by name, valid values: ",
+      parsed.plan
+        .map((it) => camelCase(it.reason))
+        .map((it) => `'${it}'`)
+        .join(","),
+    );
+    process.exit();
   }
   return foundTask;
 }
@@ -105,6 +111,10 @@ async function executeSingleTask(
   await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
 
   const logLocation = name + "log.txt";
-  const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
+  const logJson = JSON.stringify(
+    { functionName, index: parseInt(entry.id) },
+    null,
+    "",
+  );
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }

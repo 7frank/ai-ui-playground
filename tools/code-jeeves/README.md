@@ -26,13 +26,16 @@ bun index.ts plan generate -n .out/test1
 # run single item (3) of plan
 bun index.ts plan execute -n .out/test1 -i 3
 
+## continue plan by looking at log and resuming with next in list
+bun index.ts plan execute -n .out/test1 -r
+
 ```
 
 This project was created using `bun init` in bun v1.0.23. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
 # Troubleshooting
 
-- GPT3.5-turbo seems to sometimes remove docuemtnation entirely for prompts that explicitly require it to add doc blocs.
+- GPT3.5-turbo seems to sometimes remove docuemtation entirely for prompts that explicitly require it to add doc blocs.
   - but at least seems to be quite inexpensive
 - gpt4-turbo seems to ahve different problems
 
