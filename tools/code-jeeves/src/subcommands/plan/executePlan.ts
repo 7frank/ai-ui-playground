@@ -139,7 +139,6 @@ async function executeSingleTask(
 ) {
   console.log(entry.reason);
 
-
   /**
    * create implementation files
    */
@@ -166,23 +165,26 @@ async function executeSingleTask(
    */
 
   // TODO there will be many cases where we do not have a tyoppe declaration. we should probably enforce it, to make it easier to create impl and tests.
-  const testSystemPrompt = createTestSystemPrompt({...entry,declaration:entry.declaration??implRes.typeDeclaration});
+  const testSystemPrompt = createTestSystemPrompt({
+    ...entry,
+    declaration: entry.declaration ?? implRes.typeDeclaration,
+  });
 
   const testRes = await askOpenApiStructured(
     "",
-    testSystemPrompt + `The test should make sure that the following task can be executed successfully:'${entry.task}'` ,
+    testSystemPrompt +
+      `The test should make sure that the following task can be executed successfully:'${entry.task}'`,
     FunctionResponseSchema,
   );
 
-  
-    const testFileLocation = name + "src/" + functionName + ".test.ts";
-    console.log(testFileLocation);
+  const testFileLocation = name + "src/" + functionName + ".test.ts";
+  console.log(testFileLocation);
 
-    const testJson = JSON.stringify(testRes, null, "  ");
+  const testJson = JSON.stringify(testRes, null, "  ");
 
-    await $`echo ${testJson} > ${file(testFileLocation)}.log.json`;
-    await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
-  
+  await $`echo ${testJson} > ${file(testFileLocation)}.log.json`;
+  await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
+
   //-------------------------
 
   const logLocation = name + "log.txt";
