@@ -9,16 +9,6 @@ import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
 import * as fs from "node:fs";
 
-const role = "You are a 10x developer.";
-const prompts = [
-  //  "create a function,the full implementation, dont abreviate",
-  "Use typescript.",
-];
-
-// TODO the language that is used to generate tasks should come from the plan itself
-const preamble = `
-        ${role} ${prompts.join("\n")} `;
-
 export async function executePlan({
   name,
   force,
@@ -63,7 +53,7 @@ export async function executePlan({
     } catch (e) {
       logLine = { index: 0 };
     }
-    
+
     // TODO resume will fail for freshly generated
     let previousTask = findTaskByIndex(parsed, logLine.index);
     let prevIndex = parsed.plan.findIndex((it) => previousTask == it);
@@ -122,6 +112,16 @@ async function executeSingleTask(
   name: string,
 ) {
   console.log(entry.reason);
+
+  const role = "You are a 10x developer.";
+
+  const preamble = `
+${role}. 
+Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
+${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration : ""}.
+If the language supports exports / imports the function must be exported.
+`;
+
   const res = await askOpenApiStructured(
     "",
     preamble + entry.task,
@@ -138,7 +138,6 @@ async function executeSingleTask(
   await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
 
   const logLocation = name + "log.txt";
-  console.log(entry);
   const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }

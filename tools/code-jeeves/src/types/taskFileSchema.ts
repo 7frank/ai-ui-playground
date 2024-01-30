@@ -9,6 +9,13 @@ export const taskSchema = z.object({
   reason: z.string().describe("Name the reasoning for this step"),
   id: z.string().describe("Unique step id"),
   task: z.string().describe("What is the task to be done for this step?"),
+  ext: z
+    .string()
+    .optional()
+    .describe(
+      "The file extension from which to infer the source code language.",
+    ),
+  declaration: z.string().optional().describe("the function declaration"),
 });
 
 export const plan = z.array(taskSchema);
