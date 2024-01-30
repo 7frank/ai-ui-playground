@@ -20,7 +20,7 @@ bun index.ts refactor documentation -p=*.ts
 
 bun index.ts refactor documentation -p=*.ts --dryRun
 
-bun index.ts generate program -n .out/test1
+bun index.ts generate plan -n .out/test1
 
 ```
 

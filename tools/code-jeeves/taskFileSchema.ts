@@ -24,7 +24,7 @@ const language = z
   .string()
   .describe("What is the programming lanuage the code is written in?");
 const packages = z.array(
-  z.string().describe("What packages does this code import"),
+  z.string().describe("What packages does this code use/import. e.g. numpy, lodash"),
 );
 const typeDeclaration = z
   .string()

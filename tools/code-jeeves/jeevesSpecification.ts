@@ -1,5 +1,5 @@
 /**
- * TODO extract this into a json fille that can be used as input of "cli generate program"
+ * TODO extract this into a json fille that can be used as input of "cli generate plan"
  */
 export function jeevesSpecification() {
   // const role = "You are a 10x developer.";

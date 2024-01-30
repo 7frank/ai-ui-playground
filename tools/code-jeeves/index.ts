@@ -11,7 +11,8 @@ import {
 } from "cmd-ts";
 
 import { handleDocumentation } from "./handleDocumentation";
-import { generateProgramList } from "./generateProgramList";
+
+import {plan} from "./plan"
 
 const documentation = command({
   name: "documentation",
@@ -39,30 +40,21 @@ const refactor = subcommands({
   },
 });
 
-const program = command({
-  name: "program",
-  args: {
-    name: option({
-      type: string,
-      long: "name",
-      short: "n",
-      description:
-        "the name of the program that is going to be generated. also the folder name",
-    }),
-    dryRun: flag({
-      type: boolean,
-      long: "dryRun",
+// generate plan from string or spec.json
+// execute plan 
+//   - force .. start anew and override existing
+//   - flag for not overriding existing
+//   - continue .. <default> take last stored index and continue (allows to fix plan at current index)
+//   - index allows to fix / debug / isolate.. specific index
+// 
 
-      description: "git commit changes or use --dryRun",
-    }),
-  },
-  handler: generateProgramList,
-});
+// import project ... would import a path e.g. `**/*.(ts|md)` and generate a plan.json so that is can be used with the rest of the commands
 
+// run .. test all or -i .. index
 const generate = subcommands({
   name: "generate",
   cmds: {
-    program,
+    plan,
   },
 });
 
