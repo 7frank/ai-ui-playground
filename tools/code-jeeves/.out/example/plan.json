@@ -2,8 +2,10 @@
   "plan": [
     {
       "reason": "create sum function",
-      "id": "sum-many",
-      "task": "create a function that sums up at least two or more numbers or strings."
+      "ext":"ts",
+      "declaration":"function cumSum(values:...number):number",
+      "id": "cum-sum",
+      "task": "create a function that sums up at least two or more numbers"
     }
   ]
 }
