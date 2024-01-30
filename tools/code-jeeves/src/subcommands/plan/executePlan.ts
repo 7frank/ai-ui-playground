@@ -107,35 +107,83 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
   return foundTask;
 }
 
+function createImplementationSystemPrompt(
+  entry: PlanResponseSchema["plan"]["0"],
+) {
+  const role = "You are a 10x developer.";
+  return `
+${role}. 
+Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
+${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration : ""}.
+If the language supports exports / imports the function must be exported.
+`;
+}
+
+function createTestSystemPrompt(entry: PlanResponseSchema["plan"]["0"]) {
+  const role = "You are a 10x test engineer.";
+  return `
+${role}. 
+Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
+${entry.declaration ? "Write meaningful tests for the following interface:" + entry.declaration : ""}.
+If the language supports exports / imports the function must be imported.
+The function can be found in the same folder as the test.
+
+For Typescript use "jest". 
+For python use "PyUnit"
+`;
+}
+
 async function executeSingleTask(
   entry: PlanResponseSchema["plan"]["0"],
   name: string,
 ) {
   console.log(entry.reason);
 
-  const role = "You are a 10x developer.";
 
-  const preamble = `
-${role}. 
-Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
-${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration : ""}.
-If the language supports exports / imports the function must be exported.
-`;
+  /**
+   * create implementation files
+   */
 
-  const res = await askOpenApiStructured(
+  const implSystemPrompt = createImplementationSystemPrompt(entry);
+
+  const implRes = await askOpenApiStructured(
     "",
-    preamble + entry.task,
+    implSystemPrompt + entry.task,
     FunctionResponseSchema,
   );
   const functionName = camelCase(entry.reason);
 
-  const targetFileLocation = name + "src/" + functionName + ".ts";
-  console.log(targetFileLocation);
+  const implFileLocation = name + "src/" + functionName + ".ts";
+  console.log(implFileLocation);
 
-  const json = JSON.stringify(res, null, "  ");
+  const implJson = JSON.stringify(implRes, null, "  ");
 
-  await $`echo ${json} > ${file(targetFileLocation)}.json`;
-  await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
+  await $`echo ${implJson} > ${file(implFileLocation)}.log.json`;
+  await $`echo ${implRes.sourceCode} > ${file(implFileLocation)}`;
+
+  /**
+   * create test files
+   */
+
+  // TODO there will be many cases where we do not have a tyoppe declaration. we should probably enforce it, to make it easier to create impl and tests.
+  const testSystemPrompt = createTestSystemPrompt({...entry,declaration:entry.declaration??implRes.typeDeclaration});
+
+  const testRes = await askOpenApiStructured(
+    "",
+    testSystemPrompt + `The test should make sure that the following task can be executed successfully:'${entry.task}'` ,
+    FunctionResponseSchema,
+  );
+
+  
+    const testFileLocation = name + "src/" + functionName + ".test.ts";
+    console.log(testFileLocation);
+
+    const testJson = JSON.stringify(testRes, null, "  ");
+
+    await $`echo ${testJson} > ${file(testFileLocation)}.log.json`;
+    await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
+  
+  //-------------------------
 
   const logLocation = name + "log.txt";
   const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");

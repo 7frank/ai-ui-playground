@@ -173,3 +173,7 @@ dist
 
 # Finder (MacOS) folder config
 .DS_Store
+
+
+# jeeves generated files that are not versioned
+*.log.json

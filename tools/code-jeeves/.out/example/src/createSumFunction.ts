@@ -1,3 +1,3 @@
-function cumSum(...values: number[]): number {
-  return values.reduce((sum, value) => sum + value, 0);
+export function createSumFunction(...values: number[]): number {
+  return values.reduce((a, b) => a + b, 0);
 }

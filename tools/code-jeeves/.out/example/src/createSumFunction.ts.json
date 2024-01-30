@@ -1,6 +1,0 @@
-{
-  "language": "typescript",
-  "packages": [],
-  "typeDeclaration": "function cumSum(...values: number[]): number",
-  "sourceCode": "function cumSum(...values: number[]): number {\n  return values.reduce((sum, value) => sum + value, 0);\n}"
-}
