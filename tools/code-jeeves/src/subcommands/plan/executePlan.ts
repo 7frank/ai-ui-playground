@@ -30,6 +30,8 @@ export async function executePlan({
 
   name = path.normalize(name) + "/";
 
+  await $`mkdir -p ${name}src`;
+
   const tasksDefinitionFilePath = name + "plan.json";
   console.log(tasksDefinitionFilePath);
 
@@ -61,7 +63,8 @@ export async function executePlan({
     } catch (e) {
       logLine = { index: 0 };
     }
-
+    
+    // TODO resume will fail for freshly generated
     let previousTask = findTaskByIndex(parsed, logLine.index);
     let prevIndex = parsed.plan.findIndex((it) => previousTask == it);
     const resumeIndex = prevIndex + 1;
