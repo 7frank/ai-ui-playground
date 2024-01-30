@@ -2,8 +2,6 @@ import { command, optional, option, string, boolean, flag } from "cmd-ts";
 import { handleDocumentation } from "./handleDocumentation";
 import type { CommandParams } from "../../cmd-types";
 
-
-
 const updateDocBlocksArgs = {
   pattern: option({
     type: optional(string),

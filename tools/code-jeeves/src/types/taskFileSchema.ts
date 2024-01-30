@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { zodRefineTypescript } from "./src/subcommands/plan/zodRefineTypescript";
+import { zodRefineTypescript } from "../subcommands/plan/zodRefineTypescript";
 
 /**
  * Section specifies the form the response of generating a `plan` via openai has to have.
@@ -49,7 +49,7 @@ export const FunctionResponseSchema = z.object({
   packages,
   typeDeclaration,
   sourceCode,
-})
+});
 // TODO this probably requires a tsconfig
 // .superRefine((data, ctx) => {
 //   if (data.language === 'typescript') {

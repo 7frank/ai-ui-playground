@@ -6,7 +6,7 @@ import { fileSelectQuestion, confirmQuestion } from "../../questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { PlanResponseSchema } from "../../../taskFileSchema";
+import { PlanResponseSchema } from "../../types/taskFileSchema";
 import { jeevesSpecification } from "../../../jeevesSpecification";
 
 import type { GenerateCommandParams } from "./plan";

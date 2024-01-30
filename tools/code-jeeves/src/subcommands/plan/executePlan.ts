@@ -4,7 +4,7 @@ import { camelCase } from "lodash-es";
 import {
   FunctionResponseSchema,
   PlanResponseSchema,
-} from "../../../taskFileSchema";
+} from "../../types/taskFileSchema";
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
 
@@ -57,8 +57,8 @@ export async function executePlan({
       logLine = { index: 0 };
     }
 
-    let previousTask = findTaskByIndex(parsed, logLine.index );
-    let prevIndex=parsed.plan.findIndex((it)=> previousTask== it)
+    let previousTask = findTaskByIndex(parsed, logLine.index);
+    let prevIndex = parsed.plan.findIndex((it) => previousTask == it);
     const resumeIndex = prevIndex + 1;
 
     console.log("resuming tasks with:", resumeIndex);
@@ -85,7 +85,9 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
   }
 
   // the index could be an id inferred from the reason or the id string
-  const foundTask = parsed.plan.find((it) => camelCase(it.reason) == index || it.id==index  );
+  const foundTask = parsed.plan.find(
+    (it) => camelCase(it.reason) == index || it.id == index,
+  );
 
   if (!foundTask) {
     console.log(
@@ -94,10 +96,10 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
         .map((it) => camelCase(it.reason))
         .map((it) => `'${it}'`)
         .join(","),
-        parsed.plan
+      parsed.plan
         .map((it) => it.id)
         .map((it) => `'${it}'`)
-        .join(",")
+        .join(","),
     );
     process.exit();
   }
@@ -125,11 +127,7 @@ async function executeSingleTask(
   await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
 
   const logLocation = name + "log.txt";
-  console.log(entry)
-  const logJson = JSON.stringify(
-    { functionName, index: entry.id },
-    null,
-    "",
-  );
+  console.log(entry);
+  const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }

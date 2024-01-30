@@ -105,5 +105,3 @@ run(binary(cli), process.argv);
 //     description: "applies this pattern and lists all files that match",
 //   }),
 // };
-
-

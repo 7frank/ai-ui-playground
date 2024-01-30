@@ -7,7 +7,7 @@ import type { GenerateCommandParams } from "./documentation";
 
 export async function handleDocumentation({
   pattern,
-  dryRun  = false,
+  dryRun = false,
 }: GenerateCommandParams) {
   if (pattern == undefined) pattern = "*";
 
@@ -31,7 +31,10 @@ export async function handleDocumentation({
 
   await $`git add ${selectedFile}`;
 
-  console.log(chalk.green("git:"), `git commit -m ${commitMessage} ${doDryRun}`);
+  console.log(
+    chalk.green("git:"),
+    `git commit -m ${commitMessage} ${doDryRun}`,
+  );
 
   await $`git --no-pager diff ${selectedFile}`;
 
