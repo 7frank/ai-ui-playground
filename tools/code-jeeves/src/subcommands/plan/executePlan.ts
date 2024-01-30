@@ -7,6 +7,7 @@ import {
 } from "../../types/taskFileSchema";
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
+import * as fs from "node:fs";
 
 const role = "You are a 10x developer.";
 const prompts = [
@@ -32,6 +33,10 @@ export async function executePlan({
   const tasksDefinitionFilePath = name + "plan.json";
   console.log(tasksDefinitionFilePath);
 
+  if (!fs.existsSync(tasksDefinitionFilePath)) {
+    console.warn("File not found ", tasksDefinitionFilePath);
+    process.exit(1);
+  }
   const planJson = await $`cat ${tasksDefinitionFilePath}`.json();
 
   const parsed = PlanResponseSchema.parse(planJson);
@@ -65,9 +70,12 @@ export async function executePlan({
 
     let foundTask = findTaskByIndex(parsed, resumeIndex);
     const singleFile = camelCase(foundTask.reason);
-    console.log("updating", singleFile);
+    console.log("resuming with:", singleFile);
 
-    await executeSingleTask(foundTask, name);
+    const subPlan = parsed.plan.slice(resumeIndex);
+    for await (const plan of subPlan) {
+      await executeSingleTask(plan, name);
+    }
   }
 }
 
