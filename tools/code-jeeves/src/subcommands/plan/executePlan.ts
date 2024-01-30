@@ -195,7 +195,7 @@ async function executeSingleTask(
 
   //-------------------------
   // await  $`bun test ./${testFileLocation}`;
-  await  $`bun ts-jest ${testFileLocation}`;
+  await  $`bun jest ${testFileLocation}`;
 
   //-------------------------
   const logLocation = name + "log.txt";

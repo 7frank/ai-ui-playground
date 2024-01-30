@@ -22,3 +22,5 @@
 {"functionName":"cumSum","index":"cum-sum"}
 {"functionName":"cumSum","index":"cum-sum"}
 {"functionName":"cumSum","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}
