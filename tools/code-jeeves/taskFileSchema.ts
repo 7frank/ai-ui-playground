@@ -50,16 +50,17 @@ export const FunctionResponseSchema = z.object({
   typeDeclaration,
   sourceCode,
 })
-.superRefine((data, ctx) => {
-  if (data.language === 'typescript') {
-    try {
-      zodRefineTypescript(data.sourceCode);
-    } catch (error) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: (error as Error).message,
-        path: ['sourceCode'], // Specify the path to the field with the issue
-      });
-    }
-  }
-});
+// TODO this probably requires a tsconfig
+// .superRefine((data, ctx) => {
+//   if (data.language === 'typescript') {
+//     try {
+//       zodRefineTypescript(data.sourceCode);
+//     } catch (error) {
+//       ctx.addIssue({
+//         code: z.ZodIssueCode.custom,
+//         message: (error as Error).message,
+//         path: ['sourceCode'], // Specify the path to the field with the issue
+//       });
+//     }
+//   }
+// });

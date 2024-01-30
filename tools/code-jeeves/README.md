@@ -48,6 +48,8 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - from task generate implementation
   - let developer extend test or fix implementation of bot cannot fix the task themself
 - add debug information to the auto commit messages for comparing for example models and results
+- fix superRefine for typescript code
+
 
 ```javascript
 import axios from 'axios';
@@ -81,3 +83,32 @@ getBillingUsage(startDate, endDate)
   });
 
 ```
+
+
+
+## troubleshooting
+
+somethimes generating fails without details of the json in question
+> .out/test2/plan.json
+> resuming tasks with: 1
+> updating useInquirerToPromptUsersForInput
+> Use inquirer to prompt users for input
+
+> 4 |   value: true
+> 5 | });
+> 6 | exports.JSONRepairError = void 0;
+> 7 | class JSONRepairError extends Error {
+> 8 |   constructor(message, position) {
+> 9 |     super(message + ' at position ' + position);
+>         ^
+> error: Invalid number 'e', expecting a digit but got 'x' at position 153
+>       at new JSONRepairError (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/utils/JSONRepairError.js:9:5)
+>       at expectDigit (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:543:13)
+>       at expectDigitOrRepair (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:554:7)
+>       at parseNumber (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:461:11)
+>       at parseValue (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:83:73)
+>       at parseObject (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:199:32)
+>       at parseValue (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:83:23)
+>       at jsonrepair (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/jsonrepair/lib/cjs/regular/jsonrepair.js:50:21)
+>       at parseUnsafeJson (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/llm-api/dist/src/utils.js:27:38)
+>       at /home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/llm-api/dist/src/models/openai.js:197:32

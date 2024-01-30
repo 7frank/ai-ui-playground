@@ -56,6 +56,9 @@ const openai2 = new OpenAIChatApi(
 );
 
 export async function askOpenApiStructured<T extends z.ZodType>(
+  /**
+   * @deprecated
+   */
   systemPrompt: string,
   userQuestion: string,
   schema: T,
