@@ -2,7 +2,7 @@ import { $, file } from "bun";
 import { askOpenApiStructured } from "../../askOpenAI";
 import { camelCase } from "lodash-es";
 import {
-  functionResponseSchema,
+  FunctionResponseSchema,
   PlanResponseSchema,
 } from "../../../taskFileSchema";
 import path from "node:path";
@@ -105,7 +105,7 @@ async function executeSingleTask(
   const res = await askOpenApiStructured(
     "",
     preamble + entry.task,
-    functionResponseSchema,
+    FunctionResponseSchema,
   );
   const functionName = camelCase(entry.reason);
 

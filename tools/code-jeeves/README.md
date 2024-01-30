@@ -16,12 +16,14 @@ To run:
 ```bash
 bun run index.ts
 
+# select a file for which you want to generate doc blocks
 bun index.ts refactor documentation -p=*.ts
 
+# select a file for which you want to generate doc blocks, instead of committing it will only attempt a dry run
 bun index.ts refactor documentation -p=*.ts --dryRun
 
 # run the whole plan from start to finish
-bun index.ts plan generate -n .out/test1
+bun index.ts plan generate -n .out/test1 --force
 
 # run single item (3) of plan
 bun index.ts plan execute -n .out/test1 -i 3

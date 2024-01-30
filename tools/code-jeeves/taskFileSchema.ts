@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { zodRefineTypescript } from "./src/subcommands/plan/zodRefineTypescript";
 
 /**
  * Section specifies the form the response of generating a `plan` via openai has to have.
@@ -43,9 +44,22 @@ const sourceCode = z
   .string()
   .describe("Generate the full source code without abbreviating");
 
-export const functionResponseSchema = z.object({
+export const FunctionResponseSchema = z.object({
   language,
   packages,
   typeDeclaration,
   sourceCode,
+})
+.superRefine((data, ctx) => {
+  if (data.language === 'typescript') {
+    try {
+      zodRefineTypescript(data.sourceCode);
+    } catch (error) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: (error as Error).message,
+        path: ['sourceCode'], // Specify the path to the field with the issue
+      });
+    }
+  }
 });
