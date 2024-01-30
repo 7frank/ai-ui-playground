@@ -11,9 +11,10 @@ sudo apt-get install pv
 bun install
 ```
 
-To run:
+To run certain cli tasks:
 
 ```bash
+# show the help menu
 bun run index.ts
 
 # select a file for which you want to generate doc blocks
@@ -33,14 +34,17 @@ bun index.ts plan execute -n .out/test1 -r
 
 ```
 
-This project was created using `bun init` in bun v1.0.23. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+ > You will have to monotir your usage manually as there are no official endpoints for that as of now: 
+ > go to https://platform.openai.com/usage and login 
+
+
 
 # todo
 
 whole work flow explained:
 https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
-- check for max token quota
+
 - implement TDD flow
   - generate plan
   - run plan incrementally
@@ -48,6 +52,7 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - from task generate implementation
   - let developer extend test or fix implementation of bot cannot fix the task themself
 - add debug information to the auto commit messages for comparing for example models and results
+- check for max token quota in the future when endpoints are available
 - fix superRefine for typescript code
   - zod-gpt/dist/src/completion.js:42:15 fix with. problem currenty bun does not provide patching packages (coupld circumvent by using pnpm, yarn, .. etc)
 
@@ -57,41 +62,6 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
         throw new Error('Schemas can ONLY be an object');
     }
   ```
-
-
-```javascript
-import axios from 'axios';
-
-async function getBillingUsage(start_date: string, end_date: string): Promise<any> {
-  try {
-    const url = `https://api.openai.com/dashboard/billing/usage?start_date=${start_date}&end_date=${end_date}`;
-    const response = await axios.get(url, {
-      headers: {
-        'Authorization': `Bearer YOUR_OPENAI_API_KEY`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching billing usage data:", error);
-    throw error;
-  }
-}
-
-// Usage
-const startDate = '2023-05-01';
-const endDate = '2023-05-11';
-getBillingUsage(startDate, endDate)
-  .then(data => {
-    console.log("Billing usage data:", data);
-  })
-  .catch(error => {
-    console.log("Error:", error);
-  });
-
-```
-
 
 
 ## troubleshooting
