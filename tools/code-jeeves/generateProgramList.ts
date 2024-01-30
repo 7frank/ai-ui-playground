@@ -1,13 +1,14 @@
 import { $, file } from "bun";
 import { askOpenAI, askOpenApiStructured } from "./src/askOpenAI";
 import chalk from "chalk";
-import {camelCase} from "lodash-es"
+import { camelCase } from "lodash-es";
 
 import { fileSelectQuestion, confirmQuestion } from "./questions";
 import path from "node:path";
 import fs from "node:fs";
 
 import { planResponseSchema } from "./taskFileSchema";
+import { jeevesSpecification } from "./jeevesSpecification";
 
 export async function generateProgramList({ name }: { name: string }) {
   name = path.normalize(name) + "/";
@@ -23,9 +24,7 @@ export async function generateProgramList({ name }: { name: string }) {
 
   const parsed = planResponseSchema.parse(tasks);
 
-
-  for await (const { task,reason } of parsed.plan) {
-
+  for await (const { task, reason } of parsed.plan) {
     const role = "You are a 10x developer.";
 
     const onlyCode = "Return only the source code and no explanations.";
@@ -40,7 +39,7 @@ export async function generateProgramList({ name }: { name: string }) {
 
     const res = await askOpenAI(systemPrompt, task);
 
-    const functionName=camelCase(reason)
+    const functionName = camelCase(reason);
 
     const targetFileName = name + "src/" + functionName + ".ts";
     console.log(targetFileName);
@@ -49,39 +48,10 @@ export async function generateProgramList({ name }: { name: string }) {
 }
 
 export async function createProjectAndTasks({ name }: { name: string }) {
-  const role = "You are a 10x developer.";
+  const { problemStatement } = jeevesSpecification();
 
-  const onlyCode = "Return only the markdown code and no explanations.";
-
-  const oaiPrompt = ` You have an existing function to connect to openai, ("async function askOpenAI(systemPrompt:string ,question:string):Promise<string>") that returns a string containing the source code for the question asked. `;
-
-  const prompts = [
+  const res = await askOpenApiStructured(
     "",
-    //oaiPrompt
-  ];
-
-  const systemPrompt = `
-      ${role} ${prompts.join("\n")}  ${onlyCode}`;
-
-  const theQuestion = `Write a list of steps for a program that can do the following:
-          - it can create tests.
-          - it can create functions for those tests with OpenAI. 
-          - it can execute functions and tests
-          - it can create AST functions that traverse code and, for example, extract certain functions. 
-          - it can take arguments, for example, to file paths that it uses to create a new function.
-          
-          Specify the steps to create a program. 
-          Each step should be implementable as a programm function.
-          Use the following tools if you ahve to choose: cmd-ts,bun shell, inquirer, zod
-
-          `;
-
-  //'Generate a step by step plan on how to run a hackathon',
-
-  // TODO
-
-
-  const res = await askOpenApiStructured("",
     "Generate a step by step plan on how to run a hackathon",
     planResponseSchema,
   );
@@ -94,4 +64,3 @@ export async function createProjectAndTasks({ name }: { name: string }) {
   const tasksFilePath = path.normalize(name + "plan.json");
   await $`echo ${jsonOutput} > ${file(tasksFilePath)}`;
 }
-

@@ -51,7 +51,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
 
 const openai2 = new OpenAIChatApi(
   { apiKey: process.env["OPENAI_API_KEY"] },
-  { model: "gpt-3.5-turbo" }
+  { model: "gpt-3.5-turbo" },
   //{ model: 'gpt-4-0613' },
 );
 
@@ -60,7 +60,7 @@ export async function askOpenApiStructured<T extends z.ZodType>(
   userQuestion: string,
   schema: T,
 ) {
-  const response = await completion(openai2, userQuestion,{schema});
+  const response = await completion(openai2, userQuestion, { schema });
 
   // TODO find out how does this api handles cut of messages?
   // const reason = response....
