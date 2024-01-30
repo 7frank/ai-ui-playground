@@ -115,7 +115,8 @@ function createImplementationSystemPrompt(
 ${role}. 
 Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
 ${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration : ""}.
-If the language supports exports / imports the function must be exported.
+The function MUST be exported.
+The source code may never be empty.
 `;
 }
 
@@ -125,14 +126,21 @@ function createTestSystemPrompt(entry: PlanResponseSchema["plan"]["0"]) {
 ${role}. 
 Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
 ${entry.declaration ? "Write meaningful tests for the following interface:" + entry.declaration : ""}.
-If the language supports exports / imports the function must be imported.
+The function MUST be imported.
 The function can be found in the same folder as the test.
+You MUST at least create one positive and one negative test case.
 
 For Typescript use "jest". 
 For python use "PyUnit"
 `;
 }
 
+// TODO enable  other test runners. e.g. 'For Typescript use "bun:test'". 
+
+
+/**
+ * TODO separate impl, test, execute test into separate commands or flags, to make it less error prone.
+ */
 async function executeSingleTask(
   entry: PlanResponseSchema["plan"]["0"],
   name: string,
@@ -178,7 +186,7 @@ async function executeSingleTask(
   );
 
   const testFileLocation = name + "src/" + functionName + ".test.ts";
-  console.log(testFileLocation);
+  console.log("TestFile:",testFileLocation);
 
   const testJson = JSON.stringify(testRes, null, "  ");
 
@@ -186,7 +194,10 @@ async function executeSingleTask(
   await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
 
   //-------------------------
+  // await  $`bun test ./${testFileLocation}`;
+  await  $`bun ts-jest ${testFileLocation}`;
 
+  //-------------------------
   const logLocation = name + "log.txt";
   const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
   await $`echo ${logJson} >> ${file(logLocation)}`;

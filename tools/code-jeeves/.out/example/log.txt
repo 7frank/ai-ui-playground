@@ -9,3 +9,16 @@
 {"functionName":"createSumFunction","index":"cum-sum"}
 {"functionName":"createSumFunction","index":"cum-sum"}
 {"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"createSumFunction","index":"cum-sum"}
+{"functionName":"sumFunction","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}
+{"functionName":"cumSum","index":"cum-sum"}

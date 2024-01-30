@@ -1,9 +1,9 @@
 {
   "plan": [
     {
-      "reason": "create sum function",
+      "reason": "cum sum",
       "ext": "ts",
-      "declaration": "function createSumFunction(values:...number):number",
+      "declaration": "function cumSum(values:...number):number",
       "id": "cum-sum",
       "task": "create a function that sums up at least two or more numbers"
     }
