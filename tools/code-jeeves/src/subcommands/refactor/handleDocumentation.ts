@@ -1,8 +1,8 @@
 import { $, file } from "bun";
-import { askOpenAI } from "./src/askOpenAI";
+import { askOpenAI } from "../../askOpenAI";
 import chalk from "chalk";
-import { systemPrompt } from "./prompts";
-import { fileSelectQuestion, confirmQuestion } from "./questions";
+import { systemPrompt } from "../../../prompts";
+import { fileSelectQuestion, confirmQuestion } from "../../../questions";
 
 export async function handleDocumentation({
   pattern,

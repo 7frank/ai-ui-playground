@@ -1,16 +1,18 @@
 import { $, file } from "bun";
-import { askOpenApiStructured } from "../askOpenAI";
+import { askOpenApiStructured } from "../../askOpenAI";
 import { camelCase } from "lodash-es";
 import {
   functionResponseSchema,
   planResponseSchema,
-} from "../../taskFileSchema";
+} from "../../../taskFileSchema";
 import path from "node:path";
+import type { ExecuteCommandParams } from "./plan";
 
-export async function executePlan({ name }: { name: string }) {
+export async function executePlan({ name }: ExecuteCommandParams) {
   name = path.normalize(name) + "/";
 
   const tasksDefinitionFilePath = name + "plan.json";
+  console.log(tasksDefinitionFilePath);
 
   const planJson = await $`cat ${tasksDefinitionFilePath}`.json();
 

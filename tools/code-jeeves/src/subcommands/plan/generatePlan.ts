@@ -1,13 +1,13 @@
 import { $, file } from "bun";
-import { askOpenAI, askOpenApiStructured } from "../askOpenAI";
+import { askOpenAI, askOpenApiStructured } from "../../askOpenAI";
 import chalk from "chalk";
 
-import { fileSelectQuestion, confirmQuestion } from "../../questions";
+import { fileSelectQuestion, confirmQuestion } from "../../../questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { planResponseSchema } from "../../taskFileSchema";
-import { jeevesSpecification } from "../../jeevesSpecification";
+import { planResponseSchema } from "../../../taskFileSchema";
+import { jeevesSpecification } from "../../../jeevesSpecification";
 import { executePlan } from "./executePlan";
 
 export async function generatePlan({ name }: { name: string }) {
@@ -16,6 +16,7 @@ export async function generatePlan({ name }: { name: string }) {
   await $`mkdir -p ${name}src`;
 
   const tasksDefinitionFilePath = name + "plan.json";
+  console.log(tasksDefinitionFilePath);
 
   if (fs.existsSync(tasksDefinitionFilePath)) {
     console.log(

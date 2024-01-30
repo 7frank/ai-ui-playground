@@ -1,37 +1,7 @@
-import {
-  command,
-  binary,
-  run,
-  subcommands,
-  optional,
-  option,
-  string,
-  boolean,
-  flag,
-} from "cmd-ts";
+import { binary, run, subcommands } from "cmd-ts";
 
-import { handleDocumentation } from "./handleDocumentation";
-
-import { generate, execute } from "./src/subcommands/plan";
-
-const documentation = command({
-  name: "documentation",
-  args: {
-    pattern: option({
-      type: optional(string),
-      long: "pattern",
-      short: "p",
-      description: "use '*' for any ",
-    }),
-    dryRun: flag({
-      type: boolean,
-      long: "dryRun",
-
-      description: "git commit changes or use --dryRun",
-    }),
-  },
-  handler: handleDocumentation,
-});
+import { generate, executeCmd } from "./src/subcommands/plan/plan";
+import { documentation } from "./src/subcommands/refactor/documentation";
 
 const refactor = subcommands({
   name: "refactor",
@@ -40,14 +10,6 @@ const refactor = subcommands({
   },
 });
 
-// generate plan from string or spec.json
-// execute plan
-//   - force .. start anew and override existing
-//   - flag for not overriding existing
-//   - continue .. <default> take last stored index and continue (allows to fix plan at current index)
-//   - index allows to fix / debug / isolate.. specific index
-//
-
 // import project ... would import a path e.g. `**/*.(ts|md)` and generate a plan.json so that is can be used with the rest of the commands
 
 // run .. test all or -i .. index
@@ -55,7 +17,7 @@ const plan = subcommands({
   name: "generate",
   cmds: {
     generate,
-    execute,
+    execute: executeCmd,
   },
 });
 
