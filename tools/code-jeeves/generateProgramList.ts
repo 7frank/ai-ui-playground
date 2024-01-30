@@ -7,7 +7,7 @@ import { fileSelectQuestion, confirmQuestion } from "./questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { planResponseSchema } from "./taskFileSchema";
+import { functionResponseSchema, planResponseSchema } from "./taskFileSchema";
 import { jeevesSpecification } from "./jeevesSpecification";
 
 export async function generateProgramList({ name }: { name: string }) {
@@ -37,6 +37,7 @@ export async function generateProgramList({ name }: { name: string }) {
     const systemPrompt = `
         ${role} ${prompts.join("\n")}  ${onlyCode}`;
 
+    // functionResponseSchema
     const res = await askOpenAI(systemPrompt, task);
 
     const functionName = camelCase(reason);
@@ -52,7 +53,7 @@ export async function createProjectAndTasks({ name }: { name: string }) {
 
   const res = await askOpenApiStructured(
     "",
-    "Generate a step by step plan on how to run a hackathon",
+    problemStatement, //  "Generate a step by step plan on how to run a hackathon",
     planResponseSchema,
   );
 
