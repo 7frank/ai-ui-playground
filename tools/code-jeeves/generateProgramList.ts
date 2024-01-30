@@ -25,26 +25,33 @@ export async function generateProgramList({ name }: { name: string }) {
   const parsed = planResponseSchema.parse(tasks);
 
   for await (const { task, reason } of parsed.plan) {
-    const role = "You are a 10x developer.";
 
-    const onlyCode = "Return only the source code and no explanations.";
+    // const role = "You are a 10x developer.";
 
-    const prompts = [
-      "create a function,the full implementation, dont abreviate",
-      "use typescript",
-    ];
+    // const onlyCode = "Return only the source code and no explanations.";
 
-    const systemPrompt = `
-        ${role} ${prompts.join("\n")}  ${onlyCode}`;
+    // const prompts = [
+    //   "create a function,the full implementation, dont abreviate",
+    //   "use typescript",
+    // ];
+
+    // const systemPrompt = `
+    //     ${role} ${prompts.join("\n")}  ${onlyCode}`;
+
+    // const res = await askOpenAI(systemPrompt, task);
+
 
     // functionResponseSchema
-    const res = await askOpenAI(systemPrompt, task);
-
+    const res = await askOpenApiStructured("", task,functionResponseSchema);
     const functionName = camelCase(reason);
 
-    const targetFileName = name + "src/" + functionName + ".ts";
-    console.log(targetFileName);
-    await $`echo ${res} > ${file(targetFileName)}`;
+    const targetFileLocation = name + "src/" + functionName + ".ts";
+    console.log(targetFileLocation);
+
+    const json=JSON.stringify(res,null,'  ')
+    
+    await $`echo ${json} > ${file(targetFileLocation)}.json`;
+    await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
   }
 }
 
