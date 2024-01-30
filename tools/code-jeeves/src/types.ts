@@ -35,26 +35,6 @@ export type Config = z.infer<typeof configSchema>;
 
 const configurationMapSchema = z.record(z.string(), configSchema);
 
-export const cookieGeneratorSchema = z.object({
-  /**
-   * a path to the root of a project or root of a github repo
-   */
-  source: z.string(),
-  /**
-   * a path to the target where the output (the template) will be generated
-   */
-  target: z.string(),
-
-  /**
-   * a string containing a handlebar  e.g. {{cookiecutter.repository_name}} which is required by cookiecutter to generate code from a template
-   */
-  repository: z.string(),
-
-  configuration: configurationMapSchema,
-});
-
-export type CookieGenerator = z.infer<typeof cookieGeneratorSchema>;
-
 export type TemplateKey = `cookiecutter.${string}`;
 
 export type FileDescriptor = {

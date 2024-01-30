@@ -2,7 +2,7 @@ import { $, file } from "bun";
 import { askOpenAI, askOpenApiStructured } from "../../askOpenAI";
 import chalk from "chalk";
 import { systemPrompt } from "../../../prompts";
-import { fileSelectQuestion, confirmQuestion } from "../../../questions";
+import { fileSelectQuestion, confirmQuestion } from "../../questions";
 import type { GenerateCommandParams } from "./documentation";
 
 export async function handleDocumentation({

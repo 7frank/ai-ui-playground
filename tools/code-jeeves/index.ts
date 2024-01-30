@@ -106,38 +106,4 @@ run(binary(cli), process.argv);
 //   }),
 // };
 
-// async function handler({ config, input, pattern }: CLI) {
-//   let generator: CookieGenerator;
-//   try {
-//     generator = cookieGeneratorSchema.parse(config);
-//   } catch (e) {
-//     console.log(chalk.red("The provided generator configuration is invalid:"));
-//     console.log(
-//       chalk.bgRed(
-//         typeof config == "object" ? JSON.stringify(config, null, "  ") : config
-//       )
-//     );
-//     console.log(chalk.red("The following syntax error was thrown:"));
-//     console.log(chalk.bgRed(e.message));
 
-//     process.exit(-1);
-//   }
-
-//   if (pattern) {
-
-//     process.exit(0);
-//   }
-
-//   log(chalk.green("Let's a go!"));
-
-// }
-
-// const cli = command({
-//   name: "code jeeves",
-//   description:
-//     "A utility that helps you generate code",
-//   args,
-//   handler: handler as any,
-// });
-
-// run(binary(cli), process.argv);

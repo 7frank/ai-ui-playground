@@ -1,2 +1,0 @@
-{"functionName":"useInquirerToPromptUsersForInput","index":"use-inquirer"}
-{"functionName":"useBunToGenerateCode","index":"use-bun"}

@@ -2,7 +2,7 @@ import { $, file } from "bun";
 import { askOpenApiStructured } from "../../askOpenAI";
 import chalk from "chalk";
 
-import { fileSelectQuestion, confirmQuestion } from "../../../questions";
+import { fileSelectQuestion, confirmQuestion } from "../../questions";
 import path from "node:path";
 import fs from "node:fs";
 
