@@ -49,6 +49,14 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - let developer extend test or fix implementation of bot cannot fix the task themself
 - add debug information to the auto commit messages for comparing for example models and results
 - fix superRefine for typescript code
+  - zod-gpt/dist/src/completion.js:42:15 fix with. problem currenty bun does not provide patching packages (coupld circumvent by using pnpm, yarn, .. etc)
+
+  ```
+    if (opt.schema &&
+        !(opt.schema._def.typeName == zod_1.z.ZodFirstPartyTypeKind.ZodObject || opt.schema._def.typeName == zod_1.z.ZodFirstPartyTypeKind.ZodEffects)) {
+        throw new Error('Schemas can ONLY be an object');
+    }
+  ```
 
 
 ```javascript
