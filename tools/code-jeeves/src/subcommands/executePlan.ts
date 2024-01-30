@@ -1,22 +1,22 @@
 import { $, file } from "bun";
-import { askOpenApiStructured } from "./src/askOpenAI";
+import { askOpenApiStructured } from "../askOpenAI";
 import { camelCase } from "lodash-es";
-import { functionResponseSchema, planResponseSchema } from "./taskFileSchema";
+import {
+  functionResponseSchema,
+  planResponseSchema,
+} from "../../taskFileSchema";
 import path from "node:path";
 
-export async function executePlan( name: string) {
-
+export async function executePlan({ name }: { name: string }) {
   name = path.normalize(name) + "/";
 
   const tasksDefinitionFilePath = name + "plan.json";
-
 
   const planJson = await $`cat ${tasksDefinitionFilePath}`.json();
 
   const parsed = planResponseSchema.parse(planJson);
 
   for await (const { task, reason } of parsed.plan) {
-
     // const role = "You are a 10x developer.";
     // const onlyCode = "Return only the source code and no explanations.";
     // const prompts = [
@@ -33,7 +33,7 @@ export async function executePlan( name: string) {
     const targetFileLocation = name + "src/" + functionName + ".ts";
     console.log(targetFileLocation);
 
-    const json = JSON.stringify(res, null, '  ');
+    const json = JSON.stringify(res, null, "  ");
 
     await $`echo ${json} > ${file(targetFileLocation)}.json`;
     await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;

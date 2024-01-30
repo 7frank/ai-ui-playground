@@ -1,13 +1,13 @@
 import { $, file } from "bun";
-import { askOpenAI, askOpenApiStructured } from "./src/askOpenAI";
+import { askOpenAI, askOpenApiStructured } from "../askOpenAI";
 import chalk from "chalk";
 
-import { fileSelectQuestion, confirmQuestion } from "./questions";
+import { fileSelectQuestion, confirmQuestion } from "../../questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { planResponseSchema } from "./taskFileSchema";
-import { jeevesSpecification } from "./jeevesSpecification";
+import { planResponseSchema } from "../../taskFileSchema";
+import { jeevesSpecification } from "../../jeevesSpecification";
 import { executePlan } from "./executePlan";
 
 export async function generatePlan({ name }: { name: string }) {
@@ -17,10 +17,12 @@ export async function generatePlan({ name }: { name: string }) {
 
   const tasksDefinitionFilePath = name + "plan.json";
 
-  if (fs.existsSync(tasksDefinitionFilePath))
-  {
-  console.log("skipped generating plan. already exists:",tasksDefinitionFilePath)
-    return
+  if (fs.existsSync(tasksDefinitionFilePath)) {
+    console.log(
+      "skipped generating plan. already exists:",
+      tasksDefinitionFilePath,
+    );
+    return;
   }
   const { problemStatement } = jeevesSpecification();
 
@@ -38,5 +40,3 @@ export async function generatePlan({ name }: { name: string }) {
   const tasksFilePath = path.normalize(name + "plan.json");
   await $`echo ${jsonOutput} > ${file(tasksFilePath)}`;
 }
-
-
