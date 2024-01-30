@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import Rx from "rxjs";
+import type { ParsingResult } from "cmd-ts/dist/cjs/argparser";
 
 export const replaceSchema = z.object({
   src: z.string().min(1),

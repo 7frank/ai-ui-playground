@@ -20,7 +20,11 @@ bun index.ts refactor documentation -p=*.ts
 
 bun index.ts refactor documentation -p=*.ts --dryRun
 
-bun index.ts generate plan -n .out/test1
+# run the whole plan from start to finish
+bun index.ts plan generate -n .out/test1
+
+# run single item (3) of plan
+bun index.ts plan execute -n .out/test1 -i 3
 
 ```
 

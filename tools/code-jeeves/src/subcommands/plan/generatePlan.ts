@@ -1,16 +1,17 @@
 import { $, file } from "bun";
-import { askOpenAI, askOpenApiStructured } from "../../askOpenAI";
+import { askOpenApiStructured } from "../../askOpenAI";
 import chalk from "chalk";
 
 import { fileSelectQuestion, confirmQuestion } from "../../../questions";
 import path from "node:path";
 import fs from "node:fs";
 
-import { planResponseSchema } from "../../../taskFileSchema";
+import { PlanResponseSchema } from "../../../taskFileSchema";
 import { jeevesSpecification } from "../../../jeevesSpecification";
-import { executePlan } from "./executePlan";
 
-export async function generatePlan({ name }: { name: string }) {
+import type { GenerateCommandParams } from "./plan";
+
+export async function generatePlan({ name }: GenerateCommandParams) {
   name = path.normalize(name) + "/";
 
   await $`mkdir -p ${name}src`;
@@ -30,7 +31,7 @@ export async function generatePlan({ name }: { name: string }) {
   const res = await askOpenApiStructured(
     "",
     problemStatement, //  "Generate a step by step plan on how to run a hackathon",
-    planResponseSchema,
+    PlanResponseSchema,
   );
 
   // Convert the result to JSON

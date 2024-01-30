@@ -3,12 +3,30 @@ import { askOpenApiStructured } from "../../askOpenAI";
 import { camelCase } from "lodash-es";
 import {
   functionResponseSchema,
-  planResponseSchema,
+  PlanResponseSchema,
 } from "../../../taskFileSchema";
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
 
-export async function executePlan({ name }: ExecuteCommandParams) {
+const role = "You are a 10x developer.";
+const prompts = [
+  //  "create a function,the full implementation, dont abreviate",
+  "Use typescript.",
+];
+
+// TODO the language that is used to generate tasks should come from the plan itself
+const preamble = `
+        ${role} ${prompts.join("\n")} `;
+
+export async function executePlan({
+  name,
+  force,
+  index,
+  resume,
+  dryRun,
+}: ExecuteCommandParams) {
+  if (dryRun) throw new Error("not implemented");
+
   name = path.normalize(name) + "/";
 
   const tasksDefinitionFilePath = name + "plan.json";
@@ -16,28 +34,77 @@ export async function executePlan({ name }: ExecuteCommandParams) {
 
   const planJson = await $`cat ${tasksDefinitionFilePath}`.json();
 
-  const parsed = planResponseSchema.parse(planJson);
+  const parsed = PlanResponseSchema.parse(planJson);
 
-  for await (const { task, reason } of parsed.plan) {
-    // const role = "You are a 10x developer.";
-    // const onlyCode = "Return only the source code and no explanations.";
-    // const prompts = [
-    //   "create a function,the full implementation, dont abreviate",
-    //   "use typescript",
-    // ];
-    // const systemPrompt = `
-    //     ${role} ${prompts.join("\n")}  ${onlyCode}`;
-    // const res = await askOpenAI(systemPrompt, task);
-    // functionResponseSchema
-    const res = await askOpenApiStructured("", task, functionResponseSchema);
-    const functionName = camelCase(reason);
+  if (force)
+    for await (const plan of parsed.plan) {
+      await executeSingleTask(plan, name);
+    }
+  else if (index) {
+    let foundTask = findTaskByIndex(parsed, index);
+    const singleFile = camelCase(foundTask.reason);
+    console.log("updating", singleFile);
 
-    const targetFileLocation = name + "src/" + functionName + ".ts";
-    console.log(targetFileLocation);
+    await executeSingleTask(foundTask, name);
+  } else if (resume) {
+    const logLocation = name + "log.txt";
+    const logJson = await $`tail -n 1 ${logLocation}`.json();
 
-    const json = JSON.stringify(res, null, "  ");
+    const resumeIndex = logJson.index ? logJson.index + 1 : 1;
 
-    await $`echo ${json} > ${file(targetFileLocation)}.json`;
-    await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
+    console.log("resuming tasks with:", resumeIndex);
+
+    let foundTask = findTaskByIndex(parsed, resumeIndex);
+    const singleFile = camelCase(foundTask.reason);
+    console.log("updating", singleFile);
+
+    await executeSingleTask(foundTask, name);
   }
+}
+
+function findTaskByIndex(parsed: PlanResponseSchema, index: string) {
+  let foundTask;
+  try {
+    const indexAsNum = parseInt(index) - 1;
+
+    foundTask = parsed.plan[indexAsNum];
+
+    if (!foundTask) {
+      console.log("could not find task by index");
+      process.exit();
+    }
+  } catch (e) {
+    foundTask = parsed.plan.find((it) => camelCase(it.reason));
+
+    if (!foundTask) {
+      console.log("could not find task by name");
+      process.exit();
+    }
+  }
+  return foundTask;
+}
+
+async function executeSingleTask(
+  entry: PlanResponseSchema["plan"]["0"],
+  name: string,
+) {
+  console.log(entry.reason);
+  const res = await askOpenApiStructured(
+    "",
+    preamble + entry.task,
+    functionResponseSchema,
+  );
+  const functionName = camelCase(entry.reason);
+
+  const targetFileLocation = name + "src/" + functionName + ".ts";
+  console.log(targetFileLocation);
+
+  const json = JSON.stringify(res, null, "  ");
+
+  await $`echo ${json} > ${file(targetFileLocation)}.json`;
+  await $`echo ${res.sourceCode} > ${file(targetFileLocation)}`;
+
+  const logLocation = name + "log.txt";
+  const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
+  await $`echo ${logJson} >> ${file(logLocation)}`;
 }

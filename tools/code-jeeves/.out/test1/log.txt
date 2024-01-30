@@ -1,0 +1,2 @@
+{"functionName":"defineTheFormat"}
+{"functionName":"identifyThePurposeAndGoalsOfTheHackathon","index":"1"}

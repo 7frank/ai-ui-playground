@@ -12,9 +12,11 @@ export const taskSchema = z.object({
 
 export const plan = z.array(taskSchema);
 
-export const planResponseSchema = z.object({
+export const PlanResponseSchema = z.object({
   plan,
 });
+
+export type PlanResponseSchema = z.infer<typeof PlanResponseSchema>;
 
 /**
  * Section specifies the form the response of generating a `function` via openai has to have.

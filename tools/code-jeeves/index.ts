@@ -1,6 +1,6 @@
 import { binary, run, subcommands } from "cmd-ts";
 
-import { generate, executeCmd } from "./src/subcommands/plan/plan";
+import { generateCmd, executeCmd } from "./src/subcommands/plan/plan";
 import { documentation } from "./src/subcommands/refactor/documentation";
 
 const refactor = subcommands({
@@ -16,7 +16,7 @@ const refactor = subcommands({
 const plan = subcommands({
   name: "generate",
   cmds: {
-    generate,
+    generate: generateCmd,
     execute: executeCmd,
   },
 });
