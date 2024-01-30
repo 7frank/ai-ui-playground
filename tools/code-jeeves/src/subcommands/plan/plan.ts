@@ -31,6 +31,13 @@ const generatePlanArgs = {
     short: "n",
     description: "The folder name the plan is getting generated into.",
   }),
+  spec: option({
+    type: string,
+    long: "specification",
+    short: "s",
+    description: "a file path and name to a jeeves spec file",
+    defaultValue: () => "./src/specs/defaultSpecification.ts",
+  }),
   dryRun,
 };
 

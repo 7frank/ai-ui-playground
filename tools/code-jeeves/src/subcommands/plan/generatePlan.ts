@@ -7,11 +7,12 @@ import path from "node:path";
 import fs from "node:fs";
 
 import { PlanResponseSchema } from "../../types/taskFileSchema";
-import { jeevesSpecification } from "../../../jeevesSpecification";
 
 import type { GenerateCommandParams } from "./plan";
+import { JeevesSpecificationSchema } from "../../types/specSchema";
+import { findNearestFileDirectory } from "../../findNearest";
 
-export async function generatePlan({ name }: GenerateCommandParams) {
+export async function generatePlan({ name, spec }: GenerateCommandParams) {
   name = path.normalize(name) + "/";
 
   await $`mkdir -p ${name}src`;
@@ -26,7 +27,19 @@ export async function generatePlan({ name }: GenerateCommandParams) {
     );
     return;
   }
-  const { problemStatement } = jeevesSpecification();
+
+  const fileDirectory = findNearestFileDirectory(process.cwd(), "package.json");
+  const s = path.resolve(fileDirectory ?? "", spec);
+  console.log(fileDirectory);
+  if (!fs.existsSync(s)) {
+    console.warn("spec file not found:", s);
+    process.exit(1);
+  }
+  const specFunction = require(s);
+
+  const { problemStatement } = JeevesSpecificationSchema.parse(
+    specFunction.default(),
+  );
 
   const res = await askOpenApiStructured(
     "",
