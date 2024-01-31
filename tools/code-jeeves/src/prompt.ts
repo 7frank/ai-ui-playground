@@ -29,6 +29,8 @@ use fetch.
 The interface of the function looks the following '${decl}' 
 `;
 
+const constraints="You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason."
+
 const entry: TaskSchema = {
   id: fnName,
   task: prompt,
@@ -37,14 +39,14 @@ const entry: TaskSchema = {
 };
 
 const initialParams = {
-  prompt: entry.task,
   history: [] as ChatRequestMessage[],
+  prompt: entry.task,
 };
 
 createAdaptableCircuitBreaker({
   initialParams,
   retryParamsCallback: (params, lastResponse, error) => {
-    console.log("retryParamsCallback:", error.message);
+
     params.history.push({ role: "user", content: params.prompt });
 
     // in case zod-gpt fails there is no response
@@ -64,7 +66,17 @@ createAdaptableCircuitBreaker({
     const res = await askOpenApiStructured2(params.prompt, {
       schema: FunctionResponseSchema,
       messageHistory: [],
-      systemMessage: "",
+      systemMessage: 
+      `You are a 10x Software developer.
+       You will be asked to create source code. 
+       You will do so and think step by step.
+       If you come upon unspecified types you infer them to the best of your knowledge.
+       Afterwards you are give error messages directly related to the source code you generated.
+       You will fix them.
+       You don't rename variables or types without a reason.
+       You are not lazy and write full source code.
+       When in a longer conversation with the user, you will give full source code.
+      `,
     });
     setLastResponse(res.data);
 
@@ -72,16 +84,17 @@ createAdaptableCircuitBreaker({
     if (l == "ts" || l == "typescript") {
       checkTypescriptSyntax(res.data.sourceCode);
 
-      const name = extractFunctionName(res.data.sourceCode);
-      console.log("extracted function name:", name);
-      if (entry.id != name)
-        throw new Error("function must be named:" + entry.id);
+      //  FIXME eithe rtest each and then batch return errors or try out catch all and "fix this code it seems not to be working"
+      // const name = extractFunctionName(res.data.sourceCode);
+      // console.log("extracted function name:", name);
+      // if (entry.id != name)
+      //   throw new Error("function must be named:" + entry.id);
 
       // checkCodeForFunctionsAndExports(res.data.sourceCode)
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);
       if (unspecifiedTypes2.length)
         throw new Error(
-          `'sourceCode' - missing type declaration for:'${unspecifiedTypes2.join(",")}' add it. You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason.`,
+          `'sourceCode' - missing type declaration for:'${unspecifiedTypes2.join(",")}' add it. ${constraints}`,
         );
     }
 

@@ -127,26 +127,28 @@ export function checkCodeForFunctionsAndExports(code: string) {
 }
 
 export function extractFunctionName(functionSignature: string): string | null {
-  // Parse the string as TypeScript source code
   const sourceFile = ts.createSourceFile(
-    "temp.ts",
+    'temp.ts',
     functionSignature,
     ts.ScriptTarget.Latest,
     false,
-    ts.ScriptKind.TS,
+    ts.ScriptKind.TS
   );
 
-  // Helper function to search for the function declaration
   function findFunctionName(node: ts.Node): string | null {
+    // Handle function declarations
     if (ts.isFunctionDeclaration(node) && node.name) {
-      // Return the text of the function name
       return node.name.getText(sourceFile);
     }
-
-    // Continue searching through the children nodes
+    // Handle variable declarations where the initializer is a function
+    else if (ts.isVariableDeclaration(node) && node.initializer && (ts.isFunctionExpression(node.initializer) || ts.isArrowFunction(node.initializer))) {
+      if (node.name && ts.isIdentifier(node.name)) {
+        return node.name.text;
+      }
+    }
     return ts.forEachChild(node, findFunctionName);
   }
 
-  // Start searching from the root of the AST
   return findFunctionName(sourceFile);
 }
+
