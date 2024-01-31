@@ -54,7 +54,7 @@ DEBUG=* bun index.ts plan execute -n .out/example -i 2
 
 ```
 
-> You will have to monotir your usage manually as there are no official endpoints for that as of now:
+> You will have to monitor your usage manually as there are no official endpoints for that as of now:
 > go to https://platform.openai.com/usage and login
 
 # todo
@@ -68,19 +68,15 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - from type declaration generate test
   - from task generate implementation
   - let developer extend test or fix implementation of bot cannot fix the task themself
+- subdivide task if it is too big / complex. 
+  - ask the bot, if they think that it should be subdiveded or run for n iterations
+  - then create subtasks,update the plan and run each individually
+  - this could loop a long as it needs to  
 - add debug information to the auto commit messages for comparing for example models and results
-- check for max token quota in the future when endpoints are available
 - test functionality 2x "py" tasks & 1x "iynb" task that uses those functions
-- fix superRefine for typescript code
-
-  - zod-gpt/dist/src/completion.js:42:15 fix with. problem currenty bun does not provide patching packages (coupld circumvent by using pnpm, yarn, .. etc)
-
-  ```
-    if (opt.schema &&
-        !(opt.schema._def.typeName == zod_1.z.ZodFirstPartyTypeKind.ZodObject || opt.schema._def.typeName == zod_1.z.ZodFirstPartyTypeKind.ZodEffects)) {
-        throw new Error('Schemas can ONLY be an object');
-    }
-  ```
+- try out autoSlice
+- try out ciruit breaker and type checks with what previously was used as part of superRefine
+- check for max token quota in the future when endpoints are available
 
 ## troubleshooting
 

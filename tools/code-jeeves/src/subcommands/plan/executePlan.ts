@@ -118,9 +118,6 @@ ${entry.declaration ? "The function MUST implement the following interface:" + e
 The function MUST be exported.
 The source code may never be empty.
 
-Think step by step.
-Don't be lazy.
-
 `;
 }
 
@@ -134,9 +131,6 @@ The function MUST be imported.
 The function can be found in the same folder as the test.
 The file that contains the function is named like the function itself.
 You MUST at least create one positive and one negative test case.
-
-Think step by step.
-Don't be lazy, implement everything necessary.
 
 For Typescript use "jest". 
 For python use "PyUnit"
