@@ -114,9 +114,13 @@ function createImplementationSystemPrompt(
   return `
 ${role}. 
 Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
-${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration : ""}.
+${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration+". Check twice that every type is declared or imported." : ""}.
 The function MUST be exported.
 The source code may never be empty.
+
+Think step by step.
+Don't be lazy.
+
 `;
 }
 
@@ -125,10 +129,14 @@ function createTestSystemPrompt(entry: PlanResponseSchema["plan"]["0"]) {
   return `
 ${role}. 
 Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
-${entry.declaration ? "Write meaningful tests for the following interface:" + entry.declaration : ""}.
+${entry.declaration ? "Write meaningful tests for the following interface:'" + entry.declaration : "'"}.
 The function MUST be imported.
 The function can be found in the same folder as the test.
+The file that contains the function is named like the function itself.
 You MUST at least create one positive and one negative test case.
+
+Think step by step.
+Don't be lazy, implement everything necessary.
 
 For Typescript use "jest". 
 For python use "PyUnit"

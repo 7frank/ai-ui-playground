@@ -12,3 +12,6 @@ This resulted in a cli whose capabilities are:
 
 You will find the source here:
 - https://github.com/7frank/ai-ui-playground/blob/main/tools/code-jeeves/README.md
+
+
+For the theorie behind this tool look up [Declarative Programming & Code Sythesis](../DeclarativeProgramming.md).
