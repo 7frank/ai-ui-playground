@@ -42,8 +42,13 @@ export function checkForUnspecifiedTypes(code: string) {
   function findUnspecifiedTypes(node: ts.Node) {
     if (ts.isTypeReferenceNode(node)) {
       const type = checker.getTypeAtLocation(node);
-      if (type.flags & ts.TypeFlags.Any) {
+      if (type.flags & ts.TypeFlags.Any || type.flags & ts.TypeFlags.Unknown) {
         unspecifiedTypes.push(node.typeName.getText());
+      }
+    } else if (ts.isInterfaceDeclaration(node)) {
+      // Check if the interface declaration has no members
+      if (node.members.length === 0) {
+        unspecifiedTypes.push(node.name.getText());
       }
     }
     ts.forEachChild(node, findUnspecifiedTypes);
@@ -119,4 +124,29 @@ export function checkCodeForFunctionsAndExports(code: string) {
   if (!hasExportedFunction) {
     throw new Error("The source code does not contain any exported function.");
   }
+}
+
+export function extractFunctionName(functionSignature: string): string | null {
+  // Parse the string as TypeScript source code
+  const sourceFile = ts.createSourceFile(
+    "temp.ts",
+    functionSignature,
+    ts.ScriptTarget.Latest,
+    false,
+    ts.ScriptKind.TS,
+  );
+
+  // Helper function to search for the function declaration
+  function findFunctionName(node: ts.Node): string | null {
+    if (ts.isFunctionDeclaration(node) && node.name) {
+      // Return the text of the function name
+      return node.name.getText(sourceFile);
+    }
+
+    // Continue searching through the children nodes
+    return ts.forEachChild(node, findFunctionName);
+  }
+
+  // Start searching from the root of the AST
+  return findFunctionName(sourceFile);
 }

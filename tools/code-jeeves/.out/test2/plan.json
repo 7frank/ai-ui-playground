@@ -1,57 +1,46 @@
 {
   "plan": [
     {
-      "reason": "Create a command-line interface using cmd-ts",
       "id": "create-cli",
       "task": "Create a command-line interface that allows users to interact with the program"
     },
     {
-      "reason": "Use inquirer to prompt users for input",
       "id": "use-inquirer",
       "task": "Implement inquirer to prompt users for input when creating tests, functions, and executing them"
     },
     {
-      "reason": "Use bun to generate code",
       "id": "use-bun",
       "task": "Implement bun to generate code for the tests and functions created"
     },
     {
-      "reason": "Use OpenAI API to create functions",
       "id": "use-openai",
       "task": "Integrate OpenAI API to generate functions based on user input"
     },
     {
-      "reason": "Implement executing functions and tests",
       "id": "execute-functions-tests",
       "task": "Write code to execute the generated functions and tests"
     },
     {
-      "reason": "Create AST functions using lodash-es",
       "id": "create-ast-functions",
       "task": "Implement lodash-es to create AST functions that can traverse code and perform specific actions"
     },
     {
-      "reason": "Take file path arguments for customization",
       "id": "use-file-paths",
       "task": "Modify the program to accept file path arguments to customize the output or behavior"
     },
     {
-      "reason": "Use zod for input validation",
       "id": "use-zod",
       "task": "Implement zod to validate user input and ensure correctness"
     },
     {
-      "reason": "Use dayjs for date and time manipulation",
       "id": "use-dayjs",
       "task": "Integrate dayjs library for date and time manipulation if needed"
     },
     {
-      "reason": "Use jest for testing",
       "id": "use-jest",
       "task": "Implement jest for unit testing the program"
     },
     {
-      "reason": "Implement the main program function",
       "id": "main-function",
       "task": "Write the main function that ties all the implemented functions and tools together"
     }
