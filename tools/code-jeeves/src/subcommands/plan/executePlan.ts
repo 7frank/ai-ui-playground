@@ -114,7 +114,7 @@ function createImplementationSystemPrompt(
   return `
 ${role}. 
 Use the language that corresponds to this file extension: '${entry.ext ?? "ts"}.'
-${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration+". Check twice that every type is declared or imported." : ""}.
+${entry.declaration ? "The function MUST implement the following interface:" + entry.declaration + ". Check twice that every type is declared or imported." : ""}.
 The function MUST be exported.
 The source code may never be empty.
 
@@ -137,8 +137,7 @@ For python use "PyUnit"
 `;
 }
 
-// TODO enable  other test runners. e.g. 'For Typescript use "bun:test'". 
-
+// TODO enable  other test runners. e.g. 'For Typescript use "bun:test'".
 
 /**
  * TODO separate impl, test, execute test into separate commands or flags, to make it less error prone.
@@ -188,7 +187,7 @@ async function executeSingleTask(
   );
 
   const testFileLocation = name + "src/" + functionName + ".test.ts";
-  console.log("TestFile:",testFileLocation);
+  console.log("TestFile:", testFileLocation);
 
   const testJson = JSON.stringify(testRes, null, "  ");
 
@@ -197,7 +196,7 @@ async function executeSingleTask(
 
   //-------------------------
   // await  $`bun test ./${testFileLocation}`;
-  await  $`bun jest ${testFileLocation}`;
+  await $`bun jest ${testFileLocation}`;
 
   //-------------------------
   const logLocation = name + "log.txt";

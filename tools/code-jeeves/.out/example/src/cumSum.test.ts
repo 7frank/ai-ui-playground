@@ -1,6 +1,6 @@
-import { cumSum } from './cumSum';
+import { cumSum } from "./cumSum";
 
-describe('cumSum', () => {
+describe("cumSum", () => {
   const testCases: {
     input: number[];
     expected: number;

@@ -1,11 +1,13 @@
 # code-jeeves
 
 This CLI is a prototype for declarative programming using openai or other LLMs.
+
 - you specify the what you want
 - jeeves generates the relevant code and tests for you.
 
 It does roughly the following:
-- user: "create a sum function for multiple numbers `function cumSum(n:...number):number`" 
+
+- user: "create a sum function for multiple numbers `function cumSum(n:...number):number`"
 - code-jeeves: generates tests > generates implementation > runs tests > commits
 
 - you can make changes whenever you want and rerun steps how often you like
@@ -68,10 +70,10 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - from type declaration generate test
   - from task generate implementation
   - let developer extend test or fix implementation of bot cannot fix the task themself
-- subdivide task if it is too big / complex. 
+- subdivide task if it is too big / complex.
   - ask the bot, if they think that it should be subdiveded or run for n iterations
   - then create subtasks,update the plan and run each individually
-  - this could loop a long as it needs to  
+  - this could loop a long as it needs to
 - add debug information to the auto commit messages for comparing for example models and results
 - test functionality 2x "py" tasks & 1x "iynb" task that uses those functions
 - try out autoSlice

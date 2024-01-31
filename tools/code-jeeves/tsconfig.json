@@ -20,6 +20,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
 
-    "types": ["@types/jest","node"]
+    "types": ["@types/jest", "node"],
   },
 }
