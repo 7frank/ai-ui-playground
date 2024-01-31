@@ -1,23 +1,22 @@
 import ts from "typescript";
 import { uniq } from "lodash-es";
 
-
 export function checkTypescriptSyntax(code: string) {
   const sourceFile = ts.createSourceFile(
     "temp.ts",
     code,
     ts.ScriptTarget.Latest,
-    true
+    true,
   );
 
   function findSyntaxErrors(node: ts.Node) {
     if (node.kind === ts.SyntaxKind.Unknown || ts.isJSDocTypeExpression(node)) {
       const { line, character } = sourceFile.getLineAndCharacterOfPosition(
-        node.getStart()
+        node.getStart(),
       );
       const lineText = sourceFile.getFullText().split(/\r?\n/)[line];
       throw new Error(
-        `Syntax error at line ${line + 1}, column ${character + 1}: "${lineText.trim()}"`
+        `Syntax error at line ${line + 1}, column ${character + 1}: "${lineText.trim()}"`,
       );
     }
 
@@ -32,7 +31,7 @@ export function checkForUnspecifiedTypes(code: string) {
     "temp.ts",
     code,
     ts.ScriptTarget.Latest,
-    true
+    true,
   );
 
   const program = ts.createProgram({ rootNames: ["temp.ts"], options: {} });
@@ -60,55 +59,64 @@ export function checkForUnspecifiedTypes(code: string) {
  * `const internalFunction = function() { };`
  * `export const exportedFunction = () => { }`;
  */
-export
-function checkCodeForFunctionsAndExports(code: string) {
+export function checkCodeForFunctionsAndExports(code: string) {
   const sourceFile = ts.createSourceFile(
-      'temp.ts',
-      code,
-      ts.ScriptTarget.Latest,
-      true
+    "temp.ts",
+    code,
+    ts.ScriptTarget.Latest,
+    true,
   );
 
   let hasFunctionDeclaration = false;
   let hasExportedFunction = false;
 
   function findFunctionDeclarationsAndExports(node: ts.Node) {
-      if (ts.isFunctionDeclaration(node)) {
+    if (ts.isFunctionDeclaration(node)) {
+      hasFunctionDeclaration = true;
+      checkForExport(node);
+    }
+
+    if (ts.isVariableStatement(node)) {
+      node.declarationList.declarations.forEach((declaration) => {
+        if (isFunctionVariableDeclaration(declaration)) {
           hasFunctionDeclaration = true;
           checkForExport(node);
-      }
+        }
+      });
+    }
 
-      if (ts.isVariableStatement(node)) {
-          node.declarationList.declarations.forEach(declaration => {
-              if (isFunctionVariableDeclaration(declaration)) {
-                  hasFunctionDeclaration = true;
-                  checkForExport(node);
-              }
-          });
-      }
-
-      ts.forEachChild(node, findFunctionDeclarationsAndExports);
+    ts.forEachChild(node, findFunctionDeclarationsAndExports);
   }
 
   function isFunctionVariableDeclaration(node: ts.Node): boolean {
-    return ts.isVariableDeclaration(node) &&
-           !!node.initializer &&
-           (ts.isFunctionExpression(node.initializer) || ts.isArrowFunction(node.initializer));
-}
+    return (
+      ts.isVariableDeclaration(node) &&
+      !!node.initializer &&
+      (ts.isFunctionExpression(node.initializer) ||
+        ts.isArrowFunction(node.initializer))
+    );
+  }
 
   function checkForExport(node: ts.FunctionDeclaration | ts.VariableStatement) {
-      if (node.modifiers && node.modifiers.some(modifier => modifier.kind === ts.SyntaxKind.ExportKeyword)) {
-          hasExportedFunction = true;
-      }
+    if (
+      node.modifiers &&
+      node.modifiers.some(
+        (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword,
+      )
+    ) {
+      hasExportedFunction = true;
+    }
   }
 
   findFunctionDeclarationsAndExports(sourceFile);
 
   if (!hasFunctionDeclaration) {
-    throw new Error('The source code does not contain any function declarations.');
+    throw new Error(
+      "The source code does not contain any function declarations.",
+    );
   }
 
   if (!hasExportedFunction) {
-    throw new Error('The source code does not contain any exported function.');
+    throw new Error("The source code does not contain any exported function.");
   }
 }

@@ -49,7 +49,7 @@ const typeDeclaration = z
   );
 const sourceCode = z
   .string()
-  .describe("Generate the full source code without abbreviating")
+  .describe("Generate the full source code without abbreviating");
 
 export const FunctionResponseSchema = z.object({
   language,

@@ -1,13 +1,11 @@
 import { askOpenApiStructured2 } from "./askOpenAI";
 import { FunctionResponseSchema } from "./types/taskFileSchema";
 import { ChatRequestMessage } from "llm-api";
-import {
-  createAdaptableCircuitBreaker,
-} from "./circuit-breaker";
+import { createAdaptableCircuitBreaker } from "./circuit-breaker";
 import {
   checkCodeForFunctionsAndExports,
   checkForUnspecifiedTypes,
-  checkTypescriptSyntax
+  checkTypescriptSyntax,
 } from "./typescriptTypecheckUtils";
 
 const prompt = `create a function that 'queries the star wars api and returns a character by name'.
@@ -21,16 +19,16 @@ const initialParams = {
   history: [] as ChatRequestMessage[],
 };
 
-type  SupportedLang="ts"|"py"
-type LangConfig={
- testCommand:`${string} {filename}`
-}
+type SupportedLang = "ts" | "py";
+type LangConfig = {
+  testCommand: `${string} {filename}`;
+};
 
-
-const langRecord:Partial<Record<SupportedLang,LangConfig >>={ ts:{
-  testCommand:"bun test {filename}"
-}}
-
+const langRecord: Partial<Record<SupportedLang, LangConfig>> = {
+  ts: {
+    testCommand: "bun test {filename}",
+  },
+};
 
 createAdaptableCircuitBreaker({
   initialParams,
@@ -42,7 +40,10 @@ createAdaptableCircuitBreaker({
       content: JSON.stringify(lastResponse),
     });
 
-    return { ...params, prompt: "There was an error in your previous response:" + error.message };
+    return {
+      ...params,
+      prompt: "There was an error in your previous response:" + error.message,
+    };
   },
   fn: async (params, setLastResponse) => {
     const res = await askOpenApiStructured2(params.prompt, {
@@ -61,8 +62,6 @@ createAdaptableCircuitBreaker({
       if (res.data.sourceCode.trim() == "")
         throw new Error("'sourceCode' may not be empty");
 
-
-
       checkTypescriptSyntax(res.data.typeDeclaration);
       // const unspecifiedTypes1 = checkForUnspecifiedTypes(
       //   res.data.typeDeclaration,
@@ -74,7 +73,7 @@ createAdaptableCircuitBreaker({
       //   );
 
       checkTypescriptSyntax(res.data.sourceCode);
-      
+
       // FIXME this is not working as intended
       // checkCodeForFunctionsAndExports(res.data.sourceCode)
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);
@@ -88,5 +87,7 @@ createAdaptableCircuitBreaker({
     return res.data;
   },
 })
-  .then((response) => console.log("Success:", console.log(JSON.stringify(response,null,'  '))))
+  .then((response) =>
+    console.log("Success:", console.log(JSON.stringify(response, null, "  "))),
+  )
   .catch((error) => console.error("Failed:", error));

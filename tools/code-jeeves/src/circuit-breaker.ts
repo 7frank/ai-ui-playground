@@ -1,4 +1,3 @@
-
 interface AdaptableCircuitBreaker<T, U> {
   initialParams: T;
   retryParamsCallback: (params: T, lastResponse: U, error: Error) => T;
@@ -40,4 +39,3 @@ export async function createAdaptableCircuitBreaker<T, U>({
   }
   throw new Error("Max retries reached with no valid response");
 }
-
