@@ -74,10 +74,20 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - ask the bot, if they think that it should be subdiveded or run for n iterations
   - then create subtasks,update the plan and run each individually
   - this could loop a long as it needs to
+- change the structure of tasks so that they represent a dependency tree
+  - traverse through the tree from the leaves and create the functions
+  - if all leaves of a parent node succeed then create the function for this node, with the dependencies of the leaves 
+  - if not all leaves succeed then gio to the "next parents leaves"
+  - log the state of the succeeded pending and failed "nodes", with relevant information for debugging later on
+  - Why? 
+    - this allows to traverse the tree without human interaction
+    - if certain nodes need manual attention, debug and fix them manually 
+      - e.g. run code ./test1.ts && code ./impl1.ts and then mark as fixed by only running the test again
+      - or changing the plan.json so that the code generator can handle it on their own
+- restructure system prompts
 - add debug information to the auto commit messages for comparing for example models and results
 - test functionality 2x "py" tasks & 1x "iynb" task that uses those functions
-- try out autoSlice
-- try out ciruit breaker and type checks with what previously was used as part of superRefine
+- try out autoSlice feature of zod-gpt
 - check for max token quota in the future when endpoints are available
 
 ## troubleshooting

@@ -3,12 +3,13 @@ import { FunctionResponseSchema } from "./types/taskFileSchema";
 import { ChatRequestMessage } from "llm-api";
 import {
   callOpenAIWithRetry,
+  checkCodeForFunctionsAndExports,
   checkForUnspecifiedTypes,
   checkTypescriptSyntax,
 } from "./circuit-breaker";
 
 const prompt = `create a function that 'queries the star wars api and returns a character by name'.
-Use typescript.
+Infer the language from the file extension: 'ts'.
 use fetch.
 The interface of the function looks the following 'async function(name:String):Promise<StarWarsCharacterDetails>' 
 `;
@@ -36,7 +37,7 @@ callOpenAIWithRetry({
       messageHistory: [],
       systemMessage: "",
     });
-    setLastResponse(res);
+    setLastResponse(res.data);
 
     const l = res.data.language.trim().toLocaleLowerCase();
     if (l == "ts" || l == "typescript") {
@@ -48,18 +49,19 @@ callOpenAIWithRetry({
         throw new Error("'sourceCode' may not be empty");
 
 
-      // Check the syntax of the code snippet
+
       checkTypescriptSyntax(res.data.typeDeclaration);
-      const unspecifiedTypes1 = checkForUnspecifiedTypes(
-        res.data.typeDeclaration,
-      );
-      if (unspecifiedTypes1.length)
-        throw new Error(
-          "'typeDeclaration' - missing type declaration for:" +
-            unspecifiedTypes1.join(","),
-        );
+      // const unspecifiedTypes1 = checkForUnspecifiedTypes(
+      //   res.data.typeDeclaration,
+      // );
+      // if (unspecifiedTypes1.length)
+      //   throw new Error(
+      //     "'typeDeclaration' - missing type declaration for:" +
+      //       unspecifiedTypes1.join(","),
+      //   );
 
       checkTypescriptSyntax(res.data.sourceCode);
+      checkCodeForFunctionsAndExports(res.data.sourceCode)
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);
       if (unspecifiedTypes2.length)
         throw new Error(
@@ -68,8 +70,8 @@ callOpenAIWithRetry({
         );
     }
 
-    return res;
+    return res.data;
   },
 })
-  .then((response) => console.log("Success:", response))
+  .then((response) => console.log("Success:", console.log(JSON.stringify(response,null,'  '))))
   .catch((error) => console.error("Failed:", error));

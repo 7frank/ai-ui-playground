@@ -1,4 +1,5 @@
 import ts from "typescript";
+import {uniq} from "lodash-es"
 
 interface AdaptableCircuitBreaker<T, U> {
   initialParams: T;
@@ -92,5 +93,41 @@ export function checkForUnspecifiedTypes(code: string) {
 
   findUnspecifiedTypes(sourceFile);
 
-  return unspecifiedTypes;
+  return uniq(unspecifiedTypes);
+}
+
+
+export 
+function checkCodeForFunctionsAndExports(code: string) {
+  const sourceFile = ts.createSourceFile(
+      'temp.ts',
+      code,
+      ts.ScriptTarget.Latest,
+      true
+  );
+
+  let hasFunctionDeclaration = false;
+  let hasExportedFunction = false;
+
+  function findFunctionDeclarationsAndExports(node: ts.Node) {
+      if (ts.isFunctionDeclaration(node)) {
+          hasFunctionDeclaration = true;
+
+          if (node.modifiers?.some(modifier => modifier.kind === ts.SyntaxKind.ExportKeyword)) {
+              hasExportedFunction = true;
+          }
+      }
+
+      ts.forEachChild(node, findFunctionDeclarationsAndExports);
+  }
+
+  findFunctionDeclarationsAndExports(sourceFile);
+
+  if (!hasFunctionDeclaration) {
+      throw new Error('The source code does not contain any function declarations.');
+  }
+
+  if (!hasExportedFunction) {
+      throw new Error('The source code does not contain any exported function.');
+  }
 }
