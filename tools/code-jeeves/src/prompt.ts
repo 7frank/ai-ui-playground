@@ -81,14 +81,15 @@ createAdaptableCircuitBreaker({
     setLastResponse(res.data);
 
     const l = res.data.language.trim().toLocaleLowerCase();
+    
+    //  Note maybe alternatively we want to: either test each and then batch return errors or try out catch all and "fix this code it seems not to be working"
     if (l == "ts" || l == "typescript") {
       checkTypescriptSyntax(res.data.sourceCode);
 
-      //  FIXME eithe rtest each and then batch return errors or try out catch all and "fix this code it seems not to be working"
-      // const name = extractFunctionName(res.data.sourceCode);
-      // console.log("extracted function name:", name);
-      // if (entry.id != name)
-      //   throw new Error("function must be named:" + entry.id);
+      const name = extractFunctionName(res.data.sourceCode);
+      console.log("extracted function name:", name);
+      if (entry.id != name)
+        throw new Error("function must be named:" + entry.id);
 
       // checkCodeForFunctionsAndExports(res.data.sourceCode)
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);

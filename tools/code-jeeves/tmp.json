@@ -2,46 +2,11 @@
   history: [],
   prompt: "create a function that 'queries the star wars api and returns a character by name'.\nInfer the language from the file extension: 'ts'.\nuse fetch.\nThe interface of the function looks the following 'async function getCharacterByName(name:String):Promise<StarWarsCharacterDetails>' \n",
 }
-info: 433 Token used
-1th try with params {
-  history: [
-    {
-      role: "user",
-      content: "create a function that 'queries the star wars api and returns a character by name'.\nInfer the language from the file extension: 'ts'.\nuse fetch.\nThe interface of the function looks the following 'async function getCharacterByName(name:String):Promise<StarWarsCharacterDetails>' \n",
-    },
-    {
-      role: "assistant",
-      content: "\"import axios from 'axios';\\n\\ninterface StarWarsCharacterDetails {\\n  name: string;\\n  height: string;\\n  mass: string;\\n  hair_color: string;\\n  skin_color: string;\\n  eye_color: string;\\n  birth_year: string;\\n  gender: string;\\n}\\n\\nexport async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {\\n  try {\\n    const response = await axios.get(`https://swapi.dev/api/people/?search=${name}`);\\n    const character = response.data.results[0];\\n    return character;\\n  } catch (error) {\\n    throw new Error('Error retrieving character');\\n  }\\n}\"",
-    }
-  ],
-  prompt: "There was an error in your previous response:'sourceCode' - missing type declaration for:'StarWarsCharacterDetails' add it. You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason.",
-}
-info: 354 Token used
-2th try with params {
-  history: [
-    {
-      role: "user",
-      content: "create a function that 'queries the star wars api and returns a character by name'.\nInfer the language from the file extension: 'ts'.\nuse fetch.\nThe interface of the function looks the following 'async function getCharacterByName(name:String):Promise<StarWarsCharacterDetails>' \n",
-    },
-    {
-      role: "assistant",
-      content: "\"import axios from 'axios';\\n\\ninterface StarWarsCharacterDetails {\\n  name: string;\\n  height: string;\\n  mass: string;\\n  hair_color: string;\\n  skin_color: string;\\n  eye_color: string;\\n  birth_year: string;\\n  gender: string;\\n}\\n\\nexport async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {\\n  try {\\n    const response = await axios.get(`https://swapi.dev/api/people/?search=${name}`);\\n    const character = response.data.results[0];\\n    return character;\\n  } catch (error) {\\n    throw new Error('Error retrieving character');\\n  }\\n}\"",
-    },
-    {
-      role: "user",
-      content: "There was an error in your previous response:'sourceCode' - missing type declaration for:'StarWarsCharacterDetails' add it. You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason.",
-    },
-    {
-      role: "assistant",
-      content: "\"\\ntype StarWarsCharacterDetails = {\\n  name: string;\\n  height: number;\\n  mass: number;\\n  hairColor: string;\\n  eyeColor: string;\\n};\\n\\nconst character: StarWarsCharacterDetails = {\\n  name: \\\"Luke Skywalker\\\",\\n  height: 172,\\n  mass: 77,\\n  hairColor: \\\"blond\\\",\\n  eyeColor: \\\"blue\\\"\\n};\\n\\nconsole.log(character);\\n\"",
-    }
-  ],
-  prompt: "There was an error in your previous response:'sourceCode' - missing type declaration for:'StarWarsCharacterDetails' add it. You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason.",
-}
-info: 338 Token used
+info: 393 Token used
+extracted function name: getCharacterByName
 Success:
 {
-  "language": "typescript",
+  "language": "TypeScript",
   "packages": [],
-  "sourceCode": "class StarWarsCharacterDetails {\n  name: string;\n  age: number;\n  occupation: string;\n\n  constructor(name: string, age: number, occupation: string) {\n    this.name = name;\n    this.age = age;\n    this.occupation = occupation;\n  }\n}"
+  "sourceCode": "import fetch from 'node-fetch';\n\ninterface StarWarsCharacterDetails {\n  name: string;\n  height: string;\n  mass: string;\n  hair_color: string;\n  skin_color: string;\n}\n\nasync function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {\n  const url = `https://swapi.dev/api/people/?search=${name}`;\n  const response = await fetch(url);\n  const data = await response.json();\n  return data.results[0];\n}"
 }
