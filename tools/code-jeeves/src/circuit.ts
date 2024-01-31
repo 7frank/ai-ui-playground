@@ -1,10 +1,12 @@
-import { askOpenApiStructured } from "./askOpenAI";
+import { askOpenApiStructured, askOpenApiStructured2 } from "./askOpenAI";
+import { zodRefineTypescript } from "./subcommands/plan/zodRefineTypescript";
 import { FunctionResponseSchema } from "./types/taskFileSchema";
+import { CompletionApi, ChatRequestMessage } from "llm-api";
 
 interface AdaptableCircuitBreaker<T, U> {
   initialParams: T;
-  retryParamsCallback: (params: T, error: Error | null) => T;
-  fn: (params: T) => Promise<U>;
+  retryParamsCallback: (params: T, lastResponse: U, error: Error) => T;
+  fn: (params: T, setLastResponse: (val: U) => void) => Promise<U>;
   maxRetries?: number;
   timeout?: number; // Timeout in milliseconds
 }
@@ -24,12 +26,20 @@ async function callOpenAIWithRetry<T, U>({
       throw new Error("Operation timed out");
     }
 
+    let lastSyntacticallyCorrectResponse: U = undefined as U;
     try {
-      const response = await fn(currentParams);
+      console.log(`${i}th try with params`, currentParams);
+      const response = await fn(currentParams, (val) => {
+        lastSyntacticallyCorrectResponse = val;
+      });
       return response;
     } catch (error) {
       console.error("Error during callback execution: ", error);
-      currentParams = retryParamsCallback(currentParams, error as Error);
+      currentParams = retryParamsCallback(
+        currentParams,
+        lastSyntacticallyCorrectResponse,
+        error as Error,
+      );
     }
   }
   throw new Error("Max retries reached with no valid response");
@@ -42,20 +52,31 @@ The interface of the function looks the following 'async function(name:String)'
 // Usage example
 const initialParams = {
   prompt: prompt,
-  otherParam: 123, // Example of additional parameter
+  history: [] as ChatRequestMessage[],
 };
 
 callOpenAIWithRetry({
   initialParams,
-  retryParamsCallback: (params, error) => {
-    return { ...params, prompt: "New Prompt based on error" };
+  retryParamsCallback: (params, lastResponse, error) => {
+    console.log("retryParamsCallback:", error.message);
+    params.history.push({ role: "user", content: params.prompt });
+    params.history.push({
+      role: "assistant",
+      content: JSON.stringify(lastResponse),
+    });
+
+    return { ...params, prompt: "Error" + error.message };
   },
-  fn: async (params) => {
-    const res = await askOpenApiStructured(
-      "",
-      params.prompt,
-      FunctionResponseSchema,
-    );
+  fn: async (params, setLastResponse) => {
+    const res = await askOpenApiStructured2(params.prompt, {
+      schema: FunctionResponseSchema,
+      messageHistory: [],
+      systemMessage: "",
+    });
+    setLastResponse(res);
+
+    await zodRefineTypescript(res.data.typeDeclaration);
+
     // TODO syntax check
     //res.typeDeclaration
     //res.sourceCode

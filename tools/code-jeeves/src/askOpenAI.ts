@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import chalk from "chalk";
 
 import { OpenAIChatApi } from "llm-api";
-import { completion } from "zod-gpt";
+import { RequestOptions, completion } from "zod-gpt";
 import * as z from "zod";
 
 if (!process.env["OPENAI_API_KEY"]) throw new Error("missing OPENAI_API_KEY");
@@ -76,4 +76,15 @@ export async function askOpenApiStructured<T extends z.ZodType>(
   console.log(chalk.green("info:"), `${tokenUsed} Token used`);
 
   return response.data;
+}
+
+export async function askOpenApiStructured2<T extends z.ZodType>(
+  userQuestion: string,
+  opt: Partial<RequestOptions<T>>,
+) {
+  const response = await completion(openai2, userQuestion, opt);
+
+  const tokenUsed = response.usage?.totalTokens;
+  console.log(chalk.green("info:"), `${tokenUsed} Token used`);
+  return response;
 }
