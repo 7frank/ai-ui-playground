@@ -1,5 +1,17 @@
 # code-jeeves
 
+This CLI is a prototype for declarative programming using openai or other LLMs.
+- you specify the what you want
+- jeeves generates the relevant code and tests for you.
+
+It does roughly the following:
+- user: "create a sum function for multiple numbers `function cumSum(n:...number):number`" 
+- code-jeeves: generates tests > generates implementation > runs tests > commits
+
+- you can make changes whenever you want and rerun steps how often you like
+
+## installation
+
 To install dependencies:
 
 ```bash
@@ -10,6 +22,8 @@ sudo apt-get install pv
 
 bun install
 ```
+
+## development
 
 To run certain cli tasks:
 

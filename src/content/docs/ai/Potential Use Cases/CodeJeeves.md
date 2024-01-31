@@ -11,4 +11,4 @@ This resulted in a cli whose capabilities are:
     - and then running the tests 
 
 You will find the source here:
-- https://github.com/7frank/ai-ui-playground/tree/main/tools/code-jeeves
+- https://github.com/7frank/ai-ui-playground/blob/main/tools/code-jeeves/README.md
