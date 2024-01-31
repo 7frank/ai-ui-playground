@@ -55,29 +55,51 @@ export function checkForUnspecifiedTypes(code: string) {
   return uniq(unspecifiedTypes);
 }
 
-
+/**
+ * Is looking for a function like the following:
+ * `const internalFunction = function() { };`
+ * `export const exportedFunction = () => { }`;
+ */
 export
-  function checkCodeForFunctionsAndExports(code: string) {
+function checkCodeForFunctionsAndExports(code: string) {
   const sourceFile = ts.createSourceFile(
-    'temp.ts',
-    code,
-    ts.ScriptTarget.Latest,
-    true
+      'temp.ts',
+      code,
+      ts.ScriptTarget.Latest,
+      true
   );
 
   let hasFunctionDeclaration = false;
   let hasExportedFunction = false;
 
   function findFunctionDeclarationsAndExports(node: ts.Node) {
-    if (ts.isFunctionDeclaration(node)) {
-      hasFunctionDeclaration = true;
-
-      if (node.modifiers?.some(modifier => modifier.kind === ts.SyntaxKind.ExportKeyword)) {
-        hasExportedFunction = true;
+      if (ts.isFunctionDeclaration(node)) {
+          hasFunctionDeclaration = true;
+          checkForExport(node);
       }
-    }
 
-    ts.forEachChild(node, findFunctionDeclarationsAndExports);
+      if (ts.isVariableStatement(node)) {
+          node.declarationList.declarations.forEach(declaration => {
+              if (isFunctionVariableDeclaration(declaration)) {
+                  hasFunctionDeclaration = true;
+                  checkForExport(node);
+              }
+          });
+      }
+
+      ts.forEachChild(node, findFunctionDeclarationsAndExports);
+  }
+
+  function isFunctionVariableDeclaration(node: ts.Node): boolean {
+    return ts.isVariableDeclaration(node) &&
+           !!node.initializer &&
+           (ts.isFunctionExpression(node.initializer) || ts.isArrowFunction(node.initializer));
+}
+
+  function checkForExport(node: ts.FunctionDeclaration | ts.VariableStatement) {
+      if (node.modifiers && node.modifiers.some(modifier => modifier.kind === ts.SyntaxKind.ExportKeyword)) {
+          hasExportedFunction = true;
+      }
   }
 
   findFunctionDeclarationsAndExports(sourceFile);
