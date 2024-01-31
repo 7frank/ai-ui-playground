@@ -90,9 +90,13 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 - try out autoSlice feature of zod-gpt
 - check for max token quota in the future when endpoints are available
 
+## potential scenarios we could test
+- `create an email cli that allows me to log into read and anwer my emails`
+- `create an api that has the following endpoints, user,login,logout,todolist,create todo`
+
 ## troubleshooting
 
-somethimes generating fails without details of the json in question
+sometimes generating fails without details of the json in question
 
 > .out/test2/plan.json
 > resuming tasks with: 1

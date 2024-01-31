@@ -7,7 +7,7 @@ interface AdaptableCircuitBreaker<T, U> {
   timeout?: number; // Timeout in milliseconds
 }
 
-export async function callOpenAIWithRetry<T, U>({
+export async function createAdaptableCircuitBreaker<T, U>({
   initialParams,
   retryParamsCallback,
   fn,

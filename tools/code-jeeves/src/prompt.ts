@@ -2,7 +2,7 @@ import { askOpenApiStructured2 } from "./askOpenAI";
 import { FunctionResponseSchema } from "./types/taskFileSchema";
 import { ChatRequestMessage } from "llm-api";
 import {
-  callOpenAIWithRetry,
+  createAdaptableCircuitBreaker,
 } from "./circuit-breaker";
 import {
   checkCodeForFunctionsAndExports,
@@ -21,7 +21,18 @@ const initialParams = {
   history: [] as ChatRequestMessage[],
 };
 
-callOpenAIWithRetry({
+type  SupportedLang="ts"|"py"
+type LangConfig={
+ testCommand:`${string} {filename}`
+}
+
+
+const langRecord:Partial<Record<SupportedLang,LangConfig >>={ ts:{
+  testCommand:"bun test {filename}"
+}}
+
+
+createAdaptableCircuitBreaker({
   initialParams,
   retryParamsCallback: (params, lastResponse, error) => {
     console.log("retryParamsCallback:", error.message);
@@ -63,7 +74,9 @@ callOpenAIWithRetry({
       //   );
 
       checkTypescriptSyntax(res.data.sourceCode);
-      checkCodeForFunctionsAndExports(res.data.sourceCode)
+      
+      // FIXME this is not working as intended
+      // checkCodeForFunctionsAndExports(res.data.sourceCode)
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);
       if (unspecifiedTypes2.length)
         throw new Error(
