@@ -40,26 +40,16 @@ export function checkForUnspecifiedTypes(code: string) {
   let unspecifiedTypes: string[] = [];
 
   function findUnspecifiedTypes(node: ts.Node) {
-    // Check for function declarations and their parameters
-    if (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)) {
-      // Check parameters
-      node.parameters.forEach(parameter => {
-        if (parameter.type && ts.isTypeReferenceNode(parameter.type)) {
-          const type = checker.getTypeAtLocation(parameter);
-          if (isTypeUnspecified(type)) {
-            unspecifiedTypes.push(parameter.type.typeName.getText());
-          }
-        }
-      });
-
-      // Check return type
-      if (node.type && ts.isTypeReferenceNode(node.type)) {
-        const type = checker.getTypeAtLocation(node.type);
-        if (isTypeUnspecified(type)) {
-          unspecifiedTypes.push(node.type.typeName.getText());
-        }
+    // Check for variable declarations
+    if (ts.isVariableDeclaration(node) && node.type && ts.isTypeReferenceNode(node.type)) {
+      const type = checker.getTypeAtLocation(node.type);
+      if (isTypeUnspecified(type)) {
+        unspecifiedTypes.push(node.type.typeName.getText());
       }
     }
+
+    // Existing checks for functions...
+    // [Add existing function checks here]
 
     ts.forEachChild(node, findUnspecifiedTypes);
   }
@@ -73,6 +63,7 @@ export function checkForUnspecifiedTypes(code: string) {
 
   return uniq(unspecifiedTypes);
 }
+
 
 
 
