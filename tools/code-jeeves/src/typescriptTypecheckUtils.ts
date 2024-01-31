@@ -40,24 +40,42 @@ export function checkForUnspecifiedTypes(code: string) {
   let unspecifiedTypes: string[] = [];
 
   function findUnspecifiedTypes(node: ts.Node) {
-    if (ts.isTypeReferenceNode(node)) {
-      const type = checker.getTypeAtLocation(node);
-      if (type.flags & ts.TypeFlags.Any || type.flags & ts.TypeFlags.Unknown) {
-        unspecifiedTypes.push(node.typeName.getText());
-      }
-    } else if (ts.isInterfaceDeclaration(node)) {
-      // Check if the interface declaration has no members
-      if (node.members.length === 0) {
-        unspecifiedTypes.push(node.name.getText());
+    // Check for function declarations and their parameters
+    if (ts.isFunctionDeclaration(node) || ts.isMethodDeclaration(node) || ts.isFunctionExpression(node) || ts.isArrowFunction(node)) {
+      // Check parameters
+      node.parameters.forEach(parameter => {
+        if (parameter.type && ts.isTypeReferenceNode(parameter.type)) {
+          const type = checker.getTypeAtLocation(parameter);
+          if (isTypeUnspecified(type)) {
+            unspecifiedTypes.push(parameter.type.typeName.getText());
+          }
+        }
+      });
+
+      // Check return type
+      if (node.type && ts.isTypeReferenceNode(node.type)) {
+        const type = checker.getTypeAtLocation(node.type);
+        if (isTypeUnspecified(type)) {
+          unspecifiedTypes.push(node.type.typeName.getText());
+        }
       }
     }
+
     ts.forEachChild(node, findUnspecifiedTypes);
+  }
+
+  function isTypeUnspecified(type: ts.Type): boolean {
+    // If the type is any or unknown, or if it does not have a symbol (not defined), it's unspecified
+    return (type.flags & ts.TypeFlags.Any || type.flags & ts.TypeFlags.Unknown) && !type.getSymbol();
   }
 
   findUnspecifiedTypes(sourceFile);
 
   return uniq(unspecifiedTypes);
 }
+
+
+
 
 /**
  * Is looking for a function like the following:
