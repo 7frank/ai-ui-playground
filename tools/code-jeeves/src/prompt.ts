@@ -3,10 +3,12 @@ import { FunctionResponseSchema } from "./types/taskFileSchema";
 import { ChatRequestMessage } from "llm-api";
 import {
   callOpenAIWithRetry,
+} from "./circuit-breaker";
+import {
   checkCodeForFunctionsAndExports,
   checkForUnspecifiedTypes,
-  checkTypescriptSyntax,
-} from "./circuit-breaker";
+  checkTypescriptSyntax
+} from "./typescriptTypecheckUtils";
 
 const prompt = `create a function that 'queries the star wars api and returns a character by name'.
 Infer the language from the file extension: 'ts'.
@@ -29,7 +31,7 @@ callOpenAIWithRetry({
       content: JSON.stringify(lastResponse),
     });
 
-    return { ...params, prompt: "Error" + error.message };
+    return { ...params, prompt: "There was an error in your previous response:" + error.message };
   },
   fn: async (params, setLastResponse) => {
     const res = await askOpenApiStructured2(params.prompt, {
