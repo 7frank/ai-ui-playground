@@ -50,6 +50,9 @@ Why Signals Are Better Than React Hooks, bei YouTube
 [the same but with stars](https://awesomerank.github.io/)
 
 
+
+
+
 ### ~2
 [find out what this was for: "pydantic is all you need"](https://www.youtube.com/watch?v=yj-wSRJwrrc&ab_channel=AIEngineer)
 https://vercel.com/templates/next.js/pinecone-vercel-ai
