@@ -46,7 +46,7 @@ export async function getCharacterByName(
 /**
  * Interface for the details of a Star Wars character.
  */
-interface StarWarsCharacterDetails {
+export interface StarWarsCharacterDetails {
   name: string;
   height: string;
   mass: string;

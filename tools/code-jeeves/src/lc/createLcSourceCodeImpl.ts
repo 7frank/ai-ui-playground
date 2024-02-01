@@ -42,6 +42,7 @@ export async function createLcSourceCodeImpl(
 export async function createLcTestCodeImpl(
   entry: TaskSchema,
   langConfig?: LangConfig,
+  implementationCode?:string
 ): Promise<FunctionResponseSchema> {
   const sourceCodeImplementationPrompt =
     ChatPromptTemplate.fromTemplate<TaskSchema>(
@@ -54,7 +55,11 @@ export async function createLcTestCodeImpl(
          - You may create utility functions, if the function becomes too big, that are not exported.
          - Remove redundancy.
          - You have the following preferences: '{preferences}'
-         Do not generate anything else.`,
+
+         Do not generate anything else.
+         
+         ${implementationCode?"The implementation for which you write the tests is the following:```\n"+implementationCode+"\n```":""}
+         `,
     );
 
   const model = new OpenAI({
