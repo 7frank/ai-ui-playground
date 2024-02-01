@@ -41,7 +41,11 @@ export function checkForUnspecifiedTypes(code: string) {
 
   function findUnspecifiedTypes(node: ts.Node) {
     // Check for variable declarations
-    if (ts.isVariableDeclaration(node) && node.type && ts.isTypeReferenceNode(node.type)) {
+    if (
+      ts.isVariableDeclaration(node) &&
+      node.type &&
+      ts.isTypeReferenceNode(node.type)
+    ) {
       const type = checker.getTypeAtLocation(node.type);
       if (isTypeUnspecified(type)) {
         unspecifiedTypes.push(node.type.typeName.getText());
@@ -56,17 +60,16 @@ export function checkForUnspecifiedTypes(code: string) {
 
   function isTypeUnspecified(type: ts.Type): boolean {
     // If the type is any or unknown, or if it does not have a symbol (not defined), it's unspecified
-    return (type.flags & ts.TypeFlags.Any || type.flags & ts.TypeFlags.Unknown) && !type.getSymbol();
+    return (
+      (type.flags & ts.TypeFlags.Any || type.flags & ts.TypeFlags.Unknown) &&
+      !type.getSymbol()
+    );
   }
 
   findUnspecifiedTypes(sourceFile);
 
   return uniq(unspecifiedTypes);
 }
-
-
-
-
 
 /**
  * Is looking for a function like the following:
@@ -137,11 +140,11 @@ export function checkCodeForFunctionsAndExports(code: string) {
 
 export function extractFunctionName(functionSignature: string): string | null {
   const sourceFile = ts.createSourceFile(
-    'temp.ts',
+    "temp.ts",
     functionSignature,
     ts.ScriptTarget.Latest,
     false,
-    ts.ScriptKind.TS
+    ts.ScriptKind.TS,
   );
 
   function findFunctionName(node: ts.Node): string | null {
@@ -150,7 +153,12 @@ export function extractFunctionName(functionSignature: string): string | null {
       return node.name.getText(sourceFile);
     }
     // Handle variable declarations where the initializer is a function
-    else if (ts.isVariableDeclaration(node) && node.initializer && (ts.isFunctionExpression(node.initializer) || ts.isArrowFunction(node.initializer))) {
+    else if (
+      ts.isVariableDeclaration(node) &&
+      node.initializer &&
+      (ts.isFunctionExpression(node.initializer) ||
+        ts.isArrowFunction(node.initializer))
+    ) {
       if (node.name && ts.isIdentifier(node.name)) {
         return node.name.text;
       }
@@ -160,4 +168,3 @@ export function extractFunctionName(functionSignature: string): string | null {
 
   return findFunctionName(sourceFile);
 }
-

@@ -29,7 +29,8 @@ use fetch.
 The interface of the function looks the following '${decl}' 
 `;
 
-const constraints="You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason."
+const constraints =
+  "You MUST return the previous source code with the error fixed. Don't abbreviate. Don't rename variables or types without a reason.";
 
 const entry: TaskSchema = {
   id: fnName,
@@ -46,7 +47,6 @@ const initialParams = {
 createAdaptableCircuitBreaker({
   initialParams,
   retryParamsCallback: (params, lastResponse, error) => {
-
     params.history.push({ role: "user", content: params.prompt });
 
     // in case zod-gpt fails there is no response
@@ -66,8 +66,7 @@ createAdaptableCircuitBreaker({
     const res = await askOpenApiStructured2(params.prompt, {
       schema: FunctionResponseSchema,
       messageHistory: [],
-      systemMessage: 
-      `You are a 10x Software developer.
+      systemMessage: `You are a 10x Software developer.
        You will be asked to create source code. 
        You will do so and think step by step.
        If you come upon unspecified types you infer them to the best of your knowledge.
@@ -81,10 +80,13 @@ createAdaptableCircuitBreaker({
     setLastResponse(res.data);
 
     const l = res.data.language.trim().toLocaleLowerCase();
-    
+
     //  Note maybe alternatively we want to: either test each and then batch return errors or try out catch all and "fix this code it seems not to be working"
     if (l == "ts" || l == "typescript") {
       checkTypescriptSyntax(res.data.sourceCode);
+
+      if (res.data.sourceCode.trim() == "")
+        throw new Error("'sourceCode' may not be empty");
 
       const name = extractFunctionName(res.data.sourceCode);
       console.log("extracted function name:", name);
@@ -107,22 +109,3 @@ createAdaptableCircuitBreaker({
     console.log(JSON.stringify(response, null, "  "));
   })
   .catch((error) => console.error("Failed:", error));
-
-// FIXME most of the checks are not working .. create isolated test for each and only then add them here
-
-// if (res.data.typeDeclaration.trim() == "")
-//   throw new Error(
-//     "'typeDeclaration' must be a function and may not be empty",
-//   );
-// if (res.data.sourceCode.trim() == "")
-//   throw new Error("'sourceCode' may not be empty");
-
-// checkTypescriptSyntax(res.data.typeDeclaration);
-// const unspecifiedTypes1 = checkForUnspecifiedTypes(
-//   res.data.typeDeclaration,
-// );
-// if (unspecifiedTypes1.length)
-//   throw new Error(
-//     "'typeDeclaration' - missing type declaration for:" +
-//       unspecifiedTypes1.join(","),
-//   );
