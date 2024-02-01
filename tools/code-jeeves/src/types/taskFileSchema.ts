@@ -15,7 +15,12 @@ export const TaskSchema = z.object({
       "The file extension from which to infer the source code language.",
     ),
   declaration: z.string().optional().describe("the function declaration"),
-  preferences: z.string().optional().describe("do you have suggestions or constraints? e.g. use a specific library?"),
+  preferences: z
+    .string()
+    .optional()
+    .describe(
+      "do you have suggestions or constraints? e.g. use a specific library?",
+    ),
 });
 
 export type TaskSchema = z.infer<typeof TaskSchema>;
@@ -52,7 +57,7 @@ export const FunctionResponseSchema = z.object({
   sourceCode,
 });
 
-export type FunctionResponseSchema= z.infer<typeof FunctionResponseSchema>
+export type FunctionResponseSchema = z.infer<typeof FunctionResponseSchema>;
 
 // TODO this probably requires a tsconfig
 // .superRefine((data, ctx) => {
