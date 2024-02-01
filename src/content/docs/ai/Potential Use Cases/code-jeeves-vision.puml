@@ -26,21 +26,30 @@ endheader
 
 
 start
-:Start Outer Loop (Creates order in which Tasks are executed);
-:Traverse tasks and subtasks from leaves;
-repeat
-:Run Inner  Loop to create function and tests;
-:Mark as suceeded or failed if generating takes too long.
+:**Outer Loop:**  Traverse tasks bottom up;
+: Creates order in which Tasks are executed
+  - from nodes that only have leaves
+  - subtrasks that themselves dont have subtasks;
+
+
+repeat : select next node to process;
+repeat :Traverse leaves of node;
+:Run **Inner Loop** to create function and tests;
+:Mark as suceeded (or failed if generating takes too long);
+:(optional) compare task and implementation via LLM and ask for scoring;
 repeat while (Are there still sibling tasks on the parent node that neither failed nor suceeded?) is (yes)
 ->no;
 :Mark parent task either as suceeded, pending, failed ;
+
+repeat while (While still parent nodes  unprocessed) is (yes)
+->no;
 
 stop
 
 start
 
 repeat 
-:Start Inner Loop (Creates Function & Tests from Task Description);
+:**Inner Loop**: Create Function & Tests from Task Description;
 
 :Generate a System & Task Prompts that take a task and create source code
  (this is done by asking the LLM to do so from a Base Prompt);
