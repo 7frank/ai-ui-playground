@@ -48,4 +48,23 @@ describe("checkForUnspecifiedTypes", () => {
     `;
     expect(checkForUnspecifiedTypes(code)).toEqual([]);
   });
+
+  // FIXME test fails, implementation broken?
+  test("not  detect StarWarsCharacterDetails example 2", () => {
+    const code = `
+    export type StarWarsCharacterDetails= {
+      name: string;
+    
+    }
+    
+    export async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {
+        const character: StarWarsCharacterDetails = {
+          name: result.name,
+        };
+        return character;
+    }
+    `;
+
+    expect(checkForUnspecifiedTypes(code)).toEqual([]);
+  });
 });
