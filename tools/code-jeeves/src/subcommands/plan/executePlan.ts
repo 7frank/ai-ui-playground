@@ -4,6 +4,7 @@ import { camelCase } from "lodash-es";
 import {
   FunctionResponseSchema,
   PlanResponseSchema,
+  TaskSchema,
 } from "../../types/taskFileSchema";
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
@@ -14,6 +15,29 @@ import {
 } from "../../lc/createLcSourceCodeImpl";
 import { getLanguageConfigFromTask } from "../../languageConfigurations";
 import { runTestCommand } from "../../runTestCommand";
+import {
+  TreeNode,
+  bottomUpTraversal,
+  taskSchemaToTreeNodeArray,
+} from "../../traverse";
+
+
+/**
+ * we want to traverse the tasks from bottom up, therefor we have to sort them accordingly
+ */
+function sortFromLeaves(tasks:TaskSchema[]) {
+  const treeNode = taskSchemaToTreeNodeArray(tasks);
+
+  const sortedTasks:TaskSchema[]=[]
+  const processNode = (node: TreeNode<TaskSchema>) => {
+    if (node.data)
+    sortedTasks.push(node.data)
+    return Promise.resolve("succeeded");
+  };
+
+  bottomUpTraversal(treeNode, processNode);
+  return sortedTasks
+}
 
 export async function executePlan({
   name,
@@ -39,8 +63,11 @@ export async function executePlan({
 
   const parsed = PlanResponseSchema.parse(planJson);
 
+  const tasksList=sortFromLeaves(parsed.plan)
+
+
   if (force)
-    for await (const plan of parsed.plan) {
+    for await (const plan of tasksList) {
       await executeSingleTask(plan, name);
     }
   else if (index) {
@@ -62,7 +89,7 @@ export async function executePlan({
 
     // TODO resume will fail for freshly generated
     let previousTask = findTaskByIndex(parsed, logLine.index);
-    let prevIndex = parsed.plan.findIndex((it) => previousTask == it);
+    let prevIndex = tasksList.findIndex((it) => previousTask == it);
     const resumeIndex = prevIndex + 1;
 
     console.log("resuming tasks with:", resumeIndex);
@@ -71,18 +98,18 @@ export async function executePlan({
     const singleFile = camelCase(foundTask.functionName);
     console.log("resuming with:", singleFile);
 
-    const subPlan = parsed.plan.slice(resumeIndex);
+    const subPlan = tasksList.slice(resumeIndex);
     for await (const plan of subPlan) {
       await executeSingleTask(plan, name);
     }
   }
 }
 
-function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
+function findTaskByIndex(tasksList: TaskSchema[], index: number | string) {
   const indexAsNum = typeof index == "number" ? index : parseInt(index) - 1;
 
   if (!isNaN(indexAsNum)) {
-    const foundTask = parsed.plan[indexAsNum];
+    const foundTask = tasksList[indexAsNum];
 
     if (!foundTask) {
       console.log("could not find task by index");
@@ -92,12 +119,14 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
   }
 
   // the index could be an id inferred from the reason or the id string
-  const foundTask = parsed.plan.find((it) => camelCase(it.functionName) == index);
+  const foundTask = tasksList.find(
+    (it) => camelCase(it.functionName) == index,
+  );
 
   if (!foundTask) {
     console.log(
       "could not find task by name, valid values: ",
-      parsed.plan
+      tasksList
         .map((it) => camelCase(it.functionName))
         .map((it) => `'${it}'`)
         .join(","),
@@ -213,6 +242,10 @@ async function executeSingleTask(
   );
   //-------------------------
   const logLocation = name + "log.txt";
-  const logJson = JSON.stringify({ functionName, index: entry.functionName }, null, "");
+  const logJson = JSON.stringify(
+    { functionName, index: entry.functionName },
+    null,
+    "",
+  );
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }

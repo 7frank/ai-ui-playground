@@ -29,7 +29,8 @@ export function runImplementationTypescriptChecks(
 
   const name = extractFunctionName(data.sourceCode);
   console.log("extracted function name:", name);
-  if (task.functionName != name) throw new Error("function must be named:" + task.functionName);
+  if (task.functionName != name)
+    throw new Error("function must be named:" + task.functionName);
 
   checkCodeForFunctionsAndExports(data.sourceCode);
   // TODO this somethimes works and sometimes doesnt?

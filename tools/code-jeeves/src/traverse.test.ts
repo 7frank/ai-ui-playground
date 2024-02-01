@@ -61,15 +61,16 @@ const exampleTask: TaskSchema = {
     ],
 };
 const treeNode = taskSchemaToTreeNodeArray([exampleTask]);
-console.log(treeNode);
+// console.log(treeNode);
 const res:string[]=[]
 export const processNode = <T>(node: TreeNode<T>) => {
     // Implement the processing logic for each node here
-    res.push(`Processing node ${node.id} with data:`, JSON.stringify(node.data));
-
+    console.log(">>>",(node.data as any).functionName)
+    res.push( (node.data as any).functionName);
+    
     return Promise.resolve("succeeded");
 };
 
 await bottomUpTraversal(treeNode, processNode);
 
-console.log(res.join("\n"))
+console.log(res.join("--- \n"))

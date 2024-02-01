@@ -1,4 +1,4 @@
-import { processNode } from "./traverse.test";
+
 import { TaskSchema } from "./types/taskFileSchema";
 
 export interface TreeNode<T = any> {
@@ -10,7 +10,7 @@ export interface TreeNode<T = any> {
   data?: T; // Generic data property to hold arbitrary payloads
 }
 
-const markParents = <T>(node: TreeNode<T>) => {
+const markParents = async <T,Res>(node: TreeNode<T>,processNode: (node: TreeNode<T>) => Promise<Res>) => {
   let current = node.parent;
   while (current) {
     let allChildrenProcessed = true;
@@ -20,10 +20,15 @@ const markParents = <T>(node: TreeNode<T>) => {
         break;
       }
     }
+
     if (allChildrenProcessed && !current.processed) {
-      processNode(current); // Process the parent node if all its children are processed and it's not already processed
-      current = current.parent; // Move up to the next parent
+
+       // await processNode(current); // Process the parent node if all its children are processed and it's not already processed
+        current.processed=true
+
+        current = current.parent; // Move up to the next parent
     } else {
+      await processNode(current);
       break; // Stop moving up if we find an unprocessed node or all nodes are processed
     }
   }
@@ -52,7 +57,7 @@ export const bottomUpTraversal = async <T, Res = any>(
   leafNodes.forEach(async (leafNode) => {
     await processNode(leafNode); // Process each leaf node
     leafNode.processed = true;
-    markParents(leafNode); // Then mark its parents for processing
+    markParents(leafNode,processNode); // Then mark its parents for processing
   });
 };
 
