@@ -6,7 +6,11 @@ import { zodRefineTypescript } from "../subcommands/plan/zodRefineTypescript";
  */
 
 const baseTaskSchema = z.object({
-  functionName: z.string().describe("function name in camelCase notation. The same function name like in the function declaration"),
+  functionName: z
+    .string()
+    .describe(
+      "function name in camelCase notation. The same function name like in the function declaration",
+    ),
   task: z.string().describe("What is the task to be done for this step?"),
   ext: z
     .string()
@@ -23,16 +27,16 @@ const baseTaskSchema = z.object({
     ),
 });
 
-export 
-type TaskSchema = z.infer<typeof baseTaskSchema> & {
+export type TaskSchema = z.infer<typeof baseTaskSchema> & {
   subTasks?: TaskSchema[];
 };
 
-export 
-const TaskSchema: z.ZodType<TaskSchema> = baseTaskSchema.extend({
-  subTasks: z.lazy(() => TaskSchema.array()).optional().describe("A list of subtasks of the parent task."),
+export const TaskSchema: z.ZodType<TaskSchema> = baseTaskSchema.extend({
+  subTasks: z
+    .lazy(() => TaskSchema.array())
+    .optional()
+    .describe("A list of subtasks of the parent task."),
 });
-
 
 export const plan = z.array(TaskSchema);
 
