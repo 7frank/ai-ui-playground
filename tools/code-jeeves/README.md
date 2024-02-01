@@ -25,6 +25,26 @@ sudo apt-get install pv
 bun install
 ```
 
+## example
+
+```bash
+ # clean  folder
+ rm -rf .out/emailClient
+
+ # alter the spec for the email client (or create a new spec)
+ code ./src/specs/emailClientSpec.ts 
+
+ # generate a plan from the spec
+ bun index.ts plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts 
+
+ # run the code generator for each item in the plan 
+ bun index.ts plan execute -n .out/emailClient/ --force
+
+ # if the command exists with an error you can resume like this
+ bun index.ts plan execute -n .out/emailClient/ -r
+```
+
+
 ## development
 
 To run certain cli tasks:
