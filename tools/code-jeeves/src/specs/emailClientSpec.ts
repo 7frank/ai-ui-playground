@@ -31,6 +31,8 @@ Prefer the following frameworks: ${frameworks.join(",")}`;
  - it can fetch your emails from the server 
  - you can select which one email you want to open
  - you can write emails
+ - use "mail-listener5" for reading emails
+ - use "nodemailer" for writing emails
 ${constraints}
 `;
 
