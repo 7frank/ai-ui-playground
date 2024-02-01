@@ -143,8 +143,9 @@ export function createTestSourceCodeFromTask(
  `;
 
 
- //  You where previously given a task:"""${entry.task}"""
+
   const prompt = `You must write tests for certain source code.
+  You where previously given a task:"""${entry.task}"""
   For which you now are supposed to write tests.
   Infer the language from the file extension: 'ts'.
   ${entry.preferences ? entry.preferences : ""}
