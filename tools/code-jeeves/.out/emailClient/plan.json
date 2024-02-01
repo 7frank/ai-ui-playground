@@ -1,112 +1,112 @@
 {
   "plan": [
     {
-      "functionName": "fetchEmails",
+      "functionName": "fetchEmails1",
       "task": "Fetch emails from the server",
       "ext": "ts",
-      "declaration": "function fetchEmails(): Promise<Email[]>;",
+      "declaration": "function fetchEmails1(): Promise<Email[]>;",
       "preferences": "cmd-ts, bun",
       "subTasks": []
     },
     {
-      "functionName": "selectEmail",
+      "functionName": "selectEmail2",
       "task": "Select an email to open",
       "ext": "ts",
-      "declaration": "function selectEmail(emails: Email[]): Promise<Email>;",
+      "declaration": "function selectEmail2(emails: Email[]): Promise<Email>;",
       "preferences": "inquirer",
       "subTasks": []
     },
     {
-      "functionName": "writeEmail",
+      "functionName": "writeEmail3",
       "task": "Write an email",
       "ext": "ts",
-      "declaration": "function writeEmail(): Promise<Email>;",
+      "declaration": "function writeEmail3(): Promise<Email>;",
       "preferences": "inquirer",
       "subTasks": []
     },
     {
-      "functionName": "main",
+      "functionName": "main4",
       "task": "Main function to execute the email client",
       "ext": "ts",
-      "declaration": "function main(): Promise<void>;",
+      "declaration": "function main4(): Promise<void>;",
       "preferences": "cmd-ts, bun",
       "subTasks": [
         {
-          "functionName": "fetchEmails",
+          "functionName": "fetchEmails5",
           "task": "Fetch emails from the server",
           "ext": "ts",
-          "declaration": "function fetchEmails(): Promise<Email[]>;",
+          "declaration": "function fetchEmails5(): Promise<Email[]>;",
           "preferences": "cmd-ts, bun",
           "subTasks": []
         },
         {
-          "functionName": "selectEmail",
+          "functionName": "selectEmail6",
           "task": "Select an email to open",
           "ext": "ts",
-          "declaration": "function selectEmail(emails: Email[]): Promise<Email>;",
+          "declaration": "function selectEmail6(emails: Email[]): Promise<Email>;",
           "preferences": "inquirer",
           "subTasks": []
         },
         {
-          "functionName": "writeEmail",
+          "functionName": "writeEmail7",
           "task": "Write an email",
           "ext": "ts",
-          "declaration": "function writeEmail(): Promise<Email>;",
+          "declaration": "function writeEmail7(): Promise<Email>;",
           "preferences": "inquirer",
           "subTasks": []
         },
         {
-          "functionName": "displayEmail",
+          "functionName": "displayEmail8",
           "task": "Display the selected email",
           "ext": "ts",
-          "declaration": "function displayEmail(email: Email): void;",
+          "declaration": "function displayEmail8(email: Email): void;",
           "preferences": "cmd-ts, bun",
           "subTasks": []
         },
         {
-          "functionName": "promptAction",
+          "functionName": "promptAction9",
           "task": "Prompt user for next action",
           "ext": "ts",
-          "declaration": "function promptAction(): Promise<void>;",
+          "declaration": "function promptAction9(): Promise<void>;",
           "preferences": "inquirer",
           "subTasks": [
             {
-              "functionName": "fetchEmails",
+              "functionName": "fetchEmails10",
               "task": "Fetch emails from the server",
               "ext": "ts",
-              "declaration": "function fetchEmails(): Promise<Email[]>;",
+              "declaration": "function fetchEmails10(): Promise<Email[]>;",
               "preferences": "cmd-ts, bun",
               "subTasks": []
             },
             {
-              "functionName": "selectEmail",
+              "functionName": "selectEmail11",
               "task": "Select an email to open",
               "ext": "ts",
-              "declaration": "function selectEmail(emails: Email[]): Promise<Email>;",
+              "declaration": "function selectEmail11(emails: Email[]): Promise<Email>;",
               "preferences": "inquirer",
               "subTasks": []
             },
             {
-              "functionName": "writeEmail",
+              "functionName": "writeEmail12",
               "task": "Write an email",
               "ext": "ts",
-              "declaration": "function writeEmail(): Promise<Email>;",
+              "declaration": "function writeEmail12(): Promise<Email>;",
               "preferences": "inquirer",
               "subTasks": []
             },
             {
-              "functionName": "displayEmail",
+              "functionName": "displayEmail13",
               "task": "Display the selected email",
               "ext": "ts",
-              "declaration": "function displayEmail(email: Email): void;",
+              "declaration": "function displayEmail13(email: Email): void;",
               "preferences": "cmd-ts, bun",
               "subTasks": []
             },
             {
-              "functionName": "promptAction",
+              "functionName": "promptAction14",
               "task": "Prompt user for next action",
               "ext": "ts",
-              "declaration": "function promptAction(): Promise<void>;",
+              "declaration": "function promptAction14(): Promise<void>;",
               "preferences": "inquirer",
               "subTasks": []
             }
