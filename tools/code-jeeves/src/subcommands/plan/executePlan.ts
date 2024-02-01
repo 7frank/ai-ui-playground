@@ -8,6 +8,9 @@ import {
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
 import * as fs from "node:fs";
+import { createLcSourceCodeImpl, createLcTestCodeImpl } from "../../lc/createLcSourceCodeImpl";
+import { getLanguageConfigFromTask } from "../../languageConfigurations";
+import { runTestCommand } from "../../runTestCommand";
 
 export async function executePlan({
   name,
@@ -140,19 +143,26 @@ async function executeSingleTask(
   entry: PlanResponseSchema["plan"]["0"],
   name: string,
 ) {
-  console.log(entry.id);
+  console.log(entry);
+
+ entry.preferences=entry.preferences??""
+
+  const languageConfig = getLanguageConfigFromTask(entry);
 
   /**
    * create implementation files
    */
 
-  const implSystemPrompt = createImplementationSystemPrompt(entry);
+  // const implSystemPrompt = createImplementationSystemPrompt(entry);
+  // const implRes = await askOpenApiStructured(
+  //   "",
+  //   implSystemPrompt + entry.task,
+  //   FunctionResponseSchema,
+  // );
 
-  const implRes = await askOpenApiStructured(
-    "",
-    implSystemPrompt + entry.task,
-    FunctionResponseSchema,
-  );
+  console.log("using langchain to generate source code");
+  const implRes = await createLcSourceCodeImpl(entry, languageConfig);
+
   const functionName = camelCase(entry.id);
 
   const implFileLocation = name + "src/" + functionName + ".ts";
@@ -168,17 +178,18 @@ async function executeSingleTask(
    */
 
   // TODO there will be many cases where we do not have a tyoppe declaration. we should probably enforce it, to make it easier to create impl and tests.
-  const testSystemPrompt = createTestSystemPrompt({
-    ...entry,
-    declaration: entry.declaration ?? "any", // ?? implRes.typeDeclaration,
-  });
-
-  const testRes = await askOpenApiStructured(
-    "",
-    testSystemPrompt +
-      `The test should make sure that the following task can be executed successfully:'${entry.task}'`,
-    FunctionResponseSchema,
-  );
+  // const testSystemPrompt = createTestSystemPrompt({
+  //   ...entry,
+  //   declaration: entry.declaration ?? "any", // ?? implRes.typeDeclaration,
+  // });
+  // const testRes = await askOpenApiStructured(
+  //   "",
+  //   testSystemPrompt +
+  //     `The test should make sure that the following task can be executed successfully:'${entry.task}'`,
+  //   FunctionResponseSchema,
+  // );
+  console.log("using langchain to generate test code");
+  const testRes = await createLcTestCodeImpl(entry, languageConfig);
 
   const testFileLocation = name + "src/" + functionName + ".test.ts";
   console.log("TestFile:", testFileLocation);
@@ -190,8 +201,8 @@ async function executeSingleTask(
 
   //-------------------------
   // await  $`bun test ./${testFileLocation}`;
-  await $`bun jest ${testFileLocation}`;
-
+  // await $`bun jest ${testFileLocation}`;
+  await runTestCommand(entry,languageConfig?.testCommand??"echo 'no test command defined'",implFileLocation,testFileLocation);
   //-------------------------
   const logLocation = name + "log.txt";
   const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");

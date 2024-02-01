@@ -1,18 +1,19 @@
-import { cumSum } from "./cumSum";
 
-describe("cumSum", () => {
-  const testCases: {
-    input: number[];
-    expected: number;
-  }[] = [
-    { input: [1, 2, 3], expected: 6 },
-    { input: [-1, -2, -3], expected: -6 },
-  ];
+import { cumSum } from './cumSum.ts';
 
-  testCases.forEach((testCase) => {
-    test(`should return ${testCase.expected} when given ${testCase.input}`, () => {
-      const result = cumSum(...testCase.input);
-      expect(result).toBe(testCase.expected);
+describe('cumSum', () => {
+    it('should return the sum of two numbers', () => {
+        const result = cumSum(2, 3);
+        expect(result).toEqual(5);
     });
-  });
+
+    it('should return the sum of multiple numbers', () => {
+        const result = cumSum(2, 3, 4, 5);
+        expect(result).toEqual(14);
+    });
+
+    it('should return 0 if no arguments are provided', () => {
+        const result = cumSum();
+        expect(result).toEqual(0);
+    });
 });
