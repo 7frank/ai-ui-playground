@@ -42,6 +42,9 @@ bun install
 
  # if the command exists with an error you can resume like this
  bun index.ts plan execute -n .out/emailClient/ -r
+
+# run test manually and see how bad things are with your generated code :-)
+ bun test  ./.out/emailClient/**/*.test.ts
 ```
 
 
