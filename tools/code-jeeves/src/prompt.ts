@@ -55,8 +55,13 @@ if (reason == "createImplementation") {
   // const res = await createTestSourceCodeFromTask(entry, languageConfig);
 
   console.log("using langchain to generate test code");
-  const implementationCode=await $`cat ${sourceFilePath}`.text();
-  const res = await createLcTestCodeImpl(entry, languageConfig,implementationCode);
+  const implementationCode = await $`cat ${sourceFilePath}`.text();
+  console.log(implementationCode);
+  const res = await createLcTestCodeImpl(
+    entry,
+    languageConfig,
+    implementationCode,
+  );
 
   console.log(`Success goto: ${testFilePath}`);
   await $`echo ${res.sourceCode} > ${testFilePath}`;

@@ -42,11 +42,12 @@ export async function createLcSourceCodeImpl(
 export async function createLcTestCodeImpl(
   entry: TaskSchema,
   langConfig?: LangConfig,
-  implementationCode?:string
+  implementationCode?: string,
 ): Promise<FunctionResponseSchema> {
-  const sourceCodeImplementationPrompt =
-    ChatPromptTemplate.fromTemplate<TaskSchema>(
-      `Generate source code with at least 3 meaningful tests that test the following declaration '{declaration}'.
+  const sourceCodeImplementationPrompt = ChatPromptTemplate.fromTemplate<
+    TaskSchema & { optionalSource: string }
+  >(
+    `Generate source code with at least 3 meaningful tests that test the following declaration '{declaration}'.
          - The purpose of the function itself is '{task}'.  
          - Infer the language from the file extension: '{ext}'.  
          
@@ -55,12 +56,10 @@ export async function createLcTestCodeImpl(
          - You may create utility functions, if the function becomes too big, that are not exported.
          - Remove redundancy.
          - You have the following preferences: '{preferences}'
-
+         {optionalSource}
          Do not generate anything else.
-         
-         ${implementationCode?"The implementation for which you write the tests is the following:```\n"+implementationCode+"\n```":""}
          `,
-    );
+  );
 
   const model = new OpenAI({
     openAIApiKey: process.env.OPENAI_API_KEY,
@@ -72,10 +71,24 @@ export async function createLcTestCodeImpl(
     .pipe(new StringOutputParser());
 
   // TODO this should come from lang config
-  const preferences =
-    "use jest, Use 'falso' for generating random values (never use faker for that matter ),BDD for naming 'describe' and 'it' blocks, the Arrange-act-Assert Pattern";
+  const preferences = [
+    "use jest",
+    //"Use 'falso' for generating random values (never use faker for that matter )",
+    "BDD for naming 'describe' and 'it' blocks",
+    "the Arrange-act-Assert Pattern",
+  ];
 
-  const sourceCode = await chain.invoke({ ...entry, preferences: preferences });
+  const optionalSource = implementationCode
+    ? "The implementation for which you write the tests is the following:```\n" +
+      implementationCode +
+      "\n```"
+    : "";
+
+  const sourceCode = await chain.invoke({
+    ...entry,
+    preferences: preferences.join(","),
+    optionalSource,
+  });
 
   return { language: entry.ext!, packages: [], sourceCode: sourceCode };
 }
