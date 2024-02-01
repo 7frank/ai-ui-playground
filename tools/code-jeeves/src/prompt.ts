@@ -6,6 +6,7 @@ import {
 } from "./source-test-validate";
 import { getLanguageConfigFromTask } from "./languageConfigurations";
 import { $ } from "bun";
+import { fileSelectQuestion } from "./questions";
 
 export const entry: TaskSchema = {
   id: "getCharacterByName",
@@ -19,7 +20,11 @@ export const entry: TaskSchema = {
 const languageConfig = getLanguageConfigFromTask(entry);
 
 type P = "createImplementation" | "createTest" | "fixImplementationWithTest";
-const reason = "fixImplementationWithTest" as P;
+
+
+//const reason = "fixImplementationWithTest" as P;
+const reason =(await fileSelectQuestion(["createImplementation" , "createTest" , "fixImplementationWithTest"])).fileName as P
+
 
 const sourceFilePath = `.out/${entry.id}.ts`;
 const testFilePath = `.out/${entry.id}.test.ts`;
