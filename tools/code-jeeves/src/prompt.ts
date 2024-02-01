@@ -23,10 +23,14 @@ const langRecord: Partial<Record<SupportedLang, LangConfig>> = {
 const fnName = "getCharacterByName";
 const decl =
   "async function getCharacterByName(name:String):Promise<StarWarsCharacterDetails>";
-const prompt = `create a function that 'queries the star wars api and returns a character by name'.
+
+const task =
+  "create a function that 'queries the star wars api and returns a character by name'.";
+const prompt = `${task}
 Infer the language from the file extension: 'ts'.
 use fetch.
-The interface of the function looks the following '${decl}' 
+The interface of the function looks the following '${decl}'.
+The function must be exported if possible in the language.
 `;
 
 const constraints =
@@ -93,7 +97,7 @@ createAdaptableCircuitBreaker({
       if (entry.id != name)
         throw new Error("function must be named:" + entry.id);
 
-      // checkCodeForFunctionsAndExports(res.data.sourceCode)
+      checkCodeForFunctionsAndExports(res.data.sourceCode);
       const unspecifiedTypes2 = checkForUnspecifiedTypes(res.data.sourceCode);
       if (unspecifiedTypes2.length)
         throw new Error(

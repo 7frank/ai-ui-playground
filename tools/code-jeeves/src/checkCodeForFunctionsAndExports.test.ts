@@ -19,4 +19,19 @@ describe("checkCodeForFunctionsAndExports", () => {
     const code = `export function test() {}; function nonExported() {};`;
     expect(() => checkCodeForFunctionsAndExports(code)).not.toThrow();
   });
+
+  it("should not throw an error for this case", () => {
+    const code = `
+    import axios from 'axios';
+  
+  interface StarWarsCharacterDetails {
+    name: string;
+  }
+  
+  export async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {
+    return {name:""}
+  }
+    `;
+    expect(() => checkCodeForFunctionsAndExports(code)).not.toThrow();
+  });
 });
