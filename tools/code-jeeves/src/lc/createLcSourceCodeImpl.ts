@@ -1,13 +1,13 @@
 import { OpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
-import { TaskSchema } from "../types/taskFileSchema";
+import { FunctionResponseSchema, TaskSchema } from "../types/taskFileSchema";
 import { LangConfig } from "../languageConfigurations";
 
 export async function createLcSourceCodeImpl(
   entry: TaskSchema,
   langConfig?: LangConfig,
-) {
+):Promise<FunctionResponseSchema> {
   const sourceCodeImplementationPrompt =
     ChatPromptTemplate.fromTemplate<TaskSchema>(
       `Generate source code that implements the following declaration '{declaration}' and that does {task}.  
@@ -29,8 +29,8 @@ export async function createLcSourceCodeImpl(
   const chain = sourceCodeImplementationPrompt
     .pipe(model)
     .pipe(new StringOutputParser());
-  //.pipe(interpreter);
-  const result = await chain.invoke(entry);
+    
+  const sourceCode = await chain.invoke(entry);
 
-  return result;
+  return {language:entry.ext!,packages:[],sourceCode:sourceCode};
 }

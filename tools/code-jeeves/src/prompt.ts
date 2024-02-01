@@ -8,6 +8,7 @@ import { getLanguageConfigFromTask } from "./languageConfigurations";
 import { $ } from "bun";
 import { fileSelectQuestion } from "./questions";
 import { runCommand } from "./runCommand";
+import { createLcSourceCodeImpl } from "./lc/createLcSourceCodeImpl";
 
 export const entry: TaskSchema = {
   id: "getCharacterByName",
@@ -35,10 +36,17 @@ const sourceFilePath = `.out/${entry.id}.ts`;
 const testFilePath = `.out/${entry.id}.test.ts`;
 
 if (reason == "createImplementation") {
-  const res = await createImplementationSourceCodeFromTask(
-    entry,
-    languageConfig,
-  );
+  
+  //console.log("using zod-gpt to generate source code")
+  // const res = await createImplementationSourceCodeFromTask(
+  //   entry,
+  //   languageConfig,
+  // );
+
+  console.log("using langchain to generate source code")
+  const res = await createLcSourceCodeImpl(    entry,
+     languageConfig)
+
   console.log(`Success goto: .out/${entry.id}.ts`);
   await $`echo ${res.sourceCode} > .out/${entry.id}.ts`;
 } else if (reason == "createTest") {
