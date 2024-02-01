@@ -67,6 +67,7 @@ bun ./src/prompt.ts
 whole work flow explained:
 https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
+- check out what Automatic Prompt Engineering & [LangChain](https://github.com/alphasecio/langchain-examples) can do, which either replaces our code or extends the functionality
 - implement TDD flow
   - generate plan
   - run plan incrementally

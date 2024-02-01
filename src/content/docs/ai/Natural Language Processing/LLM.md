@@ -22,3 +22,6 @@ Some sources comparing LLM
 - [Comparing: Parameter Size vs. Traioning Size](https://medium.com/@greg.broadhead/a-brief-guide-to-llm-numbers-parameter-count-vs-training-size-894a81c9258)
 
 - [Should You Use Open Source Large Language Models?](https://github.com/neueda/awesome-neo4j)
+
+
+- [Overview and future of LLM](https://www.marktechpost.com/2024/01/30/this-ai-paper-unveils-the-future-of-multimodal-large-language-models-mm-llms-understanding-their-evolution-capabilities-and-impact-on-ai-research/)
