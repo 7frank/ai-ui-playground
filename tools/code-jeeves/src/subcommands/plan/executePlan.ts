@@ -86,9 +86,7 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
   }
 
   // the index could be an id inferred from the reason or the id string
-  const foundTask = parsed.plan.find(
-    (it) => camelCase( it.id) == index,
-  );
+  const foundTask = parsed.plan.find((it) => camelCase(it.id) == index);
 
   if (!foundTask) {
     console.log(
@@ -96,7 +94,7 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
       parsed.plan
         .map((it) => camelCase(it.id))
         .map((it) => `'${it}'`)
-        .join(",")
+        .join(","),
     );
     process.exit();
   }
@@ -142,9 +140,8 @@ async function executeSingleTask(
   entry: PlanResponseSchema["plan"]["0"],
   name: string,
 ) {
-  
   console.log(entry.id);
-  
+
   /**
    * create implementation files
    */
@@ -173,7 +170,7 @@ async function executeSingleTask(
   // TODO there will be many cases where we do not have a tyoppe declaration. we should probably enforce it, to make it easier to create impl and tests.
   const testSystemPrompt = createTestSystemPrompt({
     ...entry,
-    declaration: entry.declaration ?? "any" // ?? implRes.typeDeclaration,
+    declaration: entry.declaration ?? "any", // ?? implRes.typeDeclaration,
   });
 
   const testRes = await askOpenApiStructured(

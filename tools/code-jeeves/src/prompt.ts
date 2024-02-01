@@ -56,7 +56,6 @@ if (reason == "createImplementation") {
 
   console.log("using langchain to generate test code");
   const implementationCode = await $`cat ${sourceFilePath}`.text();
-  console.log(implementationCode);
   const res = await createLcTestCodeImpl(
     entry,
     languageConfig,

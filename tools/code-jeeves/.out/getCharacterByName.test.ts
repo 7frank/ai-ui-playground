@@ -1,5 +1,7 @@
-
-import { getCharacterByName, StarWarsCharacterDetails } from "./getCharacterByName";
+import {
+  getCharacterByName,
+  StarWarsCharacterDetails,
+} from "./getCharacterByName";
 
 describe("getCharacterByName", () => {
   it("returns the details of a Star Wars character by name", async () => {
@@ -7,9 +9,8 @@ describe("getCharacterByName", () => {
     const name = "Luke Skywalker";
 
     // Act
-    const characterDetails: StarWarsCharacterDetails = await getCharacterByName(
-      name
-    );
+    const characterDetails: StarWarsCharacterDetails =
+      await getCharacterByName(name);
 
     // Assert
     expect(characterDetails.name).toEqual(name);
@@ -28,8 +29,7 @@ describe("getCharacterByName", () => {
 
     // Assert
     await expect(getCharacter()).rejects.toThrowError(
-      "Request failed with status code 404."
+      "Request failed with status code 404.",
     );
   });
 });
-
