@@ -1,5 +1,4 @@
-
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
 export interface StarWarsCharacterDetails {
   name: string;
@@ -20,13 +19,14 @@ export interface StarWarsCharacterDetails {
   url: string;
 }
 
-export async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {
+export async function getCharacterByName(
+  name: string,
+): Promise<StarWarsCharacterDetails> {
   const response = await fetch(`https://swapi.dev/api/people/?search=${name}`);
   const data = await response.json();
   if (data.count === 0) {
-    throw new Error('Character not found');
+    throw new Error("Character not found");
   }
   const character = data.results[0];
   return character as StarWarsCharacterDetails;
 }
-

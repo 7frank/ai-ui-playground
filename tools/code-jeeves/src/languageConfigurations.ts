@@ -20,7 +20,7 @@ export type LangConfig = {
   /**
    * a command that will be used to run the generated test.
    */
-  testCommand?: `${string} {filename}`;
+  testCommand?: `${string}{filename}`;
 };
 type ChecksFunction = (data: FunctionResponseSchema) => void;
 type LanguageConfigRecord = Partial<Record<SupportedLang, LangConfig>>;
@@ -28,7 +28,8 @@ export const languageConfigurations: LanguageConfigRecord = {
   ts: {
     sourceCodeChecksHandler: runImplementationTypescriptChecks,
     testCodeChecksHandler: runTestTypescriptChecks,
-    testCommand: "bun test {filename}",
+    testCommand:
+      "bun test ./{filename}",
   },
 };
 

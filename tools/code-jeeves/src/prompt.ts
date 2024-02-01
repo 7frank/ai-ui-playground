@@ -1,6 +1,7 @@
 import { TaskSchema } from "./types/taskFileSchema";
 import {
   createImplementationSourceCodeFromTask,
+  createTestRunnerFromTask,
   createTestSourceCodeFromTask,
 } from "./source-test-validate";
 import { getLanguageConfigFromTask } from "./languageConfigurations";
@@ -21,10 +22,30 @@ const languageConfig = getLanguageConfigFromTask(entry);
 // console.log(`Success goto: .out/${entry.id}.ts`);
 // await $`echo ${res.sourceCode} > .out/${entry.id}.ts`;
 
+const testFile = `.out/${entry.id}.test.ts`;
+// const res = await createTestSourceCodeFromTask(entry, languageConfig);
 
-const res = await createTestSourceCodeFromTask(entry, languageConfig);
-const file=`.out/${entry.id}.test.ts`
-console.log(`Success goto: ${file}`);
-await $`echo ${res.sourceCode} > ${file}`;
+// console.log(`Success goto: ${testFile}`);
+// await $`echo ${res.sourceCode} > ${testFile}`;
 
-console.log(`you can run 'bun test ./${file}'`)
+// console.log(`you can run 'bun test ./${testFile}'`)
+
+const testCommand = languageConfig?.testCommand?.replace(
+  "{filename}",
+  testFile,
+);
+
+console.log("testCommand", testCommand);
+
+try {
+  // TODO check test command
+  // await $`${testCommand}`
+  await $`pwd`
+  const res = await $`bun test ./${testFile}`.text().catch((e)=> console.log("catch",e.message) );
+  console.log("YAY");
+  console.log(res);
+} catch (e) {
+  console.log("NAY");
+  console.error(e.message);
+  //createTestRunnerFromTask(entry,{}, languageConfig);
+}

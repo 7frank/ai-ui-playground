@@ -142,8 +142,6 @@ export function createTestSourceCodeFromTask(
   When in a longer conversation with the user, you will give full source code.
  `;
 
-
-
   const prompt = `You must write tests for certain source code.
   You where previously given a task:"""${entry.task}"""
   For which you now are supposed to write tests.
@@ -167,6 +165,73 @@ export function createTestSourceCodeFromTask(
 
   const initialParams = {
     history: [] as ChatRequestMessage[],
+    prompt,
+  };
+
+  return createAdaptableCircuitBreaker<
+    typeof initialParams,
+    FunctionResponseSchema
+  >({
+    initialParams,
+    retryParamsCallback: (params, lastResponse, error) => {
+      params.history.push({ role: "user", content: params.prompt });
+
+      // in case zod-gpt fails there is no response
+      if (lastResponse) {
+        params.history.push({
+          role: "assistant",
+          content: JSON.stringify(lastResponse.sourceCode),
+        });
+      }
+
+      return {
+        ...params,
+        prompt: "There was an error in your previous response:" + error.message,
+      };
+    },
+    fn: async (params, setLastResponse) => {
+      const res = await askOpenApiStructured2(params.prompt, {
+        schema: FunctionResponseSchema,
+        messageHistory: [],
+        systemMessage,
+      });
+      setLastResponse(res.data);
+
+      langConfig?.testCodeChecksHandler?.(res.data);
+
+      return res.data;
+    },
+  });
+}
+
+export function createTestRunnerFromTask(
+  entry: TaskSchema,
+  {
+    sourceFile,
+    testFile,
+    testResult,
+  }: { sourceFile: string; testFile: string; testResult: string },
+  langConfig?: LangConfig,
+) {
+  const systemMessage = `You are a 10x Software developer.
+  You will be asked to fix the implementation of a certain function. 
+  You will do so and think step by step.
+
+  
+  You will be given the implementation as well as error messages from tests that have been run.
+  You will fix them.
+  You don't rename variables or types without a reason.
+  You are not lazy and write full source code.
+  When in a longer conversation with the user, you will give full source code.
+ `;
+
+  const prompt = `The test results contained errors: Fix the implementation:${testResult}`;
+
+  const initialParams = {
+    history: [
+      { role: "user", content: sourceFile },
+      { role: "user", content: testFile },
+    ] as ChatRequestMessage[],
     prompt,
   };
 
