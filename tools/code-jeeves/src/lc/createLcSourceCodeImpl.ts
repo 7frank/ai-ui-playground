@@ -51,7 +51,7 @@ export async function createLcTestCodeImpl(
          - The purpose of the function itself is '{task}'.  
          - Infer the language from the file extension: '{ext}'.  
          
-         - The function must be imported from  ./'{id}.{ext}'.
+         - The function must be imported from  ./'{functionName}.{ext}'.
          
          - You may create utility functions, if the function becomes too big, that are not exported.
          - Remove redundancy.

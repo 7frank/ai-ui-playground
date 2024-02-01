@@ -14,7 +14,7 @@ import {
  */
 
 const entry: TaskSchema = {
-  id: "getCharacterByName",
+  functionName: "getCharacterByName",
   task: "fetch a character from the star wars api",
   ext: "ts",
   declaration:

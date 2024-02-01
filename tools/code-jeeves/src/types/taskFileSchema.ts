@@ -6,7 +6,7 @@ import { zodRefineTypescript } from "../subcommands/plan/zodRefineTypescript";
  */
 
 export const TaskSchema = z.object({
-  id: z.string().describe("Unique function name in camelCase notation"),
+  functionName: z.string().describe("function name in camelCase notation. The same function name like in the function declaration"),
   task: z.string().describe("What is the task to be done for this step?"),
   ext: z
     .string()
@@ -14,7 +14,7 @@ export const TaskSchema = z.object({
     .describe(
       "The file extension from which to infer the source code language.",
     ),
-  declaration: z.string().optional().describe("the function declaration"),
+  declaration: z.string().describe("the function declaration"),
   preferences: z
     .string()
     .optional()

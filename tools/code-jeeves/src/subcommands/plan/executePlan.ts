@@ -45,7 +45,7 @@ export async function executePlan({
     }
   else if (index) {
     let foundTask = findTaskByIndex(parsed, index);
-    const singleFile = camelCase(foundTask.id);
+    const singleFile = camelCase(foundTask.functionName);
     console.log("updating", singleFile);
 
     await executeSingleTask(foundTask, name);
@@ -68,7 +68,7 @@ export async function executePlan({
     console.log("resuming tasks with:", resumeIndex);
 
     let foundTask = findTaskByIndex(parsed, resumeIndex);
-    const singleFile = camelCase(foundTask.id);
+    const singleFile = camelCase(foundTask.functionName);
     console.log("resuming with:", singleFile);
 
     const subPlan = parsed.plan.slice(resumeIndex);
@@ -92,13 +92,13 @@ function findTaskByIndex(parsed: PlanResponseSchema, index: number | string) {
   }
 
   // the index could be an id inferred from the reason or the id string
-  const foundTask = parsed.plan.find((it) => camelCase(it.id) == index);
+  const foundTask = parsed.plan.find((it) => camelCase(it.functionName) == index);
 
   if (!foundTask) {
     console.log(
       "could not find task by name, valid values: ",
       parsed.plan
-        .map((it) => camelCase(it.id))
+        .map((it) => camelCase(it.functionName))
         .map((it) => `'${it}'`)
         .join(","),
     );
@@ -166,7 +166,7 @@ async function executeSingleTask(
   console.log("using langchain to generate source code");
   const implRes = await createLcSourceCodeImpl(entry, languageConfig);
 
-  const functionName = camelCase(entry.id);
+  const functionName = camelCase(entry.functionName);
 
   const implFileLocation = name + "src/" + functionName + ".ts";
   console.log(implFileLocation);
@@ -213,6 +213,6 @@ async function executeSingleTask(
   );
   //-------------------------
   const logLocation = name + "log.txt";
-  const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
+  const logJson = JSON.stringify({ functionName, index: entry.functionName }, null, "");
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }

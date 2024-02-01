@@ -13,7 +13,7 @@ import {
 import { runTestCommand } from "./runTestCommand";
 
 export const entry: TaskSchema = {
-  id: "getCharacterByName",
+  functionName: "getCharacterByName",
   task: "create a function that 'queries the star wars api and returns a character by name'.",
   ext: "ts",
   declaration:
@@ -34,8 +34,8 @@ const reason = (
   ])
 ).fileName as P;
 
-const sourceFilePath = `.out/${entry.id}.ts`;
-const testFilePath = `.out/${entry.id}.test.ts`;
+const sourceFilePath = `.out/${entry.functionName}.ts`;
+const testFilePath = `.out/${entry.functionName}.test.ts`;
 
 if (reason == "createImplementation") {
   //console.log("using zod-gpt to generate source code")
@@ -47,8 +47,8 @@ if (reason == "createImplementation") {
   console.log("using langchain to generate source code");
   const res = await createLcSourceCodeImpl(entry, languageConfig);
 
-  console.log(`Success goto: .out/${entry.id}.ts`);
-  await $`echo ${res.sourceCode} > .out/${entry.id}.ts`;
+  console.log(`Success goto: .out/${entry.functionName}.ts`);
+  await $`echo ${res.sourceCode} > .out/${entry.functionName}.ts`;
 } else if (reason == "createTest") {
   // console.log("using zod-gpt to generate test code")
   // const res = await createTestSourceCodeFromTask(entry, languageConfig);
