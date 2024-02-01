@@ -177,3 +177,46 @@ It "fixed" the code:
 > console.log(isNumber("abc")); // false
 > console.log(isNumber("123x")); // false
 > console.log(isNumber("e123")); // false
+
+
+### travsering seems a bit bugged
+sortFromLeaves does not return main4 and promptAction9 **but**
+traversing plan in order:
+
+> 0: fetchEmails1
+> 1: selectEmail2
+> 2: writeEmail3
+> 3: fetchEmails5
+> 4: selectEmail6
+> 5: writeEmail7
+> 6: displayEmail8
+> 7: fetchEmails10
+> 8: selectEmail11
+> 9: writeEmail12
+> 10: displayEmail13
+> 11: promptAction14
+
+
+
+order of functions executed **and** main4 and promptAction9 are executed multiple times:
+
+> {"functionName":"fetchEmails1","index":"fetchEmails1"}
+> {"functionName":"selectEmail2","index":"selectEmail2"}
+> {"functionName":"writeEmail3","index":"writeEmail3"}
+> {"functionName":"fetchEmails5","index":"fetchEmails5"}
+> {"functionName":"selectEmail6","index":"selectEmail6"}
+> {"functionName":"writeEmail7","index":"writeEmail7"}
+> {"functionName":"displayEmail8","index":"displayEmail8"}
+> {"functionName":"fetchEmails10","index":"fetchEmails10"}
+> {"functionName":"selectEmail11","index":"selectEmail11"}
+> {"functionName":"writeEmail12","index":"writeEmail12"}
+> {"functionName":"displayEmail13","index":"displayEmail13"}
+> {"functionName":"promptAction14","index":"promptAction14"}
+> {"functionName":"main4","index":"main4"}
+> {"functionName":"main4","index":"main4"}
+> {"functionName":"main4","index":"main4"}
+> {"functionName":"main4","index":"main4"}
+> {"functionName":"promptAction9","index":"promptAction9"}
+> {"functionName":"promptAction9","index":"promptAction9"}
+> {"functionName":"promptAction9","index":"promptAction9"}
+> {"functionName":"promptAction9","index":"promptAction9"}

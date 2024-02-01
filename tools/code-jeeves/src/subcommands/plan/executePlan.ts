@@ -67,7 +67,7 @@ export async function executePlan({
   const s=tasksList.map((it,i)=> ""+i+": "+it.functionName).join("\n")
   console.log("travsersing plan in order")
   console.log(s)
-process.exit()
+
   if (force)
     for await (const plan of tasksList) {
       await executeSingleTask(plan, name);
