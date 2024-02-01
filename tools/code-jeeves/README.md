@@ -126,17 +126,15 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 > at parseUnsafeJson (/home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/llm-api/dist/src/utils.js:27:38)
 > at /home/freimann/Projects/baby/ai-ui-playground/tools/code-jeeves/node_modules/llm-api/dist/src/models/openai.js:197:32
 
-
 ### how to prevent erratic behaviour of LLM after some missleading prompts
 
 We gave it source code, test code and the test runner result of a method using the star wars api:
 It "fixed" the code:
 
-> 
 > function isNumber(value) {
->   return /^d+$/.test(value);
+> return /^d+$/.test(value);
 > }
-> 
+>
 > console.log(isNumber("123")); // true
 > console.log(isNumber("abc")); // false
 > console.log(isNumber("123x")); // false
