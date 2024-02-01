@@ -54,8 +54,14 @@ DEBUG=zod-gpt:* bun index.ts plan execute -n .out/example -i 2
 # or even more debugging information
 DEBUG=* bun index.ts plan execute -n .out/example -i 2
 
+### experiments ###
+
 # WIP specific prompts to generate implementation & tests & test runner feedback
 bun ./src/prompt.ts
+
+# WIP langchain prompts to generate implementation & tests & test runner feedback
+bun ./src/lc/lc.ts
+
 
 ```
 
