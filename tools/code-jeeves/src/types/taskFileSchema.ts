@@ -15,6 +15,7 @@ export const TaskSchema = z.object({
       "The file extension from which to infer the source code language.",
     ),
   declaration: z.string().optional().describe("the function declaration"),
+  preferences: z.string().optional().describe("do you have suggestions or constraints? e.g. use a specific library?"),
 });
 
 export type TaskSchema = z.infer<typeof TaskSchema>;
