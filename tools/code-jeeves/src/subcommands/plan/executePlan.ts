@@ -173,7 +173,7 @@ async function executeSingleTask(
   // TODO there will be many cases where we do not have a tyoppe declaration. we should probably enforce it, to make it easier to create impl and tests.
   const testSystemPrompt = createTestSystemPrompt({
     ...entry,
-    declaration: entry.declaration ? "any" // ?? implRes.typeDeclaration,
+    declaration: entry.declaration ?? "any" // ?? implRes.typeDeclaration,
   });
 
   const testRes = await askOpenApiStructured(

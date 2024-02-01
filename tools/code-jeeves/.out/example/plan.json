@@ -3,14 +3,14 @@
     {
       "ext": "ts",
       "declaration": "function cumSum(values:...number):number",
-      "id": "cum-sum",
+      "id": "cumSum",
       "task": "create a function that sums up at least two or more numbers"
     },
     {
       "ext": "ts",
       "declaration": "async function getPokemon(name:string):PokemonType",
-      "id": "cum-sum",
-      "task": "create a function that fetches pokemon from the https://pokeapi.co/ API. Decide for yourself what parameters the return type has."
+      "id": "getPokemon",
+      "task": "create a function that fetches pokemon from the https://pokeapi.co/ API"
     }
   ]
 }
