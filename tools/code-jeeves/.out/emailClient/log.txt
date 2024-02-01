@@ -1,5 +1,0 @@
-{"functionName":"fetchEmails","index":"fetchEmails"}
-{"functionName":"displayEmails","index":"displayEmails"}
-{"functionName":"selectEmail","index":"selectEmail"}
-{"functionName":"openEmail","index":"openEmail"}
-{"functionName":"writeEmail","index":"writeEmail"}
