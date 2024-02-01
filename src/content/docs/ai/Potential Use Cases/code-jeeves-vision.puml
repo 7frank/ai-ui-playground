@@ -1,0 +1,79 @@
+@startuml
+
+skinparam handwritten true
+
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+
+ParticipantBorderColor DodgerBlue
+ParticipantBackgroundColor DeepSkyBlue
+
+ParticipantFontColor #333
+
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+
+header
+<font  size=14>Envisions how generating source code from a provided task would look like</font>
+endheader
+
+
+
+start
+:Start Outer Loop (Creates order in which Tasks are executed);
+:Traverse tasks and subtasks from leaves;
+repeat
+:Run Inner  Loop to create function and tests;
+:Mark as suceeded or failed if generating takes too long.
+repeat while (Are there still sibling tasks on the parent node that neither failed nor suceeded?) is (yes)
+->no;
+:Mark parent task either as suceeded, pending, failed ;
+
+stop
+
+start
+
+repeat 
+:Start Inner Loop (Creates Function & Tests from Task Description);
+
+:Generate a System & Task Prompts that take a task and create source code
+ (this is done by asking the LLM to do so from a Base Prompt);
+
+repeat
+:Generate Tests with LLM & Prompts;
+:Syntax & Sematic & Quailty Check Test Code;
+
+repeat while (All quality gates OK?) is (no, feed errors into LLM)
+->yes;
+
+
+repeat
+:Generate Source Code with LLM & Prompts;
+:Syntax & Sematic & Quailty Check Source Code;
+
+repeat while (All quality gates OK?) is (no, feed errors into LLM)
+->yes;
+
+
+repeat
+:Run test;
+repeat while (Test OK?) is (no, feed errors into LLM, ask LLM whether to fix test or implementation)
+->yes;
+
+repeat while (Does the source code run and is accepted by all quality gates?) is (no)
+->yes;
+
+:Continue with the next task;
+
+stop
+
+
+
+
+@enduml
