@@ -5,9 +5,13 @@ import { runCommand } from "./runCommand";
 import { TaskSchema } from "./types/taskFileSchema";
 import { getLanguageConfigFromTask } from "./languageConfigurations";
 
-export async function runTestCommand(entry:TaskSchema,testCommand: string, sourceFilePath: string, testFilePath: string) {
-
-   const languageConfig=getLanguageConfigFromTask(entry)
+export async function runTestCommand(
+  entry: TaskSchema,
+  testCommand: string,
+  sourceFilePath: string,
+  testFilePath: string,
+) {
+  const languageConfig = getLanguageConfigFromTask(entry);
 
   const r = await runCommand(testCommand);
   if (r.stderr == "") {
@@ -24,7 +28,7 @@ export async function runTestCommand(entry:TaskSchema,testCommand: string, sourc
     const res = await createTestRunnerFromTask(
       entry,
       { sourceFile, testFile, testResult },
-      languageConfig
+      languageConfig,
     );
 
     console.log("Fixed code:");

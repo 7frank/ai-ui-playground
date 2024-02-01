@@ -78,7 +78,9 @@ if (reason == "createImplementation") {
     process.exit(1);
   }
 
-  await runTestCommand(entry,testCommand,sourceFilePath,testFilePath);
+  try {
+    await runTestCommand(entry, testCommand, sourceFilePath, testFilePath);
+  } catch (e) {
+    console.error("Fixing test currently is optional, also not working");
+  }
 }
-
-

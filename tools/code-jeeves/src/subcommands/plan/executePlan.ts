@@ -8,7 +8,10 @@ import {
 import path from "node:path";
 import type { ExecuteCommandParams } from "./plan";
 import * as fs from "node:fs";
-import { createLcSourceCodeImpl, createLcTestCodeImpl } from "../../lc/createLcSourceCodeImpl";
+import {
+  createLcSourceCodeImpl,
+  createLcTestCodeImpl,
+} from "../../lc/createLcSourceCodeImpl";
 import { getLanguageConfigFromTask } from "../../languageConfigurations";
 import { runTestCommand } from "../../runTestCommand";
 
@@ -145,7 +148,7 @@ async function executeSingleTask(
 ) {
   console.log(entry);
 
- entry.preferences=entry.preferences??""
+  entry.preferences = entry.preferences ?? "";
 
   const languageConfig = getLanguageConfigFromTask(entry);
 
@@ -202,7 +205,12 @@ async function executeSingleTask(
   //-------------------------
   // await  $`bun test ./${testFileLocation}`;
   // await $`bun jest ${testFileLocation}`;
-  await runTestCommand(entry,languageConfig?.testCommand??"echo 'no test command defined'",implFileLocation,testFileLocation);
+  await runTestCommand(
+    entry,
+    languageConfig?.testCommand ?? "echo 'no test command defined'",
+    implFileLocation,
+    testFileLocation,
+  );
   //-------------------------
   const logLocation = name + "log.txt";
   const logJson = JSON.stringify({ functionName, index: entry.id }, null, "");
