@@ -1,11 +1,11 @@
-
-
 /**
  * Gets the details of a Star Wars character by name.
  * @param name The name of the character to search for.
  * @returns A promise that resolves to the character's details.
  */
-export async function getCharacterByName(name: string): Promise<StarWarsCharacterDetails> {
+export async function getCharacterByName(
+  name: string,
+): Promise<StarWarsCharacterDetails> {
   // Define the base URL for the Star Wars API.
   const baseUrl = "https://swapi.dev/api/";
 
@@ -32,7 +32,7 @@ export async function getCharacterByName(name: string): Promise<StarWarsCharacte
       height,
       mass,
       eyeColor: eye_color,
-      hairColor: hair_color
+      hairColor: hair_color,
     };
 
     // Return the character details.
