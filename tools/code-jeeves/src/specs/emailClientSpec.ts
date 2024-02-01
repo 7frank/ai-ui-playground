@@ -21,18 +21,16 @@ export default function jeevesSpecification(): JeevesSpecificationSchema {
   ];
   const frameworks = ["bun shell"];
 
-  const constraints = `Specify the steps to create a program. Exclude steps that you cannot implement in source code
+  const constraints = `Specify the steps to create a program. 
 Each step should be implementable as a program function. 
 Prefer the following packages when implementing: ${preferredPackages.join(",")}
 Prefer the following frameworks: ${frameworks.join(",")}`;
 
   const problemStatement = `Generate a step by step plan for a program that can do the following:
-- it can create tests.
-- it can create functions for those tests with OpenAI. 
-- it can execute functions and tests
-- it can create AST functions that traverse code and, for example, extract certain functions. 
-- it can take arguments, for example, to file paths that it uses to create a new function.
-
+ - it is an email client running on the command line
+ - it can fetch your emails from the server 
+ - you can select which one email you want to open
+ - you can write emails
 ${constraints}
 `;
 

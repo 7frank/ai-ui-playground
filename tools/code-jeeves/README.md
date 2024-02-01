@@ -40,7 +40,10 @@ bun index.ts refactor documentation -p=*.ts
 bun index.ts refactor documentation -p=*.ts --dryRun
 
 # run the whole plan from start to finish
-bun index.ts plan generate -n .out/test1 --force
+bun index.ts plan generate -n .out/test1 
+
+# reference a spec file that contains infomration what the program is about
+bun index.ts plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts 
 
 # run single item (3) of plan
 bun index.ts plan execute -n .out/test1 -i 3

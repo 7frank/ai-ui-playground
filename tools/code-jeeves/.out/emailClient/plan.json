@@ -1,0 +1,95 @@
+{
+  "plan": [
+    {
+      "id": "1",
+      "task": "Create a new project directory",
+      "ext": "",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "2",
+      "task": "Initialize the project with a package.json file",
+      "ext": "",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "3",
+      "task": "Install the required packages (cmd-ts, bun, inquirer, zod, lodash-es, dayjs, jest)",
+      "ext": "",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "4",
+      "task": "Create a new file for the main program",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "5",
+      "task": "Import the necessary packages in the main program file",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "6",
+      "task": "Create a function to fetch emails from the server",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "7",
+      "task": "Implement the fetchEmails function to use the cmd-ts package",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "8",
+      "task": "Create a function to display a list of emails",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "9",
+      "task": "Implement the displayEmails function to use the bun package",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts, bun"
+    },
+    {
+      "id": "10",
+      "task": "Create a function to select an email",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "11",
+      "task": "Implement the selectEmail function to use the inquirer package",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts, inquirer"
+    },
+    {
+      "id": "12",
+      "task": "Create a function to write emails",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    },
+    {
+      "id": "13",
+      "task": "Implement the writeEmail function to use the cmd-ts package",
+      "ext": ".ts",
+      "declaration": "",
+      "preferences": "cmd-ts"
+    }
+  ]
+}
