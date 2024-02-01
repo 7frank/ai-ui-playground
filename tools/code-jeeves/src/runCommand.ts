@@ -5,7 +5,7 @@ import { promisify } from "util";
 const exec = promisify(execCallback);
 
 /**
- * bun shell cannot run full commands,thus we need this work around for some cases (e.g. $`${'bun --version'}` will say that it cannot find bun. Maybe a problem with the templating string.) 
+ * bun shell cannot run full commands,thus we need this work around for some cases (e.g. $`${'bun --version'}` will say that it cannot find bun. Maybe a problem with the templating string.)
  */
 export async function runCommand(
   command: string,

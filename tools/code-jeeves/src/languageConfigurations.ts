@@ -22,7 +22,7 @@ export type LangConfig = {
    */
   testCommand?: `${string}{filename}`;
 };
-type ChecksFunction = (data: FunctionResponseSchema) => void;
+type ChecksFunction = (task: TaskSchema, data: FunctionResponseSchema) => void;
 type LanguageConfigRecord = Partial<Record<SupportedLang, LangConfig>>;
 export const languageConfigurations: LanguageConfigRecord = {
   ts: {

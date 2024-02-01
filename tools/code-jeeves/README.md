@@ -69,8 +69,9 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
 - check out what Automatic Prompt Engineering can do, which either replaces our code or extends the functionality
 - check out what langchain can do
+
   - https://github.com/haseeb-heaven/langchain-coder
-  - [LangChain](https://github.com/alphasecio/langchain-examples) 
+  - [LangChain](https://github.com/alphasecio/langchain-examples)
   - https://langchain-coder.streamlit.app/
 
 - implement TDD flow

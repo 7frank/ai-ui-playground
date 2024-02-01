@@ -8,12 +8,12 @@ import {
   checkTypescriptSyntax,
   extractFunctionName,
 } from "./typescriptTypecheckUtils";
-import { entry } from "./prompt";
 import { LangConfig } from "./languageConfigurations";
 
 /******************************** */
 
 export function runImplementationTypescriptChecks(
+  task: TaskSchema,
   data: FunctionResponseSchema,
 ) {
   /**
@@ -29,7 +29,7 @@ export function runImplementationTypescriptChecks(
 
   const name = extractFunctionName(data.sourceCode);
   console.log("extracted function name:", name);
-  if (entry.id != name) throw new Error("function must be named:" + entry.id);
+  if (task.id != name) throw new Error("function must be named:" + task.id);
 
   checkCodeForFunctionsAndExports(data.sourceCode);
   // TODO this somethimes works and sometimes doesnt?
@@ -40,7 +40,10 @@ export function runImplementationTypescriptChecks(
     );
 }
 
-export function runTestTypescriptChecks(data: FunctionResponseSchema) {
+export function runTestTypescriptChecks(
+  task: TaskSchema,
+  data: FunctionResponseSchema,
+) {
   /**
    * @deprecated since 24/2, might be no longer necessary because we fixed the bugs in the validation step that irritated gpt.
    */
@@ -119,7 +122,7 @@ export function createImplementationSourceCodeFromTask(
       });
       setLastResponse(res.data);
 
-      langConfig?.sourceCodeChecksHandler?.(res.data);
+      langConfig?.sourceCodeChecksHandler?.(entry, res.data);
 
       return res.data;
     },
@@ -197,7 +200,7 @@ export function createTestSourceCodeFromTask(
       });
       setLastResponse(res.data);
 
-      langConfig?.testCodeChecksHandler?.(res.data);
+      langConfig?.testCodeChecksHandler?.(entry, res.data);
 
       return res.data;
     },
@@ -264,7 +267,7 @@ export function createTestRunnerFromTask(
       });
       setLastResponse(res.data);
 
-      langConfig?.testCodeChecksHandler?.(res.data);
+      langConfig?.testCodeChecksHandler?.(entry, res.data);
 
       return res.data;
     },

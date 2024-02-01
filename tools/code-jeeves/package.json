@@ -12,6 +12,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@langchain/openai": "^0.0.13",
     "@types/inquirer": "^9.0.7",
     "@types/jest": "^29.5.11",
     "@types/lodash-es": "^4.17.12",
@@ -21,6 +22,7 @@
     "fs-extra": "^11.2.0",
     "gunzip-maybe": "^1.4.2",
     "inquirer": "^9.2.12",
+    "langchain": "^0.1.11",
     "llm-api": "^1.2.0",
     "lodash-es": "^4.17.21",
     "openai": "^4.26.0",
