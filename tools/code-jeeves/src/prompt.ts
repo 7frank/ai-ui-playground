@@ -17,6 +17,14 @@ export const entry: TaskSchema = {
 
 const languageConfig = getLanguageConfigFromTask(entry);
 
-const res = await createImplementationSourceCodeFromTask(entry, languageConfig);
-console.log(`Success goto: .out/${entry.id}.ts`);
-await $`echo ${res.sourceCode} > .out/${entry.id}.ts`;
+// const res = await createImplementationSourceCodeFromTask(entry, languageConfig);
+// console.log(`Success goto: .out/${entry.id}.ts`);
+// await $`echo ${res.sourceCode} > .out/${entry.id}.ts`;
+
+
+const res = await createTestSourceCodeFromTask(entry, languageConfig);
+const file=`.out/${entry.id}.test.ts`
+console.log(`Success goto: ${file}`);
+await $`echo ${res.sourceCode} > ${file}`;
+
+console.log(`you can run 'bun test ./${file}'`)

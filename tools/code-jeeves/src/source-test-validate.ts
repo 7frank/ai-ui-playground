@@ -74,11 +74,15 @@ export function createImplementationSourceCodeFromTask(
   You don't rename variables or types without a reason.
   You are not lazy and write full source code.
   When in a longer conversation with the user, you will give full source code.
+
+  Function bodies may not be empty.
+  Interfaces may not be empty.
+  
  `;
 
   const prompt = `${entry.task}
   Infer the language from the file extension: 'ts'.
-  ${entry.preferences ? "You are being given the following preferences, use them if you can and if it makes sense in the scenario:'" + entry.preferences + "'" : ""}
+  ${entry.preferences ? entry.preferences : ""}
   The interface of the function looks the following '${entry.declaration}'.
   The function must be exported if possible in the language.
   `;
@@ -127,7 +131,7 @@ export function createTestSourceCodeFromTask(
   entry: TaskSchema,
   langConfig?: LangConfig,
 ) {
-  const systemMessage = `You are a 10x Software tester.
+  const systemMessage = `You are a 10x Software developer.
   You will be asked to create tests. 
   You will do so and think step by step.
   
@@ -138,9 +142,12 @@ export function createTestSourceCodeFromTask(
   When in a longer conversation with the user, you will give full source code.
  `;
 
-  const prompt = `${entry.task}
+
+ //  You where previously given a task:"""${entry.task}"""
+  const prompt = `You must write tests for certain source code.
+  For which you now are supposed to write tests.
   Infer the language from the file extension: 'ts'.
-  ${entry.preferences ? "You are being given the following preferences, use them if you can and if it makes sense in the scenario:'" + entry.preferences + "'" : ""}
+  ${entry.preferences ? entry.preferences : ""}
   The interface of the function looks the following '${entry.declaration}'.
   The function must be imported. 
   The function can be found in the same folder as the test.
