@@ -1,6 +1,9 @@
 import { PythonInterpreterTool } from "langchain/experimental/tools/pyinterpreter";
 import { TaskSchema } from "../types/taskFileSchema";
-import { createLcSourceCodeImpl } from "./createLcSourceCodeImpl";
+import {
+  createLcSourceCodeImpl,
+  createLcTestCodeImpl,
+} from "./createLcSourceCodeImpl";
 
 /***
  * see  https://js.langchain.com/docs/integrations/tools
@@ -18,6 +21,6 @@ const entry: TaskSchema = {
     "async function getCharacterByName(name:string):Promise<StarWarsCharacterDetails>",
   preferences: "use fetch",
 };
-const result = await createLcSourceCodeImpl(entry);
+const result = await createLcTestCodeImpl(entry);
 
-console.log(result);
+console.log(result.sourceCode);
