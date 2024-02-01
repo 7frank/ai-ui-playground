@@ -1,7 +1,7 @@
-interface AdaptableCircuitBreaker<T, U, W = U> {
+interface AdaptableCircuitBreaker<T, U> {
   initialParams: T;
-  retryParamsCallback: (params: T, lastResponse: W, error: Error) => T;
-  fn: (params: T, setLastResponse: (val: W) => void) => Promise<U>;
+  retryParamsCallback: (params: T, lastResponse: U, error: Error) => T;
+  fn: (params: T, setLastResponse: (val: U) => void) => Promise<U>;
   maxRetries?: number;
   timeout?: number; // Timeout in milliseconds
 }
