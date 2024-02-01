@@ -64,14 +64,16 @@ export async function executePlan({
   const parsed = PlanResponseSchema.parse(planJson);
 
   const tasksList=sortFromLeaves(parsed.plan)
-
-
+  const s=tasksList.map((it,i)=> ""+i+": "+it.functionName).join("\n")
+  console.log("travsersing plan in order")
+  console.log(s)
+process.exit()
   if (force)
     for await (const plan of tasksList) {
       await executeSingleTask(plan, name);
     }
   else if (index) {
-    let foundTask = findTaskByIndex(parsed, index);
+    let foundTask = findTaskByIndex(tasksList, index);
     const singleFile = camelCase(foundTask.functionName);
     console.log("updating", singleFile);
 
@@ -88,13 +90,13 @@ export async function executePlan({
     }
 
     // TODO resume will fail for freshly generated
-    let previousTask = findTaskByIndex(parsed, logLine.index);
+    let previousTask = findTaskByIndex(tasksList, logLine.index);
     let prevIndex = tasksList.findIndex((it) => previousTask == it);
     const resumeIndex = prevIndex + 1;
 
     console.log("resuming tasks with:", resumeIndex);
 
-    let foundTask = findTaskByIndex(parsed, resumeIndex);
+    let foundTask = findTaskByIndex(tasksList, resumeIndex);
     const singleFile = camelCase(foundTask.functionName);
     console.log("resuming with:", singleFile);
 
