@@ -28,8 +28,7 @@ export const languageConfigurations: LanguageConfigRecord = {
   ts: {
     sourceCodeChecksHandler: runImplementationTypescriptChecks,
     testCodeChecksHandler: runTestTypescriptChecks,
-    testCommand:
-      "bun test ./{filename}",
+    testCommand: "bun test ./{filename}",
   },
 };
 
