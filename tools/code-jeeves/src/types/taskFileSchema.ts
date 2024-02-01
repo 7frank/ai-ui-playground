@@ -5,7 +5,7 @@ import { zodRefineTypescript } from "../subcommands/plan/zodRefineTypescript";
  * Section specifies the form the response of generating a `plan` via openai has to have.
  */
 
-export const TaskSchema = z.object({
+const baseTaskSchema = z.object({
   functionName: z.string().describe("function name in camelCase notation. The same function name like in the function declaration"),
   task: z.string().describe("What is the task to be done for this step?"),
   ext: z
@@ -23,7 +23,16 @@ export const TaskSchema = z.object({
     ),
 });
 
-export type TaskSchema = z.infer<typeof TaskSchema>;
+export 
+type TaskSchema = z.infer<typeof baseTaskSchema> & {
+  subTasks?: TaskSchema[];
+};
+
+export 
+const TaskSchema: z.ZodType<TaskSchema> = baseTaskSchema.extend({
+  subTasks: z.lazy(() => TaskSchema.array()).optional().describe("A list of subtasks of the parent task."),
+});
+
 
 export const plan = z.array(TaskSchema);
 

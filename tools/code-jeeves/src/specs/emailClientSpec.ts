@@ -21,8 +21,8 @@ export default function jeevesSpecification(): JeevesSpecificationSchema {
   ];
   const frameworks = ["bun shell"];
 
-  const constraints = `Specify the steps to create a program. 
-Each step should be implementable as a program function. 
+  const constraints = `Specify the tasks step by step to create a program. If a task is bigger then subdivide it into subtasks.
+Each step/tasks should be implementable as a program function. 
 Prefer the following packages when implementing: ${preferredPackages.join(",")}
 Prefer the following frameworks: ${frameworks.join(",")}`;
 
