@@ -71,7 +71,7 @@ function createImplementationSourceCodeFromTask(entry: TaskSchema) {
     
 
 
-  return createAdaptableCircuitBreaker({
+  return createAdaptableCircuitBreaker<typeof initialParams,FunctionResponseSchema>({
     initialParams,
     retryParamsCallback: (params, lastResponse, error) => {
       params.history.push({ role: "user", content: params.prompt });

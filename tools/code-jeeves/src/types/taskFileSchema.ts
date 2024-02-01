@@ -50,6 +50,9 @@ export const FunctionResponseSchema = z.object({
   // typeDeclaration,
   sourceCode,
 });
+
+export type FunctionResponseSchema= z.infer<typeof FunctionResponseSchema>
+
 // TODO this probably requires a tsconfig
 // .superRefine((data, ctx) => {
 //   if (data.language === 'typescript') {
