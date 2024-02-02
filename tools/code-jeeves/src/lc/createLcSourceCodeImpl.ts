@@ -3,18 +3,23 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { FunctionResponseSchema, TaskSchema } from "../types/taskFileSchema";
 import { LangConfig } from "../languageConfigurations";
+import { getModelsConfig } from "../models";
 
-const lcModel = new OpenAI({
+const mConfig=getModelsConfig()
+
+const lcScModel = new OpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
   maxTokens: -1,
-  // modelName:"'gpt-3.5-turbo"
-   modelName:"'gpt-4-0125-preview"
+
+   modelName:mConfig.sourcecode.model
 });
 
-// modelName: "gpt-3.5-turbo" 
-// { modelName: 'gpt-4-0613' },
-// { modelName: 'gpt-4-0125-preview' },
+const lcTcModel = new OpenAI({
+  openAIApiKey: process.env.OPENAI_API_KEY,
+  maxTokens: -1,
 
+   modelName:mConfig.testcode.model
+});
 
 
 
@@ -41,7 +46,7 @@ export async function createLcSourceCodeImpl(
 
 
   const chain = sourceCodeImplementationPrompt
-    .pipe(lcModel)
+    .pipe(lcScModel)
     .pipe(new StringOutputParser());
 
   const sourceCode = await chain.invoke(entry);
@@ -73,7 +78,7 @@ export async function createLcTestCodeImpl(
 
 
   const chain = sourceCodeImplementationPrompt
-    .pipe(lcModel)
+    .pipe(lcTcModel)
     .pipe(new StringOutputParser());
 
   // TODO this should come from lang config

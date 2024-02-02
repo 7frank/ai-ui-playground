@@ -225,7 +225,7 @@ async function executeSingleTask(
   //   FunctionResponseSchema,
   // );
   
-  if (entry.ext=="ts" || entry.ext=="py") {
+  if (isAllowedExtension("foo."+entry.ext,"js,jsx,ts,tsx,py")) {
     
   
   console.log("using langchain to generate test code");
@@ -263,4 +263,10 @@ async function executeSingleTask(
     "",
   );
   await $`echo ${logJson} >> ${file(logLocation)}`;
+}
+
+
+function isAllowedExtension(fileName:string, allowedExtensions = "js|jsx|ts|py") {
+  const regex = new RegExp(`\\.(${allowedExtensions})$`, 'i');
+  return regex.test(fileName);
 }
