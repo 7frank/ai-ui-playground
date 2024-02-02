@@ -1,13 +1,17 @@
-type ContentResult = 
-  | { type: "raw", rawString: string }
-  | { type: "detailed", prefix: string, language: string, sourceCode: string, postfix: string };
+type ContentResult =
+  | { type: "raw"; rawString: string }
+  | {
+      type: "detailed";
+      prefix: string;
+      language: string;
+      sourceCode: string;
+      postfix: string;
+    };
 
-
-  /**
-   * extracts code blocks often returned by chatgpt instead of raw content
-   */
-export 
-function extractContent(input: string): ContentResult {
+/**
+ * extracts code blocks often returned by chatgpt instead of raw content
+ */
+export function extractContent(input: string): ContentResult {
   const pattern = /^([\s\S]*?)```([^\n]+)\n([\s\S]*?)```([\s\S]*?)$/;
 
   const match = input.match(pattern);
@@ -26,17 +30,10 @@ function extractContent(input: string): ContentResult {
   }
 }
 
+export function getFirstCodeBlock(s: string) {
+  const res = extractContent(s);
 
-export function getFirstCodeBlock(s:string)
-{
+  if (res.type == "raw") return res.rawString;
 
-  const res=  extractContent(s)
-
-  if (res.type=="raw") return res.rawString
-  
-
-  return res.sourceCode
-
-
-
+  return res.sourceCode;
 }
