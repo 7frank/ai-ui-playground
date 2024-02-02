@@ -5,23 +5,21 @@ import { FunctionResponseSchema, TaskSchema } from "../types/taskFileSchema";
 import { LangConfig } from "../languageConfigurations";
 import { getModelsConfig } from "../models";
 
-const mConfig=getModelsConfig()
+const mConfig = getModelsConfig();
 
 const lcScModel = new OpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
   maxTokens: -1,
 
-   modelName:mConfig.sourcecode.model
+  modelName: mConfig.sourcecode.model,
 });
 
 const lcTcModel = new OpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
   maxTokens: -1,
 
-   modelName:mConfig.testcode.model
+  modelName: mConfig.testcode.model,
 });
-
-
 
 export async function createLcSourceCodeImpl(
   entry: TaskSchema,
@@ -43,7 +41,6 @@ export async function createLcSourceCodeImpl(
        - You have the following preferences: '{preferences}'
        Do not generate anything else.`,
     );
-
 
   const chain = sourceCodeImplementationPrompt
     .pipe(lcScModel)
@@ -75,7 +72,6 @@ export async function createLcTestCodeImpl(
          Do not generate anything else.
          `,
   );
-
 
   const chain = sourceCodeImplementationPrompt
     .pipe(lcTcModel)

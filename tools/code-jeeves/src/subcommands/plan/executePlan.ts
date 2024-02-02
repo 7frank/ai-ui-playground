@@ -21,22 +21,20 @@ import {
   taskSchemaToTreeNodeArray,
 } from "../../traverse";
 
-
 /**
  * we want to traverse the tasks from bottom up, therefor we have to sort them accordingly
  */
-function sortFromLeaves(tasks:TaskSchema[]) {
+function sortFromLeaves(tasks: TaskSchema[]) {
   const treeNode = taskSchemaToTreeNodeArray(tasks);
 
-  const sortedTasks:TaskSchema[]=[]
+  const sortedTasks: TaskSchema[] = [];
   const processNode = (node: TreeNode<TaskSchema>) => {
-    if (node.data)
-    sortedTasks.push(node.data)
+    if (node.data) sortedTasks.push(node.data);
     return Promise.resolve("succeeded");
   };
 
   bottomUpTraversal(treeNode, processNode);
-  return sortedTasks
+  return sortedTasks;
 }
 
 export async function executePlan({
@@ -63,10 +61,12 @@ export async function executePlan({
 
   const parsed = PlanResponseSchema.parse(planJson);
 
-  const tasksList=sortFromLeaves(parsed.plan)
-  const s=tasksList.map((it,i)=> ""+i+": "+it.functionName).join("\n")
-  console.log("travsersing plan in order")
-  console.log(s)
+  const tasksList = sortFromLeaves(parsed.plan);
+  const s = tasksList
+    .map((it, i) => "" + i + ": " + it.functionName)
+    .join("\n");
+  console.log("travsersing plan in order");
+  console.log(s);
 
   if (force)
     for await (const plan of tasksList) {
@@ -121,9 +121,7 @@ function findTaskByIndex(tasksList: TaskSchema[], index: number | string) {
   }
 
   // the index could be an id inferred from the reason or the id string
-  const foundTask = tasksList.find(
-    (it) => camelCase(it.functionName) == index,
-  );
+  const foundTask = tasksList.find((it) => camelCase(it.functionName) == index);
 
   if (!foundTask) {
     console.log(
@@ -199,9 +197,9 @@ async function executeSingleTask(
 
   const functionName = camelCase(entry.functionName);
 
-  const ext=entry.ext??"ts"
+  const ext = entry.ext ?? "ts";
 
-  const implFileLocation = `${name}src/${functionName}.${ext}`
+  const implFileLocation = `${name}src/${functionName}.${ext}`;
   console.log(implFileLocation);
 
   const implJson = JSON.stringify(implRes, null, "  ");
@@ -224,36 +222,31 @@ async function executeSingleTask(
   //     `The test should make sure that the following task can be executed successfully:'${entry.task}'`,
   //   FunctionResponseSchema,
   // );
-  
-  if (isAllowedExtension("foo."+entry.ext,"js,jsx,ts,tsx,py")) {
-    
-  
-  console.log("using langchain to generate test code");
-  const testRes = await createLcTestCodeImpl(entry, languageConfig);
 
-  const testFileLocation = `${name}src/${functionName}.test.${ext}`
-  console.log("TestFile:", testFileLocation);
+  if (isAllowedExtension("foo." + entry.ext, "js,jsx,ts,tsx,py")) {
+    console.log("using langchain to generate test code");
+    const testRes = await createLcTestCodeImpl(entry, languageConfig);
 
-  const testJson = JSON.stringify(testRes, null, "  ");
+    const testFileLocation = `${name}src/${functionName}.test.${ext}`;
+    console.log("TestFile:", testFileLocation);
 
-  await $`echo ${testJson} > ${file(testFileLocation)}.log.json`;
-  await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
+    const testJson = JSON.stringify(testRes, null, "  ");
 
-  //-------------------------
-  // await  $`bun test ./${testFileLocation}`;
-  // await $`bun jest ${testFileLocation}`;
-  await runTestCommand(
-    entry,
-    languageConfig?.testCommand ?? "echo 'no test command defined'",
-    implFileLocation,
-    testFileLocation,
-  );
+    await $`echo ${testJson} > ${file(testFileLocation)}.log.json`;
+    await $`echo ${testRes.sourceCode} > ${file(testFileLocation)}`;
 
-  } else{
-  console.warn("language not ts|py. skipping tests until further notice")
-  
+    //-------------------------
+    // await  $`bun test ./${testFileLocation}`;
+    // await $`bun jest ${testFileLocation}`;
+    await runTestCommand(
+      entry,
+      languageConfig?.testCommand ?? "echo 'no test command defined'",
+      implFileLocation,
+      testFileLocation,
+    );
+  } else {
+    console.warn("language not ts|py. skipping tests until further notice");
   }
-
 
   //-------------------------
   const logLocation = name + "log.txt";
@@ -265,8 +258,10 @@ async function executeSingleTask(
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }
 
-
-function isAllowedExtension(fileName:string, allowedExtensions = "js|jsx|ts|py") {
-  const regex = new RegExp(`\\.(${allowedExtensions})$`, 'i');
+function isAllowedExtension(
+  fileName: string,
+  allowedExtensions = "js|jsx|ts|py",
+) {
+  const regex = new RegExp(`\\.(${allowedExtensions})$`, "i");
   return regex.test(fileName);
 }

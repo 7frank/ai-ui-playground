@@ -27,7 +27,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
       .join("\n")
       .substring(0, 50) + "...",
   );
-  const mConfig=getModelsConfig()
+  const mConfig = getModelsConfig();
   const response = await openai.chat.completions.create({
     messages: [
       { role: "assistant", content: systemPrompt },
@@ -49,7 +49,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
 
   return response.choices[0].message.content;
 }
-const mConfig=getModelsConfig()
+const mConfig = getModelsConfig();
 const openai2 = new OpenAIChatApi(
   { apiKey: process.env["OPENAI_API_KEY"] },
   { model: mConfig.sourcecode.model },

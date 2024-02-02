@@ -178,8 +178,8 @@ It "fixed" the code:
 > console.log(isNumber("123x")); // false
 > console.log(isNumber("e123")); // false
 
-
 ### travsering seems a bit bugged
+
 sortFromLeaves does not return main4 and promptAction9 **but**
 traversing plan in order:
 
@@ -195,8 +195,6 @@ traversing plan in order:
 > 9: writeEmail12
 > 10: displayEmail13
 > 11: promptAction14
-
-
 
 order of functions executed **and** main4 and promptAction9 are executed multiple times:
 

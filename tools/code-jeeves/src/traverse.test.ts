@@ -1,6 +1,9 @@
 import { TaskSchema } from "./types/taskFileSchema";
-import { taskSchemaToTreeNodeArray, TreeNode, bottomUpTraversal } from "./traverse";
-
+import {
+  taskSchemaToTreeNodeArray,
+  TreeNode,
+  bottomUpTraversal,
+} from "./traverse";
 
 //   // Example usage with generic data property
 //   const tree: TreeNode<{ value: string }> = {
@@ -27,50 +30,49 @@ import { taskSchemaToTreeNodeArray, TreeNode, bottomUpTraversal } from "./traver
 
 //  bottomUpTraversal(tree);
 
-
 // Example usage
 const exampleTask: TaskSchema = {
-    functionName: "MainFunction",
-    task: "Main Task",
-    declaration: "void Main()",
-    ext: ".cs",
-    preferences: "High",
-    subTasks: [
+  functionName: "MainFunction",
+  task: "Main Task",
+  declaration: "void Main()",
+  ext: ".cs",
+  preferences: "High",
+  subTasks: [
+    {
+      functionName: "SubFunction1",
+      task: "Sub Task 1",
+      declaration: "void Sub1()",
+      subTasks: [
         {
-            functionName: "SubFunction1",
-            task: "Sub Task 1",
-            declaration: "void Sub1()",
-            subTasks: [
-                {
-                    functionName: "SubSubFunction1",
-                    task: "Sub Sub Task 1",
-                    declaration: "void SubSub1()",
-                },
-                {
-                    functionName: "SubSubFunction2",
-                    task: "Sub Sub Task 2",
-                    declaration: "void SubSub2()",
-                },
-            ],
+          functionName: "SubSubFunction1",
+          task: "Sub Sub Task 1",
+          declaration: "void SubSub1()",
         },
         {
-            functionName: "SubFunction2",
-            task: "Sub Task 2",
-            declaration: "void Sub2()",
+          functionName: "SubSubFunction2",
+          task: "Sub Sub Task 2",
+          declaration: "void SubSub2()",
         },
-    ],
+      ],
+    },
+    {
+      functionName: "SubFunction2",
+      task: "Sub Task 2",
+      declaration: "void Sub2()",
+    },
+  ],
 };
 const treeNode = taskSchemaToTreeNodeArray([exampleTask]);
 // console.log(treeNode);
-const res:string[]=[]
+const res: string[] = [];
 export const processNode = <T>(node: TreeNode<T>) => {
-    // Implement the processing logic for each node here
-    console.log(">>>",(node.data as any).functionName)
-    res.push( (node.data as any).functionName);
-    
-    return Promise.resolve("succeeded");
+  // Implement the processing logic for each node here
+  console.log(">>>", (node.data as any).functionName);
+  res.push((node.data as any).functionName);
+
+  return Promise.resolve("succeeded");
 };
 
 await bottomUpTraversal(treeNode, processNode);
 
-console.log(res.join("--- \n"))
+console.log(res.join("--- \n"));
