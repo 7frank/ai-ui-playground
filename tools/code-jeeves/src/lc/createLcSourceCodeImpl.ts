@@ -4,6 +4,7 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 import { FunctionResponseSchema, TaskSchema } from "../types/taskFileSchema";
 import { LangConfig } from "../languageConfigurations";
 import { getModelsConfig } from "../models";
+import { getFirstCodeBlock } from "../preprocess/extractContent";
 
 const mConfig = getModelsConfig();
 
@@ -44,7 +45,8 @@ export async function createLcSourceCodeImpl(
 
   const chain = sourceCodeImplementationPrompt
     .pipe(lcScModel)
-    .pipe(new StringOutputParser());
+    .pipe(new StringOutputParser())
+    .pipe(getFirstCodeBlock);
 
   const sourceCode = await chain.invoke(entry);
 
@@ -75,7 +77,8 @@ export async function createLcTestCodeImpl(
 
   const chain = sourceCodeImplementationPrompt
     .pipe(lcTcModel)
-    .pipe(new StringOutputParser());
+    .pipe(new StringOutputParser())
+    .pipe(getFirstCodeBlock);
 
   // TODO this should come from lang config
   const preferences = [
