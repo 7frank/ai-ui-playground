@@ -199,7 +199,9 @@ async function executeSingleTask(
 
   const functionName = camelCase(entry.functionName);
 
-  const implFileLocation = name + "src/" + functionName + ".ts";
+  const ext=entry.ext??"ts"
+
+  const implFileLocation = `${name}src/${functionName}.${ext}`
   console.log(implFileLocation);
 
   const implJson = JSON.stringify(implRes, null, "  ");
@@ -222,10 +224,14 @@ async function executeSingleTask(
   //     `The test should make sure that the following task can be executed successfully:'${entry.task}'`,
   //   FunctionResponseSchema,
   // );
+  
+  if (entry.ext=="ts" || entry.ext=="py") {
+    
+  
   console.log("using langchain to generate test code");
   const testRes = await createLcTestCodeImpl(entry, languageConfig);
 
-  const testFileLocation = name + "src/" + functionName + ".test.ts";
+  const testFileLocation = `${name}src/${functionName}.test.${ext}`
   console.log("TestFile:", testFileLocation);
 
   const testJson = JSON.stringify(testRes, null, "  ");
@@ -242,6 +248,13 @@ async function executeSingleTask(
     implFileLocation,
     testFileLocation,
   );
+
+  } else{
+  console.warn("language not ts|py. skipping tests until further notice")
+  
+  }
+
+
   //-------------------------
   const logLocation = name + "log.txt";
   const logJson = JSON.stringify(

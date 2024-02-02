@@ -4,6 +4,20 @@ import { StringOutputParser } from "@langchain/core/output_parsers";
 import { FunctionResponseSchema, TaskSchema } from "../types/taskFileSchema";
 import { LangConfig } from "../languageConfigurations";
 
+const lcModel = new OpenAI({
+  openAIApiKey: process.env.OPENAI_API_KEY,
+  maxTokens: -1,
+  // modelName:"'gpt-3.5-turbo"
+   modelName:"'gpt-4-0125-preview"
+});
+
+// modelName: "gpt-3.5-turbo" 
+// { modelName: 'gpt-4-0613' },
+// { modelName: 'gpt-4-0125-preview' },
+
+
+
+
 export async function createLcSourceCodeImpl(
   entry: TaskSchema,
   langConfig?: LangConfig,
@@ -25,13 +39,9 @@ export async function createLcSourceCodeImpl(
        Do not generate anything else.`,
     );
 
-  const model = new OpenAI({
-    openAIApiKey: process.env.OPENAI_API_KEY,
-    maxTokens: -1,
-  });
 
   const chain = sourceCodeImplementationPrompt
-    .pipe(model)
+    .pipe(lcModel)
     .pipe(new StringOutputParser());
 
   const sourceCode = await chain.invoke(entry);
@@ -61,13 +71,9 @@ export async function createLcTestCodeImpl(
          `,
   );
 
-  const model = new OpenAI({
-    openAIApiKey: process.env.OPENAI_API_KEY,
-    maxTokens: -1,
-  });
 
   const chain = sourceCodeImplementationPrompt
-    .pipe(model)
+    .pipe(lcModel)
     .pipe(new StringOutputParser());
 
   // TODO this should come from lang config
