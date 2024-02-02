@@ -51,8 +51,9 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
 
 const openai2 = new OpenAIChatApi(
   { apiKey: process.env["OPENAI_API_KEY"] },
-  { model: "gpt-3.5-turbo" },
-  //{ model: 'gpt-4-0613' },
+  //{ model: "gpt-3.5-turbo" },
+  // { model: 'gpt-4-0613' },
+  { model: 'gpt-4-0125-preview' },
 );
 
 export async function askOpenApiStructured<T extends z.ZodType>(
