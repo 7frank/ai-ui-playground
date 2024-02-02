@@ -78,6 +78,7 @@ export async function createLcTestCodeImpl(
   const chain = sourceCodeImplementationPrompt
     .pipe(lcTcModel)
     .pipe(new StringOutputParser())
+    
     .pipe(getFirstCodeBlock);
 
   // TODO this should come from lang config

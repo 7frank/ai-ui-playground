@@ -1,5 +1,4 @@
-
-import { find } from 'lodash-es';
+import { find } from "lodash-es";
 
 /**
  * Represents an email.
@@ -16,7 +15,12 @@ import { find } from 'lodash-es';
  */
 const emailDatabase = [
   // Sample emails
-  {id: '1', from: 'example@example.com', subject: 'Hello', body: 'Hello there!'},
+  {
+    id: "1",
+    from: "example@example.com",
+    subject: "Hello",
+    body: "Hello there!",
+  },
   // Add more sample emails as needed
 ];
 
@@ -29,7 +33,7 @@ export function openSelectedEmail(emailId) {
   const email = find(emailDatabase, { id: emailId });
 
   if (!email) {
-    console.error('Email not found.');
+    console.error("Email not found.");
     return;
   }
 
@@ -39,4 +43,3 @@ export function openSelectedEmail(emailId) {
   console.log(`Subject: ${email.subject}`);
   console.log(`Body: ${email.body}`);
 }
-

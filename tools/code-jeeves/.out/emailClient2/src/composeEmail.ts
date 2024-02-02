@@ -3,7 +3,7 @@
 // The actual implementation in a JavaScript environment would require removing types and possibly comments,
 // depending upon the use case.
 
-import * as inquirer from 'inquirer';
+import * as inquirer from "inquirer";
 
 /**
  * Represents an email with basic content.
@@ -30,22 +30,25 @@ export function composeEmail(): Promise<EmailContent> {
 async function promptEmailDetails(): Promise<EmailContent> {
   const questions = [
     {
-      type: 'input',
-      name: 'to',
-      message: 'To (Email address):',
-      validate: input => (input.includes('@') ? true : 'Please enter a valid email address.'),
+      type: "input",
+      name: "to",
+      message: "To (Email address):",
+      validate: (input) =>
+        input.includes("@") ? true : "Please enter a valid email address.",
     },
     {
-      type: 'input',
-      name: 'subject',
-      message: 'Subject:',
-      validate: input => (input.trim() !== '' ? true : 'Subject cannot be empty.'),
+      type: "input",
+      name: "subject",
+      message: "Subject:",
+      validate: (input) =>
+        input.trim() !== "" ? true : "Subject cannot be empty.",
     },
     {
-      type: 'input',
-      name: 'body',
-      message: 'Email Body:',
-      validate: input => (input.trim() !== '' ? true : 'Email body cannot be empty.'),
+      type: "input",
+      name: "body",
+      message: "Email Body:",
+      validate: (input) =>
+        input.trim() !== "" ? true : "Email body cannot be empty.",
     },
   ];
 
