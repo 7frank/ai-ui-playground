@@ -1,4 +1,4 @@
-```typescript
+
 /**
  * Fetches emails from the server.
  * 
@@ -49,4 +49,4 @@ interface Email {
     subject: string;
     body: string;
 }
-```
+

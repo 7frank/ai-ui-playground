@@ -1,4 +1,3 @@
-```typescript
 import { MailListener } from "mail-listener5";
 
 /**
@@ -67,6 +66,3 @@ export function configureEmailListener(config = {}) {
 
     // Note: The mailListener does not need to be returned or managed externally as it manages its own connection lifecycle events.
 }
-```
-
-This TypeScript code implements the function `configureEmailListener` with documentation in TSDoc notation. Configuration options are easily adjustable through environment variables, providing a flexible and secure way to feed sensitive information like email credentials. The `defaultConfig` structure outlines the email server parameters, serving as a bridge between the environment variables and the actual configuration applied to the `mail-listener5` package. The library's event hooks illustrate basic usage, such as logging and reconnect attempts, to demonstrate how to extend functionality based on incoming emails or listener status changes.

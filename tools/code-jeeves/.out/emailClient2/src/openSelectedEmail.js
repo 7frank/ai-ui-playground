@@ -1,4 +1,4 @@
-```javascript
+
 import { find } from 'lodash-es';
 
 /**
@@ -39,4 +39,4 @@ export function openSelectedEmail(emailId) {
   console.log(`Subject: ${email.subject}`);
   console.log(`Body: ${email.body}`);
 }
-```
+

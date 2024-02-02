@@ -1,6 +1,4 @@
-Given the file extension 'sh' in your request, it suggests that the desired output should be a shell script rather than involving a programming language that typically uses TSDoc or similar documentation styles. Shell scripts don't follow the same syntax or conventions as TypeScript or languages that utilize TSDoc. However, I'll adapt your requirements to fit a shell script context while trying to respect the spirit of your request by including inline comments, which serve as documentation in shell scripts.
 
-```sh
 #!/bin/bash
 
 # This function initializes a new Bun project.
@@ -39,6 +37,3 @@ initBunProject() {
 
 # Example to source this script from another shell script or terminal:
 # source /path_to_this_script/init_bun_project.sh
-```
-
-This script follows shell scripting conventions and assumes Bun has a command line interface capable of initializing new projects, akin to npm or yarn in the Node.js ecosystem. Note, the preference for documentation style, interface, and type declaration don't directly apply to shell scripts, but comments have been added for clarity. The function is defined in a manner that, if this script were sourced from another, it would effectively "export" the function to the sourcing shell environment.

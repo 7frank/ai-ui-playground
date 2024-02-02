@@ -1,4 +1,3 @@
-```javascript
 const inquirer = require('inquirer');
 
 /**
@@ -37,4 +36,4 @@ export function composeEmail() {
 
   return inquirer.prompt(questions);
 }
-```
+

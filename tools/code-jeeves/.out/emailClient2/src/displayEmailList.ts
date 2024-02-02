@@ -1,4 +1,3 @@
-```typescript
 import { prompt } from "inquirer";
 
 /**
@@ -37,4 +36,4 @@ export async function displayEmailList(emails: string[]): Promise<void> {
         console.error(`An error occurred while displaying the email list: ${error}`);
     }
 }
-```
+
