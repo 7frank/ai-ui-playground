@@ -5,6 +5,7 @@ import chalk from "chalk";
 import { OpenAIChatApi } from "llm-api";
 import { RequestOptions, completion } from "zod-gpt";
 import * as z from "zod";
+import { getModelsConfig } from "./models";
 
 if (!process.env["OPENAI_API_KEY"]) throw new Error("missing OPENAI_API_KEY");
 
@@ -26,13 +27,13 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
       .join("\n")
       .substring(0, 50) + "...",
   );
-
+  const mConfig=getModelsConfig()
   const response = await openai.chat.completions.create({
     messages: [
       { role: "assistant", content: systemPrompt },
       { role: "user", content: userQuestion },
     ],
-    model: "gpt-3.5-turbo", // "gpt-4-turbo-preview",
+    model: mConfig.sourcecode.model,
     max_tokens: 1000,
     //temperature:0.8
   });
@@ -48,10 +49,10 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
 
   return response.choices[0].message.content;
 }
-
+const mConfig=getModelsConfig()
 const openai2 = new OpenAIChatApi(
   { apiKey: process.env["OPENAI_API_KEY"] },
-  { model: "gpt-3.5-turbo" },
+  { model: mConfig.sourcecode.model },
   // { model: 'gpt-4-0613' },
   // { model: 'gpt-4-0125-preview' },
 );
