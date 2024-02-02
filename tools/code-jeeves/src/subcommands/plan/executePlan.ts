@@ -223,7 +223,7 @@ async function executeSingleTask(
   //   FunctionResponseSchema,
   // );
 
-  if (isAllowedExtension("foo." + entry.ext, "js,jsx,ts,tsx,py")) {
+  if (isAllowedExtension("foo." + entry.ext, "js(x)|ts|tsx|py")) {
     console.log("using langchain to generate test code");
     const testRes = await createLcTestCodeImpl(entry, languageConfig);
 
@@ -258,6 +258,7 @@ async function executeSingleTask(
   await $`echo ${logJson} >> ${file(logLocation)}`;
 }
 
+// TODO test this
 function isAllowedExtension(
   fileName: string,
   allowedExtensions = "js|jsx|ts|py",
