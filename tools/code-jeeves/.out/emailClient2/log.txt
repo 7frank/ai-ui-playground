@@ -1,0 +1,11 @@
+{"functionName":"initBunProject","index":"initBunProject"}
+{"functionName":"initBunProject","index":"initBunProject"}
+{"functionName":"initBunProject","index":"initBunProject"}
+{"functionName":"initBunProject","index":"initBunProject"}
+{"functionName":"initBunProject","index":"initBunProject"}
+{"functionName":"installDependencies","index":"installDependencies"}
+{"functionName":"configureEmailListener","index":"configureEmailListener"}
+{"functionName":"fetchEmails","index":"fetchEmails"}
+{"functionName":"displayEmailList","index":"displayEmailList"}
+{"functionName":"openSelectedEmail","index":"openSelectedEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
