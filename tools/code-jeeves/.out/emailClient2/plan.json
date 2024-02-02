@@ -65,7 +65,7 @@
       "functionName": "sendEmail",
       "task": "Send an email using `nodemailer`.",
       "ext": "js",
-      "declaration": "function sendEmail(email) {}",
+      "declaration": "function sendEmail(email:string):Promise<boolean> {}",
       "preferences": "- Validate the email object using `zod` before sending.",
       "subTasks": []
     }

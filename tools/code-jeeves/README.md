@@ -135,6 +135,14 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 
 - `create an email cli that allows me to log into read and anwer my emails`
 - `create an api that has the following endpoints, user,login,logout,todolist,create todo`
+- `create a game, (e.g. platformer, rpg, giana sisters clone, flappy bird) focus on e.g. game logic, tile graphics`
+
+## potential other use cases
+- batch writing tests in repos
+- batch documentation
+- similar to other github copilot alternatives integration in vscode
+
+
 
 ## troubleshooting
 

@@ -21,6 +21,23 @@ Contains links of things that might be important.
 
 ### ~0
 
+
+#### Prototypes
+
+(1)
+- [self hosted llm](./Natural%20Language%20Processing/LLM%20Self%20Hosting.md) as a service [Req:G,Prototype:M]
+    - 
+    - business value
+    - api gateway with quota handling
+        - [openai api quota proxy](https://github.com/AI-Northstar-Tech/openai-proxy
+(2*)
+- local copilot alternatives with selfhosted llm as a service
+- generate Docs 
+- generate Tests
+
+
+#### !
+
 [Mittwoch 02:45] Frank Reimann
 https://networkrepository.com/
 Network Data Repository | The First Interactive Network Data Repository
