@@ -9,3 +9,8 @@
 {"functionName":"displayEmailList","index":"displayEmailList"}
 {"functionName":"openSelectedEmail","index":"openSelectedEmail"}
 {"functionName":"composeEmail","index":"composeEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
+{"functionName":"composeEmail","index":"composeEmail"}
