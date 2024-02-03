@@ -23,6 +23,10 @@ npm install -g bun
 sudo apt-get install pv
 
 bun install
+
+# create alias (to be able to use autocomplete)
+alias jee="bun index.ts"
+
 ```
 
 ## example
@@ -87,11 +91,30 @@ bun ./src/prompt.ts
 # WIP langchain prompts to generate implementation & tests & test runner feedback
 bun ./src/lc/lc.ts
 
-
 ```
 
 > You will have to monitor your usage manually as there are no official endpoints for that as of now:
 > go to https://platform.openai.com/usage and login
+
+---
+
+We patched cmd-ts manually using patch-package, to be able to implement autocomplete. As of now there is no official support 
+for a patching mechanism from bun but we can do this semi  automatic. see https://github.com/oven-sh/bun/issues/2336#issuecomment-1712458657 
+
+In essence
+```sh
+#run
+bun ./bun.lockb > ./yarn.lock 
+
+# edit packages in node_modules
+
+# create patch  (here for cmd-ts)
+bun patch-package cmd-ts
+
+# remove yarn file again
+rm ./yarn.lock
+
+```
 
 # todo
 
@@ -186,7 +209,7 @@ It "fixed" the code:
 > console.log(isNumber("123x")); // false
 > console.log(isNumber("e123")); // false
 
-### travsering seems a bit bugged
+### traversing seems a bit bugged
 
 sortFromLeaves does not return main4 and promptAction9 **but**
 traversing plan in order:

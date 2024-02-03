@@ -1,7 +1,9 @@
-import { binary, run, subcommands } from "cmd-ts";
+import { binary, command, run, subcommands } from "cmd-ts";
 
 import { generateCmd, executeCmd } from "./src/subcommands/plan/plan";
 import { documentation } from "./src/subcommands/refactor/documentation";
+import { subCommandsToExportScript } from "./autocomplete";
+import { $ } from "bun";
 
 const refactor = subcommands({
   name: "refactor",
@@ -21,13 +23,29 @@ const plan = subcommands({
   },
 });
 
+export const source = command({
+  name: "source",
+  args:{},
+  description:"running this command will enable bash autocomplete (tab-tab) on the cmd line",
+  handler: sourceHandler,
+});
+
+export 
 const cli = subcommands({
-  name: "cli",
+  name: "jee",
   cmds: {
+    source,
     refactor,
     plan,
   },
+ 
 });
+
+function sourceHandler(){
+ const res= subCommandsToExportScript(cli)
+console.log(res)
+$`export FOO="BAR"`
+}
 
 run(binary(cli), process.argv);
 
