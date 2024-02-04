@@ -55,6 +55,11 @@ const planSubCmds = (yargs: Argv) => {
             type: "boolean",
             default: false,
           },
+          sm: {
+            describe: "if set will prompt you for which model to use",
+            type: "boolean",
+            default: false,
+          },
         }),
       handler: async (argv) => {
         await outlineArchitecture(argv);

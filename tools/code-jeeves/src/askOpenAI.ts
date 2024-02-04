@@ -80,12 +80,23 @@ export async function askOpenApiStructured<T extends z.ZodType>(
   return response.data;
 }
 
+
+const openai3 = new OpenAIChatApi(
+  { apiKey: process.env["OPENAI_API_KEY"] },
+  // { model: mConfig.sourcecode.model },
+  // { model: 'gpt-4-0613' },
+  // { model: 'gpt-4-0125-preview' },
+);
+
 export async function askOpenApiStructured2<T extends z.ZodType>(
   userQuestion: string,
-  opt: Partial<RequestOptions<T>>,
+  {model=mConfig.sourcecode.model,...opt}: Partial<RequestOptions<T>>&{model?:string},
 ) {
-  const response = await completion(openai2, userQuestion, opt);
+  
+  openai3.modelConfig={...openai3.modelConfig,model}
 
+  const response = await completion(openai3, userQuestion, opt);
+  
   const tokenUsed = response.usage?.totalTokens;
   console.log(chalk.green("info:"), `${tokenUsed} Token used`);
   return response;

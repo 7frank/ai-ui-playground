@@ -1,0 +1,69 @@
+{
+  "domains": [
+    {
+      "domainName": "Entertainment",
+      "description": "This domain involves activities related to the development and distribution of games, movies, music, and other forms of leisure and amusement.",
+      "boundedContexts": [
+        {
+          "contextName": "Game Development",
+          "description": "The process of designing, creating, testing, and releasing a game, encompassing various dimensions including gameplay mechanics, story, user interface, and technology integration.",
+          "userStories": [
+            {
+              "who": "Developer",
+              "what": "develop 2D platformer game inspired by 'Giana Sisters'",
+              "why": "to offer players an engaging and nostalgic gaming experience",
+              "cause": "direct"
+            },
+            {
+              "who": "Designer",
+              "what": "design a user-friendly user interface",
+              "why": "to ensure players can intuitively navigate and enjoy the game without frustration",
+              "cause": "direct"
+            },
+            {
+              "who": "Developer",
+              "what": "implement game logic backend using Node.js",
+              "why": "to handle the game's logic and interactions behind the scenes efficiently",
+              "cause": "direct"
+            },
+            {
+              "who": "Developer",
+              "what": "implement frontend using Phaser.io",
+              "why": "to create an interactive and visually appealing game in the browser",
+              "cause": "direct"
+            },
+            {
+              "who": "Developer",
+              "what": "implement server-client communication via WebSockets",
+              "why": "to enable real-time multiplayer interactions and game updates",
+              "cause": "direct"
+            },
+            {
+              "who": "Designer",
+              "what": "implement appealing game GUI",
+              "why": "to attract and retain players with a visually captivating gaming environment",
+              "cause": "direct"
+            },
+            {
+              "who": "Developer",
+              "what": "enable authentication integrating social login providers like Google, GitHub",
+              "why": "to simplify the login process and enhance user engagement by linking their game profile with social identities",
+              "cause": "direct"
+            },
+            {
+              "who": "Developer",
+              "what": "allow buying custom skins for player models integrating Stripe payments",
+              "why": "to offer players personalization options and generate revenue",
+              "cause": "direct"
+            }
+          ],
+          "relations": [
+            "User Authentication",
+            "Payment Processing",
+            "User Interface Design"
+          ]
+        }
+      ]
+    }
+  ]
+}
