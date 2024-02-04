@@ -1,9 +1,8 @@
-
-export const  availableModels=[
-"gpt-3.5-turbo",
-'gpt-4-0613',
-'gpt-4-0125-preview',
-]
+export const availableModels = [
+  "gpt-3.5-turbo",
+  "gpt-4-0613",
+  "gpt-4-0125-preview",
+];
 export function getModelsConfig() {
   return {
     sourcecode: {

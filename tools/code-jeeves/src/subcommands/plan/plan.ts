@@ -50,11 +50,8 @@ const generatePlanArgs = {
   name: folderName,
   spec,
   dryRun,
-  sm
+  sm,
 };
-
-
-
 
 export type GenerateCommandParams = CommandParams<typeof generatePlanArgs>;
 
@@ -66,8 +63,6 @@ const architectArgs = {
 };
 
 export type ArchitectCommandParams = CommandParams<typeof architectArgs>;
-
-
 
 const force = flag({
   type: boolean,

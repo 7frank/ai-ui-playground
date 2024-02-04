@@ -26,23 +26,23 @@ Each step should be implementable as a program function.
 Prefer the following packages when implementing: ${preferredPackages.join(",")}
 Prefer the following frameworks: ${frameworks.join(",")}`;
 
-// Additional Example 3
-const tasksExample = [
-  "develop 2d platformer (similar to giana sisters)",
-  "designing a user-friendly ui",
-  "implement game logic backend using nodejs",
-  "implement frontend using https://phaser.io/",
-  "implement server clinet communication via websockets",
-  "implement appealing game GUI",
-  "enable authentication integrating social login providers like google, github",
-  "allow to buy custom skins for the player models integrating stripe payments"
-];
+  // Additional Example 3
+  const tasksExample = [
+    "develop 2d platformer (similar to giana sisters)",
+    "designing a user-friendly ui",
+    "implement game logic backend using nodejs",
+    "implement frontend using https://phaser.io/",
+    "implement server clinet communication via websockets",
+    "implement appealing game GUI",
+    "enable authentication integrating social login providers like google, github",
+    "allow to buy custom skins for the player models integrating stripe payments",
+  ];
 
-// Constructing the user question
-const userQuestionExample = `We're building a multiplayer online game.  Are there any other critical tasks for enhancing user engagement?`;
+  // Constructing the user question
+  const userQuestionExample = `We're building a multiplayer online game.  Are there any other critical tasks for enhancing user engagement?`;
 
   const problemStatement = `Generate a step by step plan for a program that can do the following:
-${tasksExample.map(it => "- "+it).join("\n")}
+${tasksExample.map((it) => "- " + it).join("\n")}
 
 ${userQuestionExample}
 

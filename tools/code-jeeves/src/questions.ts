@@ -11,34 +11,35 @@ export async function fileSelectQuestion(fileNames: string[]) {
   ]);
 }
 
-export async function userPrompt(message:string,options: string[]) {
-  const res=await inquirer.prompt<{selection:string}>([
+export async function userPrompt(message: string, options: string[]) {
+  const res = await inquirer.prompt<{ selection: string }>([
     {
       type: "list",
       name: "selection",
       message,
       choices: options,
     },
-  ])
+  ]);
   return res.selection;
 }
 
-export 
-const confirmPrompt = async (question:string,_default=false,yes?:boolean) => {
- if (yes) return true
+export const confirmPrompt = async (
+  question: string,
+  _default = false,
+  yes?: boolean,
+) => {
+  if (yes) return true;
 
-  const response = await inquirer.prompt<{answer:boolean}>([
+  const response = await inquirer.prompt<{ answer: boolean }>([
     {
-      type: 'confirm', 
-      name: 'answer', 
+      type: "confirm",
+      name: "answer",
       message: question,
-      default:_default, 
+      default: _default,
     },
   ]);
-return response.answer
+  return response.answer;
 };
-
-
 
 export async function confirmQuestion(msg: string) {
   return (
