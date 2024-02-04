@@ -25,8 +25,8 @@ sudo apt-get install pv
 bun install
 
 # create alias (to be able to use autocomplete)
-alias jee="bun cli.ts" 
-jee completion > /tmp/c.sh 
+alias jee="bun cli.ts"
+jee completion > /tmp/c.sh
 source /tmp/c.sh
 
 # start developing
@@ -58,7 +58,6 @@ jee plan execute -n .out/emailClient/ -r
 # run test manually and see how bad things are with your generated code :-)
  bun test  ./.out/emailClient/**/*.test.ts
 ```
-
 
 ## development
 
@@ -107,13 +106,14 @@ bun ./src/lc/lc.ts
 
 ---
 
-We patched cmd-ts manually using patch-package, to be able to implement autocomplete. As of now there is no official support 
-for a patching mechanism from bun but we can do this semi  automatic. see https://github.com/oven-sh/bun/issues/2336#issuecomment-1712458657 
+We patched cmd-ts manually using patch-package, to be able to implement autocomplete. As of now there is no official support
+for a patching mechanism from bun but we can do this semi automatic. see https://github.com/oven-sh/bun/issues/2336#issuecomment-1712458657
 
 In essence
+
 ```sh
 #run
-bun ./bun.lockb > ./yarn.lock 
+bun ./bun.lockb > ./yarn.lock
 
 # edit packages in node_modules
 
@@ -163,6 +163,7 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 - try out autoSlice feature of zod-gpt
 - check for max token quota in the future when endpoints are available
 - tab completion with yargs (oclif seems too much overhead)
+
 ## potential scenarios we could test
 
 - `create an email cli that allows me to log into read and anwer my emails`
@@ -170,11 +171,10 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 - `create a game, (e.g. platformer, rpg, giana sisters clone, flappy bird) focus on e.g. game logic, tile graphics`
 
 ## potential other use cases
+
 - batch writing tests in repos
 - batch documentation
 - similar to other github copilot alternatives integration in vscode
-
-
 
 ## troubleshooting
 
