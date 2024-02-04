@@ -1,48 +1,48 @@
 diff --git a/node_modules/cmd-ts/dist/cjs/command.js b/node_modules/cmd-ts/dist/cjs/command.js
-index 768b8b0..b308157 100644
+index 768b8b0..b378886 100644
 --- a/node_modules/cmd-ts/dist/cjs/command.js
 +++ b/node_modules/cmd-ts/dist/cjs/command.js
 @@ -41,6 +41,7 @@ function command(config) {
      const argEntries = (0, utils_1.entries)(config.args);
      const circuitbreaker = (0, circuitbreaker_1.createCircuitBreaker)(!!config.version);
      return {
-+        _args:config.args,
++        _args:Object.values(config.args).map(it=>it._config),
          name: config.name,
          aliases: config.aliases,
          handler: config.handler,
 diff --git a/node_modules/cmd-ts/dist/cjs/flag.js b/node_modules/cmd-ts/dist/cjs/flag.js
-index 6cb2025..2ece8bc 100644
+index 6cb2025..5dea640 100644
 --- a/node_modules/cmd-ts/dist/cjs/flag.js
 +++ b/node_modules/cmd-ts/dist/cjs/flag.js
 @@ -51,6 +51,7 @@ function fullFlag(config) {
      var _a;
      const decoder = (0, type_1.extendType)(exports.boolean, config.type);
      return {
-+        _config:config,
++        _config:{long:config.long,short:config.short},
          description: (_a = config.description) !== null && _a !== void 0 ? _a : config.type.description,
          helpTopics() {
              var _a, _b, _c, _d;
 diff --git a/node_modules/cmd-ts/dist/cjs/option.js b/node_modules/cmd-ts/dist/cjs/option.js
-index 2e23560..df2a7e3 100644
+index 2e23560..a29268b 100644
 --- a/node_modules/cmd-ts/dist/cjs/option.js
 +++ b/node_modules/cmd-ts/dist/cjs/option.js
 @@ -34,6 +34,7 @@ const types_1 = require("./types");
  function fullOption(config) {
      var _a;
      return {
-+        _config:config,
++        _config:{long:config.long,short:config.short},
          description: (_a = config.description) !== null && _a !== void 0 ? _a : config.type.description,
          helpTopics() {
              var _a, _b, _c, _d, _e;
 diff --git a/node_modules/cmd-ts/dist/cjs/subcommands.js b/node_modules/cmd-ts/dist/cjs/subcommands.js
-index b5c266a..957a06b 100644
+index b5c266a..db9ed87 100644
 --- a/node_modules/cmd-ts/dist/cjs/subcommands.js
 +++ b/node_modules/cmd-ts/dist/cjs/subcommands.js
 @@ -82,6 +82,7 @@ function subcommands(config) {
          }
      }
      return {
-+        _cmds:config.cmds,
++        _cmds:Object.entries(config.cmds).map(([k,v])=> [k,v._cmds??v._args] ).reduce((acc,[k,v])=>{ acc[k]=v; return acc },{}),
          version: config.version,
          description: config.description,
          name: config.name,

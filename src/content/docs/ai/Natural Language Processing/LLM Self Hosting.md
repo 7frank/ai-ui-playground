@@ -47,3 +47,11 @@ This development reflects an effort to balance functionality with resource const
 - these images are way lighter (still huge) anddepending on the purpose will be easier to handle
 
 
+#### (1) data privacy with own GPU resources 
+
+- setup own models 
+
+#### convenience tunneling openai where data privacy is not top priority
+
+- tunnel openai for these use cases
+
