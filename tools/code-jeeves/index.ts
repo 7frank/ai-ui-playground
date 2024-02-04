@@ -44,7 +44,7 @@ const cli = subcommands({
 function sourceHandler(){
  const res= subCommandsToExportScript(cli)
 console.log(res)
-$`export FOO="BAR"`
+
 }
 
 run(binary(cli), process.argv);

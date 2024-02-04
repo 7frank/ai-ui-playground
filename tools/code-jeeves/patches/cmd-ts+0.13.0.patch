@@ -11,26 +11,26 @@ index 768b8b0..b378886 100644
          aliases: config.aliases,
          handler: config.handler,
 diff --git a/node_modules/cmd-ts/dist/cjs/flag.js b/node_modules/cmd-ts/dist/cjs/flag.js
-index 6cb2025..5dea640 100644
+index 6cb2025..120062e 100644
 --- a/node_modules/cmd-ts/dist/cjs/flag.js
 +++ b/node_modules/cmd-ts/dist/cjs/flag.js
 @@ -51,6 +51,7 @@ function fullFlag(config) {
      var _a;
      const decoder = (0, type_1.extendType)(exports.boolean, config.type);
      return {
-+        _config:{long:config.long,short:config.short},
++        _config:{type:"boolean",long:config.long,short:config.short},
          description: (_a = config.description) !== null && _a !== void 0 ? _a : config.type.description,
          helpTopics() {
              var _a, _b, _c, _d;
 diff --git a/node_modules/cmd-ts/dist/cjs/option.js b/node_modules/cmd-ts/dist/cjs/option.js
-index 2e23560..a29268b 100644
+index 2e23560..5b6afc3 100644
 --- a/node_modules/cmd-ts/dist/cjs/option.js
 +++ b/node_modules/cmd-ts/dist/cjs/option.js
 @@ -34,6 +34,7 @@ const types_1 = require("./types");
  function fullOption(config) {
      var _a;
      return {
-+        _config:{long:config.long,short:config.short},
++        _config:{type:"string",long:config.long,short:config.short},
          description: (_a = config.description) !== null && _a !== void 0 ? _a : config.type.description,
          helpTopics() {
              var _a, _b, _c, _d, _e;
