@@ -1,0 +1,15 @@
+{
+  "problemStatement": {
+    "description": "We're building a multiplayer online game.  Are there any other critical tasks for enhancing user engagement?",
+    "tasks": [
+      "develop 2d platformer (similar to giana sisters)",
+      "designing a user-friendly ui",
+      "implement game logic backend using nodejs",
+      "implement frontend using https://phaser.io/",
+      "implement server clinet communication via websockets",
+      "implement appealing game GUI",
+      "enable authentication integrating social login providers like google, github",
+      "allow to buy custom skins for the player models integrating stripe payments"
+    ]
+  }
+}

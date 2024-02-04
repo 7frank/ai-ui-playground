@@ -1,67 +1,141 @@
 {
   "domains": [
     {
-      "domainName": "Entertainment",
-      "description": "This domain involves activities related to the development and distribution of games, movies, music, and other forms of leisure and amusement.",
+      "domainName": "Gaming",
+      "description": "Domain for multiplayer online games",
       "boundedContexts": [
         {
-          "contextName": "Game Development",
-          "description": "The process of designing, creating, testing, and releasing a game, encompassing various dimensions including gameplay mechanics, story, user interface, and technology integration.",
-          "userStories": [
+          "contextName": "Gameplay",
+          "description": "Bounded context for game logic and mechanics",
+          "epics": [
             {
-              "who": "Developer",
-              "what": "develop 2D platformer game inspired by 'Giana Sisters'",
-              "why": "to offer players an engaging and nostalgic gaming experience",
-              "cause": "direct"
-            },
-            {
-              "who": "Designer",
-              "what": "design a user-friendly user interface",
-              "why": "to ensure players can intuitively navigate and enjoy the game without frustration",
-              "cause": "direct"
-            },
-            {
-              "who": "Developer",
-              "what": "implement game logic backend using Node.js",
-              "why": "to handle the game's logic and interactions behind the scenes efficiently",
-              "cause": "direct"
-            },
-            {
-              "who": "Developer",
-              "what": "implement frontend using Phaser.io",
-              "why": "to create an interactive and visually appealing game in the browser",
-              "cause": "direct"
-            },
-            {
-              "who": "Developer",
-              "what": "implement server-client communication via WebSockets",
-              "why": "to enable real-time multiplayer interactions and game updates",
-              "cause": "direct"
-            },
-            {
-              "who": "Designer",
-              "what": "implement appealing game GUI",
-              "why": "to attract and retain players with a visually captivating gaming environment",
-              "cause": "direct"
-            },
-            {
-              "who": "Developer",
-              "what": "enable authentication integrating social login providers like Google, GitHub",
-              "why": "to simplify the login process and enhance user engagement by linking their game profile with social identities",
-              "cause": "direct"
-            },
-            {
-              "who": "Developer",
-              "what": "allow buying custom skins for player models integrating Stripe payments",
-              "why": "to offer players personalization options and generate revenue",
-              "cause": "direct"
+              "summary": "Implement 2D platformer gameplay",
+              "description": "Develop the game mechanics and logic for a 2D platformer game",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to be able to control the player character and navigate through the 2D platformer levels",
+                  "why": "So that I can have an interactive and enjoyable gaming experience",
+                  "cause": "Platformer games are popular and provide a challenging and engaging gameplay experience"
+                }
+              ]
             }
           ],
-          "relations": [
-            "User Authentication",
-            "Payment Processing",
-            "User Interface Design"
-          ]
+          "relations": []
+        },
+        {
+          "contextName": "User Interface",
+          "description": "Bounded context for designing a user-friendly UI",
+          "epics": [
+            {
+              "summary": "Design user-friendly UI",
+              "description": "Create a visually appealing and intuitive user interface for the game",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to have a user-friendly and visually appealing UI",
+                  "why": "So that I can easily navigate through the game and understand its features",
+                  "cause": "A user-friendly UI enhances the overall user experience and makes the game more enjoyable"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "contextName": "Backend",
+          "description": "Bounded context for implementing game logic backend",
+          "epics": [
+            {
+              "summary": "Implement game logic backend using Node.js",
+              "description": "Develop the backend server using Node.js to handle game logic and communication with clients",
+              "userStories": [
+                {
+                  "who": "As a game developer",
+                  "what": "I want to implement the game logic backend using Node.js",
+                  "why": "So that I can handle game events and provide a seamless multiplayer experience",
+                  "cause": "Node.js provides a scalable and event-driven platform for developing the game logic backend"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "contextName": "Frontend",
+          "description": "Bounded context for implementing the game frontend",
+          "epics": [
+            {
+              "summary": "Implement game frontend using Phaser.io",
+              "description": "Develop the game frontend using Phaser.io framework to create a visually appealing and interactive game interface",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to play the game on a web browser with smooth graphics and responsive controls",
+                  "why": "So that I can enjoy the game without any lag or performance issues",
+                  "cause": "Phaser.io is a powerful framework for creating browser-based games with excellent performance"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "contextName": "Communication",
+          "description": "Bounded context for server-client communication",
+          "epics": [
+            {
+              "summary": "Implement server-client communication via websockets",
+              "description": "Enable real-time communication between the game server and clients using websockets",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to play the game with other players in real time",
+                  "why": "So that I can have a multiplayer gaming experience",
+                  "cause": "Real-time communication enhances the social and competitive aspects of multiplayer games"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "contextName": "Player Customization",
+          "description": "Bounded context for player customization and monetization",
+          "epics": [
+            {
+              "summary": "Implement player customization and skin purchases",
+              "description": "Allow players to customize their player models and buy custom skins using Stripe payments",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to be able to customize my player character and buy custom skins for it",
+                  "why": "So that I can personalize my gaming experience and support the game development",
+                  "cause": "Player customization adds personalization and uniqueness to the game while monetization helps in funding the game development"
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "contextName": "Authentication",
+          "description": "Bounded context for user authentication",
+          "epics": [
+            {
+              "summary": "Enable authentication with social login providers",
+              "description": "Integrate social login providers like Google and GitHub for user authentication",
+              "userStories": [
+                {
+                  "who": "As a game player",
+                  "what": "I want to be able to log in to the game using my social media accounts",
+                  "why": "So that I can easily access my game progress and connect with other players",
+                  "cause": "Social login integration simplifies the login process and enhances user engagement"
+                }
+              ]
+            }
+          ],
+          "relations": []
         }
       ]
     }
