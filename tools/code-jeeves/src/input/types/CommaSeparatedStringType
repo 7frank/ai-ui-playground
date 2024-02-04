@@ -1,8 +1,0 @@
-import { Type } from "cmd-ts";
-
-export const CommaSeparatedStringType: Type<string, string[]> = {
-  description: "comma seperated string",
-  async from(s) {
-    return s.split(/, ?/);
-  },
-};
