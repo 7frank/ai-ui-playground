@@ -1,0 +1,53 @@
+{
+    "plan": [
+      {
+        "functionName": "designUserInterface",
+        "task": "Design a user-friendly UI for the 2D platformer game.",
+        "ext": "js",
+        "declaration": "function designUserInterface(options: UIOptions): UIDesign {}",
+        "preferences": "Use the bun shell framework for managing UI components."
+      },
+      {
+        "functionName": "developGameLogic",
+        "task": "Implement the game logic backend for the 2D platformer.",
+        "ext": "js",
+        "declaration": "function developGameLogic(gameRules: GameRules, gameState: GameState): UpdatedGameState {}",
+        "preferences": "Implement this backend using Node.js. Utilize lodash-es for utility functions."
+      },
+      {
+        "functionName": "developFrontend",
+        "task": "Implement the frontend of the 2D platformer game using Phaser.",
+        "ext": "js",
+        "declaration": "function developFrontend(gameConfig: PhaserTypes.Config): Phaser.Game {}",
+        "preferences": "Use Phaser.io for the game frontend development."
+      },
+      {
+        "functionName": "setUpWebSocketCommunication",
+        "task": "Implement server-client communication using WebSockets.",
+        "ext": "js",
+        "declaration": "function setUpWebSocketCommunication(serverConfig: WebSocketServerConfig, clientConfig: WebSocketClientConfig): WebSocketConnection {}",
+        "preferences": "Implement WebSockets for real-time communication between clients and the server."
+      },
+      {
+        "functionName": "createGameGUI",
+        "task": "Develop an appealing game GUI.",
+        "ext": "js",
+        "declaration": "function createGameGUI(guiConfig: GUIConfig): GUIElements {}",
+        "preferences": "Design the game GUI to be visually appealing and user-friendly."
+      },
+      {
+        "functionName": "enableAuthentication",
+        "task": "Enable authentication by integrating social login providers like Google, GitHub.",
+        "ext": "js",
+        "declaration": "function enableAuthentication(authConfig: AuthConfig): AuthResult {}",
+        "preferences": "Use social login providers for authentication. Consider integrating Google and GitHub logins."
+      },
+      {
+        "functionName": "integrateStripeForPayments",
+        "task": "Allow players to buy custom skins for their player models by integrating Stripe for payments.",
+        "ext": "js",
+        "declaration": "function integrateStripeForPayments(paymentConfig: PaymentConfig): PaymentResult {}",
+        "preferences": "Use Stripe for integrating payment functionalities and managing transactions."
+      }
+    ]
+}

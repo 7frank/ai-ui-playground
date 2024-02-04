@@ -12,6 +12,8 @@ import { generatePlan } from "./generatePlan";
 import { executePlan } from "./executePlan";
 import type { CommandParams } from "../../cmd-types";
 
+/** TODO Deprecated */
+
 /**
  * we better might implement this for all commands that generate code.
  * the goal here is to create a commit history.
@@ -24,30 +26,48 @@ const dryRun = flag({
   description: "git commit changes or use --dryRun",
 });
 
+const spec = option({
+  type: string,
+  long: "specification",
+  short: "s",
+  description: "a file path and name to a jeeves spec file",
+  defaultValue: () => "./src/specs/defaultSpecification.ts",
+});
+const folderName = option({
+  type: string,
+  long: "name",
+  short: "n",
+  description: "The folder name the plan is getting generated into.",
+});
+
+const sm = flag({
+  type: boolean,
+  long: "sm",
+  description: "prompt for which model to use",
+});
+
 const generatePlanArgs = {
-  name: option({
-    type: string,
-    long: "name",
-    short: "n",
-    description: "The folder name the plan is getting generated into.",
-  }),
-  spec: option({
-    type: string,
-    long: "specification",
-    short: "s",
-    description: "a file path and name to a jeeves spec file",
-    defaultValue: () => "./src/specs/defaultSpecification.ts",
-  }),
+  name: folderName,
+  spec,
   dryRun,
+  sm
 };
+
+
+
 
 export type GenerateCommandParams = CommandParams<typeof generatePlanArgs>;
 
-export const generateCmd = command({
-  name: "generate",
-  args: generatePlanArgs,
-  handler: generatePlan,
-});
+const architectArgs = {
+  name: folderName,
+  spec,
+  sm,
+  dryRun,
+};
+
+export type ArchitectCommandParams = CommandParams<typeof architectArgs>;
+
+
 
 const force = flag({
   type: boolean,
@@ -85,9 +105,3 @@ const executePlanArgs = {
 };
 
 export type ExecuteCommandParams = CommandParams<typeof executePlanArgs>;
-
-export const executeCmd = command({
-  name: "execute",
-  args: executePlanArgs,
-  handler: executePlan,
-});

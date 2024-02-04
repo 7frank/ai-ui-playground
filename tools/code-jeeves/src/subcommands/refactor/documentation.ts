@@ -2,6 +2,8 @@ import { command, optional, option, string, boolean, flag } from "cmd-ts";
 import { handleDocumentation } from "./handleDocumentation";
 import type { CommandParams } from "../../cmd-types";
 
+/** TODO Deprecated */
+
 const updateDocBlocksArgs = {
   pattern: option({
     type: optional(string),
@@ -18,9 +20,3 @@ const updateDocBlocksArgs = {
 };
 
 export type GenerateCommandParams = CommandParams<typeof updateDocBlocksArgs>;
-
-export const documentation = command({
-  name: "documentation",
-  args: updateDocBlocksArgs,
-  handler: handleDocumentation,
-});
