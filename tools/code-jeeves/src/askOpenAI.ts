@@ -30,7 +30,7 @@ export async function askOpenAI(systemPrompt: string, userQuestion: string) {
   const mConfig = getModelsConfig();
   const response = await openai.chat.completions.create({
     messages: [
-      { role: "assistant", content: systemPrompt },
+      { role: "system", content: systemPrompt },
       { role: "user", content: userQuestion },
     ],
     model: mConfig.sourcecode.model,

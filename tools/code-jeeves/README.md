@@ -99,6 +99,9 @@ bun ./src/prompt.ts
 # WIP langchain prompts to generate implementation & tests & test runner feedback
 bun ./src/lc/lc.ts
 
+# WIP break down problem strategically first
+jee plan architect -n .out/WIP -s ./src/specs/betterSpec.ts
+
 ```
 
 > You will have to monitor your usage manually as there are no official endpoints for that as of now:

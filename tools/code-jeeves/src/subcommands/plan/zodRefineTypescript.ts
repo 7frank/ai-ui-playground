@@ -1,6 +1,9 @@
 import * as ts from "typescript";
 import * as zod from "zod";
 
+/**
+ * @deprecated since 02/24
+ */
 export const zodRefineTypescript = (code: string) => {
   const fileName = "file.ts";
   const sourceFile = ts.createSourceFile(
@@ -28,6 +31,9 @@ export const zodRefineTypescript = (code: string) => {
   return true;
 };
 
+/**
+ * @deprecated since 02/24
+ */
 export const TypeScriptCodeValidator = zod
   .string()
   .refine(zodRefineTypescript, {
