@@ -25,11 +25,19 @@ sudo apt-get install pv
 bun install
 
 # create alias (to be able to use autocomplete)
-alias jee="bun index.ts"
+alias jee="bun cli.ts" 
+jee completion > /tmp/c.sh 
+source /tmp/c.sh
+
+# start developing
+jee --help
+
+# or with autocomplete
+jee <tab><tab>
 
 ```
 
-## example
+## Example: Create a plan & generate code for a email client
 
 ```bash
  # clean  folder
@@ -39,23 +47,16 @@ alias jee="bun index.ts"
  code ./src/specs/emailClientSpec.ts
 
  # generate a plan from the spec
- bun index.ts plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts
+ jee plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts
 
  # run the code generator for each item in the plan
- bun index.ts plan execute -n .out/emailClient/ --force
+jee plan execute -n .out/emailClient/ --force
 
  # if the command exists with an error you can resume like this
- bun index.ts plan execute -n .out/emailClient/ -r
+jee plan execute -n .out/emailClient/ -r
 
 # run test manually and see how bad things are with your generated code :-)
  bun test  ./.out/emailClient/**/*.test.ts
-```
-
-WIP init the new CLI with tab completion support
-```
-alias jee="bun cli.ts" 
-jee completion > /tmp/c.sh 
-source /tmp/c.sh
 ```
 
 
@@ -65,31 +66,31 @@ To run certain cli tasks:
 
 ```bash
 # show the help menu
-bun run index.ts
+jee --help
 
 # select a file for which you want to generate doc blocks
-bun index.ts refactor documentation -p=*.ts
+jee refactor documentation -p=*.ts
 
 # select a file for which you want to generate doc blocks, instead of committing it will only attempt a dry run
-bun index.ts refactor documentation -p=*.ts --dryRun
+jee refactor documentation -p=*.ts --dryRun
 
 # run the whole plan from start to finish
-bun index.ts plan generate -n .out/test1
+jee plan generate -n .out/emailClient --force
 
 # reference a spec file that contains infomration what the program is about
-bun index.ts plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts
+jee plan generate -n .out/emailClient -s ./src/specs/emailClientSpec.ts
 
 # run single item (3) of plan
-bun index.ts plan execute -n .out/test1 -i 3
+jee plan execute -n .out/emailClient -i 1
 
 ## continue plan by looking at log and resuming with next in list
-bun index.ts plan execute -n .out/test1 -r
+jee plan execute -n .out/emailClient -r
 
 # most likely you want to debug the prompts
-DEBUG=zod-gpt:* bun index.ts plan execute -n .out/example -i 2
+DEBUG=zod-gpt:*  jee plan execute -n .out/emailClient -i 1
 
 # or even more debugging information
-DEBUG=* bun index.ts plan execute -n .out/example -i 2
+DEBUG=* `jee plan execute -n .out/emailClient -i 1`
 
 ### experiments ###
 
