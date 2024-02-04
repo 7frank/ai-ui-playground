@@ -13,7 +13,7 @@ import { findNearestFileDirectory } from "../../findNearest";
 
 import specFunction, { ArchitectSpecification, ArchitectureResponse } from "../../specs/betterSpec";
 import { ZodType } from "zod";
-import { userPrompt } from "../../questions";
+import { userPrompt,confirmPrompt } from "../../questions";
 import { availableModels } from "../../models";
 
 
@@ -28,21 +28,20 @@ export async function outlineArchitecture({
 
   const ss = requireBySchema(spec, ArchitectSpecification);
 
-  //const ss = specFunction();
+  await runFileTask("init project",path.normalize(name + "requirements.json"),async ()=>{
+  return  formatJson({problemStatement:ss.problemStatement})
+  })
 
-
-
-
-  runFileTask("run architect",path.normalize(name + "architecture.json"),async ()=>{
+  await runFileTask("run architect",path.normalize(name + "architecture.json"),async ()=>{
 
     console.log("ProblemStatement:",ss.problemStatement)
-    const res = await askOpenApiStructured2(ss.problemStatement, {
+    const question = ss.problemStatement.description + ss.problemStatement.tasks.map(it => "- "+it).join("\n");
+    const res = await askOpenApiStructured2(question, {
       schema: ArchitectureResponse,
       systemMessage: ss.system + " Constraints:" + ss.constraints,model
     });
   
   return  formatJson(res.data)
-
   })
 
 }
@@ -50,7 +49,7 @@ export async function outlineArchitecture({
 /**
  * Requires a typescript file from a string, ensuring the file is structured based on the schema
  */
-function requireBySchema(spec: string, schema:ZodType) {
+function requireBySchema<T>(spec: string, schema: ZodType<T>) {
   const fileDirectory = findNearestFileDirectory(process.cwd(), "package.json");
   const s = path.resolve(fileDirectory ?? "", spec);
   if (!fs.existsSync(s)) {
@@ -73,16 +72,18 @@ function formatJson(o:object)
 }
 
 
-async function runFileTask(taskName:string,fileName:string,task:()=>Promise<string>)
+async function runFileTask(taskName:string,fileName:string,task:()=>Promise<string>,yes=false)
 {
   const dirName=path.dirname(fileName)
   if (fs.existsSync(fileName)) {
-    console.log(
-      `Skipped Task:"${taskName}", Reason: File Exists (${fileName})`
-    );
-
+  
+    if (!await confirmPrompt(`Run Task:"${taskName}", for file "${fileName}"?`,false,yes)) {
+      console.log(
+        `Skipped Task:"${taskName}", Reason: File Exists (${fileName})`
+      );
+    return 
+    }
   }
-  else {
     console.log(
       `Running Task:"${taskName}", for File: (${fileName})`
     );
@@ -92,7 +93,7 @@ async function runFileTask(taskName:string,fileName:string,task:()=>Promise<stri
 
 
   await $`echo ${content} > ${file(fileName)}`;
-}
+
 
 }
 

@@ -23,6 +23,22 @@ export async function userPrompt(message:string,options: string[]) {
   return res.selection;
 }
 
+export 
+const confirmPrompt = async (question:string,_default=false,yes?:boolean) => {
+ if (yes) return true
+
+  const response = await inquirer.prompt<{answer:boolean}>([
+    {
+      type: 'confirm', 
+      name: 'answer', 
+      message: question,
+      default:_default, 
+    },
+  ]);
+return response.answer
+};
+
+
 
 export async function confirmQuestion(msg: string) {
   return (
