@@ -6,7 +6,7 @@ title: Declarative Programming & Code Synthesis
 related liks:
 
 - [Prompt Engineering](../Natural%20Language%20Processing/Prompt%20Engineering.md)
-- [Code Jeeves](./Potential%20Use%20Cases/CodeJeeves.md)
+- [Case Study - Code Jeeves](Potential%20Use%20Cases/CaseStudyCodeJeeves.md)
 - [Coding Assistants](./Copilot.md)
 # Declarative Programming & Code Synthesis
 
