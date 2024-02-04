@@ -149,7 +149,7 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
   - this could loop a long as it needs to
 - tree => asyclic graph
   - by doing so we are able to reuse certain code artifacts
-- event driven communication to decouple code 
+- event driven communication to decouple code
   - by doing so we can create code artifacts that can ommunicate via patterns that help to reduce complexity
 - rely on "tactical design" principles
   - structuring code into facades/services/adapters will allow our generator to focus on smaller logic blocks
