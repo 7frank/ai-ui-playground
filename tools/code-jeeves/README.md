@@ -57,6 +57,8 @@ alias jee="bun cli.ts"
 jee completion > /tmp/c.sh 
 source /tmp/c.sh
 ```
+
+
 ## development
 
 To run certain cli tasks:

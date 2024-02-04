@@ -1,8 +1,9 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { handleDocumentation } from './src/subcommands/refactor/handleDocumentation';
-import { generatePlan } from './src/subcommands/plan/generatePlan';
-import { executePlan } from './src/subcommands/plan/executePlan';
+
+import { executePlan } from "./src/subcommands/plan/executePlan";
+import { generatePlan } from "./src/subcommands/plan/generatePlan";
+import { handleDocumentation } from "./src/subcommands/refactor/handleDocumentation";
 
 yargs(hideBin(process.argv))
   .scriptName("jee")
@@ -24,13 +25,13 @@ yargs(hideBin(process.argv))
       handler: async (argv) => {
         await handleDocumentation(argv)
       },
-    })
-  }, () => {})
-  // Generate command group with generate and execute subcommands
-  .command('generate <command>', 'Generate operations', (yargs) => {
+    });
+  })
+  // Plan command group with generate and execute subcommands
+  .command('plan <command>', 'Plan operations', (yargs) => {
     return yargs
       .command({
-        command: 'plan [options]',
+        command: 'generate [options]',
         describe: 'Generate a plan',
         builder: (yargs) => yargs.option('name', {
           alias: 'n',
@@ -48,8 +49,8 @@ yargs(hideBin(process.argv))
           default: false,
         }),
         handler: async (argv) => {
-            await generatePlan(argv)
-        },
+          await generatePlan(argv)
+      },
       })
       .command({
         command: 'execute [options]',
@@ -77,10 +78,10 @@ yargs(hideBin(process.argv))
           type: 'string',
         }),
         handler: async (argv) => {
-            await executePlan(argv)
-          },
-      })
-  }, () => {})
+          await executePlan(argv)
+        },
+      });
+  })
   .help()
   .completion()
   .wrap(null)
