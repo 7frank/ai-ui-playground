@@ -51,6 +51,12 @@ alias jee="bun index.ts"
  bun test  ./.out/emailClient/**/*.test.ts
 ```
 
+WIP init the new CLI with tab completion support
+```
+alias jee="bun cli.ts" 
+jee completion > /tmp/c.sh 
+source /tmp/c.sh
+```
 ## development
 
 To run certain cli tasks:
@@ -153,7 +159,7 @@ https://chat.openai.com/share/36d638c1-388b-4665-afb8-0de5cc359331
 - test functionality 2x "py" tasks & 1x "iynb" task that uses those functions
 - try out autoSlice feature of zod-gpt
 - check for max token quota in the future when endpoints are available
-
+- tab completion with yargs (oclif seems too much overhead)
 ## potential scenarios we could test
 
 - `create an email cli that allows me to log into read and anwer my emails`
