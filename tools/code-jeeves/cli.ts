@@ -9,6 +9,7 @@ import { handleDocumentation } from "./src/subcommands/refactor/handleDocumentat
 import { userPrompt, userSelect, confirmPrompt } from "./src/questions";
 import { $, file } from "bun";
 import { createShellPrompt } from "./src/lc/createShellPrompt";
+import { z } from "zod";
 
 const shSubCmds = (yargs: Argv) => {
   return yargs.command({
@@ -25,13 +26,21 @@ const shSubCmds = (yargs: Argv) => {
     handler: async (argv) => {
       const logFilename = ".shelli.ndjson";
 
+      const HistoryLine = z.object({ question: z.string(), cmd: z.string() });
+      type HistoryLine = z.infer<typeof HistoryLine>;
       if (argv.list) {
-        console.log("TODO list shell history");
-        const cmd = await userSelect("select and run a command from history.", [
-          "ls",
-          "git status",
-        ]);
-        console.log("cmd", cmd);
+        const historyData = await $`cat ${logFilename}`.text();
+        const history = historyData
+          .split("\n")
+          .map(it=>it.trim())
+          .filter(it=> { return !!it})
+          .map<HistoryLine>((it) => HistoryLine.parse(JSON.parse(it)))
+          .map((it) => it.cmd);
+
+        const cmd = await userSelect(
+          "select and run a command from history.",
+          history
+        );
         await $`sh -c "${cmd}"`;
         return;
       }
