@@ -41,7 +41,7 @@ const shSubCmds = (yargs: Argv) => {
           "select and run a command from history.",
           history
         );
-        await $`sh -c "${cmd}"`;
+        await $`sh -c ${cmd}`;
         return;
       }
 
@@ -51,7 +51,7 @@ const shSubCmds = (yargs: Argv) => {
       const runShellCommand = await confirmPrompt("Do you want to run it now?");
 
       if (!runShellCommand) return;
-      await $`sh -c "${cmd}"`;
+      await $`sh -c ${cmd}`;
 
       const shellHistoryEntry = JSON.stringify({ question, cmd });
 

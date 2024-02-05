@@ -1,3 +1,4 @@
 {"question": "find files in folder named *.ts ignore node_modules",  "cmd": "find . -name \"*.ts\" ! -path \"./node_modules/*\""}
 {"question":"list only directories not files","cmd":"ls -d */"}
 {"question":"check network status","cmd":"ifconfig"}
+{"question":"list all k8s contexts","cmd":"kubectl config get-contexts --output=name"}
