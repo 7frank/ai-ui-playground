@@ -6,6 +6,50 @@ import { generatePlan } from "./src/subcommands/plan/generatePlan";
 import { outlineArchitecture } from "./src/subcommands/plan/outlineArchitecture";
 
 import { handleDocumentation } from "./src/subcommands/refactor/handleDocumentation";
+import { userPrompt, userSelect, confirmPrompt } from "./src/questions";
+import { $, file } from "bun";
+import { createShellPrompt } from "./src/lc/createShellPrompt";
+
+const shSubCmds = (yargs: Argv) => {
+  return yargs.command({
+    command: "exec [options]",
+    describe: "Generate documentation",
+    builder: (yargs) =>
+      yargs.options({
+        list: {
+          alias: "l",
+          describe: "use '*' for any",
+          type: "boolean",
+        },
+      }),
+    handler: async (argv) => {
+      const logFilename = ".shelli.ndjson";
+
+      if (argv.list) {
+        console.log("TODO list shell history");
+        const cmd = await userSelect("select and run a command from history.", [
+          "ls",
+          "git status",
+        ]);
+        console.log("cmd", cmd);
+        await $`sh -c "${cmd}"`;
+        return;
+      }
+
+      const question = await userPrompt("what do you want to do?");
+      const cmd = await createShellPrompt(question);
+      console.log("Command:", cmd);
+      const runShellCommand = await confirmPrompt("Do you want to run it now?");
+
+      if (!runShellCommand) return;
+      await $`sh -c "${cmd}"`;
+
+      const shellHistoryEntry = JSON.stringify({ question, cmd });
+
+      await $`echo ${shellHistoryEntry} >> ${file(logFilename)}`;
+    },
+  });
+};
 
 const refactorSubCmds = (yargs: Argv) => {
   return yargs.command({
@@ -138,7 +182,9 @@ yargs(hideBin(process.argv))
   .command("refactor <command>", "Refactor operations", refactorSubCmds)
   // Plan command group with generate and execute subcommands
   .command("plan <command>", "Plan operations", planSubCmds)
+  .command("sh <command>", "Shell operations", shSubCmds)
   .help()
+  .showHelpOnFail(true)
   .completion()
   .wrap(null)
   .parse();

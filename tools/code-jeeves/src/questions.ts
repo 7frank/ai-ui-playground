@@ -23,6 +23,17 @@ export async function userSelect(message: string, options: string[]) {
   return res.selection;
 }
 
+export async function userPrompt(message: string) {
+  const res = await inquirer.prompt<{ selection: string }>([
+    {
+      type: "input",
+      name: "selection",
+      message,
+    },
+  ]);
+  return res.selection;
+}
+
 export const confirmPrompt = async (
   question: string,
   _default = false,
