@@ -25,7 +25,9 @@ sudo apt-get install pv
 bun install
 
 # create alias (to be able to use autocomplete)
-alias jee="bun cli.ts"
+alias jee="bun run --cwd $(pwd) start"
+
+# enable the actual auto complete
 jee completion > /tmp/c.sh
 source /tmp/c.sh
 
@@ -101,6 +103,10 @@ bun ./src/lc/lc.ts
 
 # WIP break down problem strategically first
 jee plan architect -n .out/WIP -s ./src/specs/betterSpec.ts
+
+# Ideas
+whisper | jee shelli 
+jee shelli -l
 
 ```
 
