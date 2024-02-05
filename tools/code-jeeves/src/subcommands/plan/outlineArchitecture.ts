@@ -8,7 +8,7 @@ import specFunction, {
   ArchitectSpecification,
   ArchitectureResponse,
 } from "../../specs/betterSpec";
-import { userPrompt } from "../../questions";
+import { userSelect } from "../../questions";
 import { availableModels } from "../../models";
 import { requireBySchema, runFileTask, formatJson } from "./requireBySchema";
 
@@ -20,7 +20,7 @@ export async function outlineArchitecture({
   name = path.normalize(name) + "/";
 
   const model = sm
-    ? await userPrompt("select a model", availableModels)
+    ? await userSelect("select a model", availableModels)
     : undefined;
 
   const ss = requireBySchema(spec, ArchitectSpecification);

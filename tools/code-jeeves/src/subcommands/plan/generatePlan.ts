@@ -10,13 +10,13 @@ import { JeevesSpecificationSchema } from "../../types/specSchema";
 
 import { formatJson, requireBySchema, runFileTask } from "./requireBySchema";
 import { availableModels } from "../../models";
-import { userPrompt } from "../../questions";
+import { userSelect } from "../../questions";
 
 export async function generatePlan({ name, spec, sm }: GenerateCommandParams) {
   name = path.normalize(name) + "/";
 
   const model = sm
-    ? await userPrompt("select a model", availableModels)
+    ? await userSelect("select a model", availableModels)
     : undefined;
 
   const ss = requireBySchema(spec, JeevesSpecificationSchema);

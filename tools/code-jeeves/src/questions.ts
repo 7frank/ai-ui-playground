@@ -11,7 +11,7 @@ export async function fileSelectQuestion(fileNames: string[]) {
   ]);
 }
 
-export async function userPrompt(message: string, options: string[]) {
+export async function userSelect(message: string, options: string[]) {
   const res = await inquirer.prompt<{ selection: string }>([
     {
       type: "list",
