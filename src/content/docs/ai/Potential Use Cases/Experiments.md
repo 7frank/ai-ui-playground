@@ -32,7 +32,10 @@ WIP result: https://www.kaggle.com/code/s7frank/collaborative-filtering-deep-div
 
 
 ## [WIP] whisper cli 
- see  [This section](../My%20Learning%20Goals/Workflows/work-flow.mdx#whisper%20cl 
+ see  [This section](../My%20Learning%20Goals/Workflows/work-flow.mdx#whisper%20cli outlineing some things
+ as well as https://github.com/7frank/ai-ui-playground/blob/main/tools/whisper-cli/README.md 
+
+
 
 > https://chat.openai.com/c/e4cc1ee8-cefb-4bb1-be44-6006ecc257a4
 
