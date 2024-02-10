@@ -7,6 +7,16 @@ In a better world thiswould be neatly wrapped as a installable cli
 Similar to https://github.com/GucciFlipFlops1917/Whisper-Speech-To-Text in mind.
 Give that a shot if you are looking fore a more fleshed out solution.
 
+# (1) using an existsing solution and dockerizing it
+# installation
+
+clone this repo `git clone ..`
+
+build the image `docker build -f ./Dockerfile2 -t whisper-cli .`
+
+
+# (2) custom approach
+
 ## installation
 
 build the docker image and tag as `whisper-transcribe`
@@ -19,3 +29,9 @@ record audio as wav e.g. with arecord:
 
 use whisper to convert stuff
 `cat /tmp/output_file.wav | docker run -i whisper-transcribe`
+
+```bash
+# untested caching model
+# mkdir ~/.cache/whisper
+# cat /tmp/output_file.wav | docker run -v ~/.cache/whisper:/.cache/whisper -i whisper-transcribe
+```
