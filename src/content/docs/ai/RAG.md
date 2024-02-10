@@ -1,5 +1,5 @@
 ---
-title: Retrieval Augmented Generation
+title: Retrieval Augmented Generation (RAG)
 ---
 
 https://www.kaggle.com/discussions/general/450697

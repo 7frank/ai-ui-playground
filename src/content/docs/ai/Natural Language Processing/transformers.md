@@ -13,6 +13,8 @@ title: Transformers
 - [Visualize Attention in NLP Models](https://github.com/jessevig/bertviz)
 
 ## TODO
+  - find source for transformers that are at least in some part parallelizable making scaling with them easier
+
   - rnn
 
     - slow
