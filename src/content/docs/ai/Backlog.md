@@ -22,7 +22,9 @@ Contains links of things that might be important.
 ### ~0
 
 
+[Generative AI As a Growth Catalyst](https://www.wired.com/sponsored/story/generative-ai-as-a-growth-catalyst/)
 
+[Want to grow a career in data science? Experts say to keep these ideas in mind](https://fortune.com/education/articles/masters-in-data-science-expert-panel/)
 
 #### !
 
