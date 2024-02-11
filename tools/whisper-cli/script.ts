@@ -1,44 +1,39 @@
-
-  // Assuming Bun is used, which has native support for fetch and FormData
-
-  const fs = require('fs');
-  const path = require('path');
+// Assuming Bun is used, which has native support for fetch and FormData
+import { $ } from "bun";
 // Replace with the path to your audio file
 const AUDIO_FILE_PATH = "/tmp/output_file.wav";
 
+async function convertAudioToText(audioFilePath: string) {
+  // Path to your audio file
+
+  const f = await $`cat ${audioFilePath}`.blob();
+
+  const formData = new FormData();
+  formData.append("audio_file", f, "output_file.wav");
 
 
-async function convertAudioToText() {
-    // Path to your audio file
-    const audioFilePath = path.resolve(__dirname, AUDIO_FILE_PATH);
-    const audioBuffer = fs.readFileSync(audioFilePath);
+  const p: Record<string, boolean | string | number> = {
+    encode: true,
+    task: "transcribe",
+    language: "en",
+    word_timestamps: false,
+    output: "txt",
+  };
+  const queryParams = new URLSearchParams(p as any).toString();
 
-    const formData = new FormData();
-    formData.append('audio_file', new Blob([audioBuffer]), 'output_file.wav');
+  const WHISPER_ASR_URL = `http://localhost:9000/asr?${queryParams}`;
 
-    // Add any additional query parameters you need
-    const queryParams = new URLSearchParams({
-        encode: true,
-        task: 'transcribe',
-        language: 'en',
-        word_timestamps: false,
-        output: 'txt',
-    }).toString();
-
-    const WHISPER_ASR_URL = `http://localhost:9000/asr?${queryParams}`;
-
-    try {
-        const response = await fetch(WHISPER_ASR_URL, {
-            method: 'POST',
-            body: formData,
-        });
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        const result = await response.text(); 
-        console.log('Transcription Result:', result);
-    } catch (error) {
-        console.error('Error:', error);
-    }
+  try {
+    const response = await fetch(WHISPER_ASR_URL, {
+      method: "POST",
+      body: formData,
+    });
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const result = await response.text();
+    console.log("", result);
+  } catch (error) {
+   throw error
+  }
 }
 
-convertAudioToText();
-
+convertAudioToText(AUDIO_FILE_PATH);
