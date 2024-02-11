@@ -101,3 +101,6 @@ convert the audio file
 
 let's string them together
 `bun recordAudio.ts /tmp/f1.wav && bun ./script.ts /tmp/f1.wav`
+
+
+jee sh exec -q $(bun recordAudio.ts /tmp/f1.wav && bun ./script.ts /tmp/f1.wav | awk '/Recording accepted./{flag=1;next}flag')

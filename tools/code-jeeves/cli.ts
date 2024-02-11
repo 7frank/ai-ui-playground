@@ -17,6 +17,11 @@ const shSubCmds = (yargs: Argv) => {
     describe: "Generate documentation",
     builder: (yargs) =>
       yargs.options({
+        question: {
+          alias: "q",
+          describe: "pass a question as string",
+          type: "string",
+        },
         list: {
           alias: "l",
           describe: "use '*' for any",
@@ -45,7 +50,7 @@ const shSubCmds = (yargs: Argv) => {
         return;
       }
 
-      const question = await userPrompt("what do you want to do?");
+      const question = argv.question ?? await userPrompt("what do you want to do?");
       const cmd = await createShellPrompt(question);
       console.log("Command:", cmd);
       const runShellCommand = await confirmPrompt("Do you want to run it now?");
