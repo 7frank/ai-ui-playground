@@ -90,3 +90,8 @@ docker run -d -p 9000:9000 -e ASR_MODEL=base -e ASR_ENGINE=openai_whisper onerah
 docker run -d -p 9000:9000 -v ~/.cache/whisper onerahmet/openai-whisper-asr-webservice:latest
 
 ```
+
+### speech-2-text
+
+convert the audio file
+`bun ./script.ts /tmp/output_file.wav`
