@@ -36,6 +36,15 @@ This CLI tool serves as a basic wrapper for speech-to-text functionality utilizi
   docker run -i whisper-cli --print_text
   ```
 
+
+### Troubleshooting for Approach 1
+
+- If the keyboard is not working in the Docker container, this setup allows running keyboard input with some limitations:
+  ```
+  docker build -f ./Dockerfile3 -t whisper-test .
+  docker run -i --privileged whisper-test
+  ```  
+
 ## Approach 2: Custom Approach
 
 ### Installation
@@ -63,10 +72,21 @@ This part includes the recording and converting process:
 echo "Recording in 3..."; sleep 1; echo "Recording in 2..."; sleep 1; arecord > /tmp/output_file.wav || cat /tmp/output_file.wav | docker run -i whisper-transcribe
 ```
 
-### Troubleshooting for Approach 1
+## Approach 3: whisper as local service and cli that curls it
 
-- If the keyboard is not working in the Docker container, this setup allows running keyboard input with some limitations:
-  ```
-  docker build -f ./Dockerfile3 -t whisper-test .
-  docker run -i --privileged whisper-test
-  ```
+### Installation
+
+https://github.com/ahmetoner/whisper-asr-webservice
+
+
+https://ahmetoner.com/whisper-asr-webservice/run/
+
+start the server
+```
+# Interactive Swagger API documentation is available at http://localhost:9000/docs
+docker run -d -p 9000:9000 -e ASR_MODEL=base -e ASR_ENGINE=openai_whisper onerahmet/openai-whisper-asr-webservice:latest
+
+# with cache
+docker run -d -p 9000:9000 -v ~/.cache/whisper onerahmet/openai-whisper-asr-webservice:latest
+
+```
