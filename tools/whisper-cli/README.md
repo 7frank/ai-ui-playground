@@ -93,5 +93,11 @@ docker run -d -p 9000:9000 -v ~/.cache/whisper onerahmet/openai-whisper-asr-webs
 
 ### speech-2-text
 
+to record
+`bun recordAudio.ts /tmp/output_file.wav`
+
 convert the audio file
 `bun ./script.ts /tmp/output_file.wav`
+
+let's string them together
+`bun recordAudio.ts /tmp/f1.wav && bun ./script.ts /tmp/f1.wav`
