@@ -5,3 +5,4 @@
 {"question":"create a command to curl www.google.de to answer the following question:How is the weather tomorrow in Leipzig? ","cmd":"curl \"www.google.de\" -d \"q=How is the weather tomorrow in Leipzig?\""}
 {"question":"create a command to curl www.google.de to answer the following question:How is the weather tomorrow in Leipzig? ","cmd":"curl \"www.google.de/search?q=weather+tomorrow+in+Leipzig\""}
 {"question":"create a command to curl api.duckduckgo.com to answer the following question:How is the weather tomorrow in Leipzig? ","cmd":"curl -i \"https://api.duckduckgo.com/?q=weather+tomorrow+Leipzig\""}
+{"question":"List","cmd":"ls ."}

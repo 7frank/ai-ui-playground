@@ -106,11 +106,18 @@ let's string them together
 run them as one script 
 `bun runAll.ts`
 
+then take this text for example to query our code-monkey
+`jee sh exec -q="List the content of the current directory"`
 
 #### WIP - Not working at the moment
+
+> Piping is hard T_T
+
 or pipe the output to our code-monkey (in a rather complicated way, because of inquirer & stdin issues)
 `bun runAll.ts |  jee sh exec -q -`
 
 mkfifo /tmp/mypipe 2>/dev/null ; bun runAll.ts > /tmp/mypipe &  jee sh exec -q="#/tmp/mypipe"
 
 mkfifo /tmp/mypipe 2>/dev/null ; bun runAll.ts | tee /tmp/mypipe &  jee sh exec -q="#/tmp/mypipe"
+
+bun runAll.ts  | tee /tmp/mypipe  && jee sh exec -q="#/tmp/mypipe"
