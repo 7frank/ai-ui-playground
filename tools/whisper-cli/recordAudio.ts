@@ -1,6 +1,9 @@
 import { spawn } from "child_process";
 import { command, run, string, positional, option, number, binary } from 'cmd-ts';
 
+// Note; we are logging to stderr instead of stdout, due to current limitations of bun shell that we could not circumvent otherwise 
+// Explaination: runnning $`ls`.text() does not log to stdout until the promise succeeds, thus prevents us from reading instructions, whjen this script is run in another one.
+
 const recordAudioCommand = command({
   name: 'recordAudio',
   args: {
@@ -17,9 +20,9 @@ const recordAudioCommand = command({
   },
   handler: (args) => {
     const { outputFile, maxDuration } = args;
-    console.log(`Recording will be saved to: ${outputFile}`);
+    console.error(`Recording will be saved to: ${outputFile}`);
     if (maxDuration > 0) {
-      console.log(`Maximum recording duration: ${maxDuration} ms`);
+      console.error(`Maximum recording duration: ${maxDuration} ms`);
     }
     startRecording(outputFile, maxDuration);
   },
@@ -31,14 +34,14 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
 function startRecording(outputFile: string, maxDuration: number) {
-  console.log('Recording started. Press "Space" or "Enter" to accept, "Esc" or "Q" to reject.');
+  console.error('Recording started. Press "Space" or "Enter" to accept, "Esc" or "Q" to reject.');
 
   const arecordProcess = spawn('arecord', ['-f', 'cd', '-t', 'wav', outputFile]);
 
   if (maxDuration > 0) {
     setTimeout(() => {
       arecordProcess.kill();
-      console.log('Maximum duration reached, recording stopped.');
+      console.error('Maximum duration reached, recording stopped.');
       process.stdin.setRawMode(false);
       process.stdin.pause();
     }, maxDuration);
@@ -48,12 +51,12 @@ function startRecording(outputFile: string, maxDuration: number) {
     const keyPressed = key.toString();
     
     if (keyPressed === ' ' || keyPressed === '\r') {
-      console.log('Recording accepted.');
+      console.error('Recording accepted.');
       arecordProcess.kill(); // Stop recording
       process.stdin.setRawMode(false);
       process.stdin.pause(); // Stop listening to input
     } else if (keyPressed === '\u001b' || keyPressed.toLowerCase() === 'q') {
-      console.log('Recording rejected.');
+      console.error('Recording rejected.');
       arecordProcess.kill(); // Stop recording
       process.stdin.setRawMode(false);
       process.stdin.pause(); // Cleanup
