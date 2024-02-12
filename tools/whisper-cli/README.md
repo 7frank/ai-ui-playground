@@ -106,5 +106,11 @@ let's string them together
 run them as one script 
 `bun runAll.ts`
 
-or pipe the uptput to our code-monkey
+
+#### WIP - Not working at the moment
+or pipe the output to our code-monkey (in a rather complicated way, because of inquirer & stdin issues)
 `bun runAll.ts |  jee sh exec -q -`
+
+mkfifo /tmp/mypipe 2>/dev/null ; bun runAll.ts > /tmp/mypipe &  jee sh exec -q="#/tmp/mypipe"
+
+mkfifo /tmp/mypipe 2>/dev/null ; bun runAll.ts | tee /tmp/mypipe &  jee sh exec -q="#/tmp/mypipe"

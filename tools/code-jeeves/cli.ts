@@ -11,11 +11,10 @@ import { $, file } from "bun";
 import { createShellPrompt } from "./src/lc/createShellPrompt";
 import { z } from "zod";
 
-async function read(stream: any) {
-  const chunks = [];
-  for await (const chunk of stream) chunks.push(chunk);
+const fs = require("fs").promises;
 
-  return Buffer.concat(chunks).toString("utf8");
+async function readFdAsString(fd: string | number) {
+   return await fs.readFile(fd, { encoding: "utf-8" });
 }
 
 const shSubCmds = (yargs: Argv) => {
@@ -27,7 +26,7 @@ const shSubCmds = (yargs: Argv) => {
         question: {
           alias: "q",
           describe:
-            "pass a question as string (if you pass '-' you can pipe from stdin)",
+            "pass a question as string (you can use fifo special files by prefixing with '#' e.g.: -q=\"#mypipe\" )",
           type: "string",
         },
         list: {
@@ -64,8 +63,9 @@ const shSubCmds = (yargs: Argv) => {
       if (argv.question) {
         question = argv.question;
       }
-      if (argv.question == "-") {
-        question = await read(process.stdin);
+
+      if (argv.question?.startsWith("#")) {
+        question = await readFdAsString(argv.question.replace("#", ""));
       }
       if (!question) question = await userPrompt("what do you want to do?");
 
