@@ -11,6 +11,26 @@ import { $, file } from "bun";
 import { createShellPrompt } from "./src/lc/createShellPrompt";
 import { z } from "zod";
 
+function readStdinToString() {
+  return new Promise<string>((resolve, reject) => {
+    process.stdin.setEncoding("utf8");
+
+    let inputData = "";
+
+    process.stdin.on("data", (chunk) => {
+      inputData += chunk;
+    });
+
+    process.stdin.on("end", () => {
+      resolve(inputData);
+    });
+
+    process.stdin.on("error", (error) => {
+      reject(error);
+    });
+  });
+}
+
 const shSubCmds = (yargs: Argv) => {
   return yargs.command({
     command: "exec [options]",
@@ -19,7 +39,8 @@ const shSubCmds = (yargs: Argv) => {
       yargs.options({
         question: {
           alias: "q",
-          describe: "pass a question as string",
+          describe:
+            "pass a question as string (if you pass '-' you can pipe from stdin)",
           type: "string",
         },
         list: {
@@ -37,8 +58,10 @@ const shSubCmds = (yargs: Argv) => {
         const historyData = await $`cat ${logFilename}`.text();
         const history = historyData
           .split("\n")
-          .map(it=>it.trim())
-          .filter(it=> { return !!it})
+          .map((it) => it.trim())
+          .filter((it) => {
+            return !!it;
+          })
           .map<HistoryLine>((it) => HistoryLine.parse(JSON.parse(it)))
           .map((it) => it.cmd);
 
@@ -50,7 +73,15 @@ const shSubCmds = (yargs: Argv) => {
         return;
       }
 
-      const question = argv.question ?? await userPrompt("what do you want to do?");
+      let question: string | null = null;
+      if (argv.question) {
+        question = argv.question;
+      }
+      if (argv.question == "-") {
+        question = await readStdinToString();
+      }
+      if (!question) question = await userPrompt("what do you want to do?");
+
       const cmd = await createShellPrompt(question);
       console.log("Command:", cmd);
       const runShellCommand = await confirmPrompt("Do you want to run it now?");

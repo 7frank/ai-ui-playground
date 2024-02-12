@@ -1,4 +1,5 @@
 # code-jeeves
+TODO rename to `monkey` aka code-monkey
 
 This CLI is a prototype for declarative programming using openai or other LLMs.
 
