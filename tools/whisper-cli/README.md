@@ -7,6 +7,7 @@ This CLI tool serves as a basic wrapper for speech-to-text functionality utilizi
 
 - **Approach 2** is currently functional and recommended if you're interested in executing the tool within a Docker container. 
 - **Approach 1** encounters issues with keyboard input due to limitations with Docker, and is not recommended for use.
+- **Approach 3** works as well but currently hides the speech prompt when used with "runAll"
 
 ## Approach 1: Using an Existing Solution and Dockerizing It
 
@@ -102,5 +103,8 @@ convert the audio file
 let's string them together
 `bun recordAudio.ts /tmp/f1.wav && bun ./script.ts /tmp/f1.wav`
 
+run them as one script 
+`bun runAll.ts`
 
-jee sh exec -q $(bun recordAudio.ts /tmp/f1.wav && bun ./script.ts /tmp/f1.wav | awk '/Recording accepted./{flag=1;next}flag')
+or pipe the uptput to our code-monkey
+`bun runAll.ts |  jee sh exec -q -`

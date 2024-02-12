@@ -103,5 +103,13 @@ Postfix2`;
     expect(result).toEqual(expected);
   });
 
+  it("should return raw type for input with incorrect code block delimiters", () => {
+    const input =
+      'Prefix text ```\nconst foo = "bar";\n`` Postfix text';
+    const expected = { type: "raw", rawString: input };
+    const result = extractContent(input);
+    expect(result).toEqual(expected);
+  });
+
   // Add more tests here as needed
 });
