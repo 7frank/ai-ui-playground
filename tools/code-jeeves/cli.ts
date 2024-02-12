@@ -11,41 +11,12 @@ import { $, file } from "bun";
 import { createShellPrompt } from "./src/lc/createShellPrompt";
 import { z } from "zod";
 
-function readStdinToString() {
-  return new Promise<string>((resolve, reject) => {
-    process.stdin.setEncoding("utf8");
+async function read(stream: any) {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
 
-    let inputData = "";
-
-    const onData = (chunk) => {
-      inputData += chunk;
-    };
-
-    const onEnd = () => {
-      cleanup(); // Clean up listeners
-      resolve(inputData);
-    };
-
-    const onError = (error) => {
-      cleanup(); // Clean up listeners
-      reject(error);
-    };
-
-    // Add event listeners
-    process.stdin.on("data", onData);
-    process.stdin.on("end", onEnd);
-    process.stdin.on("error", onError);
-
-    // Function to remove event listeners
-    function cleanup() {
-      process.stdin.off("data", onData);
-      process.stdin.off("end", onEnd);
-      process.stdin.off("error", onError);
-      process.stdin.destroy()
-    }
-  });
+  return Buffer.concat(chunks).toString("utf8");
 }
-
 
 const shSubCmds = (yargs: Argv) => {
   return yargs.command({
@@ -94,14 +65,13 @@ const shSubCmds = (yargs: Argv) => {
         question = argv.question;
       }
       if (argv.question == "-") {
-        question = await readStdinToString();
+        question = await read(process.stdin);
       }
       if (!question) question = await userPrompt("what do you want to do?");
 
       const cmd = await createShellPrompt(question);
       console.log("Command:", cmd);
       const runShellCommand = await confirmPrompt("Do you want to run it now?");
-      console.log("-----")
       if (!runShellCommand) return;
 
       await $`sh -c ${cmd}`;
