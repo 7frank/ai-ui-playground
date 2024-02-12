@@ -17,19 +17,35 @@ function readStdinToString() {
 
     let inputData = "";
 
-    process.stdin.on("data", (chunk) => {
+    const onData = (chunk) => {
       inputData += chunk;
-    });
+    };
 
-    process.stdin.on("end", () => {
+    const onEnd = () => {
+      cleanup(); // Clean up listeners
       resolve(inputData);
-    });
+    };
 
-    process.stdin.on("error", (error) => {
+    const onError = (error) => {
+      cleanup(); // Clean up listeners
       reject(error);
-    });
+    };
+
+    // Add event listeners
+    process.stdin.on("data", onData);
+    process.stdin.on("end", onEnd);
+    process.stdin.on("error", onError);
+
+    // Function to remove event listeners
+    function cleanup() {
+      process.stdin.off("data", onData);
+      process.stdin.off("end", onEnd);
+      process.stdin.off("error", onError);
+      process.stdin.destroy()
+    }
   });
 }
+
 
 const shSubCmds = (yargs: Argv) => {
   return yargs.command({
@@ -85,8 +101,9 @@ const shSubCmds = (yargs: Argv) => {
       const cmd = await createShellPrompt(question);
       console.log("Command:", cmd);
       const runShellCommand = await confirmPrompt("Do you want to run it now?");
-
+      console.log("-----")
       if (!runShellCommand) return;
+
       await $`sh -c ${cmd}`;
 
       const shellHistoryEntry = JSON.stringify({ question, cmd });
