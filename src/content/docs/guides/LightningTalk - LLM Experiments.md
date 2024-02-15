@@ -29,5 +29,5 @@ https://github.com/7frank/ai-ui-playground/blob/main/tools/code-jeeves/README.md
 ## Whisper CLI
 
 [whisper-cli](https://github.com/7frank/ai-ui-playground/blob/main/tools/whisper-cli/README.md#approach-3-whisper-as-local-service-and-cli-that-curls-it)
-- docker whisper api
- cd tools `bun runAll.ts`
+- uses docker image `onerahmet/openai-whisper-asr-webservice`
+- `cd ./tools` and `bun runAll.ts`
