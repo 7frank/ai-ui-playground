@@ -1,1 +1,0 @@
-create a multiplayer tic tac toe game, typescript, nodejs, if possible write tests and evaluate them, add doc blocks where feasable, print meaningful git commit messages but don't execute them on your own

@@ -11,3 +11,15 @@ https://paperswithcode.com/task/speech-to-speech-translation
 
 https://github.com/coqui-ai/whisperX
 https://github.com/coqui-ai/TTS
+
+lots of courses on huggingface e.g.:
+- https://huggingface.co/learn/audio-course/chapter7/speech-to-speech
+- https://huggingface.co/spaces/course-demos/speech-to-speech-translation
+
+
+
+Realtime STST streaming
+- [paper](https://paperswithcode.com/paper/seamless-multilingual-expressive-and)
+- [repo](https://github.com/facebookresearch/seamless_communication)
+- [Example](https://huggingface.co/spaces/facebook/seamless-streaming)
+- [Example - Source Code](https://huggingface.co/spaces/facebook/seamless-streaming/tree/main)
