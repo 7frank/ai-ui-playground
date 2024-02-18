@@ -5,6 +5,18 @@ title: LLM - Self Hosting
 
 ## Self Hosting
 
+### options
+
+- localAI (more production ready)
+
+- H2OGPT (lots of features & potential)
+  - https://github.com/h2oai/h2ogpt
+    - Clone the repo `docker compose -f docker-compose-cpu.yml up` and grab a coffee
+    - it will be available at http://localhost:7860/ after about 10-20 minutes when run first time
+    - Provides STT, RAG with your own Documents, many more
+  - https://gpt.h2o.ai/
+
+
 ### Why
 - customers and developers sometimes can't share data with openai and other services
 - see [CodeJeeves](../Potential%20Use%20Cases/CodeJeeves.mdx) ideas section for more
@@ -54,4 +66,3 @@ This development reflects an effort to balance functionality with resource const
 #### convenience tunneling openai where data privacy is not top priority
 
 - tunnel openai for these use cases
-
