@@ -23,3 +23,21 @@ Realtime STST streaming
 - [repo](https://github.com/facebookresearch/seamless_communication)
 - [Example](https://huggingface.co/spaces/facebook/seamless-streaming)
 - [Example - Source Code](https://huggingface.co/spaces/facebook/seamless-streaming/tree/main)
+
+
+
+# music & streaming ideas
+
+> This is probably the reason so many youtube lofi streams exist
+
+some spaces on huggingface related to text to music
+
+- https://huggingface.co/spaces/facebook/MusicGen
+- https://huggingface.co/spaces/M2UGen/M2UGen-Demo
+- https://huggingface.co/spaces/Surn/UnlimitedMusicGen
+- https://mubert.com/render
+
+some projects related to streaming
+
+- https://github.com/bandi13/docker-obs
+- https://github.com/GRVYDEV/Project-Lightspeed
