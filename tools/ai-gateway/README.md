@@ -4,6 +4,9 @@ try to have a gateay / proxy that allows to ahve multiple llm behind it and have
 - https://portkey.ai/features/ai-gateway
 - https://github.com/AI-Northstar-Tech/openai-proxy
 
+- **rather this** https://github.com/KenyonY/openai-forward/blob/main/README_EN.md
+    - docker run --name="openai-forward" -d -p 9999:8000 beidongjiedeguang/openai-forward:latest 
+    - https://github.com/BerriAI/litellm
 
 ## develop
 `npm run build`
@@ -29,7 +32,7 @@ and in the shell of the container `python ./create_api_key.py -q 5` to get somet
 
 
 
-## test the key
+## test the key (WIP)
 
 ```bash 
 export PROXYKEY=foo_daf44c40-6269-495b-b1ec-576b26f6ee02
@@ -43,6 +46,10 @@ curl -X POST "http://localhost:5000/$PROXYKEY/v1/chat/completions" \
      }'
 
 ```
+
+
+export SERVER_URL=http://localhost:5000 && python testKey.py 
+
 
 
 
