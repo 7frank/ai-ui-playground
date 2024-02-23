@@ -7,8 +7,7 @@ WORKDIR /app
 
 # Clone the repository
 RUN git clone https://github.com/AI-Northstar-Tech/openai-proxy.git .
-RUN pip uninstall psycopg2 && \
-    sed -i 's/psycopg2/psycopg2-binary/' requirements.txt && \
+RUN sed -i 's/psycopg2/psycopg2-binary/' requirements.txt && \
     python3 -m venv /path/to/new/virtual/environment   
 
 
