@@ -1,0 +1,13 @@
+{
+    "name": "openai-quota-proxy",
+    "version": "1.0.0",
+    "description": "Docker commands for openai-quota-proxy",
+    "scripts": {
+      "build": "docker build -t 7frank/openai-quota-proxy .",
+      "run": "docker run -d -p 5000:5000 --name openai-quota-proxy --env-file /path/to/your/.env 7frank/openai-quota-proxy",
+      "stop": "docker stop openai-quota-proxy && docker rm openai-quota-proxy"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
