@@ -1,0 +1,15 @@
+http:
+  routers:
+    vite:
+      rule: "PathPrefix(`/`)"
+      service: vite
+      middlewares:
+        #- "traefik-forward-auth"
+      entryPoints:
+        - web
+        - web-secure
+  services:
+    vite:
+      loadBalancer:
+        servers:
+          - url: "http://vite:80"
