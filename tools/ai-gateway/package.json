@@ -6,7 +6,7 @@
     "build": "docker build -t 7frank/openai-quota-proxy .",
     "start": "docker run -d -p 5000:5000 --name openai-quota-proxy --network=host --env-file .env 7frank/openai-quota-proxy",
     "stop": "docker stop openai-quota-proxy && docker rm openai-quota-proxy",
-    "attach": "docker attach openai-quota-proxy",
+    "attach": "docker exec -it openai-quota-proxy bash",
     "bash": "docker run -it 7frank/openai-quota-proxy --network=host /bin/bash",
     "db-start": "env-cmd .env docker run --name aiProxyPostgresDb --network=host -p 5432:5432 -e POSTGRES_USER=$DB_USERNAME -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_DB=$DB_NAME -d postgres",
     "db-stop": "docker stop aiProxyPostgresDb && docker rm aiProxyPostgresDb"
