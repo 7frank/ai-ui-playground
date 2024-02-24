@@ -4,8 +4,9 @@ try to have a gateay / proxy that allows to ahve multiple llm behind it and have
 - https://portkey.ai/features/ai-gateway
 - https://github.com/AI-Northstar-Tech/openai-proxy
 
-- **rather this** https://github.com/KenyonY/openai-forward/blob/main/README_EN.md
+- **maybe rather this** https://github.com/KenyonY/openai-forward/blob/main/README_EN.md
     - docker run --name="openai-forward" -d -p 9999:8000 beidongjiedeguang/openai-forward:latest 
+    - git clone the repo and install will run ok
     - https://github.com/BerriAI/litellm
 
 ## develop
