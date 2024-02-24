@@ -35,3 +35,8 @@ export async function POST({ params,request }) {
         choices:stream.choices
     });
 }
+
+export interface ChatResponse{
+  apiKey: string,
+  choices:OpenAI.Chat.Completions.ChatCompletion.Choice[]
+}
