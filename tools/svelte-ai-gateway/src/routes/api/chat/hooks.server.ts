@@ -1,27 +1,8 @@
-
 import type { Handle } from '@sveltejs/kit';
 
-type AvailableModels = 'gpt-3.5-turbo' | 'gpt-4' | 'gpt-4-turbo-preview' | string; // TODO here we probably want to restrict the available models
+import { type ApiKeyData, getApiKeyData } from './ApiKeyData';
 
-interface Quota {
-	tokenLimit: number;
-	// TODO other options eg from "bottleneck" library
-}
-
-interface ApiKeyData {
-	quotas: Record<AvailableModels, Quota>;
-}
-
-function getApiKeyData(key: string): ApiKeyData {
-	return {
-		quotas: {
-			'gpt-3.5-turbo': { tokenLimit: 10000 }
-		}
-	};
-}
-
-
-export async function handle({ event, resolve }:Handle) {
+export async function handle({ event, resolve }: Handle) {
 	const apiKey = event.request.headers.get('x-api-key');
 
 	if (!apiKey) {
