@@ -1,18 +1,26 @@
-# create-svelte
+# overview
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This app tries to serve as a llm proxy that allows you to have one API key and multiple Proxy Keys generated for it.Only because as of now i haven't found the think i was looking for.
 
-## Creating a project
+## TODO
 
-If you're seeing this, you've probably already done this step. Congrats!
+- AuthZ
+    - Auth0 maybe?
+    - we need one admin
+    - and want to use the company IAM (AAD)
+    - maybe thats overhead and we store the admin pw somewhere in the k8s
+- persistence
+    - add prisma for db
+    - persist Proxy Key in db (or maybe superbase?)
+- request API key 
+    - the easiest would be link with email
+- payload logic of api keys
+    - have at least the 3 openai models available 
+    - <del>have a list that shows an overview of the configured models</del>
+    - rate limit the endpoints if user has exceeded the token limit of their key
+- configure at least one extra LLM 
+    - e.g. localai in a separate container
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
 ## Developing
 
