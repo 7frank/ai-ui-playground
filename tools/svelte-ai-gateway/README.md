@@ -20,7 +20,9 @@ This app tries to serve as a llm proxy that allows you to have one API key and m
     - rate limit the endpoints if user has exceeded the token limit of their key
 - configure at least one extra LLM 
     - e.g. localai in a separate container
-
+- we probably want to be opaque when returning the data from openai
+    - simply return the raw data without any changes
+    - what do we do about other endpoints? e.g. does localai set the token count too?
 
 ## Developing
 
