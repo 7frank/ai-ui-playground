@@ -5,6 +5,9 @@ import { type ApiKeyData, getApiKeyData } from './ApiKeyData';
 export async function handle({ event, resolve }: Handle) {
 	const apiKey = event.request.headers.get('x-api-key');
 
+
+	console.log(await event.request.clone.json())
+
 	if (!apiKey) {
 		// Return an error response if no API key is provided
 		return new Response('API Key required', { status: 401 });

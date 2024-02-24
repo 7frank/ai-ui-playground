@@ -8,7 +8,7 @@
         <li><a href="/generate-api-key">Generate API Key</a></li>
         
         <li><a href="/set-api-key">Set API Key</a></li>
-        <li><a href="/use-api-key">Use API Key</a></li>
+        <li><a href="/chat">Chat</a></li>
         <!-- Add more navigation links as needed -->
     </ul>
 </nav>
