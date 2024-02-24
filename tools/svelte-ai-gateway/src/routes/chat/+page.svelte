@@ -5,25 +5,23 @@
 	import type { DeepChat } from 'deep-chat';
 	import type { ChatResponse } from '../api/chat/[proxyApiKey]/+server';
 
-	let deepChat: DeepChat;
+	let deepChat: DeepChat | undefined;
 
 	let requestObject: DeepChat['request'];
 
-	let responses: OpenAI.Chat.Completions.ChatCompletion.Choice[][] = [];
+	$: if (deepChat) {
+		deepChat.responseInterceptor = (response: ChatResponse) => {
+			const message = response.choices?.[0].message;
+			const res = { text: message.content ?? undefined, role: message.role };
+			console.log(res);
+			return res;
+		};
+	}
 
 	onMount(async () => {
 		await import('deep-chat');
 		const proxyUrl = window.location.origin + '/api/chat/';
 		requestObject = { url: proxyUrl + $apiKey };
-
-		deepChat.responseInterceptor = (response: ChatResponse) => {
-			
-
-			const message = response.choices?.[0].message;
-            const res={ text: message.content ?? undefined, role: message.role }
-            console.log(res); 
-			return res;
-		};
 	});
 </script>
 
@@ -38,7 +36,6 @@
 		<!-- initialMessages is an example of passing an object from script into a property -->
 		<deep-chat
 			bind:this={deepChat}
-            
 			demo={false}
 			request={requestObject}
 			textInput={{ placeholder: { text: 'Welcome, welcome!!' } }}
