@@ -21,6 +21,7 @@ Contains links of things that might be important.
 
 ### ~0
 
+WTF https://deepchat.dev/docs/webModel/
 
 [Generative AI As a Growth Catalyst](https://www.wired.com/sponsored/story/generative-ai-as-a-growth-catalyst/)
 

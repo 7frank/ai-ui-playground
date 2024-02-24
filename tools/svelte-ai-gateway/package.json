@@ -25,6 +25,7 @@
   },
   "type": "module",
   "dependencies": {
+    "deep-chat": "^1.4.11",
     "openai": "^4.28.0"
   }
 }
