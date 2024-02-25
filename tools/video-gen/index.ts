@@ -1,36 +1,46 @@
-import { binary, command, option, run, string } from 'cmd-ts';
-import { convertTextToSpeech, createVideoWithThumbnail } from './mediaUtils'; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
-import fs from "node:fs"
-import { $ } from 'bun';
-
+import { binary, command, option, run, string } from "cmd-ts";
+import { convertTextToSpeech, createVideoWithThumbnail } from "./mediaUtils"; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
+import fs from "node:fs";
+import path from "node:path";
+import { $, file } from "bun";
 
 const app = command({
-  name: 'createStoryVideo',
+  name: "createStoryVideo",
   args: {
     text: option({
       type: string,
-      long: 'text',
-      description: 'Der Text der Geschichte',
-     
+      long: "text",
+      description: "Der Text der Geschichte",
     }),
     imagePath: option({
       type: string,
-      long: 'imagePath',
-      description: 'Der Pfad zum Thumbnail-Bild',
-     
+      long: "imagePath",
+      description: "Der Pfad zum Thumbnail-Bild",
+    }),
+    outDir: option({
+      type: string,
+      long: "outDir",
+      short: "o",
+      description: "Der Pfad für das Ergebniss",
     }),
   },
-  handler: async ({ text, imagePath }) => {
+  handler: async ({ text, imagePath, outDir }) => {
+    if (fs.existsSync(text)) {
+      text = await $`cat ${text}`.text();
+    }
 
-   if (fs.existsSync(text))
-   {
-    text=await $`cat ${text}`.text()
-   }
+    const targetFolder = path.resolve(outDir);
+    const targetFile = path.resolve(targetFolder, "result.wav");
 
-    const audioPath = await convertTextToSpeech(text);
-    await createVideoWithThumbnail(imagePath, audioPath);
+    await $`mkdir -p ${targetFolder}`;
+    if (!(await file(targetFile).exists())) {
+      await convertTextToSpeech(text, targetFile);
+    } else {
+      console.log("Skipping convertTextToSpeech file exists:" + targetFile);
+    }
+
+    await createVideoWithThumbnail(imagePath, targetFile);
   },
 });
 
 run(binary(app), process.argv);
-
