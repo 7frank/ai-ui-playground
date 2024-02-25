@@ -15,7 +15,7 @@ const app = command({
     imagePath: option({
       type: string,
       long: "imagePath",
-      description: "Der Pfad zum Thumbnail-Bild",
+      description: "a ffmpeg conform image path e.g. '.foo/barimg%03d.jpg'",
     }),
     outDir: option({
       type: string,
@@ -24,28 +24,33 @@ const app = command({
       description: "Der Pfad für das Ergebniss",
     }),
   },
-  handler: async ({ text, imagePath, outDir }) => {
+  handler: async ({ text, imagePath: imagePattern, outDir }) => {
     if (fs.existsSync(text)) {
       text = await $`cat ${text}`.text();
     }
 
     const targetFolder = path.resolve(outDir);
-    const targetFile = path.resolve(targetFolder, "result.wav");
+    const audioFile = path.resolve(targetFolder, "result.wav");
 
     await $`mkdir -p ${targetFolder}`;
-    if (!(await file(targetFile).exists())) {
-      await convertTextToSpeech(text, targetFile);
-      console.log("converted TextToSpeech Result:" + targetFile);
+    if (!(await file(audioFile).exists())) {
+      await convertTextToSpeech(text, audioFile);
+      console.log("converted TextToSpeech Result:" + audioFile);
     } else {
-      console.log("Skipping convertTextToSpeech file exists:" + targetFile);
+      console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
     }
 
-    if(!imagePath)
-    {
-      console.log("specify an imagePath if you want to convert the audio to video")
+    if (!imagePattern) {
+      console.log(
+        "specify an imagePath if you want to convert the audio to video"
+      );
     }
 
-    await createVideoWithThumbnail(imagePath, targetFile);
+    await createVideoWithThumbnail({
+      imagePattern,
+      audioFile,
+      outDir,
+    });
   },
 });
 

@@ -17,7 +17,7 @@ bun run index.ts
 bun run index.ts --text "Your story here."
 
 # generate video from
-bun run index.ts --text ./assets/story1_en.txt --imagePath "assets/story1/images/img%03d.jpg" -o .out
+bun run index.ts --text ./assets/story1_en.txt --imagePath "./assets/story1/images/img%03d.jpg" -o .out
 
 # batch convert images
 bun run batchRenameImages.ts assets/story1/images/ *.webp
