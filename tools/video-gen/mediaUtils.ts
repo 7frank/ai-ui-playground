@@ -1,6 +1,8 @@
 import { $, file } from "bun";
 import { writeFile } from "fs/promises";
 import path from "node:path";
+// @ts-ignore
+import videoshow from "videoshow";
 
 export async function convertTextToSpeech(
   text: string,
@@ -45,7 +47,7 @@ export async function createVideoWithThumbnail({
   const searchPattern = imagePattern.replace("%03d", "***");
 
   if (!(await file(slideshow).exists())) {
-    await generateSlideShow(
+    await generateSlideShowWithCrossFade(
       searchPattern,
       audioDurationInSeconds,
       imagePattern,
@@ -90,7 +92,6 @@ async function generateSlideShow(
   } -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${outputFile}`;
 }
 
-
 async function generateSlideShowWithCrossFade(
   searchPattern: string,
   audioDurationInSeconds: number,
@@ -116,7 +117,32 @@ async function generateSlideShowWithCrossFade(
     process.exit(1);
   }
 
-  const frameRate = Math.ceil(audioDurationInSeconds / imageCount);
-
- 
+  var videoOptions = {
+    fps: 10,
+    loop: audioDurationInSeconds / imageCount, // seconds each image is visible
+    transition: true,
+    transitionDuration: 1, // seconds
+    videoBitrate: 1024,
+    videoCodec: "libx264",
+    size: "640x?",
+    audioBitrate: "128k",
+    audioChannels: 2,
+    format: "mp4",
+    pixelFormat: "yuv420p",
+  };
+  return new Promise<void>((resolve, reject) => {
+    videoshow(images, videoOptions)
+      // .audio('song.mp3')
+      .save(outputFile)
+      .on("start", function (command) {
+        console.error("ffmpeg process started:", command);
+      })
+      .on("error", function (err, stdout, stderr) {
+        reject(err + stderr);
+      })
+      .on("end", function (output) {
+        console.error("Video created in:", output);
+        resolve();
+      });
+  });
 }
