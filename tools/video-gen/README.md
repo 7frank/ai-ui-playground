@@ -2,8 +2,10 @@
 
 This thingy currently semi-automatically generates videos from a series of input images and text that is converted to audio.
 
-https://chat.openai.com/c/4931e81d-312b-42c6-a6ed-325e88ef8555
+# resources
 
+https://chat.openai.com/c/4931e81d-312b-42c6-a6ed-325e88ef8555
+https://pixabay.com/sound-effects/search/sunny/
 
 
 

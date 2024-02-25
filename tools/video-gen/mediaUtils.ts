@@ -27,10 +27,12 @@ export async function createVideoWithThumbnail({
   imagePattern,
   audioFile,
   outDir,
+  ambientAudioFile="assets/ambient/birds-chirping.mp3"
 }: {
   imagePattern: string;
   audioFile: string;
   outDir: string;
+  ambientAudioFile?:string;
 }) {
   const slideshow = path.resolve(outDir, "_slideshow.mp4");
 
@@ -66,9 +68,10 @@ export async function createVideoWithThumbnail({
   }
 
   const resultMp4 = path.resolve(outDir, "result.mp4");
-
+  //-stream_loop -1 -i ${ambientAudioFile}
   if (!(await file(resultMp4).exists())) {
-    await $`ffmpeg -i ${slideshow} -i ${audioFile} -c:v copy -c:a aac -shortest ${resultMp4}`;
+    await $`ffmpeg -i ${slideshow} -stream_loop -1 -i ${ambientAudioFile} -i ${audioFile} -filter_complex "[1:a][2:a]amerge=inputs=2[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -shortest ${resultMp4}
+    `;
     console.log("generated result" + resultMp4);
   } else {
     console.log("Skipping generating result, file exists:" + resultMp4);
