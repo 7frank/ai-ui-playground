@@ -45,6 +45,8 @@ export async function createVideoWithThumbnail({
 
   const imageCount = parseInt(lsResult);
 
+  if (imageCount<=1) {console.error("there must be at least one image for the video encoding"); process.exit(1)}
+
   const fps = 10;
 
 
