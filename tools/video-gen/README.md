@@ -1,5 +1,8 @@
 # video-gen
 
+
+https://chat.openai.com/c/4931e81d-312b-42c6-a6ed-325e88ef8555
+
 To install dependencies:
 
 ```bash
@@ -11,7 +14,14 @@ To run:
 ```bash
 bun run index.ts
 
-bun run index.ts --text "Ihre Geschichte hier" --imagePath "/pfad/zum/thumbnail.jpg"
+bun run index.ts --text "Your story here."
+
+# generate video from
+bun run index.ts --text ./assets/story1_en.txt --imagePath "assets/story1/images/img%03d.jpg" -o .out
+
+# batch convert images
+bun run batchRenameImages.ts assets/story1/images/ *.webp
+
 ```
 
 This project was created using `bun init` in bun v1.0.25. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

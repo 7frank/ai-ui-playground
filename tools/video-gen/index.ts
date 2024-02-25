@@ -35,8 +35,14 @@ const app = command({
     await $`mkdir -p ${targetFolder}`;
     if (!(await file(targetFile).exists())) {
       await convertTextToSpeech(text, targetFile);
+      console.log("converted TextToSpeech Result:" + targetFile);
     } else {
       console.log("Skipping convertTextToSpeech file exists:" + targetFile);
+    }
+
+    if(!imagePath)
+    {
+      console.log("specify an imagePath if you want to convert the audio to video")
     }
 
     await createVideoWithThumbnail(imagePath, targetFile);
