@@ -45,7 +45,7 @@ export async function createVideoWithThumbnail({
   const searchPattern = imagePattern.replace("%03d", "***");
 
   if (!(await file(slideshow).exists())) {
-    await generateSlideShowWithCrossFade(
+    await generateSlideShow(
       searchPattern,
       audioDurationInSeconds,
       imagePattern,
@@ -90,6 +90,7 @@ async function generateSlideShow(
   } -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${outputFile}`;
 }
 
+
 async function generateSlideShowWithCrossFade(
   searchPattern: string,
   audioDurationInSeconds: number,
@@ -115,29 +116,7 @@ async function generateSlideShowWithCrossFade(
     process.exit(1);
   }
 
-  const inputCmds = images.map((input) => `-loop 1 -t 1 -i ${input}`).join(" ");
+  const frameRate = Math.ceil(audioDurationInSeconds / imageCount);
 
-  const filterCmds = images
-    .slice(1)
-    .map(
-      (_, i) =>
-        `[${
-          i + 1
-        }:v][${i}:v]blend=all_expr='A*(if(gte(T,${crossfade}),1,T/${crossfade}))+B*(1-(if(gte(T,${crossfade}),1,T/${crossfade})))'[b${
-          i + 1
-        }v];`
-    )
-    .join("");
-
-  const outputCmds =
-    images
-      .slice(1)
-      .reduce((acc, _, i) => `${acc}[b${i + 1}v][${i + 1}:v]`, "[0:v]") +
-    `concat=n=${imageCount * 2 - 1}:v=1:a=0,format=yuv420p[v]`;
-
-  const frameRate = audioDurationInSeconds / imageCount;
-
-  console.error(`ffmpeg  -r ${fps}  -framerate 1/${frameRate} ${inputCmds} -filter_complex "${filterCmds} ${outputCmds}" -map "[v]" ${outputFile}`);
-
-  await $`ffmpeg  -r ${fps}  -framerate 1/${frameRate} ${inputCmds} -filter_complex "${filterCmds} ${outputCmds}" -map "[v]" ${outputFile}`;
+ 
 }
