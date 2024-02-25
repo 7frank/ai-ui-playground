@@ -9,9 +9,6 @@ https://paperswithcode.com/task/speech-to-speech-translation
 7. https://huggingface.co/spaces/espnet/cvss-c_es-en_s2st/blob/main/app.py
 
 
-https://github.com/coqui-ai/whisperX
-https://github.com/coqui-ai/TTS
-
 lots of courses on huggingface e.g.:
 - https://huggingface.co/learn/audio-course/chapter7/speech-to-speech
 - https://huggingface.co/spaces/course-demos/speech-to-speech-translation
@@ -24,9 +21,19 @@ Realtime STST streaming
 - [Example](https://huggingface.co/spaces/facebook/seamless-streaming)
 - [Example - Source Code](https://huggingface.co/spaces/facebook/seamless-streaming/tree/main)
 
+## STT - TTS
 
+### whisperX
 
-# music & streaming ideas
+https://github.com/coqui-ai/whisperX
+
+### Coqui
+- [Coqui AI STT (GitHub)](https://github.com/coqui-ai/STT)
+- [Coqui XTTS v2 (Hugging Face)](https://huggingface.co/coqui/XTTS-v2)
+- [Repo](https://github.com/coqui-ai/TTS)
+- [Coqui XTTS-CPU Package]https://github.com/coqui-ai/TTS/pkgs/container/tts-cpu#docker-image
+
+## music & streaming ideas
 
 > This is probably the reason so many youtube lofi streams exist
 

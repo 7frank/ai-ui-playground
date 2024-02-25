@@ -137,8 +137,7 @@ https://raw.githubusercontent.com/spdustin/ChatGPT-AutoExpert/main/_system-promp
 ### Additional AI Resources
 - [AI Cybersecurity (Gist)](https://gist.github.com/mgeeky/cbc7017986b2ec3e247aab0b01a9edcd)
 - [OpenAI's Code Interpreter (AI Business)](https://aibusiness.com/nlp/openai-s-code-interpreter-lets-chatgpt-play-data-scientist)
-- [Coqui AI STT (GitHub)](https://github.com/coqui-ai/STT)
-- [Coqui XTTS v2 (Hugging Face)](https://huggingface.co/coqui/XTTS-v2)
+
 - [LCM-Lora AI Model (Der Standard)](https://www.derstandard.de/story/3000000196318/lcm-lora-neues-ki-modell-sorgt-im-internet-fuer-grosses-aufsehen)
 - [Sparse Priming Representation (YouTube)](https://youtu.be/piRMk2KIx2o?feature=shared)
 - [Autogpt & Memgpt & Runpod (YouTube)](https://youtu.be/bMWXXPoDnDs?feature=shared)
