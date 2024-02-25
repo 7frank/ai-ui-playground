@@ -45,7 +45,12 @@ export async function createVideoWithThumbnail({
   const searchPattern = imagePattern.replace("%03d", "***");
 
   if (!(await file(slideshow).exists())) {
-    await generateSlideShow(searchPattern, audioDurationInSeconds, imagePattern, slideshow);
+    await generateSlideShowWithCrossFade(
+      searchPattern,
+      audioDurationInSeconds,
+      imagePattern,
+      slideshow
+    );
     console.log("generated image slideshow" + slideshow);
   } else {
     console.log(
@@ -63,17 +68,76 @@ export async function createVideoWithThumbnail({
     console.log("Skipping generating result, file exists:" + resultMp4);
   }
 }
-async function generateSlideShow(searchPattern: string, audioDurationInSeconds: number, imagePattern: string, outputFile: string) {
-    const lsResult = await $`ls ${searchPattern} | wc -l`.text();
-    const imageCount = parseInt(lsResult);
 
-    if (imageCount <= 1) {
-        console.error("there must be at least one image for the video encoding");
-        process.exit(1);
-    }
+async function generateSlideShow(
+  searchPattern: string,
+  audioDurationInSeconds: number,
+  imagePattern: string,
+  outputFile: string
+) {
+  const lsResult = await $`ls ${searchPattern} | wc -l`.text();
+  const imageCount = parseInt(lsResult);
 
-    const fps = 10;
+  if (imageCount <= 1) {
+    console.error("there must be at least one image for the video encoding");
+    process.exit(1);
+  }
 
-    await $`ffmpeg -framerate 1/${audioDurationInSeconds / imageCount} -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${outputFile}`;
+  const fps = 10;
+
+  await $`ffmpeg -framerate 1/${
+    audioDurationInSeconds / imageCount
+  } -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${outputFile}`;
 }
 
+async function generateSlideShowWithCrossFade(
+  searchPattern: string,
+  audioDurationInSeconds: number,
+  imagePattern: string,
+  outputFile: string
+) {
+  const crossfade = 0.9;
+  const fps = 10;
+
+  const directory = path.dirname(searchPattern);
+  const filePattern = path.basename(searchPattern);
+
+  let images = (
+    await $`find ${directory} -maxdepth 4 -type f  -name '${filePattern}'`.text()
+  )
+    .trim()
+    .split("\n");
+
+  const imageCount = images.length;
+
+  if (imageCount <= 1) {
+    console.error("there must be at least one image for the video encoding");
+    process.exit(1);
+  }
+
+  const inputCmds = images.map((input) => `-loop 1 -t 1 -i ${input}`).join(" ");
+
+  const filterCmds = images
+    .slice(1)
+    .map(
+      (_, i) =>
+        `[${
+          i + 1
+        }:v][${i}:v]blend=all_expr='A*(if(gte(T,${crossfade}),1,T/${crossfade}))+B*(1-(if(gte(T,${crossfade}),1,T/${crossfade})))'[b${
+          i + 1
+        }v];`
+    )
+    .join("");
+
+  const outputCmds =
+    images
+      .slice(1)
+      .reduce((acc, _, i) => `${acc}[b${i + 1}v][${i + 1}:v]`, "[0:v]") +
+    `concat=n=${imageCount * 2 - 1}:v=1:a=0,format=yuv420p[v]`;
+
+  const frameRate = audioDurationInSeconds / imageCount;
+
+  console.error(`ffmpeg  -r ${fps}  -framerate 1/${frameRate} ${inputCmds} -filter_complex "${filterCmds} ${outputCmds}" -map "[v]" ${outputFile}`);
+
+  await $`ffmpeg  -r ${fps}  -framerate 1/${frameRate} ${inputCmds} -filter_complex "${filterCmds} ${outputCmds}" -map "[v]" ${outputFile}`;
+}
