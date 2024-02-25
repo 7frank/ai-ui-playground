@@ -7,5 +7,11 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "cmd-ts": "^0.13.0"
+  },
+  "scripts": {
+    "bash": "docker run --rm -it -p 5002:5002 --entrypoint /bin/bash ghcr.io/coqui-ai/tts-cpu"
   }
 }
