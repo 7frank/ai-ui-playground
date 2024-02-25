@@ -11,15 +11,7 @@ https://pixabay.com/sound-effects/search/sunny/
 # TODO
 
 - check out logo and captions examples https://github.com/h2non/videoshow/tree/master/examples
-- TODO add silence 
-```bash
-rec filename.wav trim 0 120 
-
-ffmpeg -i .out/result.orig.wav -af "adelay=3s:all=true" .out/result.wav
-
-ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient/silence10s.wav -filter_complex "[0:a][1:a][2:a]concat=n=3:v=0:a=1[a]" -map "[a]" .out/result.wav
-
-```
+- 
 # To install dependencies:
 
 ```bash
@@ -46,7 +38,6 @@ python3 TTS/server/server.py --model_name tts_models/en/vctk/vits # To start a s
 ## To run the text-to-audio-to-video step:
 
 ```bash
-
 # batch convert images which you will need for the video slide show
 bun run batchRenameImages.ts assets/story1/images/ *.webp
 
@@ -55,7 +46,29 @@ bun run index.ts --text ./assets/story1_en.txt --imagePath "assets/story1/images
 
 # fiddle with the audio part only
 bun run index.ts --text "Your story here."
+```
 
+## To add silence manually for the moment
+
+```bash
+rec filename.wav trim 0 120 
+
+ffmpeg -i .out/result.orig.wav -af "adelay=3s:all=true" .out/result.wav
+
+ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient/silence10s.wav -filter_complex "[0:a][1:a][2:a]concat=n=3:v=0:a=1[a]" -map "[a]" .out/result.wav
 
 ```
 
+
+
+## WIP (move to docs) music style transfer
+
+
+
+`ffmpeg -i assets/misc/Tetris.mp3 -ss 00:00:00 -to 00:00:15 -c copy assets/misc/Tetris15s.mp3`
+
+https://huggingface.co/spaces/jhtonyKoo/music_mixing_style_transfer
+https://archive.org/details/TetrisThemeMusic
+https://www.noiiz.com/sounds/playlists/399724
+
+https://d7d3471nr939s.cloudfront.net/SimplySoulful_Noiiz/MP3/Loops/Synths/155_E_KeptPretenseSynth_02_654.mp3?cb=49b90cc9-87e3-4d1b-9851-31a3867e67fa
