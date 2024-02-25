@@ -44,22 +44,8 @@ export async function createVideoWithThumbnail({
   //   Therefore for all intents and purposes we will resort to "*".
   const searchPattern = imagePattern.replace("%03d", "***");
 
-  const lsResult = await $`ls ${searchPattern} | wc -l`.text();
-
-  const imageCount = parseInt(lsResult);
-
-  if (imageCount <= 1) {
-    console.error("there must be at least one image for the video encoding");
-    process.exit(1);
-  }
-
-  const fps = 10;
-
   if (!(await file(slideshow).exists())) {
-    await $`ffmpeg -framerate 1/${
-      audioDurationInSeconds / imageCount
-    } -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${slideshow}`;
-
+    await generateSlideShow(searchPattern, audioDurationInSeconds, imagePattern, slideshow);
     console.log("generated image slideshow" + slideshow);
   } else {
     console.log(
@@ -77,3 +63,17 @@ export async function createVideoWithThumbnail({
     console.log("Skipping generating result, file exists:" + resultMp4);
   }
 }
+async function generateSlideShow(searchPattern: string, audioDurationInSeconds: number, imagePattern: string, outputFile: string) {
+    const lsResult = await $`ls ${searchPattern} | wc -l`.text();
+    const imageCount = parseInt(lsResult);
+
+    if (imageCount <= 1) {
+        console.error("there must be at least one image for the video encoding");
+        process.exit(1);
+    }
+
+    const fps = 10;
+
+    await $`ffmpeg -framerate 1/${audioDurationInSeconds / imageCount} -i ${imagePattern} -c:v libx264 -r ${fps} -pix_fmt yuv420p ${outputFile}`;
+}
+
