@@ -27,12 +27,12 @@ export async function createVideoWithThumbnail({
   imagePattern,
   audioFile,
   outDir,
-  ambientAudioFile="assets/ambient/birds-chirping.mp3"
+  ambientAudioFile = "assets/ambient/birds-chirping.mp3",
 }: {
   imagePattern: string;
   audioFile: string;
   outDir: string;
-  ambientAudioFile?:string;
+  ambientAudioFile?: string;
 }) {
   const slideshow = path.resolve(outDir, "_slideshow.mp4");
 
@@ -40,20 +40,20 @@ export async function createVideoWithThumbnail({
     await $`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ${audioFile}`.text();
   const audioDurationInSeconds = parseInt(ffProbeResult);
 
-   // Note: bun seems to not have properly working shell pattern "?". 
-   //   Therefore for all intents and purposes we will resort to "*".
+  // Note: bun seems to not have properly working shell pattern "?".
+  //   Therefore for all intents and purposes we will resort to "*".
   const searchPattern = imagePattern.replace("%03d", "***");
-
 
   const lsResult = await $`ls ${searchPattern} | wc -l`.text();
 
   const imageCount = parseInt(lsResult);
 
-  if (imageCount<=1) {console.error("there must be at least one image for the video encoding"); process.exit(1)}
+  if (imageCount <= 1) {
+    console.error("there must be at least one image for the video encoding");
+    process.exit(1);
+  }
 
   const fps = 10;
-
-
 
   if (!(await file(slideshow).exists())) {
     await $`ffmpeg -framerate 1/${
