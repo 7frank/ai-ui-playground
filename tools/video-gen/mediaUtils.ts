@@ -38,9 +38,11 @@ export async function createVideoWithThumbnail({
     await $`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ${audioFile}`.text();
   const audioDurationInSeconds = parseInt(ffProbeResult);
 
-  const searchPattern = imagePattern.replace("%03d", "???");
+   // Note: bun seems to not have properly working shell pattern "?". 
+   //   Therefore for all intents and purposes we will resort to "*".
+  const searchPattern = imagePattern.replace("%03d", "***");
 
-  // FIXME ls not working in here?
+
   const lsResult = await $`ls ${searchPattern} | wc -l`.text();
 
   const imageCount = parseInt(lsResult);
