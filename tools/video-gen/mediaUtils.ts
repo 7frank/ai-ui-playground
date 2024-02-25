@@ -85,7 +85,7 @@ async function generateSlideShow(
     process.exit(1);
   }
 
-  const fps = 10;
+  const fps = 20;
 
   await $`ffmpeg -framerate 1/${
     audioDurationInSeconds / imageCount
@@ -99,7 +99,7 @@ async function generateSlideShowWithCrossFade(
   outputFile: string
 ) {
   const crossfade = 0.9;
-  const fps = 10;
+  const fps = 20;
 
   const directory = path.dirname(searchPattern);
   const filePattern = path.basename(searchPattern);
@@ -118,7 +118,7 @@ async function generateSlideShowWithCrossFade(
   }
 
   var videoOptions = {
-    fps: 10,
+    fps,
     loop: audioDurationInSeconds / imageCount, // seconds each image is visible
     transition: true,
     transitionDuration: 1, // seconds

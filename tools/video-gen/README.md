@@ -8,9 +8,18 @@ https://chat.openai.com/c/4931e81d-312b-42c6-a6ed-325e88ef8555
 https://pixabay.com/sound-effects/search/sunny/
 
 
+# TODO
 
+- check out logo and captions examples https://github.com/h2non/videoshow/tree/master/examples
+- TODO add silence 
+```bash
+rec filename.wav trim 0 120 
 
+ffmpeg -i .out/result.orig.wav -af "adelay=3s:all=true" .out/result.wav
 
+ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient/silence10s.wav -filter_complex "[0:a][1:a][2:a]concat=n=3:v=0:a=1[a]" -map "[a]" .out/result.wav
+
+```
 # To install dependencies:
 
 ```bash
