@@ -1,35 +1,25 @@
 # video-gen
 
+This thingy currently semi-automatically generates videos from a series of input images and text that is converted to audio.
 
 https://chat.openai.com/c/4931e81d-312b-42c6-a6ed-325e88ef8555
 
-To install dependencies:
+
+
+
+
+
+# To install dependencies:
 
 ```bash
 bun install
 ```
 
-To run:
-
-```bash
-bun run index.ts
-
-bun run index.ts --text "Your story here."
-
-# generate video from
-bun run index.ts --text ./assets/story1_en.txt --imagePath "./assets/story1/images/img%03d.jpg" -o .out
-
-# batch convert images
-bun run batchRenameImages.ts assets/story1/images/ *.webp
-
-```
-
-This project was created using `bun init` in bun v1.0.25. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
-## How to
+# to run stuff
 
 
-    
+## to run the text-to-speech (TTS)
+
 - Start the TTS server
 
 ```bash
@@ -39,4 +29,22 @@ python3 TTS/server/server.py --list_models #To get the list of available models
 python3 TTS/server/server.py --model_name tts_models/en/vctk/vits # To start a server
 ```
 
--goto `http://localhost:5002/`
+- (to see the gui if you want to manually pla ywith settings of this step) goto `http://localhost:5002/`
+
+
+## To run the text-to-audio-to-video step:
+
+```bash
+
+# batch convert images which you will need for the video slide show
+bun run batchRenameImages.ts assets/story1/images/ *.webp
+
+# run the text-to-video step (this is the main use case)
+bun run index.ts --text ./assets/story1_en.txt --imagePath "assets/story1/images/img%03d.webp" -o .out
+
+# fiddle with the audio part only
+bun run index.ts --text "Your story here."
+
+
+```
+
