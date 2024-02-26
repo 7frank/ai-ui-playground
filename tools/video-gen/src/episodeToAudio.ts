@@ -52,7 +52,7 @@ async function createEpisodeAudioChunks(episode: ScreenplaySchema,voices = { nar
             `${paddedSceneId}_${paddedNarratorId}.wav`
           );
 
-          const narratorText = narration ?? "" + " " + actions.join(" ");
+          const narratorText = (narration ?? "") + " " + actions.join(" ");
           console.log("narrator", narratorText);
 
           await doSpeak(narratorAudioFile, narratorText, voices.narrator).catch(

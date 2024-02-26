@@ -59,7 +59,7 @@ ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient
 
 ```
 
-## WIP generate an episode
+## generate an episode
 
 This is a more structured approach to generating an episode
 
@@ -67,7 +67,7 @@ This is a more structured approach to generating an episode
     - `bun run src/prompt.ts > assets/Arc/S1E1.screenplay.json`
 - convert the screenplay into audio snippets
     - `bun run src/episodeToAudio.ts `
-- concat files `sox .out/S1E1/*_*.wav .out/S1E1/foo.wav`
+- concat files `sox .out/S1E1/*_*.wav .out/S1E1/result.wav pad 2 10`
 
 - generate images via openai dalle-3 `bun run src/episodeToImages.ts`
 
@@ -75,7 +75,17 @@ This is a more structured approach to generating an episode
     - `ffmpeg -i assets/Arc/S1E1/images/img-6BVIzZGpEVmxypbHuW3IvWHS.png -c:v libwebp result.webp`
 - batch rename images `bun run batchRenameImages.ts assets/Arc/S1E1/images/ *.webp`
 
-- `bun run index.ts  --imagePath "assets/Arc/S1E1/images/img%03d.webp" -o .out/S1E1`
+- `bun run index.ts --text ""  --imagePath "assets/Arc/S1E1/images/img%03d.webp" -o .out/S1E1`
+
+- add logo in S1E2
+`
+ffmpeg -i .out/S1E1/result.mp4 -loop 1 -t 9  -i ./assets/logo/logo.webp -filter_complex "[1:v]format=rgba,fade=in:st=1:d=3:alpha=1,fade=out:st=6:d=3:alpha=1 [ovr]; [0][ovr] overlay" -codec:a copy .out/S1E1/final.mp4
+`
+
+
+### emotion style transfer
+
+https://github.com/ide8/tacotron2?tab=readme-ov-file#inference
 
 ## WIP (move to docs) music style transfer
 
