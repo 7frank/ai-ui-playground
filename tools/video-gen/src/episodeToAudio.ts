@@ -3,6 +3,15 @@ import { ScreenplaySchema } from "./PromptSchema";
 import { convertTextToSpeech } from "../mediaUtils";
 import path from "node:path";
 
+// TODO add this when the narrator is speaking only
+//   const heSaidSheSaid =
+//     Math.random() < 0.2
+//       ? " " +
+//         speaker.character +
+//         " " +
+//         getSynonymForSaidByMood(speaker.mood ?? mood ?? "")
+//       : "";
+
 const res = await $`cat assets/Arc/S1E1.screenplay.json`.json();
 
 const episode = ScreenplaySchema.parse(res);
@@ -20,33 +29,18 @@ const res2 = await Promise.allSettled(
         const paddedId = id.toString().padStart(3, "0");
 
         const targetFolder = path.resolve(`.out/S1E1/`);
+        await $`mkdir -p ${targetFolder}`;
+
         const audioFile = path.resolve(
           targetFolder,
           `${paddedSceneId}_${paddedId}.wav`
         );
         const voices = { narrator: "ED", mimi: "p364", lulu: "p297" };
+        const selectedVoice = voices[speaker.character.toLowerCase()];
+        const { text, mood } = extractMoodAndText(speaker.lines.join(""));
+        console.log(speaker.character, speaker.mood, mood, text);
 
-        await $`mkdir -p ${targetFolder}`;
-
-        if (!(await file(audioFile).exists())) {
-          const { text, mood } = extractMoodAndText(speaker.lines.join(""));
-          console.log(speaker.character, speaker.mood, mood, text);
-
-          // TODO add this when the narrator is speaking only
-          //   const heSaidSheSaid =
-          //     Math.random() < 0.2
-          //       ? " " +
-          //         speaker.character +
-          //         " " +
-          //         getSynonymForSaidByMood(speaker.mood ?? mood ?? "")
-          //       : "";
-
-          const selectedVoice = voices[speaker.character.toLowerCase()];
-          await convertTextToSpeech(text, audioFile, selectedVoice);
-          console.log("converted TextToSpeech Result:" + audioFile);
-        } else {
-          console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
-        }
+        await doSpeak(audioFile, text, selectedVoice);
 
         return { audioFile };
       });
@@ -58,6 +52,15 @@ const res2 = await Promise.allSettled(
 
 // TODO error messages arent serialized
 console.log(JSON.stringify(res2, null, "  "));
+
+async function doSpeak(audioFile: string, text: string, selectedVoice: string) {
+  if (!(await file(audioFile).exists())) {
+    await convertTextToSpeech(text, audioFile, selectedVoice);
+    console.log("converted TextToSpeech Result:" + audioFile);
+  } else {
+    console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
+  }
+}
 
 function extractMoodAndText(input: string): {
   mood: string | null;
