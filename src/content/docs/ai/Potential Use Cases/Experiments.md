@@ -4,6 +4,8 @@ title: Experiments
 
 This section summarizes some small scenarios testing capabilites
 
+<img src="./Experiments.drawio.png" />
+
 ## [done] stabilityai-sdxl
 - on huggingface (Problem: GPU is not free) and modelrrequires GPU
     - https://huggingface.co/spaces/7Frank/stabilityai-sdxl

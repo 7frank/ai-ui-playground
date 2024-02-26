@@ -68,6 +68,8 @@ ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient
 `ffmpeg -i assets/misc/Tetris.mp3 -ss 00:00:00 -to 00:00:15 -c copy assets/misc/Tetris15s.mp3`
 
 https://huggingface.co/spaces/jhtonyKoo/music_mixing_style_transfer
+https://arxiv.org/pdf/2211.02247.pdf
+
 https://archive.org/details/TetrisThemeMusic
 https://www.noiiz.com/sounds/playlists/399724
 
