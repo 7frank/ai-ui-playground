@@ -6,11 +6,12 @@ import videoshow from "videoshow";
 
 export async function convertTextToSpeech(
   text: string,
-  outFile = "audio.wav"
+  outFile = "audio.wav",
+  speakerId="p364"
 ): Promise<string> {
   const baseUrl = "http://localhost:5002/api/tts";
   const encoded = encodeURIComponent(text);
-  const url = `${baseUrl}?text=${encoded}&speaker_id=p364&style_wav=&language_id=en`;
+  const url = `${baseUrl}?text=${encoded}&speaker_id=${speakerId}&style_wav=&language_id=en`;
 
   const response = await fetch(url);
   if (!response.ok) {
