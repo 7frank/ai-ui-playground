@@ -34,7 +34,7 @@ const app = command({
     // Note: for now we assume that the result.wav exists ans search for it if no text is specifiec
     //   TODO change this approach
 
-    if (text) {
+    if (!!text) {
       if (fs.existsSync(text)) {
         text = await $`cat ${text}`.text();
       }
@@ -46,6 +46,8 @@ const app = command({
       } else {
         console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
       }
+    } else {
+      console.log("no text provided assuming file exists", audioFile);
     }
 
     if (!imagePattern) {
