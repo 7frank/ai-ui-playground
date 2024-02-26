@@ -71,6 +71,8 @@ This is a more structured approach to generating an episode
 
 - generate images via openai dalle-3 `bun run src/episodeToImages.ts`
 
+
+
 ## WIP (move to docs) music style transfer
 
 handy script to shorten audio tracks
