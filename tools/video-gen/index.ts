@@ -1,5 +1,8 @@
 import { binary, command, option, run, string } from "cmd-ts";
-import { convertTextToSpeech, createVideoWithThumbnail } from "./src/mediaUtils"; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
+import {
+  convertTextToSpeech,
+  createVideoWithThumbnail,
+} from "./src/mediaUtils"; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
 import fs from "node:fs";
 import path from "node:path";
 import { $, file } from "bun";
@@ -25,19 +28,24 @@ const app = command({
     }),
   },
   handler: async ({ text, imagePath: imagePattern, outDir }) => {
-    if (fs.existsSync(text)) {
-      text = await $`cat ${text}`.text();
-    }
-
     const targetFolder = path.resolve(outDir);
     const audioFile = path.resolve(targetFolder, "result.wav");
 
-    await $`mkdir -p ${targetFolder}`;
-    if (!(await file(audioFile).exists())) {
-      await convertTextToSpeech(text, audioFile);
-      console.log("converted TextToSpeech Result:" + audioFile);
-    } else {
-      console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
+    // Note: for now we assume that the result.wav exists ans search for it if no text is specifiec
+    //   TODO change this approach
+
+    if (text) {
+      if (fs.existsSync(text)) {
+        text = await $`cat ${text}`.text();
+      }
+
+      await $`mkdir -p ${targetFolder}`;
+      if (!(await file(audioFile).exists())) {
+        await convertTextToSpeech(text, audioFile);
+        console.log("converted TextToSpeech Result:" + audioFile);
+      } else {
+        console.log("Skipping convertTextToSpeech, file exists:" + audioFile);
+      }
     }
 
     if (!imagePattern) {
