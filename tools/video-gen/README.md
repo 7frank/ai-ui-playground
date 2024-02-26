@@ -79,8 +79,12 @@ This is a more structured approach to generating an episode
 
 - add logo in S1E2
 `
-ffmpeg -i .out/S1E1/result.mp4 -loop 1 -t 9  -i ./assets/logo/logo.webp -filter_complex "[1:v]format=rgba,fade=in:st=1:d=3:alpha=1,fade=out:st=6:d=3:alpha=1 [ovr]; [0][ovr] overlay" -codec:a copy .out/S1E1/final.mp4
+ffmpeg -i .out/S1E1/result.mp4 -loop 0 -t 5  -i ./assets/logo/logo.webp -filter_complex "[1:v]format=rgba,fade=in:st=1:d=3:alpha=1,fade=out:st=6:d=3:alpha=1 [ovr]; [0][ovr] overlay=format=auto" -codec:a copy .out/S1E1/final.mp4
 `
+    -  (center logo)
+- TODO slow down audio
+- emotions
+
 
 
 ### emotion style transfer
