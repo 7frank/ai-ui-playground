@@ -69,6 +69,7 @@ This is a more structured approach to generating an episode
     - `bun run src/episodeToAudio.ts `
 - concat files `sox .out/S1E1/*_*.wav .out/S1E1/foo.wav`
 
+- generate images via openai dalle-3 `bun run src/episodeToImages.ts`
 
 ## WIP (move to docs) music style transfer
 
