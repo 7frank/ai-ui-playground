@@ -71,7 +71,9 @@ This is a more structured approach to generating an episode
 
 - generate images via openai dalle-3 `bun run src/episodeToImages.ts`
 
-
+- convert png top webp manually 
+    - `ffmpeg -i assets/Arc/S1E1/images/img-6BVIzZGpEVmxypbHuW3IvWHS.png -c:v libwebp result.webp`
+- batch rename images `bun run batchRenameImages.ts assets/Arc/S1E1/images/ *.webp`
 
 ## WIP (move to docs) music style transfer
 
