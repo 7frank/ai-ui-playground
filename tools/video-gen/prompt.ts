@@ -1,31 +1,45 @@
 import { OpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { StringOutputParser,JsonOutputParser } from "@langchain/core/output_parsers";
+import {
+  StringOutputParser,
+  JsonOutputParser,
+} from "@langchain/core/output_parsers";
 import { z } from "zod";
 import { getFirstCodeBlock } from "./extractContent";
+import { OpenAIChatApi } from "llm-api";
+import { completion } from "zod-gpt";
 
-// Assume OpenAI setup here, similar to the previous example
-const openAI = new OpenAI({
-  openAIApiKey: process.env.OPENAI_API_KEY,
-  modelName: "gpt-3.5-turbo",
-});
+if (!process.env.OPENAI_API_KEY) {
+  console.error("missing OPENAI_API_KEY");
+  process.exit(1);
+}
 
 async function generateScreenplayPrompt(entry: PromptSchema) {
   const episodePrompt = ChatPromptTemplate.fromTemplate<PromptSchema>(
     `Generate a screenplay scene for an episode titled "{{episodeTitle}}" with the following context: {{sceneContext}}. The scene should include dialogues with specified moods for the characters, actions, and a narrator's exposition.`
   );
 
-  const chain = episodePrompt
-    .pipe(openAI)
-    .pipe(new StringOutputParser())
-    .pipe(getFirstCodeBlock);
+  // // Assume OpenAI setup here, similar to the previous example
+  // const openAI = new OpenAI({
+  //     openAIApiKey: process.env.OPENAI_API_KEY,
+  //     modelName: "gpt-3.5-turbo",
+  //   });
+  //   const chain = episodePrompt
+  //     .pipe(openAI)
+  //     .pipe(new StringOutputParser())
+  //     .pipe(getFirstCodeBlock);
+  //  // new JsonOutputParser<ScreenplaySchema>()
+  //   const episode = await chain.invoke(entry);
 
-  new JsonOutputParser<ScreenplaySchema>()
+  const prompt = await episodePrompt.format(entry);
 
+  const openai = new OpenAIChatApi({ apiKey: process.env.OPENAI_API_KEY });
 
-  const episode = await chain.invoke(entry);
+  const episode = await completion(openai, prompt, {
+    schema: ScreenplaySchema,
+  });
 
-  return {episode};
+  return { episode };
 }
 
 // Example usage
@@ -34,7 +48,6 @@ generateScreenplayPrompt({
   sceneContext:
     "Mimi and Lulu discover a section of the garden that's wilting and must investigate the cause.",
 }).catch(console.error);
-
 
 // ------------------------
 
@@ -99,5 +112,4 @@ const ScreenplaySchema = z.object({
     .describe("An array of episodes comprising the screenplay."),
 });
 
-
-type ScreenplaySchema= z.infer<typeof ScreenplaySchema>
+type ScreenplaySchema = z.infer<typeof ScreenplaySchema>;
