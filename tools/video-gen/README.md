@@ -59,7 +59,7 @@ ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient
 
 ```
 
-## WIP generate a episode
+## WIP generate an episode
 
 This is a more structured approach to generating an episode
 
@@ -67,7 +67,7 @@ This is a more structured approach to generating an episode
     - `bun run src/prompt.ts > assets/Arc/S1E1.screenplay.json`
 - convert the screenplay into audio snippets
     - `bun run src/episodeToAudio.ts `
-- 
+- concat files `sox .out/S1E1/*_*.wav .out/S1E1/foo.wav`
 
 
 ## WIP (move to docs) music style transfer
