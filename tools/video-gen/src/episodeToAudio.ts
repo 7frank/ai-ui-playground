@@ -30,7 +30,7 @@ async function find(directory: string, filePattern: string) {
   return files.trim().split("\n");
 }
 
-async function createEpisodeAudioChunks(episode: ScreenplaySchema) {
+async function createEpisodeAudioChunks(episode: ScreenplaySchema,voices = { narrator: "p292", mimi: "p364", lulu: "p297" }) {
   return await Promise.allSettled(
     episode.episode.scenes.map(
       (
@@ -46,8 +46,7 @@ async function createEpisodeAudioChunks(episode: ScreenplaySchema) {
           const targetFolder = path.resolve(`.out/S1E1/`);
           await $`mkdir -p ${targetFolder}`;
 
-          const voices = { narrator: "p292", mimi: "p364", lulu: "p297" };
-
+     
           const narratorAudioFile = path.resolve(
             targetFolder,
             `${paddedSceneId}_${paddedNarratorId}.wav`
