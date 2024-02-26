@@ -26,23 +26,36 @@ const res2 = await Promise.allSettled(
 
       const dialogs = dialogues.map(async (speaker, id) => {
         const paddedSceneId = sceneId.toString().padStart(3, "0");
-        const paddedId = id.toString().padStart(3, "0");
+        const paddedNarratorId = id.toString().padStart(3, "0");
+        const paddedId = (id + 1).toString().padStart(3, "0");
 
         const targetFolder = path.resolve(`.out/S1E1/`);
         await $`mkdir -p ${targetFolder}`;
+
+        const voices = { narrator: "p292", mimi: "p364", lulu: "p297" };
+
+        const narratorAudioFile = path.resolve(
+          targetFolder,
+          `${paddedSceneId}_${paddedNarratorId}.wav`
+        );
+
+        const narratorText = narration??"" + " " + actions.join(" ");
+        console.log("narrator", narratorText);
+
+        await doSpeak(narratorAudioFile, narratorText, voices.narrator).catch(e=> console.error(e.message));
 
         const audioFile = path.resolve(
           targetFolder,
           `${paddedSceneId}_${paddedId}.wav`
         );
-        const voices = { narrator: "ED", mimi: "p364", lulu: "p297" };
+
         const selectedVoice = voices[speaker.character.toLowerCase()];
         const { text, mood } = extractMoodAndText(speaker.lines.join(""));
         console.log(speaker.character, speaker.mood, mood, text);
 
         await doSpeak(audioFile, text, selectedVoice);
 
-        return { audioFile };
+        return { audioFile: audioFile };
       });
 
       return Promise.allSettled(dialogs);
