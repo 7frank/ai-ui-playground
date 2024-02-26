@@ -1,5 +1,5 @@
 import { binary, command, option, run, string } from "cmd-ts";
-import { convertTextToSpeech, createVideoWithThumbnail } from "./mediaUtils"; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
+import { convertTextToSpeech, createVideoWithThumbnail } from "./src/mediaUtils"; // Sie müssen diese Funktionen basierend auf den folgenden Beschreibungen implementieren.
 import fs from "node:fs";
 import path from "node:path";
 import { $, file } from "bun";

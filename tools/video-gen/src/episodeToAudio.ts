@@ -1,6 +1,6 @@
 import { $, file } from "bun";
 import { ScreenplaySchema } from "./PromptSchema";
-import { convertTextToSpeech } from "../mediaUtils";
+import { convertTextToSpeech } from "./mediaUtils";
 import path from "node:path";
 import { extractMoodAndText } from "./extractMoodAndText";
 
