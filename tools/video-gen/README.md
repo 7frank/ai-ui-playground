@@ -59,6 +59,10 @@ ffmpeg -i assets/ambient/silence2s.wav -i .out/result.orig.wav -i assets/ambient
 
 ```
 
+## WIP generate a episode
+
+`bun run src/prompt.ts > assets/Arc/S1E1.screenplay.json`
+
 
 
 ## WIP (move to docs) music style transfer
