@@ -3,6 +3,13 @@ import os
 import glob
 import wave
 import math 
+# from wcmatch import glob
+
+import sys
+
+print(sys.exec_prefix)
+
+
 
 # Select and delete default cube, light, and camera
 for obj in ('Cube', 'Light', 'Camera'):
@@ -62,6 +69,7 @@ def get_wav_duration(wav_file_path):
 # Function to find and sort files by modification time or name
 def find_and_sort_files(pattern, sort_by='name'):
     files = glob.glob(pattern, recursive=True)
+    # files = glob.glob('*.{md,ini}', flags=glob.BRACE)
     if sort_by == 'date':
         files.sort(key=os.path.getmtime)
     else:
@@ -79,8 +87,8 @@ def add_audio(filepath, channel, start_frame):
 
 # Function to add images
 def add_image(filepath, channel, start_frame, end_frame):
-    seq = bpy.context.scene.sequence_editor.sequences.new_image("Image", filepath, channel, start_frame)
-    seq.frame_final_end = end_frame
+    seq = bpy.context.scene.sequence_editor.sequences.new_image("Image", filepath, channel, round(start_frame))
+    seq.frame_final_end = round(end_frame)
 
 # Function to add ambient audio
 def add_ambient_audio(filepath, channel, start_frame):
@@ -146,8 +154,7 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
         frame_end=logo_strip.frame_final_end,
         seq1=logo_strip,
         seq2=color_strip  # The second sequence for the fade
-    )    # fade = bpy.context.scene.sequence_editor.sequences.new_effect("Fade", 'GAMMA_CROSS', 4, 0, logo_strip)
-    # fade.frame_final_end = total_audio_length  # Adjust fade duration as needed
+    )   
 
 # Execute the script
 main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_fps)
