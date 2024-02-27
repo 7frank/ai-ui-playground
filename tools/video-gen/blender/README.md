@@ -3,8 +3,15 @@
     - blender -b /path/to/your/project.blend --python-expr "import bpy; bpy.context.scene.render.resolution_x = 1920; bpy.context.scene.render.resolution_y = 1080" -a
 
 
+## convert videos with blender
+
 - blender -b --python blender/config.py -a
 
+**or**
+
+- blender  --python blender/config.py 
+
+for debugging
 
 
 ## install custom python packages into blender python

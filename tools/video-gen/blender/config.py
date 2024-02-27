@@ -109,6 +109,8 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
 
     audio_files = find_and_sort_files(audio_pattern)
 
+    print(audio_files)
+
     # Calculate total audio length and add audios
     total_audio_length = 0
     for audio_file in audio_files:
@@ -131,7 +133,8 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
 
     # Add logo with fade in and out
     logo_strip = bpy.context.scene.sequence_editor.sequences.new_image("Logo", logo_image, 4, 0)
-    logo_strip.frame_final_end = round(total_audio_length)  # Display logo for the duration of the audio
+    logo_strip.frame_start = 2 * desired_fps
+    logo_strip.frame_final_end = 5 * desired_fps  # Display logo for the duration of the audio
     # Add fade in and fade out effect for logo
     
     # Example: Add a color strip for fading to black
