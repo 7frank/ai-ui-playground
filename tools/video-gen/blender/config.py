@@ -154,18 +154,19 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
     color_strip = bpy.context.scene.sequence_editor.sequences.new_effect(
         name="Color",
         type='COLOR',
-        channel=3,  # Ensure this is on a separate channel
+        channel=5,  # Ensure this is on a separate channel
         frame_start=0,
         frame_end=logo_strip.frame_final_end  # Match the end to your logo strip or desired fade duration
     )
-    color_strip.color = (0, 0, 0)  # Black
-
+    # color_strip.color = (0, 0, 0)  # Black
+    color_strip.blend_type = 'ALPHA_OVER'
+    color_strip.blend_alpha = 0  # Fully transparent
     
     # Adjusting the fade effect to use both the logo and the newly added color strip
     fade = bpy.context.scene.sequence_editor.sequences.new_effect(
         name="Fade",
-        type='GAMMA_CROSS',
-        channel=4,  # Place this above the previous strips
+        type='ALPHA_OVER',
+        channel=6,  # Place this above the previous strips
         frame_start=0,
         frame_end=logo_strip.frame_final_end,
         seq1=logo_strip,
