@@ -18,8 +18,8 @@ if bpy.context.scene.sequence_editor is None:
     bpy.context.scene.sequence_editor_create()
 
 # Paths to your files
-ambient_audio_file = '/path/to/ambient.mp3'
-logo_image = '/path/to/logo.png'
+ambient_audio_file = 'assets/ambient/birds-chirping.mp3'
+logo_image = 'assets/logo/logo.webp'
 
 # Patterns to your files
 image_pattern = 'assets/Arc/S1E1/images/img*.{webp,png}'
@@ -55,7 +55,7 @@ def find_and_sort_files(pattern, sort_by='name'):
 # Placeholder function to calculate audio length
 def calculate_audio_length(filepath):
     # Placeholder: return length in frames. For example, 100 frames for each audio.
-    return 1 # FIXME
+    return 100 # FIXME
 
 # Function to clear existing sequences
 def clear_sequences():
@@ -76,7 +76,8 @@ def add_ambient_audio(filepath, channel, start_frame):
 
 # Main script execution
 def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_fps):
-    clear_sequences()
+    # Note running this will delete the sequencer so we keep it out
+    # clear_sequences()
     
     # Set the desired frame rate
     bpy.context.scene.render.fps = desired_fps
