@@ -98,7 +98,7 @@ handy script to shorten audio tracks
 
 ### https://huggingface.co/spaces/jhtonyKoo/music_mixing_style_transfer
 
-> Tested this with a few sample but to no degre viable for current use case we envisioned
+> Tested this with a few sample but to no degree viable for current use case we envisioned
 
 
 
@@ -110,3 +110,17 @@ https://archive.org/details/TetrisThemeMusic
 https://www.noiiz.com/sounds/playlists/399724
 
 https://d7d3471nr939s.cloudfront.net/SimplySoulful_Noiiz/MP3/Loops/Synths/155_E_KeptPretenseSynth_02_654.mp3?cb=49b90cc9-87e3-4d1b-9851-31a3867e67fa
+
+
+## other tts
+
+### piper
+ 
+ https://rhasspy.github.io/piper-samples/ 
+ - try out `us english libritts_r 1638(7)` as narrator voice
+ - open source lots of speaker voices
+ - emotions via voices (sometimes, see thorsten_emotional, german )
+
+### suno bark
+
+- https://github.com/suno-ai/bark?tab=readme-ov-file 
