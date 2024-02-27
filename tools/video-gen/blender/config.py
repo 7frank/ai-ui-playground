@@ -1,18 +1,32 @@
 import bpy
 import os
-
-## # Add an image
-# image_path = "tools/video-gen/assets/Arc/S1E1/images/img001.webp"
- #audio_path = ".out/S1E1/result.wav
+import glob
 
 # Paths to your files
-audio_files = ['/path/to/audio1.mp3', '/path/to/audio2.mp3']
-image_files = ['/path/to/image1.jpg', '/path/to/image2.jpg', '/path/to/image3.jpg']
 ambient_audio_file = '/path/to/ambient.mp3'
 logo_image = '/path/to/logo.png'
 
-# Clear existing sequences
-bpy.context.scene.sequence_editor_clear()
+# Patterns to your files
+image_pattern = 'assets/Arc/S1E1/images/img*.{webp,png}'
+audio_pattern = '.out/S1E1/*_*.wav'
+
+# Function to find and sort files by modification time or name
+def find_and_sort_files(pattern, sort_by='name'):
+    files = glob.glob(pattern, recursive=True)
+    if sort_by == 'date':
+        files.sort(key=os.path.getmtime)
+    else:
+        files.sort()
+    return files
+
+# Placeholder function to calculate audio length
+def calculate_audio_length(filepath):
+    # Placeholder: return length in frames. For example, 100 frames for each audio.
+    return 100
+
+# Function to clear existing sequences
+def clear_sequences():
+    bpy.context.scene.sequence_editor_clear()
 
 # Function to add audio
 def add_audio(filepath, channel, start_frame):
@@ -27,30 +41,38 @@ def add_image(filepath, channel, start_frame, end_frame):
 def add_ambient_audio(filepath, channel, start_frame):
     bpy.context.scene.sequence_editor.sequences.new_sound("AmbientAudio", filepath, channel, start_frame)
 
-# Calculate total audio length and add audios
-total_audio_length = 0
-for audio_file in audio_files:
-    add_audio(audio_file, 1, total_audio_length)
-    # Here you'd dynamically calculate total_audio_length based on the audio file's duration
-    # Placeholder value for demonstration
-    total_audio_length += 100  # Assuming 100 frames per audio file for this example
+# Main script execution
+def main(image_pattern, audio_pattern, ambient_audio_file, logo_image):
+    clear_sequences()
+    
+    # Find and sort image and audio files
+    image_files = find_and_sort_files(image_pattern)
+    audio_files = find_and_sort_files(audio_pattern)
 
-# Add ambient audio
-add_ambient_audio(ambient_audio_file, 2, 0)
+    # Calculate total audio length and add audios
+    total_audio_length = 0
+    for audio_file in audio_files:
+        audio_length = calculate_audio_length(audio_file)
+        add_audio(audio_file, 1, total_audio_length)
+        total_audio_length += audio_length
 
-# Add images as slideshow
-image_display_length = total_audio_length // len(image_files)
-for i, image_file in enumerate(image_files):
-    start_frame = i * image_display_length
-    end_frame = start_frame + image_display_length
-    add_image(image_file, 3, start_frame, end_frame)
+    # Add ambient audio
+    add_ambient_audio(ambient_audio_file, 2, 0)
 
-# Add logo with fade in and out
-logo_strip = bpy.context.scene.sequence_editor.sequences.new_image("Logo", logo_image, 4, 2)
-logo_strip.frame_final_end = 7 * 24  # Assuming 24 fps
-# Add fade in and fade out effect for logo
-fade = bpy.context.scene.sequence_editor.sequences.new_effect("Fade", 'GAMMA_CROSS', 4, 2, logo_strip)
-fade.frame_final_end = 7 * 24  # Adjust fade duration as needed
+    # Add images as slideshow
+    if image_files:  # Ensure there are images to process
+        image_display_length = total_audio_length // len(image_files)
+        for i, image_file in enumerate(image_files):
+            start_frame = i * image_display_length
+            end_frame = start_frame + image_display_length
+            add_image(image_file, 3, start_frame, end_frame)
 
-# Note: This script does not handle the dynamic calculation of audio lengths or frame rate adjustments.
-# You might need to adjust the timing and frame rate to match your audio and desired slideshow timing.
+    # Add logo with fade in and out
+    logo_strip = bpy.context.scene.sequence_editor.sequences.new_image("Logo", logo_image, 4, 0)
+    logo_strip.frame_final_end = total_audio_length  # Display logo for the duration of the audio
+    # Add fade in and fade out effect for logo
+    fade = bpy.context.scene.sequence_editor.sequences.new_effect("Fade", 'GAMMA_CROSS', 4, 0, logo_strip)
+    fade.frame_final_end = total_audio_length  # Adjust fade duration as needed
+
+# Execute the script
+main(image_pattern, audio_pattern, ambient_audio_file, logo_image)
