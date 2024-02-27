@@ -68,10 +68,6 @@ def find_and_sort_files(pattern, sort_by='name'):
         files.sort()
     return files
 
-# Placeholder function to calculate audio length
-def calculate_audio_length(filepath):
-    # Placeholder: return length in frames. For example, 100 frames for each audio.
-    return 100 # FIXME
 
 # Function to clear existing sequences
 def clear_sequences():
@@ -100,6 +96,9 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
 
     # Find and sort image and audio files
     image_files = find_and_sort_files(image_pattern)
+
+    print(image_files)
+
     audio_files = find_and_sort_files(audio_pattern)
 
     # Calculate total audio length and add audios
@@ -124,10 +123,31 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
 
     # Add logo with fade in and out
     logo_strip = bpy.context.scene.sequence_editor.sequences.new_image("Logo", logo_image, 4, 0)
-    logo_strip.frame_final_end = total_audio_length  # Display logo for the duration of the audio
+    logo_strip.frame_final_end = round(total_audio_length)  # Display logo for the duration of the audio
     # Add fade in and fade out effect for logo
-    fade = bpy.context.scene.sequence_editor.sequences.new_effect("Fade", 'GAMMA_CROSS', 4, 0, logo_strip)
-    fade.frame_final_end = total_audio_length  # Adjust fade duration as needed
+    
+    # Example: Add a color strip for fading to black
+    color_strip = bpy.context.scene.sequence_editor.sequences.new_effect(
+        name="Color",
+        type='COLOR',
+        channel=3,  # Ensure this is on a separate channel
+        frame_start=0,
+        frame_end=logo_strip.frame_final_end  # Match the end to your logo strip or desired fade duration
+    )
+    color_strip.color = (0, 0, 0)  # Black
+
+    
+    # Adjusting the fade effect to use both the logo and the newly added color strip
+    fade = bpy.context.scene.sequence_editor.sequences.new_effect(
+        name="Fade",
+        type='GAMMA_CROSS',
+        channel=4,  # Place this above the previous strips
+        frame_start=0,
+        frame_end=logo_strip.frame_final_end,
+        seq1=logo_strip,
+        seq2=color_strip  # The second sequence for the fade
+    )    # fade = bpy.context.scene.sequence_editor.sequences.new_effect("Fade", 'GAMMA_CROSS', 4, 0, logo_strip)
+    # fade.frame_final_end = total_audio_length  # Adjust fade duration as needed
 
 # Execute the script
 main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_fps)
