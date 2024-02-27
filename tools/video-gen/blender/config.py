@@ -1,6 +1,8 @@
 import bpy
 import os
 import glob
+import wave
+import math 
 
 # Select and delete default cube, light, and camera
 for obj in ('Cube', 'Light', 'Camera'):
@@ -41,7 +43,21 @@ bpy.context.scene.render.resolution_x = 1024
 bpy.context.scene.render.resolution_y = 768
 bpy.context.scene.render.resolution_percentage = 100
 
+def get_wav_duration(wav_file_path):
+    """
+    Calculates the duration of a WAV file.
 
+    Args:
+    - wav_file_path: The file path to the WAV file.
+
+    Returns:
+    - The duration of the WAV file in seconds.
+    """
+    with wave.open(wav_file_path, 'r') as wav_file:
+        frames = wav_file.getnframes()
+        rate = wav_file.getframerate()
+        duration = frames / float(rate)
+        return duration
 
 # Function to find and sort files by modification time or name
 def find_and_sort_files(pattern, sort_by='name'):
@@ -89,9 +105,11 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
     # Calculate total audio length and add audios
     total_audio_length = 0
     for audio_file in audio_files:
-        audio_length = calculate_audio_length(audio_file)
-        add_audio(audio_file, 1, total_audio_length)
-        total_audio_length += audio_length
+        audio_duration = get_wav_duration(audio_file)
+
+        _total_audio_length = round(total_audio_length)
+        add_audio(audio_file, 1, _total_audio_length)
+        total_audio_length += audio_duration * bpy.context.scene.render.fps  # Convert seconds to frames
 
     # Add ambient audio
     add_ambient_audio(ambient_audio_file, 2, 0)
