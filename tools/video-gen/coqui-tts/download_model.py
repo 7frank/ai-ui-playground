@@ -12,7 +12,7 @@ def parse_args():
 
 def download_model(model_name, vocoder_name=None):
     # Define the path to the model manager's configuration file
-    model_manager_config_path = Path(__file__).parent / ".models.json"
+    model_manager_config_path = Path(__file__).parent / "../.models.json"
     manager = ModelManager(model_manager_config_path)
 
     # Download the TTS model

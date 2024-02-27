@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-coqui-tts-deployment
+  labels:
+    app: custom-coqui-tts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-coqui-tts
+  template:
+    metadata:
+      labels:
+        app: custom-coqui-tts
+    spec:
+      containers:
+      - name: custom-coqui-tts-container
+        image: 7frank/custom-coqui-tts:latest  
+        ports:
+        - containerPort: 8080  
