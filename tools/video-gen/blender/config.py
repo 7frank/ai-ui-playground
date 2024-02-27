@@ -35,7 +35,7 @@ image_pattern = 'assets/Arc/S1E1/images/img*.{webp,png}'
 audio_pattern = '.out/S1E1/*_*.wav'
 
 # Desired frame rate (e.g., 24 frames per second)
-desired_fps = 1
+desired_fps = 20
 output_file = '.out/blender_video.mp4'  
 output_format = 'FFMPEG'  
 
@@ -116,13 +116,22 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_f
     print(audio_files)
 
     # Calculate total audio length and add audios
-    total_audio_length = 0
+    # add 2s silence at the start
+    total_audio_length = 0 + 2 * desired_fps
     for audio_file in audio_files:
         audio_duration = get_wav_duration(audio_file)
 
         _total_audio_length = round(total_audio_length)
         add_audio(audio_file, 1, _total_audio_length)
         total_audio_length += audio_duration * bpy.context.scene.render.fps  # Convert seconds to frames
+
+    # set the whole video length to the sum of audios 
+    
+    # add 10s silence at the end
+    total_audio_length += 10*desired_fps
+
+    bpy.context.scene.frame_end = round(total_audio_length)
+
 
     # Add ambient audio
     add_ambient_audio(ambient_audio_file, 2, 0)
