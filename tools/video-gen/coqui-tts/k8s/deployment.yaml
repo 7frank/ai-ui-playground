@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: custom-coqui-tts-container
-        image: 7frank/custom-coqui-tts:latest  
+        image: frank1147/custom-coqui-tts:latest  
         ports:
         - containerPort: 8080  
