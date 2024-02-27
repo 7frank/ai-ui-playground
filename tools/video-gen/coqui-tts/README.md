@@ -18,7 +18,10 @@ docker push frank1147/custom-coqui-tts:latest
 
 
 
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/ingress.yaml
+k apply -f k8s/deployment.yaml
+k apply -f k8s/ingress.yaml
+
+k delete pods -l app=custom-coqui-tts-deployment
+
 
 ```
