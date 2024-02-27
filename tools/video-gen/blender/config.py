@@ -1,9 +1,9 @@
 import bpy
 import os
-import glob
+# import glob
 import wave
 import math 
-# from wcmatch import glob
+from wcmatch import glob
 
 import sys
 
@@ -68,8 +68,8 @@ def get_wav_duration(wav_file_path):
 
 # Function to find and sort files by modification time or name
 def find_and_sort_files(pattern, sort_by='name'):
-    files = glob.glob(pattern, recursive=True)
-    # files = glob.glob('*.{md,ini}', flags=glob.BRACE)
+    # files = glob.glob(pattern, recursive=True) # default glob
+    files = glob.glob(pattern, flags=glob.BRACE) #wcmatch glob
     if sort_by == 'date':
         files.sort(key=os.path.getmtime)
     else:

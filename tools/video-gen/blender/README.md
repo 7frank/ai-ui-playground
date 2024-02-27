@@ -4,3 +4,17 @@
 
 
 - blender -b --python blender/config.py -a
+
+
+
+## install custom python packages into blender python
+```bash
+# cd into wherever your python is installed
+cd /snap/blender/4300/4.0/python 
+
+# install pip
+bin/python3.10 -m ensurepip
+
+# install the packages you need, eg. wcmatch
+bin/python3.10  -m pip install wcmatch
+```
