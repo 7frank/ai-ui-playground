@@ -2,6 +2,21 @@ import bpy
 import os
 import glob
 
+# Select and delete default cube, light, and camera
+for obj in ('Cube', 'Light', 'Camera'):
+    if obj in bpy.data.objects:
+        bpy.data.objects[obj].select_set(True)  # Select the object
+    else:
+        bpy.data.objects[obj].select_set(False)  # Deselect if not the object to delete
+
+# Use bpy.ops to delete the selected objects
+bpy.ops.object.delete()
+
+
+# Ensure sequence editor is initialized
+if bpy.context.scene.sequence_editor is None:
+    bpy.context.scene.sequence_editor_create()
+
 # Paths to your files
 ambient_audio_file = '/path/to/ambient.mp3'
 logo_image = '/path/to/logo.png'
@@ -9,6 +24,24 @@ logo_image = '/path/to/logo.png'
 # Patterns to your files
 image_pattern = 'assets/Arc/S1E1/images/img*.{webp,png}'
 audio_pattern = '.out/S1E1/*_*.wav'
+
+# Desired frame rate (e.g., 24 frames per second)
+desired_fps = 1
+output_file = '.out/blender_video.mp4'  
+output_format = 'FFMPEG'  
+
+
+# Specify the output file and format
+bpy.context.scene.render.filepath = output_file
+bpy.context.scene.render.image_settings.file_format = output_format
+bpy.context.scene.render.ffmpeg.format = 'MPEG4'
+bpy.context.scene.render.ffmpeg.codec = 'H264'  # Example codec
+
+bpy.context.scene.render.resolution_x = 1024
+bpy.context.scene.render.resolution_y = 768
+bpy.context.scene.render.resolution_percentage = 100
+
+
 
 # Function to find and sort files by modification time or name
 def find_and_sort_files(pattern, sort_by='name'):
@@ -22,7 +55,7 @@ def find_and_sort_files(pattern, sort_by='name'):
 # Placeholder function to calculate audio length
 def calculate_audio_length(filepath):
     # Placeholder: return length in frames. For example, 100 frames for each audio.
-    return 100
+    return 1 # FIXME
 
 # Function to clear existing sequences
 def clear_sequences():
@@ -42,9 +75,12 @@ def add_ambient_audio(filepath, channel, start_frame):
     bpy.context.scene.sequence_editor.sequences.new_sound("AmbientAudio", filepath, channel, start_frame)
 
 # Main script execution
-def main(image_pattern, audio_pattern, ambient_audio_file, logo_image):
+def main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_fps):
     clear_sequences()
     
+    # Set the desired frame rate
+    bpy.context.scene.render.fps = desired_fps
+
     # Find and sort image and audio files
     image_files = find_and_sort_files(image_pattern)
     audio_files = find_and_sort_files(audio_pattern)
@@ -75,4 +111,4 @@ def main(image_pattern, audio_pattern, ambient_audio_file, logo_image):
     fade.frame_final_end = total_audio_length  # Adjust fade duration as needed
 
 # Execute the script
-main(image_pattern, audio_pattern, ambient_audio_file, logo_image)
+main(image_pattern, audio_pattern, ambient_audio_file, logo_image, desired_fps)
