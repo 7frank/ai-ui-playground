@@ -46,6 +46,10 @@ bpy.context.scene.render.image_settings.file_format = output_format
 bpy.context.scene.render.ffmpeg.format = 'MPEG4'
 bpy.context.scene.render.ffmpeg.codec = 'H264'  # Example codec
 
+bpy.context.scene.render.ffmpeg.audio_codec = 'AAC'
+bpy.context.scene.render.ffmpeg.audio_bitrate = 192
+
+
 bpy.context.scene.render.resolution_x = 1024
 bpy.context.scene.render.resolution_y = 768
 bpy.context.scene.render.resolution_percentage = 100
