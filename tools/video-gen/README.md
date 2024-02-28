@@ -124,3 +124,7 @@ https://d7d3471nr939s.cloudfront.net/SimplySoulful_Noiiz/MP3/Loops/Synths/155_E_
 ### suno bark
 
 - https://github.com/suno-ai/bark?tab=readme-ov-file 
+
+
+### Eleven Multilingual V2
+https://huggingface.co/spaces/elevenlabs/tts
