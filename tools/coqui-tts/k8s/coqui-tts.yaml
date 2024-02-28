@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-coqui-tts
+  labels:
+    app: custom-coqui-tts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-coqui-tts
+  template:
+    metadata:
+      labels:
+        app: custom-coqui-tts
+    spec:
+      containers:
+      - name: coqui-tts
+        image: frank1147/custom-coqui-tts:latest
+        ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-coqui-tts
+spec:
+  type: ClusterIP
+  selector:
+    app: custom-coqui-tts
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: custom-coqui-tts-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - coqui-7frank.internal.jambit.io
+  rules:
+  - host: coqui-7frank.internal.jambit.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: custom-coqui-tts
+            port:
+              number: 8080
