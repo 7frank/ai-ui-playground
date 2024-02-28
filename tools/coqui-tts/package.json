@@ -7,14 +7,15 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },"scripts":{
+  },
+  "scripts": {
     "build": "docker build -t 7frank/custom-coqui-tts .",
     "start": "docker run -d -p 8080:8080 --name custom-coqui-tts 7frank/custom-coqui-tts",
     "stop": "docker stop custom-coqui-tts && docker rm custom-coqui-tts",
     "attach": "docker exec -it custom-coqui-tts bash",
     "bash": "docker run --entrypoint /bin/bash -it 7frank/custom-coqui-tts",
-    "logs":"docker logs custom-coqui-tts"
-
+    "logs": "docker logs custom-coqui-tts",
+    "tag": "docker tag 7frank/custom-coqui-tts:latest frank1147/custom-coqui-tts:latest",
+    "push": "docker push frank1147/custom-coqui-tts:latest"
   }
-
 }
