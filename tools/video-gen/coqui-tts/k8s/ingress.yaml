@@ -8,10 +8,9 @@ spec:
   ingressClassName: internal-nginx
   tls:
     - hosts:
-      - coqui.7frank.internal.jambit.io
-
+      - coqui-7frank.internal.jambit.io
   rules:
-  - host: coqui.7frank.internal.jambit.io
+  - host: coqui-7frank.internal.jambit.io
     http:
       paths:
       - pathType: Prefix

@@ -18,4 +18,20 @@ spec:
       - name: custom-coqui-tts-container
         image: frank1147/custom-coqui-tts:latest  
         ports:
-        - containerPort: 8080  
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-coqui-tts-deployment
+spec:
+  type: ClusterIP
+  selector:
+    app: custom-coqui-tts-deployment
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
