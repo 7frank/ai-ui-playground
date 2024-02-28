@@ -1,0 +1,21 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },"scripts":{
+    "build": "docker build --build-arg REPO_URL='{{ cookiecutter.repo_url }}' -t {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }} .",
+    "start": "docker run -d -p 7860:7860 --name {{ cookiecutter.project_slug }} {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "stop": "docker stop {{ cookiecutter.project_slug }} && docker rm {{ cookiecutter.project_slug }}",
+    "attach": "docker exec -it {{ cookiecutter.project_slug }} bash",
+    "bash": "docker run -p 7860:7860 --entrypoint /bin/bash -it {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "push": "docker push {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest"
+
+
+  }
+
+}
