@@ -23,5 +23,4 @@ k apply -f k8s/ingress.yaml
 
 k delete pods -l app=custom-coqui-tts-deployment
 
-
 ```

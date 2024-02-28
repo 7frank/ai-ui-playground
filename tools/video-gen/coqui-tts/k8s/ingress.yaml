@@ -19,4 +19,4 @@ spec:
           service:
             name: custom-coqui-tts-deployment
             port:
-              name: "http"
+              number: 8080
