@@ -1,0 +1,4 @@
+{
+  "repo_name": "Cookiecutter Website Simple",
+  "project_slug": "{{ cookiecutter.repo_name.lower().replace(' ', '_') }}"
+}

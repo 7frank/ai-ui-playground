@@ -7,9 +7,7 @@ RUN apt-get update && \
     apt-get install -y git-lfs ffmpeg && \
     git lfs install
 
-# Clone the repository specified in the REPO_URL environment variable
-ARG REPO_URL
-RUN git clone ${REPO_URL} /app
+RUN git clone {{ cookiecutter.repo_url }} /app
 
 WORKDIR /app
 
