@@ -19,7 +19,7 @@ spec:
         image: frank1147/elevenlabs-tts:latest
         ports:
         - name: http
-          containerPort: 8080
+          containerPort: 8080  # Adjusted to the desired internal port
 ---
 apiVersion: v1
 kind: Service
@@ -31,8 +31,7 @@ spec:
     app: elevenlabs-tts
   ports:
   - name: http
-    port: 8080
-    targetPort: http
+    port: 8080   # External service
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -55,4 +54,4 @@ spec:
           service:
             name: elevenlabs-tts
             port:
-              number: 7860
+              number: 8080  # Adjusted to match the service and container port

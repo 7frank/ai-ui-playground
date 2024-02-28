@@ -24,8 +24,8 @@ RUN if [ ! -f requirements.txt ]; then echo "requirements.txt not found" && exit
 
 RUN pip install -r requirements.txt
 
-EXPOSE 7860
-#ENV GRADIO_SERVER_PORT=7860
+EXPOSE 8080
+#ENV GRADIO_SERVER_PORT=8080
 #ENV GRADIO_SERVER_NAME=0.0.0.0
 
 COPY entrypoint.sh ./entrypoint.sh
