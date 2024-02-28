@@ -2,6 +2,6 @@
     "repo_url": "https://huggingface.co/spaces/elevenlabs/tts",
     "project_slug": "{{ cookiecutter.repo_url.lower().split('/')[-2:] | join('-') }}",
     "docker_user":"frank1147",
-    "k8s-namespace":"ajit-llm-test"
+    "k8s_namespace":"ajit-llm-test"
   }
   
