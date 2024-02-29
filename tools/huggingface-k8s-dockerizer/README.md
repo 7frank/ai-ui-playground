@@ -12,8 +12,10 @@ https://github.com/cookiecutter/cookiecutter
 
 ## dev
 
-sudo apt install pipx
 
-cd barn
+### use cookiecutter to create a configuration
+`sudo apt install pipx`
 
-pipx run cookiecutter ../templates/gradio/
+`cd barn`
+
+`pipx run cookiecutter ../templates/gradio/`

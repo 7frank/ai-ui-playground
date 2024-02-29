@@ -9,10 +9,10 @@
     "typescript": "^5.0.0"
   },"scripts":{
     "build": "docker build -t {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }} .",
-    "start": "docker run -d -p 7860:7860 --name {{ cookiecutter.project_slug }} {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "start": "docker run -d -p {{ cookiecutter.host_port }}:{{ cookiecutter.container_port }} --name {{ cookiecutter.project_slug }} {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
     "stop": "docker stop {{ cookiecutter.project_slug }} && docker rm {{ cookiecutter.project_slug }}",
     "attach": "docker exec -it {{ cookiecutter.project_slug }} bash",
-    "bash": "docker run -p 7860:7860 --entrypoint /bin/bash -it {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "bash": "docker run -p {{ cookiecutter.host_port }}:{{ cookiecutter.container_port }} --entrypoint /bin/bash -it {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
     "docker-push": "docker push {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest",
     "k-set":"kubectl config set-context --current --namespace={{ cookiecutter.k8s_namespace }}",
     "k-up": "kubectl apply -f k8s.yaml",

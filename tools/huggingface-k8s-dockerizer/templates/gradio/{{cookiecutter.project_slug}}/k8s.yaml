@@ -17,7 +17,7 @@ spec:
         image: frank1147/elevenlabs-tts:latest
         ports:
         - name: http
-          containerPort: 8080
+          containerPort: {{ cookiecutter.container_port }}
 ---
 apiVersion: v1
 kind: Service
@@ -29,7 +29,7 @@ spec:
     app: elevenlabs-tts
   ports:
   - name: http
-    port: 8080
+    port: {{ cookiecutter.host_port }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -52,4 +52,4 @@ spec:
           service:
             name: elevenlabs-tts
             port:
-              number: 8080
+              number: {{ cookiecutter.host_port }}

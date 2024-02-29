@@ -8,7 +8,7 @@ Note `alias b="bun run"`  & `alias k="kubectl"`
 ## Docker 
 
 - **build** image `b build`
-- **test** image locally `b start` & goto http://localhost:7860
+- **test** image locally `b start` & goto http://localhost:{{ cookiecutter.host_port }}
 - url not working? `b stop` and run interactively `b bash`
 
 - login to docker hub

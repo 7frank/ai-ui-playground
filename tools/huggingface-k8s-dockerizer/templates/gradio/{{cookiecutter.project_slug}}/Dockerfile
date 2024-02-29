@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y git-lfs ffmpeg && \
     git lfs install
 
-RUN git clone {{ cookiecutter.project_slug }} /app
+RUN git clone {{ cookiecutter.repo_url }} /app
 
 WORKDIR /app
 
@@ -22,8 +22,8 @@ RUN if [ ! -f requirements.txt ]; then echo "requirements.txt not found" && exit
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
-#ENV GRADIO_SERVER_PORT=8080
+EXPOSE {{ cookiecutter.container_port }}
+#ENV GRADIO_SERVER_PORT={{ cookiecutter.container_port }}
 #ENV GRADIO_SERVER_NAME=0.0.0.0
 
 COPY entrypoint.sh ./entrypoint.sh
