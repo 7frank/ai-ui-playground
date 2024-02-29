@@ -20,7 +20,7 @@ RUN if [ ! -f app.py ]; then echo "app.py not found" && exit 1; fi
 # Check if requirements.txt exists, fail the build if it does not
 RUN if [ ! -f requirements.txt ]; then echo "requirements.txt not found" && exit 1; fi
 
-RUN pip install -r requirements.txt
+RUN pip install --default-timeout=1000 -r requirements.txt
 
 EXPOSE {{ cookiecutter.container_port }}
 #ENV GRADIO_SERVER_PORT={{ cookiecutter.container_port }}
