@@ -16,6 +16,4 @@ https://github.com/cookiecutter/cookiecutter
 ### use cookiecutter to create a configuration
 `sudo apt install pipx`
 
-`cd barn`
-
-`pipx run cookiecutter ../templates/gradio/`
+`pipx run cookiecutter --output-dir=".barn" --config-file barn/elevenlabs-tts.json templates/gradio/`
