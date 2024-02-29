@@ -16,4 +16,8 @@ https://github.com/cookiecutter/cookiecutter
 ### use cookiecutter to create a configuration
 `sudo apt install pipx`
 
-`pipx run cookiecutter --output-dir=".barn" --config-file barn/elevenlabs-tts.json templates/gradio/`
+`bun run index.ts generate` to create the projects specified in `barn` into `.barn`
+
+
+find out more about gradio container by checkingthe container build logs
+https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build

@@ -10,6 +10,7 @@
   },"scripts":{
     "build": "docker build -t {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }} .",
     "start": "docker run -d -p {{ cookiecutter.host_port }}:{{ cookiecutter.container_port }} --name {{ cookiecutter.project_slug }} {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "logs":"docker ps -a --filter 'ancestor={{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}' --format '{{.ID}}' | xargs -I {} docker logs {}",
     "stop": "docker stop {{ cookiecutter.project_slug }} && docker rm {{ cookiecutter.project_slug }}",
     "status":"curl -o /dev/null -s -w '%{http_code}\n' http://localhost:{{ cookiecutter.host_port }}",
     "attach": "docker exec -it {{ cookiecutter.project_slug }} bash",
