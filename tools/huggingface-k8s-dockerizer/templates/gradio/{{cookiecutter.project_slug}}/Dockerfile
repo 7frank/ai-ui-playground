@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y git-lfs ffmpeg && \
     git lfs install
 
-RUN git clone {{ cookiecutter.repo_url }} /app
+RUN git clone --depth 1 {{ cookiecutter.repo_url }} /app
 
 WORKDIR /app
 
