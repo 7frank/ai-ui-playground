@@ -1,0 +1,311 @@
+{
+  "named_endpoints": {},
+  "unnamed_endpoints": {
+    "1": {
+      "parameters": [
+        {
+          "label": "Text Prompt",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Howdy!",
+          "serializer": "StringSerializable"
+        },
+        {
+          "label": "Language",
+          "type": {
+            "type": "string",
+            "description": "Option from: [('en', 'en'), ('es', 'es'), ('fr', 'fr'), ('de', 'de'), ('it', 'it'), ('pt', 'pt'), ('pl', 'pl'), ('tr', 'tr'), ('ru', 'ru'), ('nl', 'nl'), ('cs', 'cs'), ('ar', 'ar'), ('zh-cn', 'zh-cn'), ('ja', 'ja'), ('ko', 'ko'), ('hu', 'hu'), ('hi', 'hi')]"
+          },
+          "python_type": {
+            "type": "str",
+            "description": "Option from: [('en', 'en'), ('es', 'es'), ('fr', 'fr'), ('de', 'de'), ('it', 'it'), ('pt', 'pt'), ('pl', 'pl'), ('tr', 'tr'), ('ru', 'ru'), ('nl', 'nl'), ('cs', 'cs'), ('ar', 'ar'), ('zh-cn', 'zh-cn'), ('ja', 'ja'), ('ko', 'ko'), ('hu', 'hu'), ('hi', 'hi')]"
+          },
+          "component": "Dropdown",
+          "example_input": ["en", "en"],
+          "serializer": "SimpleSerializable"
+        },
+        {
+          "label": "Reference Audio",
+          "type": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "filepath on your computer (or URL) of file"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "description": "name of file" },
+                  "data": {
+                    "type": "string",
+                    "description": "base64 representation of file"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "description": "size of image in bytes"
+                  },
+                  "is_file": {
+                    "type": "boolean",
+                    "description": "true if the file has been uploaded to the server"
+                  },
+                  "orig_name": {
+                    "type": "string",
+                    "description": "original name of the file"
+                  }
+                },
+                "required": ["name", "data"]
+              }
+            ]
+          },
+          "python_type": {
+            "type": "str",
+            "description": "filepath on your computer (or URL) of file"
+          },
+          "component": "Audio",
+          "example_input": "https://github.com/gradio-app/gradio/raw/main/test/test_files/audio_sample.wav",
+          "serializer": "FileSerializable"
+        },
+        {
+          "label": "Use Microphone for Reference",
+          "type": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "filepath on your computer (or URL) of file"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "description": "name of file" },
+                  "data": {
+                    "type": "string",
+                    "description": "base64 representation of file"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "description": "size of image in bytes"
+                  },
+                  "is_file": {
+                    "type": "boolean",
+                    "description": "true if the file has been uploaded to the server"
+                  },
+                  "orig_name": {
+                    "type": "string",
+                    "description": "original name of the file"
+                  }
+                },
+                "required": ["name", "data"]
+              }
+            ]
+          },
+          "python_type": {
+            "type": "str",
+            "description": "filepath on your computer (or URL) of file"
+          },
+          "component": "Audio",
+          "example_input": "https://github.com/gradio-app/gradio/raw/main/test/test_files/audio_sample.wav",
+          "serializer": "FileSerializable"
+        },
+        {
+          "label": "Use Microphone",
+          "type": { "type": "boolean" },
+          "python_type": { "type": "bool", "description": "" },
+          "component": "Checkbox",
+          "example_input": true,
+          "serializer": "BooleanSerializable"
+        },
+        {
+          "label": "Cleanup Reference Voice",
+          "type": { "type": "boolean" },
+          "python_type": { "type": "bool", "description": "" },
+          "component": "Checkbox",
+          "example_input": true,
+          "serializer": "BooleanSerializable"
+        },
+        {
+          "label": "Do not use language auto-detect",
+          "type": { "type": "boolean" },
+          "python_type": { "type": "bool", "description": "" },
+          "component": "Checkbox",
+          "example_input": true,
+          "serializer": "BooleanSerializable"
+        },
+        {
+          "label": "Agree",
+          "type": { "type": "boolean" },
+          "python_type": { "type": "bool", "description": "" },
+          "component": "Checkbox",
+          "example_input": true,
+          "serializer": "BooleanSerializable"
+        }
+      ],
+      "returns": [
+        {
+          "label": "Waveform Visual",
+          "type": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "filepath on your computer (or URL) of file"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "description": "name of file" },
+                  "data": {
+                    "type": "string",
+                    "description": "base64 representation of file"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "description": "size of image in bytes"
+                  },
+                  "is_file": {
+                    "type": "boolean",
+                    "description": "true if the file has been uploaded to the server"
+                  },
+                  "orig_name": {
+                    "type": "string",
+                    "description": "original name of the file"
+                  }
+                },
+                "required": ["name", "data"]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "description": "filepath on your computer (or URL) of file"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "name of file"
+                        },
+                        "data": {
+                          "type": "string",
+                          "description": "base64 representation of file"
+                        },
+                        "size": {
+                          "type": "integer",
+                          "description": "size of image in bytes"
+                        },
+                        "is_file": {
+                          "type": "boolean",
+                          "description": "true if the file has been uploaded to the server"
+                        },
+                        "orig_name": {
+                          "type": "string",
+                          "description": "original name of the file"
+                        }
+                      },
+                      "required": ["name", "data"]
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "python_type": {
+            "type": "str",
+            "description": "filepath on your computer (or URL) of file"
+          },
+          "component": "Video",
+          "serializer": "FileSerializable"
+        },
+        {
+          "label": "Synthesised Audio",
+          "type": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "filepath on your computer (or URL) of file"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "description": "name of file" },
+                  "data": {
+                    "type": "string",
+                    "description": "base64 representation of file"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "description": "size of image in bytes"
+                  },
+                  "is_file": {
+                    "type": "boolean",
+                    "description": "true if the file has been uploaded to the server"
+                  },
+                  "orig_name": {
+                    "type": "string",
+                    "description": "original name of the file"
+                  }
+                },
+                "required": ["name", "data"]
+              }
+            ]
+          },
+          "python_type": {
+            "type": "str",
+            "description": "filepath on your computer (or URL) of file"
+          },
+          "component": "Audio",
+          "serializer": "FileSerializable"
+        },
+        {
+          "label": "Metrics",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "serializer": "StringSerializable"
+        },
+        {
+          "label": "Reference Audio Used",
+          "type": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "filepath on your computer (or URL) of file"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string", "description": "name of file" },
+                  "data": {
+                    "type": "string",
+                    "description": "base64 representation of file"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "description": "size of image in bytes"
+                  },
+                  "is_file": {
+                    "type": "boolean",
+                    "description": "true if the file has been uploaded to the server"
+                  },
+                  "orig_name": {
+                    "type": "string",
+                    "description": "original name of the file"
+                  }
+                },
+                "required": ["name", "data"]
+              }
+            ]
+          },
+          "python_type": {
+            "type": "str",
+            "description": "filepath on your computer (or URL) of file"
+          },
+          "component": "Audio",
+          "serializer": "FileSerializable"
+        }
+      ]
+    }
+  }
+}
