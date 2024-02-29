@@ -21,3 +21,9 @@ https://github.com/cookiecutter/cookiecutter
 
 find out more about gradio container by checkingthe container build logs
 https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
+
+
+## troubleshooting
+
+some models will need tweaking 
+- suno/bark need s more ram 16g?
