@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: elevenlabs-tts
+  name: {{ cookiecutter.project_slug }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: elevenlabs-tts
+      app: {{ cookiecutter.project_slug }}
   template:
     metadata:
       labels:
-        app: elevenlabs-tts
+        app: {{ cookiecutter.project_slug }}
     spec:
       containers:
-      - name: elevenlabs-tts
-        image: frank1147/elevenlabs-tts:latest
+      - name: {{ cookiecutter.project_slug }}
+        image: {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest
         ports:
         - name: http
           containerPort: {{ cookiecutter.container_port }}
@@ -22,11 +22,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: elevenlabs-tts
+  name: {{ cookiecutter.project_slug }}
 spec:
   type: ClusterIP
   selector:
-    app: elevenlabs-tts
+    app: {{ cookiecutter.project_slug }}
   ports:
   - name: http
     port: {{ cookiecutter.host_port }}
@@ -34,22 +34,22 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: elevenlabs-tts-ingress
+  name: {{ cookiecutter.project_slug }}-ingress
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: internal-nginx
   tls:
   - hosts:
-    - elevenlabs-tts-7frank.internal.jambit.io
+    - {{ cookiecutter.k8s_ingress_name }}
   rules:
-  - host: elevenlabs-tts-7frank.internal.jambit.io
+  - host: {{ cookiecutter.k8s_ingress_name }}
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: elevenlabs-tts
+            name: {{ cookiecutter.project_slug }}
             port:
               number: {{ cookiecutter.host_port }}
