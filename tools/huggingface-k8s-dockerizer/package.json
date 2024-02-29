@@ -9,6 +9,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "chalk": "^5.3.0",
     "cmd-ts": "^0.13.0",
     "enquirer": "^2.4.1",
     "fast-glob": "^3.3.2"

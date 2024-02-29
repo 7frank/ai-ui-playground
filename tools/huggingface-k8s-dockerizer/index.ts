@@ -3,6 +3,8 @@ import enquirer from "enquirer";
 import { $ } from "bun";
 import fs from "node:fs";
 import path from "node:path";
+import chalk from "chalk";
+
 const fg = require("fast-glob");
 
 const generate = command({
@@ -17,9 +19,9 @@ const generate = command({
     }),
   },
   async handler({ pattern }) {
-    const templateRoot = path.resolve("./templates");
+    const templateRoot = "./templates/";
 
-    const instancesRoot = path.resolve("./barn");
+    const instancesRoot = "./barn/";
 
     const choices = fs.readdirSync(templateRoot);
 
@@ -33,30 +35,42 @@ const generate = command({
     ).value;
 
     // // Execute the cookiecutter command with the selected template
-    const templatePath = path.resolve(templateRoot, selectedTemplate);
+    const templatePath = templateRoot+ selectedTemplate;
 
     const entries = fg
       .globSync([path.resolve(instancesRoot, pattern)])
-      .map((it) => path.basename(it));
+      .map((it) => instancesRoot + path.basename(it));
 
+    console.log(`selected Template: "${selectedTemplate}"`);
+    console.log(
+      `selected entries: \n${entries.map((it) => " > " + it).join("\n")}`
+    );
 
-      
-     console.log(`selected Template: "${selectedTemplate}"`)
-     console.log(`selected entries: \n${entries.map(it=>" > "+it).join("\n")}`)
-      
-
-    const confirmResponse = (await enquirer.prompt<{val:boolean}>({
-      type: "confirm",
-      name: "val",
-      message: `Do you want to proceed?`,
-    })).val;
+    const confirmResponse = (
+      await enquirer.prompt<{ val: boolean }>({
+        type: "confirm",
+        name: "val",
+        message: `Do you want to proceed?`,
+      })
+    ).val;
 
     if (!confirmResponse) {
       console.log("Aborted by user");
       process.exit(0);
     }
 
-    await $`pipx run cookiecutter --output-dir=".barn" --config-file barn/elevenlabs-tts.json ${templatePath}`.catch(console.error);
+    for await (const entry of entries) {
+      console.log(chalk.green(entry));
+
+      console.log(chalk.blue(`cp ${entry} ${templatePath}/cookiecutter.json`));
+     await $`cp ${entry} ${templatePath}/cookiecutter.json`
+
+      const args=`pipx run cookiecutter --output-dir=".barn"  ${templatePath}` 
+      console.log(chalk.blue(args));
+      await $`pipx run cookiecutter --output-dir=".barn" ${templatePath}`.catch(
+        console.error
+      );
+    }
   },
 });
 
