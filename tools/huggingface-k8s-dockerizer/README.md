@@ -41,11 +41,14 @@ https://huggingface.co/mrm8488/llama-2-coder-7b
 
 ## TODO
 
+- get codellama up and running and connect service to langflow
 - <del>create base image for gradio to reduce memory footprint for other images</del>
 - diffusers-unofficial-sdxl-turbo-i2i-t2i will only run on gpu resources (fiddle with k8s deployment to find correct settings)
+
 - langflow integration of models
 - find out more about gradio container inner workings by checking the container build logs
     - https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
+
 
 ## troubleshooting
 
