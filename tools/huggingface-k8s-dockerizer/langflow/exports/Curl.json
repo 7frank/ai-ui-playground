@@ -1,0 +1,77 @@
+{
+  "id": "b0003dc2-1614-4270-93dc-2eba29309361",
+  "data": {
+    "nodes": [
+      {
+        "id": "Data-Bee0M",
+        "type": "genericNode",
+        "position": { "x": 649, "y": 188.0500030517578 },
+        "data": {
+          "type": "Data",
+          "node": {
+            "template": {
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow import CustomComponent\nfrom langchain.schema import Document\n# Hypothetical import, assuming direct web fetching is permitted\n\nfrom typing import Optional\n\nclass WebsiteContentFetcher(CustomComponent):\n    display_name: str = \"Website Content Fetcher\"\n    description: str = \"Fetches content from a specified website and returns it in a supported format.\"\n    output_types: list[str] = [\"Document\"]\n    documentation: str = \"https://example.com/docs/webfetcher\"\n    field_config = {\n        \"url\": {\n            \"display_name\": \"URL\",\n            \"field_type\": \"str\",\n            \"required\": True,\n            \"info\": \"The URL of the website to fetch content from.\",\n        },\n    }\n\n    def build(\n        self,\n        url: str,\n    ) -> Document:\n        \n        import requests\n\n        # Perform an HTTP GET request to the given URL\n        response = requests.get(url)\n    \n        # Check if the request was successful (status code 200)\n        if response.status_code == 200:\n            # Print the content of the response\n           \n            content=response.text\n        else:\n            content= f\"Failed to fetch the website. Status code: {response.status_code}\"\n        \n        print(content)\n        \n        result = content\n\n        # Return the content wrapped in a Document object\n        document = Document(page_content=result)\n\n        return document\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": false,
+                "dynamic": true,
+                "info": "",
+                "title_case": true
+              },
+              "url": {
+                "type": "str",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": false,
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "url",
+                "display_name": "URL",
+                "advanced": false,
+                "dynamic": false,
+                "info": "The URL of the website to fetch content from.",
+                "title_case": true,
+                "value": "https://www.google.de"
+              },
+              "_type": "CustomComponent"
+            },
+            "description": "Fetches content from a specified website and returns it in a supported format.",
+            "base_classes": ["Document"],
+            "display_name": "TestAdapter",
+            "documentation": "https://example.com/docs/webfetcher",
+            "custom_fields": { "url": null },
+            "output_types": ["Document"],
+            "field_formatters": {},
+            "beta": true
+          },
+          "id": "Data-Bee0M",
+          "description": "Fetches content from a specified website and returns it in a supported format.",
+          "display_name": "TestAdapter"
+        },
+        "selected": true,
+        "width": 384,
+        "height": 394,
+        "positionAbsolute": { "x": 649, "y": 188.0500030517578 },
+        "dragging": false
+      }
+    ],
+    "edges": [],
+    "viewport": { "x": 0, "y": 0, "zoom": 1 }
+  },
+  "description": "Your Hub for Text Generation.",
+  "name": "Curl",
+  "last_tested_version": "0.6.9",
+  "is_component": false
+}
