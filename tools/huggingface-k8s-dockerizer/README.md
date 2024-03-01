@@ -41,7 +41,8 @@ https://huggingface.co/mrm8488/llama-2-coder-7b
 
 ## TODO
 
-- create base image for gradio to reduce memory footprint for other images
+- <del>create base image for gradio to reduce memory footprint for other images</del>
+- diffusers-unofficial-sdxl-turbo-i2i-t2i will only run on gpu resources (fiddle with k8s deployment to find correct settings)
 
 ## troubleshooting
 

@@ -40,6 +40,7 @@ https://github.com/coqui-ai/whisperX
 some spaces on huggingface related to text to music
 
 - https://huggingface.co/spaces/facebook/MusicGen
+    - decent results for lofi
 - https://huggingface.co/spaces/M2UGen/M2UGen-Demo
 - https://huggingface.co/spaces/Surn/UnlimitedMusicGen
 - https://mubert.com/render
