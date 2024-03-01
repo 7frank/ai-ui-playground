@@ -17,6 +17,17 @@
   "scripts": {
     "d-build-base": "docker build -t frank1147/huggingface-gradio-base -f base/Dockerfile.huggingface-gradio-base .",
     "d-push-base": "docker push frank1147/huggingface-gradio-base:latest",
-    "d-bash-base": "docker run --entrypoint /bin/bash -it frank1147/huggingface-gradio-base"
+    "d-bash-base": "docker run --entrypoint /bin/bash -it frank1147/huggingface-gradio-base",
+    "build-lf": "docker build -t frank1147/langflow-custom-components -f base/Dockerfile.langflow .",
+    "start-lf": "docker run -d --memory 500m -p 8080:7860 --name langflow-custom-components frank1147/langflow-custom-components",
+    "logs-lf":"docker ps -a --filter 'ancestor=frank1147/langflow-custom-components' --format  '{{.ID}}'  | xargs -I {} docker logs {}",
+    "stop-lf": "docker stop langflow-custom-components && docker rm langflow-custom-components", 
+    "push-lf": "docker push frank1147/langflow-custom-components:latest",
+    "attach-lf": "docker exec -it langflow-custom-components bash",
+    "bash-lf": "docker run -p 8080:7860 --entrypoint /bin/bash -it frank1147/langflow-custom-components",
+
+
+
+    "list-services":"kubectl get ingress -o=jsonpath='{range .items[*]}{.spec.rules[*].host}{\"\n\"}{end}'"
   }
 }

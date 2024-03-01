@@ -19,8 +19,8 @@ https://github.com/cookiecutter/cookiecutter
 `bun run index.ts generate` to create the projects specified in `barn` into `.barn`
 
 
-find out more about gradio container by checkingthe container build logs
-https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
+- for langflow run  `b bash-lf` then 
+> langflow run --host 0.0.0.0 --port 7860
 
 ## Use Cases
 - tts
@@ -43,6 +43,9 @@ https://huggingface.co/mrm8488/llama-2-coder-7b
 
 - <del>create base image for gradio to reduce memory footprint for other images</del>
 - diffusers-unofficial-sdxl-turbo-i2i-t2i will only run on gpu resources (fiddle with k8s deployment to find correct settings)
+- langflow integration of models
+- find out more about gradio container inner workings by checking the container build logs
+    - https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
 
 ## troubleshooting
 
