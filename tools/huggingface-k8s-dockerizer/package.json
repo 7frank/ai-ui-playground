@@ -13,5 +13,10 @@
     "cmd-ts": "^0.13.0",
     "enquirer": "^2.4.1",
     "fast-glob": "^3.3.2"
+  },
+  "scripts": {
+    "d-build-base": "docker build -t frank1147/huggingface-gradio-base -f base/Dockerfile.huggingface-gradio-base .",
+    "d-push-base": "docker push frank1147/huggingface-gradio-base:latest",
+    "d-bash-base": "docker run --entrypoint /bin/bash -it frank1147/huggingface-gradio-base"
   }
 }

@@ -1,0 +1,16 @@
+FROM python:3.8
+
+WORKDIR /root
+
+# Install Git LFS and ffmpeg
+RUN apt-get update && \
+    apt-get install -y git-lfs ffmpeg nano && \
+    git lfs install && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install specific versions of Gradio and Pydantic
+RUN pip install "gradio<4.0.0,>=3.0.0" "pydantic==1.10.7"
+
+# Expose the Gradio default port
+EXPOSE 7860
