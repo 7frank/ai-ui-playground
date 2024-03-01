@@ -18,6 +18,13 @@ spec:
         ports:
         - name: http
           containerPort: {{ cookiecutter.container_port }}
+        # resources:
+        #   limits:
+        #     cpu: 1000m
+        #     memory: 2G
+        #   requests:
+        #     cpu: 500m
+        #     memory: 500M          
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +37,7 @@ spec:
   ports:
   - name: http
     port: {{ cookiecutter.host_port }}
+    targetPort: {{ cookiecutter.container_port }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -52,4 +60,4 @@ spec:
           service:
             name: {{ cookiecutter.project_slug }}
             port:
-              number: {{ cookiecutter.host_port }}
+              name: "http"
