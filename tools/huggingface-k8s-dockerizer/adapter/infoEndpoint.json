@@ -1,0 +1,657 @@
+{
+  "named_endpoints": {
+    "/predict": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        },
+        {
+          "label": "parameter_5",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Hello!!"
+        },
+        {
+          "label": "Strength",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "component": "Slider",
+          "example_input": 0.0
+        },
+        {
+          "label": "Steps",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 1 and 10"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 1 and 10"
+          },
+          "component": "Slider",
+          "example_input": 1
+        },
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider",
+          "example_input": 0
+        }
+      ],
+      "returns": [
+        {
+          "label": "value_11",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image"
+        }
+      ]
+    },
+    "/predict_1": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        },
+        {
+          "label": "parameter_5",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Hello!!"
+        },
+        {
+          "label": "Strength",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "component": "Slider",
+          "example_input": 0.0
+        },
+        {
+          "label": "Steps",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 1 and 10"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 1 and 10"
+          },
+          "component": "Slider",
+          "example_input": 1
+        },
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider",
+          "example_input": 0
+        }
+      ],
+      "returns": [
+        {
+          "label": "value_11",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image"
+        }
+      ]
+    },
+    "/predict_2": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        },
+        {
+          "label": "parameter_5",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Hello!!"
+        },
+        {
+          "label": "Strength",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "component": "Slider",
+          "example_input": 0.0
+        },
+        {
+          "label": "Steps",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 1 and 10"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 1 and 10"
+          },
+          "component": "Slider",
+          "example_input": 1
+        },
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider",
+          "example_input": 0
+        }
+      ],
+      "returns": [
+        {
+          "label": "value_11",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image"
+        }
+      ]
+    },
+    "/predict_3": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        },
+        {
+          "label": "parameter_5",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Hello!!"
+        },
+        {
+          "label": "Strength",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "component": "Slider",
+          "example_input": 0.0
+        },
+        {
+          "label": "Steps",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 1 and 10"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 1 and 10"
+          },
+          "component": "Slider",
+          "example_input": 1
+        },
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider",
+          "example_input": 0
+        }
+      ],
+      "returns": [
+        {
+          "label": "value_11",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image"
+        }
+      ]
+    },
+    "/predict_4": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        },
+        {
+          "label": "parameter_5",
+          "type": { "type": "string" },
+          "python_type": { "type": "str", "description": "" },
+          "component": "Textbox",
+          "example_input": "Hello!!"
+        },
+        {
+          "label": "Strength",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0.0 and 1.0"
+          },
+          "component": "Slider",
+          "example_input": 0.0
+        },
+        {
+          "label": "Steps",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 1 and 10"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 1 and 10"
+          },
+          "component": "Slider",
+          "example_input": 1
+        },
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider",
+          "example_input": 0
+        }
+      ],
+      "returns": [
+        {
+          "label": "value_11",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image"
+        }
+      ]
+    },
+    "/lambda": {
+      "parameters": [
+        {
+          "label": "Webcam",
+          "type": {
+            "properties": {
+              "path": { "title": "Path", "type": "string" },
+              "url": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Url"
+              },
+              "size": {
+                "anyOf": [{ "type": "integer" }, { "type": "null" }],
+                "default": null,
+                "title": "Size"
+              },
+              "orig_name": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Orig Name"
+              },
+              "mime_type": {
+                "anyOf": [{ "type": "string" }, { "type": "null" }],
+                "default": null,
+                "title": "Mime Type"
+              }
+            },
+            "required": ["path"],
+            "title": "FileData",
+            "type": "object"
+          },
+          "python_type": { "type": "filepath", "description": "" },
+          "component": "Image",
+          "example_input": "https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png"
+        }
+      ],
+      "returns": []
+    }
+  },
+  "unnamed_endpoints": {
+    "6": {
+      "parameters": [],
+      "returns": [
+        {
+          "label": "Seed",
+          "type": {
+            "type": "number",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "python_type": {
+            "type": "float",
+            "description": "numeric value between 0 and 12013012031030"
+          },
+          "component": "Slider"
+        }
+      ]
+    }
+  }
+}
