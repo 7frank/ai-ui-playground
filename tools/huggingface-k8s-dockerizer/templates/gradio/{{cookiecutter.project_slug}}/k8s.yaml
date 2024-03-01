@@ -14,7 +14,9 @@ spec:
     spec:
       containers:
       - name: {{ cookiecutter.project_slug }}
+        # Note: we are using latest here deliberatly
         image: {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: {{ cookiecutter.container_port }}
