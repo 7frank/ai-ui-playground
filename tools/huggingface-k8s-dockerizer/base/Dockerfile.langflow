@@ -2,17 +2,21 @@
 FROM python:3.10-slim
 
 RUN apt-get update && apt-get install -y gcc g++ git make curl nano -y
-RUN useradd -m -u 1000 user
-USER user
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh 
+
+ENV PATH=/root/.cargo/bin:$PATH
 
 WORKDIR $HOME/app
 
-RUN pip install langflow "gradio<4.0.0,>=3.0.0" -U --user
+RUN uv venv
 
-COPY --chown=user ./langflow $HOME/app
+RUN . .venv/bin/activate && \
+    uv pip install langflow "gradio<4.0.0,>=3.0.0"
+RUN . .venv/bin/activate && uv pip install -U langchain-community
+COPY ./langflow $HOME/app
 
-
-
-CMD ["langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
+#CMD [".venv/bin/langflow", "run", "--host", "0.0.0.0", "--port", "7860","--env-file",".env.docker"]
+CMD [".venv/bin/langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
+# .venv/bin/langflow run --host 0.0.0.0 --port 7860 
+# CMD ["/bin/bash"]
