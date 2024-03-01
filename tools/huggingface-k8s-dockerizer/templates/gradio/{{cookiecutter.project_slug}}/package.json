@@ -19,7 +19,8 @@
     "k-set":"kubectl config set-context --current --namespace={{ cookiecutter.k8s_namespace }}",
     "k-up": "kubectl apply -f k8s.yaml",
     "k-down": "kubectl delete -f k8s.yaml",
-    "k-open":"open https://{{ cookiecutter.k8s_ingress_name }}"
+    "k-open":"open https://{{ cookiecutter.k8s_ingress_name }}",
+    "k-kill":"kubectl get pods | grep '^{{ cookiecutter.project_slug }}' | awk '{print $1}' | xargs kubectl delete pod --grace-period=0 --force"
   }
 
 }
