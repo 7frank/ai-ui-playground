@@ -6,6 +6,8 @@
 - https://huggingface.co/spaces/Logspace/Langflow
 - https://github.com/logspace-ai/langflow
 
+### Tutorial
+- https://medium.flowflash.io/practical-langflow-a-short-and-deep-introduction-63620d12cc82
 
 ## custom components
 
@@ -16,3 +18,8 @@
 - info endpoints https://coqui-xtts.hf.space/--replicas/fnlcq/info
   - which we might be able to parse and create adapters for our custom components
 
+
+
+## security
+
+run this script with one of your API keys to make sure that you did not unvolutarily expose them `git log -p -S"sk-z69" --source --all` 
