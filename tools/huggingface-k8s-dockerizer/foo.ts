@@ -13,7 +13,6 @@ async function main() {
   
 
   // Custom logic to determine when to split horizontally or vertically
-  // Not directly implementable as described but outlines the approach
   const directories = (
     await $`find .barn -maxdepth 3 -type d -name 'node_modules' -prune -o -type f -name 'package.json' -exec dirname {} \\;`.text()
   )
@@ -57,5 +56,10 @@ async function main() {
 
 await main().catch(console.error);
 
+const exampleCommands=['b k-log-1','b k-status']
 
-console.log("you can run commands now like ",`tmux send-keys -t myGridSession "b k-log-1" C-m`)
+console.log("you can run commands now either from inside one of the spawned tmux windows or by using `tmux send-keys -t myGridSession \"<command-here>\" C-m`")
+
+console.log(exampleCommands.join("\n"))
+
+
