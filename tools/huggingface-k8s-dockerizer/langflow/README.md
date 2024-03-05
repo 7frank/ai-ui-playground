@@ -22,4 +22,6 @@
 
 ## security
 
-run this script with one of your API keys to make sure that you did not unvolutarily expose them `git log -p -S"sk-z69" --source --all` 
+- don't put secrets inside files or directories under `.` ottherwise they get copied into the langflow container.
+
+- run this script with one of your API keys to make sure that you did not unvolutarily expose them `git log -p -S"sk-z69" --source --all` 
