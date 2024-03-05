@@ -1,6 +1,6 @@
 ## What?
 
-Goal Spin up fast clones of gradio repos /spaces on huggingface
+Goal Spin up fast clones of gradio repos / spaces on huggingface
 
 > How do i know it is a gradio space?
 
@@ -18,6 +18,7 @@ https://github.com/cookiecutter/cookiecutter
 
 `bun run index.ts generate` to create the projects specified in `barn` into `.barn`
 
+> add more configurations and rerun the CLI 
 
 - for langflow run  `b bash-lf` then 
 > langflow run --host 0.0.0.0 --port 7860
@@ -45,10 +46,11 @@ https://huggingface.co/mrm8488/llama-2-coder-7b
 - <del>create base image for gradio to reduce memory footprint for other images</del>
 - diffusers-unofficial-sdxl-turbo-i2i-t2i will only run on gpu resources (fiddle with k8s deployment to find correct settings)
 
-- langflow integration of models
+- langflow integration of models 
+    - somewhat working
 - find out more about gradio container inner workings by checking the container build logs
     - https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
-
+- deploy custom localai or vllm and replace opeanai with 3-4 replicas in the k8s cluster
 
 ## troubleshooting
 
