@@ -20,48 +20,35 @@ const generate = command({
   },
   async handler({ pattern }) {
     const templateRoot = "./templates/";
-
     const instancesRoot = "./barn/";
 
     const choices = fs.readdirSync(templateRoot);
+    const selectedTemplate = await selectTemplatePrompt(choices);
 
-    const selectedTemplate = (
-      await enquirer.prompt<{ value: string }>({
-        type: "select",
-        name: "value",
-        message: "Choose a template",
-        choices,
-      })
-    ).value;
-
-    // // Execute the cookiecutter command with the selected template
-    const templatePath = templateRoot + selectedTemplate;
-
-    const entries = fg
-      .globSync([path.resolve(instancesRoot, pattern)])
-      .map((it) => instancesRoot + path.basename(it));
+    const patternPath = path.relative(
+      ".",
+      path.resolve(instancesRoot, selectedTemplate, pattern)
+    );
+    const entries = fg.globSync([patternPath]).map((it) => it);
 
     console.log(`selected Template: "${selectedTemplate}"`);
     console.log(
       `selected entries: \n${entries.map((it) => " > " + it).join("\n")}`
     );
 
-    const confirmResponse = (
-      await enquirer.prompt<{ val: boolean }>({
-        type: "confirm",
-        name: "val",
-        message: `Do you want to proceed?`,
-      })
-    ).val;
+    const confirmResponse = await comnfirmProceedPrompt();
 
     if (!confirmResponse) {
       console.log("Aborted by user");
       process.exit(0);
     }
 
+    // // Execute the cookiecutter command with the selected template
+    const templatePath = templateRoot + selectedTemplate;
+
     for await (const entry of entries) {
       console.log(chalk.green(entry));
-      
+
       const args = `pipx run cookiecutter --output-dir=".barn" --directory ${templatePath} --replay-file ${entry} --overwrite-if-exists $(pwd)`;
       console.log(chalk.blue(args));
       await $`pipx run cookiecutter --output-dir=".barn" --directory ${templatePath} --replay-file ${entry} --overwrite-if-exists $(pwd)`.catch(
@@ -70,6 +57,27 @@ const generate = command({
     }
   },
 });
+
+async function comnfirmProceedPrompt() {
+  return (
+    await enquirer.prompt<{ val: boolean }>({
+      type: "confirm",
+      name: "val",
+      message: `Do you want to proceed?`,
+    })
+  ).val;
+}
+
+async function selectTemplatePrompt(choices: string[]) {
+  return (
+    await enquirer.prompt<{ value: string }>({
+      type: "select",
+      name: "value",
+      message: "Choose a template",
+      choices,
+    })
+  ).value;
+}
 
 const mainCmd = subcommands({
   name: "farm - huggingface docker / k8s management",
