@@ -54,6 +54,7 @@ https://huggingface.co/mrm8488/llama-2-coder-7b
   - https://huggingface.co/spaces/7Frank/deep-learning-for-coders-lesson-2?logs=build
 - get codellama up and running and connect service to langflow
 - diffusers-unofficial-sdxl-turbo-i2i-t2i will only run on gpu resources (fiddle with k8s deployment to find correct settings)
+- try to merge functionality of localai k8s setup with "hub" templates
 
 ### deploy your own LLMs
 

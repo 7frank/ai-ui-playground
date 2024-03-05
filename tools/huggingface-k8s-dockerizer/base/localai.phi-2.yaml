@@ -24,11 +24,11 @@ spec:
         # CPU related
         resources:
           limits:
-            cpu: 2000m
-            memory: 2G
+            cpu: 4000m
+            memory: 6G
           requests:
-            cpu: 1000m
-            memory: 1G 
+            cpu: 2000m
+            memory: 4G 
 
         # GPU related 
         #  resources:
