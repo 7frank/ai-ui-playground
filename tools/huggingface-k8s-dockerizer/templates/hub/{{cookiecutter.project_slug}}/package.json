@@ -1,0 +1,28 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },"scripts":{
+    "start": "docker run -d --memory {{ cookiecutter.docker_ram }} -p {{ cookiecutter.host_port }}:{{ cookiecutter.container_port }} --name {{ cookiecutter.project_slug }} {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "logs":"docker ps -a --filter 'ancestor={{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}' --format {% raw %} '{{.ID}}' {% endraw %} | xargs -I {} docker logs --follow  {}",
+    "stop": "docker stop {{ cookiecutter.project_slug }} && docker rm {{ cookiecutter.project_slug }}",
+    "status":"curl -o /dev/null -s -w '%{http_code}\n' http://localhost:{{ cookiecutter.host_port }}",
+    "attach": "docker exec -it {{ cookiecutter.project_slug }} bash",
+    "bash": "docker run -p {{ cookiecutter.host_port }}:{{ cookiecutter.container_port }} --entrypoint /bin/bash -it {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}",
+    "docker-push": "docker push {{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest",
+    "k-set":"kubectl config set-context --current --namespace={{ cookiecutter.k8s_namespace }}",
+    "k-up": "kubectl apply -f k8s.yaml",
+    "k-down": "kubectl delete -f k8s.yaml",
+    "k-open":"open https://{{ cookiecutter.k8s_ingress_name }}",
+    "k-kill":"kubectl get pods | grep '^{{ cookiecutter.project_slug }}' | awk '{print $1}' | xargs kubectl delete pod",
+    "k-log-1":"kubectl logs $(kubectl get pods -l app={{ cookiecutter.project_slug }} -n {{ cookiecutter.k8s_namespace }} -o jsonpath='{.items[0].metadata.name}') -n {{ cookiecutter.k8s_namespace }} --tail=100 -f",
+    "k-status":"curl -o /dev/null -s -w '%{http_code}\n' https://{{ cookiecutter.k8s_ingress_name }}"
+
+  }
+
+}

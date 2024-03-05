@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ cookiecutter.project_slug }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ cookiecutter.project_slug }}
+  template:
+    metadata:
+      labels:
+        app: {{ cookiecutter.project_slug }}
+    spec:
+      containers:
+      - name: {{ cookiecutter.project_slug }}
+        image: {{ cookiecutter.docker_image }}
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: {{ cookiecutter.container_port }}
+        
+        # CPU related
+        # resources:
+        #   limits:
+        #     cpu: 1000m
+        #     memory: 2G
+        #   requests:
+        #     cpu: 500m
+        #     memory: 500M 
+
+        # GPU related 
+        #  resources:
+        #     limits:
+        #       nvidia.com/gpu: 1  
+        #     requests:
+        #       nvidia.com/gpu: 1 
+        #   volumeMounts:
+        #   - mountPath: /dev/shm
+        #     name: dshm
+        # tolerations:
+        #   - key: "nvidia.com/gpu"
+        #     operator: "Exists"
+        #     effect: "NoSchedule"
+        # volumes:
+        #   - name: dshm
+        #     persistentVolumeClaim:
+        #       claimName: dshm        
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ cookiecutter.project_slug }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ cookiecutter.project_slug }}
+  ports:
+  - name: http
+    port: {{ cookiecutter.host_port }}
+    targetPort: {{ cookiecutter.container_port }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ cookiecutter.project_slug }}-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - {{ cookiecutter.k8s_ingress_name }}
+  rules:
+  - host: {{ cookiecutter.k8s_ingress_name }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ cookiecutter.project_slug }}
+            port:
+              name: "http"
+
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: dshm
+#   namespace: {{ cookiecutter.k8s_namespace }}
+# spec:
+#   storageClassName: gpu-local-ssd
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 30Gi
