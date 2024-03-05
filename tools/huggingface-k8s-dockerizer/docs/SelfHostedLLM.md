@@ -33,6 +33,13 @@ curl -X POST "http://localhost:8080/v1/chat/completions" \
 
 `k apply -f base/localai.phi-2.yaml `
 
+Note: Fiddle a bit with the cpu resources to find a decent performance.
+
+> k apply -f base/localai.phi-2.yaml 
+> k get pods
+> python ./langflow/ex/askPhi2OnK8s.py 
+
+
 `python langflow/ex/askPhi2OnK8s.py`
 
 **OR**
