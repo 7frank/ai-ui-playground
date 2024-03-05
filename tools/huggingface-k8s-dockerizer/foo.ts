@@ -34,7 +34,7 @@ async function main() {
     // Create a new pane by splitting. This simplistic approach doesn't dynamically adjust
     // based on current pane layout or count but illustrates the concept of alternating splits.
     await $`tmux split-window -${splitType} -t myGridSession`;
-    await $`tmux send-keys -t myGridSession "cd ${directories[i]} && bun run" C-m`;
+    await $`tmux send-keys -t myGridSession "cd ${directories[i]}" C-m`;
 
     if (i % 2 === 0) {
       // Attempt to balance panes after every new split
@@ -44,6 +44,18 @@ async function main() {
 
   // await $`tmux attach-session -t myGridSession`;
   await $`gnome-terminal -- tmux attach-session -t myGridSession`;
+
+  await $`tmux set-option -t myGridSession synchronize-panes on`
+
+  const p='PS1="\\\W \\\$ "'
+  await $`tmux send-keys -t myGridSession "${p} && clear" C-m`;
+  
+  
+
+
 }
 
-main().catch(console.error);
+await main().catch(console.error);
+
+
+console.log("you can run commands now like ",`tmux send-keys -t myGridSession "b k-log-1" C-m`)
