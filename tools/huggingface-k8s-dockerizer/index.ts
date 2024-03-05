@@ -35,7 +35,7 @@ const generate = command({
     ).value;
 
     // // Execute the cookiecutter command with the selected template
-    const templatePath = templateRoot+ selectedTemplate;
+    const templatePath = templateRoot + selectedTemplate;
 
     const entries = fg
       .globSync([path.resolve(instancesRoot, pattern)])
@@ -61,13 +61,10 @@ const generate = command({
 
     for await (const entry of entries) {
       console.log(chalk.green(entry));
-
-      console.log(chalk.blue(`cp ${entry} ${templatePath}/cookiecutter.json`));
-     await $`cp ${entry} ${templatePath}/cookiecutter.json`
-
-      const args=`pipx run cookiecutter --output-dir=".barn"  ${templatePath}` 
+      
+      const args = `pipx run cookiecutter --output-dir=".barn" --directory ${templatePath} --replay-file ${entry} --overwrite-if-exists $(pwd)`;
       console.log(chalk.blue(args));
-      await $`pipx run cookiecutter --output-dir=".barn" ${templatePath}`.catch(
+      await $`pipx run cookiecutter --output-dir=".barn" --directory ${templatePath} --replay-file ${entry} --overwrite-if-exists $(pwd)`.catch(
         console.error
       );
     }

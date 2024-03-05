@@ -1,11 +1,13 @@
 {
-  "repo_url": "https://huggingface.co/spaces/codellama/codellama-13b-chat",
-  "project_slug": "{{ cookiecutter.repo_url.lower().split('/')[-2:] | join('-') }}",
-  "docker_user": "frank1147",
-  "docker_ram":"16g",
-  "docker_image":"{{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest",
-  "host_port":"8080",
-  "container_port":"7860",
-  "k8s_namespace": "ajit-llm-test",
-  "k8s_ingress_name": "{{ cookiecutter.project_slug }}-{{ cookiecutter.docker_user }}.internal.jambit.io"
+  "cookiecutter": {
+    "repo_url": "https://huggingface.co/spaces/codellama/codellama-13b-chat",
+    "project_slug": "{{ cookiecutter.repo_url.lower().split('/')[-2:] | join('-') }}",
+    "docker_user": "frank1147",
+    "docker_ram": "16g",
+    "docker_image": "{{ cookiecutter.docker_user }}/{{ cookiecutter.project_slug }}:latest",
+    "host_port": "8080",
+    "container_port": "7860",
+    "k8s_namespace": "ajit-llm-test",
+    "k8s_ingress_name": "{{ cookiecutter.project_slug }}-{{ cookiecutter.docker_user }}.internal.jambit.io"
+  }
 }
