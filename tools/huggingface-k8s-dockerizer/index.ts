@@ -50,11 +50,11 @@ const generate = command({
       console.log(chalk.green(entry));
 
       console.log(chalk.blue(`cp ${entry} ${templatePath}/cookiecutter.json`));
-     await $`cp ${entry} ${templatePath}/cookiecutter.json`
+      await $`cp ${entry} ${templatePath}/cookiecutter.json`;
 
-      const args=`pipx run cookiecutter --no-input --output-dir=".barn"  ${templatePath}` 
+      const args = `pipx run cookiecutter --overwrite-if-exists --no-input --output-dir='.barn' ${templatePath}`;
       console.log(chalk.blue(args));
-      await $`pipx run cookiecutter --no-input --output-dir=".barn" ${templatePath}`.catch(
+      await $`pipx run cookiecutter  --overwrite-if-exists --no-input --output-dir='.barn' ${templatePath}`.catch(
         console.error
       );
     }
