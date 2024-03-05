@@ -1,4 +1,3 @@
-# taken from https://github.com/tlaanemaa/langflow-docker/blob/main/Dockerfile
 FROM python:3.10-slim
 
 RUN apt-get update && apt-get install -y gcc g++ git make curl nano -y
@@ -16,8 +15,4 @@ RUN . .venv/bin/activate && \
 RUN . .venv/bin/activate && uv pip install -U langchain-community
 COPY ./langflow $HOME/app
 
-#CMD [".venv/bin/langflow", "run", "--host", "0.0.0.0", "--port", "7860","--env-file",".env.docker"]
-# CMD [".venv/bin/langflow", "run", "--host", "0.0.0.0", "--port", "7860"]
 CMD [".venv/bin/langflow", "run", "--host", "0.0.0.0", "--port", "7860","--env-file",".env.minimal"]
-# .venv/bin/langflow run --host 0.0.0.0 --port 7860 
-# CMD ["/bin/bash"]

@@ -1,2 +1,3 @@
 .barn/
 templates/gradio/cookiecutter.json
+templates/hub/cookiecutter.json
