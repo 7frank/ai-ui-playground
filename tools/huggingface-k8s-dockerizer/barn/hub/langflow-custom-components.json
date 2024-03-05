@@ -1,6 +1,6 @@
 {
   "repo_url": "https://hub.docker.com/r/frank1147/langflow-custom-components",
-  "project_slug": "{{ cookiecutter.repo_url.lower().split('/')[-2:] | join('-') }}",
+  "project_slug": "langflow-custom-components",
   "docker_user": "frank1147",
   "docker_ram": "1g",
   "docker_image": "frank1147/langflow-custom-components:latest",

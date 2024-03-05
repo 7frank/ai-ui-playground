@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import chalk from "chalk";
 import type { CommandParams } from "./cmd-types";
-const fg = require("fast-glob");
+import fg from "fast-glob";
 import { selectTemplatePrompt, comnfirmProceedPrompt } from "./prompts";
 
 export const GenerateCommandArgs = {
@@ -22,7 +22,10 @@ export async function generateHandler({ pattern }: GenerateCommandArgs) {
   const templateRoot = "./templates/";
   const instancesRoot = "./barn/";
 
-  const choices = fs.readdirSync(templateRoot);
+  const choices = fs
+    .readdirSync(templateRoot, { withFileTypes: true })
+    .filter((it) => it.isDirectory())
+    .map((it) => it.name);
   const selectedTemplate = await selectTemplatePrompt(choices);
 
   const patternPath = path.relative(
