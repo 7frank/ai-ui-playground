@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mistral-openorca-llm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mistral-openorca-llm
+  template:
+    metadata:
+      labels:
+        app: mistral-openorca-llm
+    spec:
+      containers:
+      - name: mistral-openorca-llm
+        image: localai/localai:v2.9.0-ffmpeg-core
+        args: ["mistral-openorca"]  # change this to one of the supported models https://localai.io/basics/getting_started/index.html
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+  
+        # CPU related
+        resources:
+          limits:
+            cpu: 4000m
+            memory: 10G
+          requests:
+            cpu: 2000m
+            memory: 6G 
+
+        # GPU related 
+        #  resources:
+        #     limits:
+        #       nvidia.com/gpu: 1  
+        #     requests:
+        #       nvidia.com/gpu: 1 
+        #   volumeMounts:
+        #   - mountPath: /dev/shm
+        #     name: dshm
+        # tolerations:
+        #   - key: "nvidia.com/gpu"
+        #     operator: "Exists"
+        #     effect: "NoSchedule"
+        # volumes:
+        #   - name: dshm
+        #     persistentVolumeClaim:
+        #       claimName: dshm  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mistral-openorca-llm
+spec:
+  type: ClusterIP
+  selector:
+    app: mistral-openorca-llm
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080  
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mistral-openorca-llm-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: internal-nginx
+  tls:
+  - hosts:
+    - mistral-openorca-llm-frank1147.internal.jambit.io
+  rules:
+  - host: mistral-openorca-llm-frank1147.internal.jambit.io
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: mistral-openorca-llm
+            port:
+              name: "http"
