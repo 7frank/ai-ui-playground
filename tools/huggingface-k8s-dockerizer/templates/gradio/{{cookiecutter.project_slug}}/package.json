@@ -21,7 +21,8 @@
     "k-down": "kubectl delete -f k8s.yaml",
     "k-open":"open https://{{ cookiecutter.k8s_ingress_name }}",
     "k-kill":"kubectl get pods | grep '^{{ cookiecutter.project_slug }}' | awk '{print $1}' | xargs kubectl delete pod",
-    "k-log-1":"kubectl logs $(kubectl get pods -l app={{ cookiecutter.project_slug }} -n {{ cookiecutter.k8s_namespace }} -o jsonpath='{.items[0].metadata.name}') -n {{ cookiecutter.k8s_namespace }} --tail=100 -f"
+    "k-log-1":"kubectl logs $(kubectl get pods -l app={{ cookiecutter.project_slug }} -n {{ cookiecutter.k8s_namespace }} -o jsonpath='{.items[0].metadata.name}') -n {{ cookiecutter.k8s_namespace }} --tail=100 -f",
+    "k-status":"curl -o /dev/null -s -w '%{http_code}\n' https://{{ cookiecutter.k8s_ingress_name }}"
 
   }
 
