@@ -93,3 +93,10 @@ some models will need tweaking
   --memory-reservation bytes Memory soft limit
   --memory-swap bytes Swap limit equal to memory plus swap: '-1' to enable unlimited swap
   --memory-swappiness int Tune container memory swappiness (0 to 100) (default -1)
+
+
+### langflow & vllm - fastchat not installed
+
+https://github.com/vllm-project/vllm/issues/855
+
+when trying to start a chat this error is thrown on the server
