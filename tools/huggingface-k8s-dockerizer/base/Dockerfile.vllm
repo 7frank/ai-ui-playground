@@ -1,19 +1,29 @@
-# Start from the base image
 FROM substratusai/vllm:latest
 
-# Install nano and supervisor for debugging 
+# Install nano and supervisor for better debugging 
 RUN apt-get update && apt-get install -y nano supervisor && \
     rm -rf /var/lib/apt/lists/*
 
-# run entrypoint as service for better remote debugging capabilities with gpu  
+# run entrypoint as service for same reason
 
-RUN mkdir -p /etc/supervisor/conf.d
-RUN echo '[supervisord]' > /etc/supervisor/supervisord.conf
-RUN echo 'nodaemon=true' >> /etc/supervisor/supervisord.conf
-RUN echo '[program:myapp]' >> /etc/supervisor/supervisord.conf
-RUN echo 'command=/usr/local/bin/entrypoint.sh' >> /etc/supervisor/supervisord.conf
-RUN echo 'autostart=true' >> /etc/supervisor/supervisord.conf
-RUN echo 'autorestart=true' >> /etc/supervisor/supervisord.conf
+RUN { \
+    echo '[supervisord]'; \
+    echo 'nodaemon=true'; \
+    echo '[unix_http_server]'; \
+    echo 'file=/var/run/supervisor.sock'; \  
+    echo '[supervisorctl]'; \
+    echo 'serverurl=unix:///var/run/supervisor.sock'; \
+    echo '[rpcinterface:supervisor]'; \
+    echo 'supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface'; \
+    echo '[program:myapp]'; \
+    echo 'command=/usr/local/bin/entrypoint.sh'; \
+    echo 'autostart=true'; \
+    echo 'autorestart=true'; \
+    echo 'stdout_logfile=/dev/stdout'; \
+    echo 'stdout_logfile_maxbytes=0'; \
+    echo 'stderr_logfile=/dev/stderr'; \
+    echo 'stderr_logfile_maxbytes=0'; \
+    } > /etc/supervisor/supervisord.conf
 
-# Define the Docker container's entrypoint as the supervisord
 ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+

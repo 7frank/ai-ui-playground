@@ -25,6 +25,13 @@
     "push-lf": "docker push frank1147/langflow-custom-components:latest",
     "attach-lf": "docker exec -it langflow-custom-components bash",
     "bash-lf": "docker run -v $(pwd)/langflow/db:/app/db -p 8080:7860 --entrypoint /bin/bash -it frank1147/langflow-custom-components",
+    "build-vllm": "docker build -t frank1147/vllm -f base/Dockerfile.vllm .",
+    "start-vllm": "docker run --env-file .env -v $(pwd)/langflow/db:/app/db -d --memory 500m -p 8080:7860 --name vllm frank1147/vllm",
+    "logs-vllm":"docker ps -a --filter 'ancestor=frank1147/vllm' --format  '{{.ID}}'  | xargs -I {} docker logs --follow  {}",
+    "stop-vllm": "docker stop vllm && docker rm vllm", 
+    "push-vllm": "docker push frank1147/vllm:latest",
+    "attach-vllm": "docker exec -it vllm bash",
+    "bash-vllm": "docker run -v $(pwd)/langflow/db:/app/db -p 8080:7860 --entrypoint /bin/bash -it frank1147/vllm",
     "list-services":"kubectl get ingress -o=jsonpath='{range .items[*]}{.spec.rules[*].host}{\"\n\"}{end}'"
   }
 }
