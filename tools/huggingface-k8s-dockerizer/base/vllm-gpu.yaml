@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: application
-  #replicas: 2
+  replicas: 1 # 
   template:
     metadata:
       labels:
@@ -20,7 +20,7 @@ spec:
         - name: MODEL
           value: "mistralai/Mistral-7B-Instruct-v0.1"
         - name: EXTRA_ARGS
-          value: "--tensor-parallel-size 2"
+          value: "--tensor-parallel-size 1" # each tensor requires a separate gpu
         volumeMounts:
         - mountPath: /dev/shm
           name: dshm

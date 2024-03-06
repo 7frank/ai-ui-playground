@@ -35,10 +35,9 @@ curl -X POST "http://localhost:8080/v1/chat/completions" \
 
 Note: Fiddle a bit with the cpu resources to find a decent performance.
 
-> k apply -f base/localai.phi-2.yaml 
+> k apply -f base/localai.phi-2.yaml
 > k get pods
-> python ./langflow/ex/askPhi2OnK8s.py 
-
+> python ./langflow/ex/askPhi2OnK8s.py
 
 `python langflow/ex/askPhi2OnK8s.py`
 
@@ -53,7 +52,9 @@ curl -X POST "https://phi-2-llm-frank1147.internal.jambit.io/v1/chat/completions
 
 #### vllm
 
-> vLLM requires a gpu, we need something that supports cpu as well for slowwer but more versatile model provisioning.
+##### run locally
+
+> vLLM requires a gpu, we need something that supports cpu as well for slower but more versatile model provisioning.
 
 https://github.com/substratusai/vllm-docker/blob/main/README.md
 
@@ -67,5 +68,33 @@ docker run -d -p 8080:8080 \
   ghcr.io/substratusai/vllm
 
 docker run -v "$(pwd):/foo" -p 8080:8080 -e MODEL=mistralai/Mistral-7B-Instruct-v0.1 --entrypoint=/bin/bash -it  ghcr.io/substratusai/vllm
+
+```
+
+##### run on k8s with gpu
+
+```
+# deploy stuff
+k apply -f base/vllm-gpu.yaml
+
+# log pod
+k logs $(k get pods -l app=application  -o jsonpath='{.items[0].metadata.name}') --tail=100 -f",
+```
+
+- https://docs.vllm.ai/en/latest/getting_started/quickstart.html
+- http://ajit-llm-test.internal.jambit.io/docs
+```
+# get models
+curl https://ajit-llm-test.internal.jambit.io/v1/models
+
+# chat example
+curl https://ajit-llm-test.internal.jambit.io/v1/completions \
+-H "Content-Type: application/json" \
+-d '{
+"model": "mistralai/Mistral-7B-Instruct-v0.1",
+"prompt": "San Francisco is a",
+"max_tokens": 7,
+"temperature": 0
+}'
 
 ```

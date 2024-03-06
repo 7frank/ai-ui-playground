@@ -93,7 +93,3 @@ some models will need tweaking
   --memory-reservation bytes Memory soft limit
   --memory-swap bytes Swap limit equal to memory plus swap: '-1' to enable unlimited swap
   --memory-swappiness int Tune container memory swappiness (0 to 100) (default -1)
-
-```
-
-```
