@@ -1,0 +1,19 @@
+# Start from the base image
+FROM substratusai/vllm:latest
+
+# Install nano and supervisor for debugging 
+RUN apt-get update && apt-get install -y nano supervisor && \
+    rm -rf /var/lib/apt/lists/*
+
+# run entrypoint as service for better remote debugging capabilities with gpu  
+
+RUN mkdir -p /etc/supervisor/conf.d
+RUN echo '[supervisord]' > /etc/supervisor/supervisord.conf
+RUN echo 'nodaemon=true' >> /etc/supervisor/supervisord.conf
+RUN echo '[program:myapp]' >> /etc/supervisor/supervisord.conf
+RUN echo 'command=/usr/local/bin/entrypoint.sh' >> /etc/supervisor/supervisord.conf
+RUN echo 'autostart=true' >> /etc/supervisor/supervisord.conf
+RUN echo 'autorestart=true' >> /etc/supervisor/supervisord.conf
+
+# Define the Docker container's entrypoint as the supervisord
+ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
