@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: application
-        image: ghcr.io/substratusai/vllm:latest
+        #image: ghcr.io/substratusai/vllm:latest
+        image: frank1147/vllm:latest # for debugging
         env:
         - name: MODEL
           value: "mistralai/Mistral-7B-Instruct-v0.1"
