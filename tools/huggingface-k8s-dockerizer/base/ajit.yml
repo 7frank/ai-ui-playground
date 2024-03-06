@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+  namespace: ajit-llm-test
+spec:
+  selector:
+    matchLabels:
+      app: application
+  #replicas: 2
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: application
+        image: ghcr.io/substratusai/vllm:latest
+        env:
+        - name: MODEL
+          value: "mistralai/Mistral-7B-Instruct-v0.1"
+        - name: EXTRA_ARGS
+          value: "--tensor-parallel-size 2"
+        volumeMounts:
+        - mountPath: /dev/shm
+          name: dshm
+        resources:                                          # Es muss die GPU ressource angefordert werden.
+          limits:                                           #
+            nvidia.com/gpu: 1  
+            cpu: "2"
+            memory: "32Gi"
+          requests:
+            nvidia.com/gpu: 1 
+            cpu: "2"
+            memory: "32Gi"                             # Anzahl der GPU slices
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          httpGet:
+            path: /docs
+            port: 8080
+          initialDelaySeconds: 100
+          periodSeconds: 5
+        ports:
+         - containerPort: 8080
+           name: notebook
+      imagePullSecrets:
+      - name: docker.registery.secret
+      tolerations:                                          # Diese toleration muss gesetzt werden
+        - key: "nvidia.com/gpu"                               #
+          operator: "Exists"                                  #
+          effect: "NoSchedule"
+      # The secret data is exposed to Containers in the Pod through a Volume.
+      volumes:
+        - name: dshm
+          persistentVolumeClaim:
+            claimName: dshm
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: ajit-llm-test
+  #annotations:
+    #nginx.ingress.kubernetes.io/affinity: "cookie"
+    #nginx.ingress.kubernetes.io/affinity-mode: persistent
+spec:
+  ingressClassName: internal-nginx
+  rules:
+    - host: ajit-llm-test.internal.jambit.io
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/"
+            backend:
+              service:
+                name: service
+                port:
+                  number: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+  namespace: ajit-llm-test
+spec:
+  type: ClusterIP
+  selector:
+    app: application
+  ports:
+    - protocol: TCP
+      name: llm
+      port: 8080
+      targetPort: 8080
+  sessionAffinity: ClientIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dshm
+  namespace: ajit-llm-test
+spec:
+  storageClassName: gpu-local-ssd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+ 
