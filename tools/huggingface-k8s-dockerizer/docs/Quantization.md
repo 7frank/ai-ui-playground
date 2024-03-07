@@ -43,3 +43,44 @@ out of the box the model seems to provide 4bit
 [Ollama API Docs](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
 
 - http://localhost:11434/
+
+#### llama2
+curl http://localhost:11434/api/chat -d '{
+  "model": "llama2",
+  "messages": [
+    {
+      "role": "user",
+      "content": "why is the sky blue?"
+    }
+  ]
+}'
+
+#### mixtral8x7b
+
+curl http://localhost:11434/api/chat -d '{
+  "model": "jmorgan/mixtral:8x7b-instruct-v0.1-q2_K",
+  "messages": [
+    {
+      "role": "user",
+      "content": "why is the sky blue?"
+    }
+  ]
+}'
+
+#### openai compatible api (für chat)
+curl http://localhost:11434/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "llama2",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": "Hello!"
+            }
+        ]
+    }'
+

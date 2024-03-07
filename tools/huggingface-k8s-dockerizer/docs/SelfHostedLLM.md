@@ -2,6 +2,11 @@
 
 > Note: not tested but localai provides other models too.
 
+
+#### ollama
+
+install multiple models with oolama & docker on k8s and see if quantizised mixtra 8x7b rpoves good enough results
+
 #### localai
 
 ##### overview
