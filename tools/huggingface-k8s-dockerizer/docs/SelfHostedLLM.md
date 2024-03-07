@@ -113,13 +113,14 @@ curl https://ajit-llm-test.internal.jambit.io/v1/completions \
   - `supervisorctl update`
 
 - supervisor.conf changes
-```
-[program:myapp]
-command=entrypoint.sh
-environment=MODEL="mistralai/Mixtral-8x7B-Instruct-v0.1"
-autostart=true
-autorestart=false
-```
+- `nano /etc/supervisor/supervisord.conf`
+  ```
+  [program:myapp]
+  command=entrypoint.sh
+  environment=MODEL="mistralai/Mixtral-8x7B-Instruct-v0.1"
+  autostart=true
+  autorestart=false
+  ```
 
 
 - restart service 
@@ -164,8 +165,28 @@ autorestart=false
 
 `watch nvidia-smi`
 
+result for mistral-7b
+```
++---------------------------------------------------------------------------------------+
+| MIG devices:                                                                          |
++------------------+--------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |                   Memory-Usage |        Vol|      Shared           |
+|      ID  ID  Dev |                     BAR1-Usage | SM     Unc| CE ENC DEC OFA JPG    |
+|                  |                                |        ECC|                       |
+|==================+================================+===========+=======================|
+|  0    1   0   0  |           33134MiB / 40192MiB  | 42      0 |  3   0    2    0    0 |
+|                  |               2MiB / 65535MiB  |           |                       |
++------------------+--------------------------------+-----------+-----------------------+
+
+```
+
+
 > it seems to be an OOM problem
 
 https://neon.tech/blog/mixtral-8x7b-what-you-need-to-know-about-mistral-ais-latest-model
 
 > If you plan to fine-tune Mixtral and your own inference, it’s important to note that Mixtral requires much more RAM and GPUs than Mistral 7B. While Mistral 7B works well on a 24GB RAM 1 GPU instance, Mixtral requires 64GB of RAM and 2 GPUs, which increases the cost by a factor of 3 (1.3$/h vs. 4.5$/h).
+
+- options?
+  - https://github.com/eugeneyan/open-llms
+  - https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
