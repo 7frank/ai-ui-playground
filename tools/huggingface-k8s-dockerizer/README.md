@@ -103,6 +103,8 @@ when trying to start a chat this error is thrown on the server
 
 **exec shell into pod**
 
+-(or use k9s cli)
+
 > kubectl exec -it application-6fd46c564c-mzpql -- /bin/bash
 - https://github.com/vllm-project/vllm/issues/855
 - https://github.com/vllm-project/vllm/issues/839

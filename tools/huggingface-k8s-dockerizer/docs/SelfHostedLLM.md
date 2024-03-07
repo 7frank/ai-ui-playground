@@ -79,6 +79,9 @@ k apply -f base/vllm-gpu.yaml
 
 # log pod
 k logs $(k get pods -l app=application  -o jsonpath='{.items[0].metadata.name}') --tail=100 -f",
+
+# or use k9s cli
+
 ```
 
 - https://docs.vllm.ai/en/latest/getting_started/quickstart.html
