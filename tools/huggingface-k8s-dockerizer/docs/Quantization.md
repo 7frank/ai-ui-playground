@@ -42,6 +42,8 @@ out of the box the model seems to provide 4bit
 
 [Ollama API Docs](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
 
+[openai-compatibility](https://ollama.com/blog/openai-compatibility)
+
 - http://localhost:11434/
 
 #### llama2
