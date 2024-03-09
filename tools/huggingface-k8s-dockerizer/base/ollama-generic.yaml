@@ -20,26 +20,21 @@ spec:
           containerPort: 11434     
         
         # TODO aquire permissions to create PV
-        #   volumeMounts:
-        #   - mountPath: "/root/.ollama/models"
-        #     name: ollama-models-volume
         # TODO aquire permissions to create PV
-        # volumes:
-        # - name: ollama-models-volume
-        #   persistentVolumeClaim:
-        #     claimName: ollama-models-pvc
 
 
 
         resources:                                          # Es muss die GPU ressource angefordert werden.
           limits:                                           #
           #  nvidia.com/gpu: 1  
-            cpu: "2"
+            cpu: "4"
             memory: "32Gi"
           requests:
           #  nvidia.com/gpu: 1 
-            cpu: "2"
+            cpu: "4"
             memory: "32Gi"                             # Anzahl der GPU slices
+
+
         imagePullPolicy: IfNotPresent
         # readinessProbe:
         #   httpGet:
@@ -47,14 +42,20 @@ spec:
         #     port: 8080
         #   initialDelaySeconds: 100
         #   periodSeconds: 5
-      
+        volumeMounts:
+        - mountPath: "/root/.ollama/models"
+          name: dshm
+
       imagePullSecrets:
       - name: docker.registery.secret
       # tolerations:                                          # Diese toleration muss gesetzt werden
       #   - key: "nvidia.com/gpu"                               #
       #     operator: "Exists"                                  #
       #     effect: "NoSchedule"
-
+      volumes:
+        - name: dshm
+          persistentVolumeClaim:
+            claimName: dshm
 ---
 apiVersion: v1
 kind: Service
@@ -94,3 +95,16 @@ spec:
               name: ollama-application
               port:
                 name: "http"
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dshm
+spec:
+  storageClassName: gpu-local-ssd
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
