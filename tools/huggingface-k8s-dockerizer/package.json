@@ -9,10 +9,12 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@pulumi/kubernetes": "^4.9.0",
     "chalk": "^5.3.0",
     "cmd-ts": "^0.13.0",
     "enquirer": "^2.4.1",
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "js-yaml": "^4.1.0"
   },
   "scripts": {
     "d-build-base": "docker build -t frank1147/huggingface-gradio-base -f base/Dockerfile.huggingface-gradio-base .",
@@ -38,7 +40,7 @@
     "stop-ollama": "docker stop ollama && docker rm ollama",
     "push-ollama": "docker push frank1147/ollama-gpu:latest",
     "attach-ollama": "docker exec -it ollama bash",
-    "bash-ollama": "docker run -v /usr/share/ollama/.ollama/models:/root/.ollama/models -p 8080:11434 --entrypoint /bin/bash -it frank1147/ollama-gpu",  
+    "bash-ollama": "docker run -v /usr/share/ollama/.ollama/models:/root/.ollama/models -p 8080:11434 --entrypoint /bin/bash -it frank1147/ollama-gpu",
     "list-services": "kubectl get ingress -o=jsonpath='{range .items[*]}{.spec.rules[*].host}{\"\n\"}{end}'"
   }
 }
