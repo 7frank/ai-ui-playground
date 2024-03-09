@@ -16,11 +16,11 @@ apt-get install -y nvidia-container-toolkit
 EOF
 
 # defaults
-ENV OLLAMA_HOST=0.0.0.0
-# ENV OLLAMA_MODELS=/usr/share/ollama/.ollama/models
+# ENV OLLAMA_HOST=0.0.0.0
+# ENV OLLAMA_MODELS=/root/.ollama/models
 
-# the model (currently not used)
-ENV MODEL=llama2
+# the model
+# ENV MODEL=llama2
 
 # Command to run (assumes the correct command is `ollama run`)
 # Use the shell form to ensure environment variable is used
