@@ -18,9 +18,6 @@ spec:
         ports:
         - name: http
           containerPort: 11434     
-        # volumeMounts:
-        # - mountPath: /dev/shm
-        #   name: dshm    
         
         # TODO aquire permissions to create PV
         #   volumeMounts:
@@ -44,12 +41,12 @@ spec:
             cpu: "2"
             memory: "32Gi"                             # Anzahl der GPU slices
         imagePullPolicy: IfNotPresent
-        readinessProbe:
-          httpGet:
-            path: /api/tags
-            port: 8080
-          initialDelaySeconds: 100
-          periodSeconds: 5
+        # readinessProbe:
+        #   httpGet:
+        #     path: /api/tags
+        #     port: 8080
+        #   initialDelaySeconds: 100
+        #   periodSeconds: 5
       
       imagePullSecrets:
       - name: docker.registery.secret
@@ -57,11 +54,7 @@ spec:
       #   - key: "nvidia.com/gpu"                               #
       #     operator: "Exists"                                  #
       #     effect: "NoSchedule"
-      # The secret data is exposed to Containers in the Pod through a Volume.
-      # volumes:
-      #   - name: dshm
-      #     persistentVolumeClaim:
-      #       claimName: dshm
+
 ---
 apiVersion: v1
 kind: Service
