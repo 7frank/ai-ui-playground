@@ -13,9 +13,11 @@ spec:
         app: ollama-application
     spec:
       containers:
-
       - name: ollama-application
         image: frank1147/ollama-gpu
+        ports:
+        - name: http
+          containerPort: 11434     
         # volumeMounts:
         # - mountPath: /dev/shm
         #   name: dshm    
@@ -48,20 +50,32 @@ spec:
             port: 8080
           initialDelaySeconds: 100
           periodSeconds: 5
-        ports:
-         - containerPort: 11434
-           name: notebook
+      
       imagePullSecrets:
       - name: docker.registery.secret
-      tolerations:                                          # Diese toleration muss gesetzt werden
-        - key: "nvidia.com/gpu"                               #
-          operator: "Exists"                                  #
-          effect: "NoSchedule"
+      # tolerations:                                          # Diese toleration muss gesetzt werden
+      #   - key: "nvidia.com/gpu"                               #
+      #     operator: "Exists"                                  #
+      #     effect: "NoSchedule"
       # The secret data is exposed to Containers in the Pod through a Volume.
       # volumes:
       #   - name: dshm
       #     persistentVolumeClaim:
       #       claimName: dshm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-application
+spec:
+  type: ClusterIP
+  selector:
+    app: ollama-application
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 11434
+  sessionAffinity: ClientIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -80,24 +94,10 @@ spec:
     - host: ollama-application-7frank.internal.jambit.io
       http:
         paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: ollama-application
-                port:
-                  name: "http"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ollama-application
-spec:
-  type: ClusterIP
-  selector:
-    app: ollama-application
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 11434
-  sessionAffinity: ClientIP
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: ollama-application
+              port:
+                name: "http"
