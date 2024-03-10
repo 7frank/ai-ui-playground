@@ -2,6 +2,8 @@ import { Service,IoK8sApiCoreV1LoadBalancerIngress, PersistentVolumeClaim } from
 import { Deployment, } from "kubernetes-models/apps/v1";
 import {Ingress} from "kubernetes-models/networking.k8s.io/v1beta1/Ingress"
 
+// Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
+
 // Define Deployment
 const deployment = new Deployment({
   metadata: {
@@ -90,7 +92,7 @@ const service = new Service({
 });
 
 // Define Ingress
-const ingress = new Ingress({,
+const ingress = new Ingress({
   metadata: {
     name: "ollama-application-ingress",
     annotations: {
@@ -145,8 +147,13 @@ const pvc = new PersistentVolumeClaim({
   },
 });
 
+
+import yaml from 'js-yaml';
+const d=yaml.dump(service.toJSON())
+console.log(d);
 // Export or use the defined Kubernetes objects
-console.log(deployment);
-console.log(service);
-//console.log(ingress);
-console.log(pvc);
+
+// console.log(service);
+// console.log(ingress);
+// console.log(pvc);
+
