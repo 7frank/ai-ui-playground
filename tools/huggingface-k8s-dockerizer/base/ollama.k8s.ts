@@ -53,6 +53,7 @@ const container: IContainer = {
   imagePullPolicy: "IfNotPresent",
   volumeMounts: hasPersistence ? [volumeMount] : undefined,
 };
+
 const gpuToleration: IToleration = {
   key: "nvidia.com/gpu",
   operator: "Exists",
