@@ -2,6 +2,7 @@ import {
   PersistentVolumeClaim,
   type IVolumeMount,
   type IVolume,
+  type IToleration,
 } from "kubernetes-models/v1";
 import type { Model } from "@kubernetes-models/base";
 import yaml from "js-yaml";
@@ -52,3 +53,9 @@ export function getVolumeConfig({
   });
   return { volumeMount, volume, pvc };
 }
+
+export const gpuToleration: IToleration = {
+    key: "nvidia.com/gpu",
+    operator: "Exists",
+    effect: "NoSchedule",
+  };

@@ -6,7 +6,7 @@ import {
 } from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
-import { getVolumeConfig, toYaml } from "./k8s-utils";
+import { getVolumeConfig, gpuToleration, toYaml } from "./k8s-utils";
 
 // `bun run base/ollama.k8s.ts | kubectl apply -`
 // Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
@@ -16,12 +16,11 @@ const host = `${app}-7frank.internal.jambit.io`;
 const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
 
-
 const hasPersistence = false;
 const hasGPU = false;
 
 const { volumeMount, volume, pvc } = getVolumeConfig({
-  name: "dshm",
+  name: `${app}-dshm`,
   mountPath: "/root/.ollama/models",
   storage: "10Gi",
   storageClassName: "gpu-local-ssd",
@@ -35,8 +34,8 @@ const requirements: IResourceRequirements = {
   },
   requests: {
     "nvidia.com/gpu": hasGPU ? 1 : 0,
-    cpu: "4",
-    memory: "32Gi",
+    cpu: "1",
+    memory: "4Gi",
   },
 };
 
@@ -50,15 +49,10 @@ const container: IContainer = {
     },
   ],
   resources: requirements,
-  imagePullPolicy: "IfNotPresent",
+  imagePullPolicy: "Always",
   volumeMounts: hasPersistence ? [volumeMount] : undefined,
 };
 
-const gpuToleration: IToleration = {
-  key: "nvidia.com/gpu",
-  operator: "Exists",
-  effect: "NoSchedule",
-};
 // Define Deployment
 const deployment = new Deployment({
   metadata: {
@@ -115,7 +109,7 @@ const service = new Service({
 // Define Ingress
 const ingress = new Ingress({
   metadata: {
-    name: "ollama-application-ingress",
+    name: `${app}-ingress`,
     annotations: {
       "nginx.ingress.kubernetes.io/affinity": "cookie",
       "nginx.ingress.kubernetes.io/affinity-mode": "persistent",
