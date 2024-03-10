@@ -12,7 +12,8 @@
     "chalk": "^5.3.0",
     "cmd-ts": "^0.13.0",
     "enquirer": "^2.4.1",
-    "fast-glob": "^3.3.2"
+    "fast-glob": "^3.3.2",
+    "kubernetes-models": "^4.3.1"
   },
   "scripts": {
     "d-build-base": "docker build -t frank1147/huggingface-gradio-base -f base/Dockerfile.huggingface-gradio-base .",
