@@ -1,4 +1,9 @@
-import { Service, type IContainer } from "kubernetes-models/v1";
+import {
+  Service,
+  type IContainer,
+  type IResourceRequirements,
+  type IToleration,
+} from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
 import { getVolumeConfig, toYaml } from "./k8s-utils";
@@ -6,12 +11,14 @@ import { getVolumeConfig, toYaml } from "./k8s-utils";
 // `bun run base/ollama.k8s.ts | kubectl apply -`
 // Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
 
-const host = "ollama-application-7frank.internal.jambit.io";
+const app = "ollama-application";
+const host = `${app}-7frank.internal.jambit.io`;
 const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
-const app = "ollama-application";
+
 
 const hasPersistence = true;
+const hasGPU = true;
 
 const { volumeMount, volume, pvc } = getVolumeConfig({
   name: "dshm",
@@ -19,6 +26,19 @@ const { volumeMount, volume, pvc } = getVolumeConfig({
   storage: "10Gi",
   storageClassName: "gpu-local-ssd",
 });
+
+const requirements: IResourceRequirements = {
+  limits: {
+    "nvidia.com/gpu": hasGPU ? 1 : 0,
+    cpu: "4",
+    memory: "32Gi",
+  },
+  requests: {
+    "nvidia.com/gpu": hasGPU ? 1 : 0,
+    cpu: "4",
+    memory: "32Gi",
+  },
+};
 
 const container: IContainer = {
   name: app,
@@ -29,18 +49,14 @@ const container: IContainer = {
       containerPort,
     },
   ],
-  resources: {
-    limits: {
-      cpu: "4",
-      memory: "32Gi",
-    },
-    requests: {
-      cpu: "4",
-      memory: "32Gi",
-    },
-  },
+  resources: requirements,
   imagePullPolicy: "IfNotPresent",
   volumeMounts: hasPersistence ? [volumeMount] : undefined,
+};
+const gpuToleration: IToleration = {
+  key: "nvidia.com/gpu",
+  operator: "Exists",
+  effect: "NoSchedule",
 };
 // Define Deployment
 const deployment = new Deployment({
@@ -62,6 +78,7 @@ const deployment = new Deployment({
       },
       spec: {
         containers: [container],
+        tolerations: hasGPU ? [gpuToleration] : undefined,
         imagePullSecrets: [
           {
             name: "docker.registery.secret",
