@@ -1,12 +1,7 @@
-import {
-  Service,
-  PersistentVolumeClaim,
-  type IVolumeMount,
-  type IVolume,
-} from "kubernetes-models/v1";
+import { Service } from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
-import type { Model } from "@kubernetes-models/base";
+import { getVolumeConfig, toYaml } from "./k8s-utils";
 
 // `bun run base/ollama.k8s.ts | kubectl apply -`
 // Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
@@ -16,9 +11,14 @@ const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
 const app = "ollama-application";
 
-const hasPersistence = false;
+const hasPersistence = true;
 
-const { volumeMount, volume, pvc } = getVolumeConfig();
+const { volumeMount, volume, pvc } = getVolumeConfig({
+  name: "dshm",
+  mountPath: "/root/.ollama/models",
+  storage: "10Gi",
+  storageClassName: "gpu-local-ssd",
+});
 
 // Define Deployment
 const deployment = new Deployment({
@@ -132,15 +132,6 @@ const ingress = new Ingress({
   },
 });
 
-import yaml from "js-yaml";
-
-function toYaml<T>(...args: (Model<T> | undefined)[]) {
-  const filtered = args.filter((it) => !!it);
-  filtered.forEach((it) => it!.validate());
-
-  return filtered.map((it) => yaml.dump(it!.toJSON())).join("\n---\n\n");
-}
-
 const d = toYaml(
   ingress,
   service,
@@ -148,34 +139,3 @@ const d = toYaml(
   hasPersistence ? pvc : undefined
 );
 console.log(d);
-
-function getVolumeConfig() {
-  const volumeMount: IVolumeMount = {
-    mountPath: "/root/.ollama/models",
-    name: "dshm",
-  };
-
-  const volume: IVolume = {
-    name: "dshm",
-    persistentVolumeClaim: {
-      claimName: "dshm",
-    },
-  };
-
-  // Define PersistentVolumeClaim
-  const pvc = new PersistentVolumeClaim({
-    metadata: {
-      name: "dshm",
-    },
-    spec: {
-      storageClassName: "gpu-local-ssd",
-      accessModes: ["ReadWriteOnce"],
-      resources: {
-        requests: {
-          storage: "10Gi",
-        },
-      },
-    },
-  });
-  return { volumeMount, volume, pvc };
-}
