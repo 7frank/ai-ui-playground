@@ -17,8 +17,8 @@ const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
 
 
-const hasPersistence = true;
-const hasGPU = true;
+const hasPersistence = false;
+const hasGPU = false;
 
 const { volumeMount, volume, pvc } = getVolumeConfig({
   name: "dshm",
