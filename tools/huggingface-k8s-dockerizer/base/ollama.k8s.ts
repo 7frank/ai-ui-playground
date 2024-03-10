@@ -16,33 +16,9 @@ const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
 const app = "ollama-application";
 
-const volumeMount: IVolumeMount = {
-  mountPath: "/root/.ollama/models",
-  name: "dshm",
-};
+const hasPersistence = false;
 
-const volume: IVolume = {
-  name: "dshm",
-  persistentVolumeClaim: {
-    claimName: "dshm",
-  },
-};
-
-// Define PersistentVolumeClaim
-const pvc = new PersistentVolumeClaim({
-  metadata: {
-    name: "dshm",
-  },
-  spec: {
-    storageClassName: "gpu-local-ssd",
-    accessModes: ["ReadWriteOnce"],
-    resources: {
-      requests: {
-        storage: "10Gi",
-      },
-    },
-  },
-});
+const { volumeMount, volume, pvc } = getVolumeConfig();
 
 // Define Deployment
 const deployment = new Deployment({
@@ -70,7 +46,7 @@ const deployment = new Deployment({
             ports: [
               {
                 name: "http",
-                containerPort: containerPort,
+                containerPort,
               },
             ],
             resources: {
@@ -84,7 +60,7 @@ const deployment = new Deployment({
               },
             },
             imagePullPolicy: "IfNotPresent",
-            volumeMounts: [volumeMount],
+            volumeMounts: hasPersistence ? [volumeMount] : undefined,
           },
         ],
         imagePullSecrets: [
@@ -92,7 +68,7 @@ const deployment = new Deployment({
             name: "docker.registery.secret",
           },
         ],
-        volumes: [volume],
+        volumes: hasPersistence ? [volume] : undefined,
       },
     },
   },
@@ -158,9 +134,48 @@ const ingress = new Ingress({
 
 import yaml from "js-yaml";
 
-function toYaml<T>(...args: Model<T>[]) {
-  return args.map((it) => yaml.dump(it.toJSON())).join("\n---\n\n");
+function toYaml<T>(...args: (Model<T> | undefined)[]) {
+  const filtered = args.filter((it) => !!it);
+  filtered.forEach((it) => it!.validate());
+
+  return filtered.map((it) => yaml.dump(it!.toJSON())).join("\n---\n\n");
 }
 
-const d = toYaml(ingress, service, deployment, pvc);
+const d = toYaml(
+  ingress,
+  service,
+  deployment,
+  hasPersistence ? pvc : undefined
+);
 console.log(d);
+
+function getVolumeConfig() {
+  const volumeMount: IVolumeMount = {
+    mountPath: "/root/.ollama/models",
+    name: "dshm",
+  };
+
+  const volume: IVolume = {
+    name: "dshm",
+    persistentVolumeClaim: {
+      claimName: "dshm",
+    },
+  };
+
+  // Define PersistentVolumeClaim
+  const pvc = new PersistentVolumeClaim({
+    metadata: {
+      name: "dshm",
+    },
+    spec: {
+      storageClassName: "gpu-local-ssd",
+      accessModes: ["ReadWriteOnce"],
+      resources: {
+        requests: {
+          storage: "10Gi",
+        },
+      },
+    },
+  });
+  return { volumeMount, volume, pvc };
+}
