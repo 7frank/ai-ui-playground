@@ -1,20 +1,48 @@
 import {
   Service,
-  IoK8sApiCoreV1LoadBalancerIngress,
   PersistentVolumeClaim,
+  type IVolumeMount,
+  type IVolume,
 } from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
-import type { Model, TypeMeta } from "@kubernetes-models/base";
-
-const containerPort = 11434;
-const host = "ollama-application-7frank.internal.jambit.io";
-
-const app = "ollama-application";
-// Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
-
+import type { Model } from "@kubernetes-models/base";
 
 // `bun run base/ollama.k8s.ts | kubectl apply -`
+// Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
+
+const host = "ollama-application-7frank.internal.jambit.io";
+const image = "frank1147/ollama-gpu";
+const containerPort = 11434;
+const app = "ollama-application";
+
+const volumeMount: IVolumeMount = {
+  mountPath: "/root/.ollama/models",
+  name: "dshm",
+};
+
+const volume: IVolume = {
+  name: "dshm",
+  persistentVolumeClaim: {
+    claimName: "dshm",
+  },
+};
+
+// Define PersistentVolumeClaim
+const pvc = new PersistentVolumeClaim({
+  metadata: {
+    name: "dshm",
+  },
+  spec: {
+    storageClassName: "gpu-local-ssd",
+    accessModes: ["ReadWriteOnce"],
+    resources: {
+      requests: {
+        storage: "10Gi",
+      },
+    },
+  },
+});
 
 // Define Deployment
 const deployment = new Deployment({
@@ -38,7 +66,7 @@ const deployment = new Deployment({
         containers: [
           {
             name: app,
-            image: "frank1147/ollama-gpu",
+            image,
             ports: [
               {
                 name: "http",
@@ -56,12 +84,7 @@ const deployment = new Deployment({
               },
             },
             imagePullPolicy: "IfNotPresent",
-            volumeMounts: [
-              {
-                mountPath: "/root/.ollama/models",
-                name: "dshm",
-              },
-            ],
+            volumeMounts: [volumeMount],
           },
         ],
         imagePullSecrets: [
@@ -69,14 +92,7 @@ const deployment = new Deployment({
             name: "docker.registery.secret",
           },
         ],
-        volumes: [
-          {
-            name: "dshm",
-            persistentVolumeClaim: {
-              claimName: "dshm",
-            },
-          },
-        ],
+        volumes: [volume],
       },
     },
   },
@@ -140,32 +156,11 @@ const ingress = new Ingress({
   },
 });
 
-// Define PersistentVolumeClaim
-const pvc = new PersistentVolumeClaim({
-  metadata: {
-    name: "dshm",
-  },
-  spec: {
-    storageClassName: "gpu-local-ssd",
-    accessModes: ["ReadWriteOnce"],
-    resources: {
-      requests: {
-        storage: "10Gi",
-      },
-    },
-  },
-});
-
 import yaml from "js-yaml";
 
 function toYaml<T>(...args: Model<T>[]) {
   return args.map((it) => yaml.dump(it.toJSON())).join("\n---\n\n");
 }
 
-const d = toYaml(ingress,service,deployment,pvc)
+const d = toYaml(ingress, service, deployment, pvc);
 console.log(d);
-// Export or use the defined Kubernetes objects
-
-// console.log(service);
-// console.log(ingress);
-// console.log(pvc);
