@@ -11,7 +11,7 @@ import { getVolumeConfig, gpuToleration, toYaml } from "./k8s-utils";
 // `bun run base/ollama.k8s.ts | kubectl apply -`
 // Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
 
-const app = "ollama-application";
+const app = "test-application";
 const host = `${app}-7frank.internal.jambit.io`;
 const image = "frank1147/ollama-gpu";
 const containerPort = 11434;
