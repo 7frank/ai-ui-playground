@@ -1,4 +1,4 @@
-import { Service } from "kubernetes-models/v1";
+import { Service, type IContainer } from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
 import { getVolumeConfig, toYaml } from "./k8s-utils";
@@ -20,6 +20,28 @@ const { volumeMount, volume, pvc } = getVolumeConfig({
   storageClassName: "gpu-local-ssd",
 });
 
+const container: IContainer = {
+  name: app,
+  image,
+  ports: [
+    {
+      name: "http",
+      containerPort,
+    },
+  ],
+  resources: {
+    limits: {
+      cpu: "4",
+      memory: "32Gi",
+    },
+    requests: {
+      cpu: "4",
+      memory: "32Gi",
+    },
+  },
+  imagePullPolicy: "IfNotPresent",
+  volumeMounts: hasPersistence ? [volumeMount] : undefined,
+};
 // Define Deployment
 const deployment = new Deployment({
   metadata: {
@@ -39,30 +61,7 @@ const deployment = new Deployment({
         },
       },
       spec: {
-        containers: [
-          {
-            name: app,
-            image,
-            ports: [
-              {
-                name: "http",
-                containerPort,
-              },
-            ],
-            resources: {
-              limits: {
-                cpu: "4",
-                memory: "32Gi",
-              },
-              requests: {
-                cpu: "4",
-                memory: "32Gi",
-              },
-            },
-            imagePullPolicy: "IfNotPresent",
-            volumeMounts: hasPersistence ? [volumeMount] : undefined,
-          },
-        ],
+        containers: [container],
         imagePullSecrets: [
           {
             name: "docker.registery.secret",
