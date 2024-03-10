@@ -1,36 +1,48 @@
-import { Service,IoK8sApiCoreV1LoadBalancerIngress, PersistentVolumeClaim } from "kubernetes-models/v1";
-import { Deployment, } from "kubernetes-models/apps/v1";
-import {Ingress} from "kubernetes-models/networking.k8s.io/v1beta1/Ingress"
+import {
+  Service,
+  IoK8sApiCoreV1LoadBalancerIngress,
+  PersistentVolumeClaim,
+} from "kubernetes-models/v1";
+import { Deployment } from "kubernetes-models/apps/v1";
+import { Ingress } from "kubernetes-models/networking.k8s.io/v1beta1/Ingress";
+import type { Model, TypeMeta } from "@kubernetes-models/base";
 
+const containerPort = 11434;
+const host = "ollama-application-7frank.internal.jambit.io";
+
+const app = "ollama-application";
 // Note: if this does not run, (avj traverse ..) its likely the json-schema-travsere packge index.js file is empty .. maybe because bun does fail transpiling the package?
+
+
+// `bun run base/ollama.k8s.ts | kubectl apply -`
 
 // Define Deployment
 const deployment = new Deployment({
   metadata: {
-    name: "ollama-application",
+    name: app,
   },
   spec: {
     replicas: 1,
     selector: {
       matchLabels: {
-        app: "ollama-application",
+        app,
       },
     },
     template: {
       metadata: {
         labels: {
-          app: "ollama-application",
+          app,
         },
       },
       spec: {
         containers: [
           {
-            name: "ollama-application",
+            name: app,
             image: "frank1147/ollama-gpu",
             ports: [
               {
                 name: "http",
-                containerPort: 11434,
+                containerPort: containerPort,
               },
             ],
             resources: {
@@ -73,18 +85,18 @@ const deployment = new Deployment({
 // Define Service
 const service = new Service({
   metadata: {
-    name: "ollama-application",
+    name: app,
   },
   spec: {
     type: "ClusterIP",
     selector: {
-      app: "ollama-application",
+      app,
     },
     ports: [
       {
         name: "http",
         port: 8080,
-        targetPort: 11434,
+        targetPort: containerPort,
       },
     ],
     sessionAffinity: "ClientIP",
@@ -105,21 +117,20 @@ const ingress = new Ingress({
     ingressClassName: "internal-nginx",
     tls: [
       {
-        hosts: ["ollama-application-7frank.internal.jambit.io"],
+        hosts: [host],
       },
     ],
     rules: [
       {
-        host: "ollama-application-7frank.internal.jambit.io",
+        host: host,
         http: {
           paths: [
             {
               pathType: "Prefix",
               path: "/",
               backend: {
-                serviceName:"ollama-application",
+                serviceName: app,
                 servicePort: "http",
-       
               },
             },
           ],
@@ -128,8 +139,6 @@ const ingress = new Ingress({
     ],
   },
 });
-
-
 
 // Define PersistentVolumeClaim
 const pvc = new PersistentVolumeClaim({
@@ -147,13 +156,16 @@ const pvc = new PersistentVolumeClaim({
   },
 });
 
+import yaml from "js-yaml";
 
-import yaml from 'js-yaml';
-const d=yaml.dump(service.toJSON())
+function toYaml<T>(...args: Model<T>[]) {
+  return args.map((it) => yaml.dump(it.toJSON())).join("\n---\n\n");
+}
+
+const d = toYaml(ingress,service,deployment,pvc)
 console.log(d);
 // Export or use the defined Kubernetes objects
 
 // console.log(service);
 // console.log(ingress);
 // console.log(pvc);
-
