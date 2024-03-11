@@ -3,6 +3,7 @@ import {
   type IContainer,
   type IResourceRequirements,
   type IToleration,
+  type IEnvVar,
 } from "kubernetes-models/v1";
 import { Deployment } from "kubernetes-models/apps/v1";
 import { Ingress } from "kubernetes-models/networking.k8s.io/v1/Ingress";
@@ -13,8 +14,17 @@ import { getVolumeConfig, gpuToleration, toYaml } from "./k8s-utils";
 
 const app = "test-application";
 const host = `${app}-7frank.internal.jambit.io`;
+
 const image = "frank1147/ollama-gpu";
+const env: IEnvVar[] = [];
+
 const containerPort = 11434;
+
+// TODO create one config for "vllm"
+
+// image: "frank1147/vllm:latest"
+// const env:IEnvVar[]=[{name:"MODEL",value:"mistralai/Mistral-7B-Instruct-v0.1"},{name:"EXTRA_ARGS",value:"--tensor-parallel-size 1"}]
+// const containerPort = 8080
 
 const hasPersistence = true;
 const hasGPU = true;
@@ -34,14 +44,15 @@ const requirements: IResourceRequirements = {
   },
   requests: {
     "nvidia.com/gpu": hasGPU ? 1 : 0,
-   cpu: "1",
-   memory: "4Gi",
+    cpu: "1",
+    memory: "4Gi",
   },
 };
 
 const container: IContainer = {
   name: app,
   image,
+  env,
   ports: [
     {
       name: "http",

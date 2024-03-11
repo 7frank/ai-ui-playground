@@ -86,3 +86,13 @@ curl http://localhost:11434/v1/chat/completions \
         ]
     }'
 
+#### troubleshooting
+
+GPU MIG 
+
+- https://medium.com/@CQCZhang/building-a-robust-gpu-cloud-in-60-mins-part-2-nvidia-a100-and-mig-on-kubernetes-e004723cd2a9
+
+- https://github.com/ollama/ollama/issues/1500
+- https://github.com/ollama/ollama/pull/2264
+- https://github.com/ollama/ollama/pull/2264/files
+
