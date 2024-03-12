@@ -15,7 +15,12 @@ import { getVolumeConfig, gpuToleration, toYaml } from "./k8s-utils";
 const app = "test-application";
 const host = `${app}-7frank.internal.jambit.io`;
 
-const image = "frank1147/ollama-gpu";
+// original ollama/ollama image with gpu enabled
+// const image = "frank1147/ollama-gpu";
+// const env: IEnvVar[] = [];
+
+// ollama gpu MIG fork https://github.com/ollama/ollama/pull/2264
+const image = "frank1147/ollama-gpu-source";
 const env: IEnvVar[] = [];
 
 const containerPort = 11434;
