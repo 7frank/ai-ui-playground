@@ -7,6 +7,9 @@ title: LLM - Self Hosting
 
 ### options
 
+- Ollama
+  - currently best option
+
 - localAI (more production ready)
 
 - H2OGPT (lots of features & potential)
@@ -15,6 +18,9 @@ title: LLM - Self Hosting
     - it will be available at http://localhost:7860/ after about 10-20 minutes when run first time
     - Provides STT, RAG with your own Documents, many more
   - https://gpt.h2o.ai/
+
+- vLLM
+- GPT4all
 
 
 ### Why

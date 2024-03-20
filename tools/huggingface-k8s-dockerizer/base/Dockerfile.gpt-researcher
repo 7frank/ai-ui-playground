@@ -1,0 +1,42 @@
+# https://github.com/assafelovic/gpt-researcher
+# Use the official Python 3.11 image as the base image
+FROM python:3.11-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Clone the repository with a depth of 1 to only get the latest snapshot
+RUN apt-get update && apt-get install -y git \
+    && git clone --depth 1 https://github.com/assafelovic/gpt-researcher.git /app \
+    && apt-get purge -y --auto-remove git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Set environment variables
+ENV CONFIG_FILE=
+ENV SEARCH_RETRIEVER=tavily
+#ENV TAVILY_API_KEY=your_tavily_api_key
+ENV EMBEDDING_PROVIDER=openai
+ENV LLM_PROVIDER=ChatOpenAI
+#ENV OPENAI_API_KEY=your_openai_api_key
+ENV FAST_LLM_MODEL=gpt-3.5-turbo-16k
+ENV SMART_LLM_MODEL=gpt-4-1106-preview
+ENV FAST_TOKEN_LIMIT=2000
+ENV SMART_TOKEN_LIMIT=4000
+ENV BROWSE_CHUNK_MAX_LENGTH=8192
+ENV SUMMARY_TOKEN_LIMIT=700
+ENV TEMPERATURE=0.55
+# ENV USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0
+ENV MAX_SEARCH_RESULTS_PER_QUERY=5
+ENV MEMORY_BACKEND=local
+ENV TOTAL_WORDS=1000
+ENV REPORT_FORMAT=APA
+ENV MAX_ITERATIONS=3
+#ENV AGENT_ROLE=
+ENV SCRAPER=bs
+
+# Command to run the application
+CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]

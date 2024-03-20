@@ -4,11 +4,15 @@ title: Webscraping
 
 ## management
 
-- Golang-based distributed web crawler management platform, supporting various languages including Python, NodeJS, Go, Java, PHP and various web crawler frameworks including Scrapy, Puppeteer, Selenium.
+> Try Apache Airflow or similar ETL tools first. These might provide what you are looking for while still having a better loong tearm support than dedicated tools for webscraping
+
+- Crawlab -- Golang-based distributed web crawler management platform, supporting various languages including Python, NodeJS, Go, Java, PHP and various web crawler frameworks including Scrapy, Puppeteer, Selenium.
     - https://github.com/crawlab-team/crawlab
 
 
 ## actual scrapers
+
+- scrapy
 
 - https://github.com/apify/crawlee
     - proxy support
@@ -23,3 +27,7 @@ title: Webscraping
 
 - https://github.com/gocolly/colly
 
+## LLM-based
+
+- "does search for you" anc creates reports which seem to be decent from a brief initial test run 
+- https://github.com/assafelovic/gpt-researcher
