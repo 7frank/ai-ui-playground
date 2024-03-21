@@ -8,7 +8,7 @@ import plantuml from './plugins/rollup-plugin-plantuml';
 const base="/ai-ui-playground"
 // https://astro.build/config
 export default defineConfig({
-  site: "https://7frank.github.io",
+   site: "https://7frank.github.io",
   base,
   vite:{
      plugins:[plantuml()]
