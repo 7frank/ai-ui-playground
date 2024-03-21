@@ -4,8 +4,21 @@ title: Experiments
 
 This section summarizes some small scenarios testing capabilites
 
-<img src="./Experiments.drawio.png" />
+<style>
+  img {
+    
+    border-radius: 4px; /* Optional: rounds the corners of the image and the glow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the glow effect */
+    margin:3em;
+    padding:3em;
+  }
+  img:hover {
+    box-shadow: 0 0 8px 4px #00f; /* X-offset, Y-offset, blur radius, spread radius, color */
+  }
+</style>
+
 ![Overview of current Experiments](./Experiments.drawio.png)
+
 
 ## [done] stabilityai-sdxl
 - on huggingface (Problem: GPU is not free) and modelrrequires GPU
