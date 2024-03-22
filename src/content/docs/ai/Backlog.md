@@ -19,6 +19,18 @@ Contains links of things that might be important.
 
 ## HEAD
 
+https://v0.dev/
+
+https://reactflow.dev/
+
+[Meta-Prompting: Enhancing Language Models with Task-Agnostic Scaffolding](https://arxiv.org/abs/2401.12954)
+
+https://huggingface.co/blog/peft
+
+https://lightgbm.readthedocs.io/en/stable/
+
+ - image to diagram? (https://diagrammergpt.github.io/)
+
 ### ~0
 
 WTF https://deepchat.dev/docs/webModel/
