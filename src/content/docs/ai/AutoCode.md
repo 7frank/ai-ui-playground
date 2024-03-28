@@ -1,5 +1,5 @@
 ---
-title: Auto
+title: Code Automation
 ---
 Tools that promise to generate code for you
 

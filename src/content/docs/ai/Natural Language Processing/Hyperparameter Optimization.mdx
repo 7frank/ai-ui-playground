@@ -1,0 +1,82 @@
+---
+title: Hyperparameter Optimization
+---
+
+
+
+
+## ELI5
+
+Imagine you're trying to bake the most delicious cake. You know that the ingredients are the same (like flour, sugar, eggs), but the amounts and the baking time can change the outcome. In baking, as in machine learning, these varying amounts and times are like the settings on your oven or mixer—they're called hyperparameters.
+
+Now, imagine if you had a magical kitchen assistant who could tweak these settings for you. This assistant doesn't just randomly change the amounts and times; it cleverly guesses which combinations might make the cake taste even better, tries them out, and then learns from each attempt to make even smarter guesses next time. This process of tweaking and improving is called hyperparameter optimization.
+
+In the world of machine learning, your models (like neural networks or decision trees) need the right settings (hyperparameters) to work best. These could be things like how fast the model learns, how complex it is, or how much it can ignore minor details. Since there are so many possible combinations of these settings, finding the best one manually is like trying to find a needle in a haystack.
+
+That's where hyperparameter optimization frameworks come in. They're like the magical kitchen assistant for your machine learning recipes. You tell them which settings can change and by how much, and they use smart strategies to find the best combinations. These strategies might involve:
+
+    Grid Search: Trying out every possible combination, like baking a cake with every possible amount of sugar and flour you can think of.
+    Random Search: Randomly picking combinations of amounts and times, which can sometimes find good settings faster than trying everything.
+    Bayesian Optimization: This is more like a wise assistant that learns from each cake how the next one might be improved, focusing on promising areas.
+    Genetic Algorithms: These mimic evolution by combining and mutating the best recipes to try and produce even better ones.
+
+The goal is to automate the search for the best settings so that your machine learning models perform as well as possible, making predictions more accurate, just like trying to bake the perfect cake.
+
+
+## Overview
+
+The concept of hyperparameter optimization, including automatic approaches, isn't new. It has been a topic of research and application for several decades, evolving alongside the development of machine learning and computational capabilities. However, the widespread availability of tools and frameworks for automating hyperparameter search has seen significant growth in the last 10 to 15 years, paralleling the explosion of interest in machine learning and deep learning.
+
+### Early Days
+
+In the early days of machine learning, hyperparameter tuning was often done manually due to limited computational resources and the relatively simpler nature of the models. Researchers and practitioners would use their intuition and experience to adjust hyperparameters, a process that was time-consuming and often imprecise.
+
+### Evolution and Growth
+
+As computational power increased and machine learning models became more complex, the need for more sophisticated and automated methods of hyperparameter optimization became apparent. This led to the development of techniques like grid search and random search, which could be automated but were still computationally intensive.
+
+### Recent Developments
+
+In the last decade, more efficient and intelligent optimization techniques have been developed:
+
+    Bayesian Optimization: Became popular for its efficiency in finding optimal hyperparameters by building a probabilistic model of the function mapping hyperparameters to a target evaluation metric.
+    Gradient-Based Optimization: Although not applicable to all types of hyperparameters, for those that are differentiable, gradient-based methods have seen use.
+    Evolutionary Algorithms: Techniques inspired by biological evolution, capable of optimizing complex hyperparameter spaces by mimicking the processes of mutation, selection, and crossover.
+    Meta-Learning and Transfer Learning: These approaches leverage knowledge from previous tasks to accelerate hyperparameter optimization in new tasks.
+
+### Tools and Frameworks
+
+The development of dedicated frameworks and libraries for hyperparameter optimization has played a crucial role in making these techniques more accessible. Tools like **Hyperopt**, **Optuna**, and **Ray Tune** offer flexible, powerful, and sometimes even user-friendly interfaces for automating the search for the best hyperparameters.
+
+
+## Relation to Gradient Descent
+
+Two different yet related concepts of machine learning: hyperparameter optimization and model training methods like gradient descent. Let's break down how these fit together in the context of tuning and training machine learning models.
+Gradient Descent: The Model Training
+
+When you're training a machine learning model, you're essentially trying to find the best set of parameters (weights) that minimize some kind of error or loss function. This is like adjusting the internal mechanism of a clock to show the correct time. Gradient Descent is a method used to find these optimal parameters by iteratively moving towards the minimum of the loss function. It works by calculating the gradient (the direction and rate of the steepest decline) of the loss function and updating the parameters in the opposite direction of the gradient to reduce the error.
+Hyperparameter Optimization: The Model Configuration
+
+Hyperparameters, on the other hand, are the settings or configurations that govern the overall behavior of the model. These are not learned from the data but are set prior to the training process. Hyperparameters include things like the learning rate for gradient descent, the depth of a decision tree, or the number of hidden layers in a neural network. Finding the right hyperparameters is crucial because they can significantly affect the performance of the model.
+The Relationship
+
+Here's how gradient descent and hyperparameter optimization relate and fit into the process of building and fine-tuning models:
+
+    Model Training with Gradient Descent: Inside the training process, you use gradient descent (or variants like Stochastic Gradient Descent, Adam, etc.) to adjust the model's parameters to fit the data as best as possible. This process relies on certain hyperparameters, such as the learning rate, which determines how big of a step to take in the direction opposite to the gradient.
+
+    Hyperparameter Optimization: Before or during this training process, you might not know the best learning rate to use, among other settings. Hyperparameter optimization frameworks help you automate the search for these optimal hyperparameters. For example, they can help you find the best learning rate for gradient descent to ensure that the model learns efficiently without overshooting or getting stuck.
+
+    Fine-Tuning: In a broader sense, both gradient descent and hyperparameter optimization are parts of the fine-tuning process. Gradient descent fine-tunes the model's parameters to reduce prediction errors. Hyperparameter optimization fine-tunes the model's settings to ensure the training process itself is set up in the best way possible.
+
+So, while gradient descent focuses on adjusting the model's internal parameters to better fit the data, hyperparameter optimization focuses on adjusting the model's settings to improve and speed up the learning process. Both are essential steps in developing effective machine learning models.
+
+
+## Context 
+
+import IFrameBox from '../../../../components/BigBox/IFrameBox.svelte';
+
+<IFrameBox client:only 
+ src="https://blinpete.github.io/wiki-graph/?lang=en&wordle=false&query=Hyperparameter%20optimization"
+ maxStyle="" 
+ style=""
+/>
